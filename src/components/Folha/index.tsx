@@ -1,24 +1,61 @@
-import { Container, Content } from './styles'
+import {
+  Box,
+  BoxFolha,
+  BoxGridFolha,
+  ContentFolha,
+  ContentTextFolha,
+} from './styles'
 
 export function Folha() {
   return (
-    <Container>
-      <Content>
-        <h1>HELLO</h1>
-      </Content>
-      <svg
-        width="345"
-        height="502"
-        viewBox="0 0 445 602"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M212.5 1H1V373C17.4081 501.162 132.961 606.224 252 600.5H444V227.5C430 102 353.214 18.1311 212.5 1Z"
-          fill="#315023"
-          stroke="#315023"
-        />
-      </svg>
-    </Container>
+    <Box>
+      <BoxFolha>
+        <ContentTextFolha>
+          <div>
+            <p>texto</p>
+            <p className="title">Mindset</p>
+          </div>
+          <line className="line" />
+        </ContentTextFolha>
+
+        <BoxGridFolha>
+          <ContentFolha>
+            <div className="folha1">
+              <h3>Promação de um futuro melhor às próximas geraões</h3>
+              <p>Pensar no planeta é zelar por um futuro melhor</p>
+            </div>
+          </ContentFolha>
+
+          <ContentFolha>
+            <div className="folha2">
+              <h3>Tecnologia em prol do meio ambiente</h3>
+              <p>
+                A tecnologia sendo usada para reduzir os impactos negativos no
+                planeta
+              </p>
+            </div>
+          </ContentFolha>
+
+          <ContentFolha>
+            <div className="folha3">
+              <h3>Promação de um futuro melhor às próximas geraões</h3>
+              <p>
+                Primeiro Programa de Créditos focado na geração de valor para o
+                meio ambiente
+              </p>
+            </div>
+          </ContentFolha>
+
+          <ContentFolha>
+            <div className="folha4">
+              <h3>Compensação de danos causados</h3>
+              <p>
+                Oportunidade de compensar os danos causados ao meio ambiente
+              </p>
+            </div>
+          </ContentFolha>
+        </BoxGridFolha>
+      </BoxFolha>
+    </Box>
   )
 }

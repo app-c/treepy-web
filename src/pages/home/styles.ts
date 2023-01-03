@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { color } from '../../styles/colors'
+import folha from '../../assets/folha.svg'
 
 export const Container = styled.div`
   display: flex;
@@ -127,7 +128,7 @@ export const BoxCalcText = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: ${color.orange[200]};
+  background-color: ${color.orange[20]};
   width: 50vw;
   align-items: center;
   justify-content: center;
@@ -165,7 +166,7 @@ export const BoxCalcText = styled.div`
 
 export const BoxCalc = styled.div`
   display: flex;
-  background-color: ${color.orange[100]};
+  background-color: ${color.orange[10]};
   width: 50vw;
   align-items: center;
   justify-content: center;
@@ -196,4 +197,81 @@ export const BoxIcoArrow = styled.div`
   @media (max-width: 780px) {
     display: none;
   }
+`
+
+export const BoxFolha = styled.div``
+
+export const ContentTextFolha = styled.div``
+
+export const BoxGridFolha = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+  .folha1 {
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    background-image: url(${folha});
+    background-size: contain;
+
+    background-repeat: no-repeat;
+
+    width: 15rem;
+    height: 20rem;
+
+    p {
+      color: #fff;
+    }
+  }
+
+  .folha2 {
+    background-color: blue;
+
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    background-image: url(${folha});
+    background-size: contain;
+
+    background-repeat: no-repeat;
+
+    width: 15rem;
+    height: 20rem;
+  }
+
+  .folha3 {
+    background-color: blue;
+
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    background-image: url(${folha});
+    background-size: contain;
+
+    background-repeat: no-repeat;
+
+    width: 15rem;
+    height: 20rem;
+  }
+
+  .folha4 {
+    background-color: blue;
+
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    background-image: url(${folha});
+    background-size: contain;
+
+    background-repeat: no-repeat;
+
+    width: 15rem;
+    height: 20rem;
+  }
+`
+
+export const ContentFolha = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `

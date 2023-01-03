@@ -7,7 +7,7 @@ interface ProsLinks {
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
-  height: 12rem;
+  height: 10rem;
   width: 100%;
 
   background-color: rgba(35, 61, 29, 0.554);
@@ -58,7 +58,7 @@ export const BoxLink = styled.div<ProsLinks>`
     a {
       color: #fff;
       font-weight: 500;
-      font-size: 2.3rem;
+      font-size: 1.5rem;
     }
 
     @media (max-width: 2100px) {

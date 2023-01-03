@@ -23,15 +23,14 @@ export const GlobalStyle = createGlobalStyle`
         outline: 0;
     }
 
-
-
     body {
 
-        color: ${color.dark[100]};
+        color: #141414;
 
         background-color: #fff;
 
         -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
 
     }
 
@@ -40,10 +39,10 @@ export const GlobalStyle = createGlobalStyle`
     body, input, textarea, button {
 
         font-family: 'Roboto', sans-serif;
-
         font-weight: 400;
-
         font-size: 1rem;
+        border: none;
+
 
     }
 

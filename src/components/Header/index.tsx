@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Logo } from '../Logo'
 import { BoxLink, BoxLog, Buttom, Container, Menu, Nave } from './styles'
 
 export function Header() {
@@ -6,7 +7,7 @@ export function Header() {
   return (
     <Container>
       <BoxLog className="logo">
-        <h1>logo</h1>
+        <Logo size="7vw" colorL="#fff" />
       </BoxLog>
 
       <BoxLink show={show} className="menu-section on">
@@ -22,20 +23,16 @@ export function Header() {
               <a href="#home">HOME</a>
             </li>
             <li>
-              <a href="#home">SOBRE NÓS</a>
+              <a href="#us">SOBRE NÓS</a>
             </li>
             <li>
-              <a href="#home">COMO FUNCIONA</a>
+              <a href="#how">COMO FUNCIONA</a>
             </li>
             <li>
-              <a href="#home">CALCULADORA</a>
+              <a href="#calc">CALCULADORA</a>
             </li>
             <li>
-              <a href="#home">BLOG</a>
-            </li>
-
-            <li>
-              <a href="#home">CONTATO</a>
+              <a href="#contact">CONTATO</a>
             </li>
             <Buttom>CADASTRE-SE</Buttom>
           </ul>

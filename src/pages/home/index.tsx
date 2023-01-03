@@ -3,20 +3,13 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
 import { FiChevronRight } from 'react-icons/fi'
 import fundo from '../../assets/img_fundo_home.jpeg'
 import { Button } from '../../components/Button'
+import { ButtonContact } from '../../components/ButtonContact'
+import { Calc } from '../../components/Calc'
 import { Folha } from '../../components/Folha'
 import { Header } from '../../components/Header'
 import { HowToDo } from '../../components/HowToDo'
-import {
-  BoxCalc,
-  BoxCalcText,
-  BoxElement,
-  BoxIco,
-  BoxIcoArrow,
-  BoxText,
-  Calc,
-  ContainerButton,
-  Content
-} from './styles'
+import { OurProject } from '../../components/OurProjects'
+import { BoxElement, BoxIco, BoxText, ContainerButton, Content } from './styles'
 
 export function Home() {
   return (
@@ -58,7 +51,9 @@ export function Home() {
         </BoxElement>
       </Content>
 
-      <Calc>
+      <Calc />
+
+      {/* <Calc id="calc">
         <BoxCalcText>
           <div>
             <p className="title">Calculadora de CO2</p>
@@ -106,11 +101,23 @@ export function Home() {
             <Button title="CALCULAR" variant="A" />
           </div>
         </BoxCalc>
-      </Calc>
+      </Calc> */}
 
-      <HowToDo />
+      <div id="how">
+        <HowToDo />
+      </div>
 
-      <Folha />
+      <div id="">
+        <Folha />
+      </div>
+
+      <div id="projec">
+        <OurProject />
+      </div>
+
+      <div id="contact">
+        <ButtonContact />
+      </div>
     </Box>
   )
 }
