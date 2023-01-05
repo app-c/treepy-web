@@ -165,15 +165,6 @@ export const Input = styled.input`
   font-size: 1.5rem;
 `
 
-export const ButtonAdd = styled.button`
-  background-color: transparent;
-  width: 14rem;
-  border: 2px solid ${color.green[10]};
-  border-radius: 10px;
-  padding: 6px;
-  color: #fff;
-`
-
 export const ContentItens = styled.div`
   /* display: flex; */
   background-color: red;
@@ -182,5 +173,18 @@ export const ContentItens = styled.div`
 
   table {
     width: 100rem;
+  }
+`
+
+export const BoxSelect = styled.select`
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  height: 2vw;
+  padding: 0.1rem 2rem;
+
+  font-size: 1.2rem;
+
+  option {
+    color: ${color.dark[20]};
   }
 `
