@@ -6,11 +6,11 @@ export function Header() {
   const [show, setShow] = useState(false)
   return (
     <Container>
-      <BoxLog className="logo">
-        <Logo size="7vw" colorL="#fff" />
-      </BoxLog>
-
       <BoxLink show={show} className="menu-section on">
+        <BoxLog show={show} className="logo">
+          <Logo size="10rem" colorL="#fff" colorF="#fff" />
+        </BoxLog>
+
         <Menu onClick={() => setShow(!show)} className="menu-toggle">
           <div className="one"></div>
           <div className="two"></div>

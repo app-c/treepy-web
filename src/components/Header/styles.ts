@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { color } from '../../styles/colors'
 
 interface ProsLinks {
   show: boolean
@@ -7,42 +8,43 @@ interface ProsLinks {
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
-  height: 10rem;
+  height: calc(2vw + 10%);
   width: 100%;
+  position: absolute;
 
   background-color: rgba(35, 61, 29, 0.554);
-
-  @media (max-width: 2000px) {
-    height: 7rem;
-  }
 
   @media (max-width: 780px) {
     height: 3rem;
   }
 `
 
-export const BoxLog = styled.div`
+export const BoxLog = styled.div<ProsLinks>`
   display: flex;
-  width: 35rem;
+  width: calc(2vw + 20%);
   align-items: center;
   justify-content: center;
+  left: 10px;
 
-  h1 {
-    color: #ffff;
-    font-weight: 900;
-    font-size: 2rem;
-  }
+  @media (max-width: 780px) {
+    position: absolute;
+    left: calc(2vw + 5%);
 
-  @media (max-width: 1556px) {
-    width: 10rem;
+    ${(props) =>
+      props.show &&
+      css`
+        position: absolute;
+
+        top: 3vw;
+        left: 10vw;
+      `}
   }
 `
 
 export const BoxLink = styled.div<ProsLinks>`
   display: flex;
-  justify-content: flex-end;
-  /* align-items: center; */
-  padding-right: 10rem;
+  justify-content: space-around;
+  /* padding-right: calc(0.2vw + 3%); */
   width: 100%;
 
   ul {
@@ -52,60 +54,55 @@ export const BoxLink = styled.div<ProsLinks>`
   li {
     justify-content: space-between;
     align-items: center;
-    margin-right: 2rem;
+    margin-right: 1.5vw;
     display: flex;
 
     a {
       color: #fff;
       font-weight: 500;
-      font-size: 1.5rem;
+      font-size: calc(1.5vw + 15%);
+      text-decoration: none;
     }
-
-    @media (max-width: 2100px) {
-      a {
-        font-size: 1.5rem;
-      }
-    }
-
-    @media (max-width: 1590px) {
-      a {
-        font-size: 1rem;
-      }
-    }
-  }
-
-  @media (max-width: 1590px) {
-    padding-right: 5rem;
   }
 
   @media (max-width: 780px) {
     .nave {
       display: none;
+
+      transition: 2s;
     }
     ${(props) =>
       props.show &&
       css`
         position: absolute;
 
-        top: 3rem;
+        top: 0;
         left: 0;
-        background-color: #1e1d1d;
+        background-color: ${color.dark[20]};
 
         display: flex;
         justify-content: center;
         align-items: center;
 
         .nave {
-          justify-content: center;
           display: flex;
+          justify-content: center;
 
           ul {
             text-align: center;
             display: block;
 
             a {
+              padding: 10px;
+              margin-bottom: 2rem;
+              width: 100%;
+              font-size: 1rem;
+
               transition-duration: 0.5s;
-              margin-bottom: 3rem;
+
+              &:hover {
+                background-color: ${color.green[40]};
+              }
             }
           }
         }
@@ -143,7 +140,11 @@ export const Buttom = styled.button`
   background: #fff;
 
   &:hover {
-    background: #e4e4e4;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 780px) {
+    height: 5rem;
   }
 `
 
@@ -159,15 +160,16 @@ export const Menu = styled.button`
     width: 40px;
     height: 30px;
 
-    position: absolute;
-    top: 2.5rem;
+    position: fixed;
+    top: 2.8rem;
     right: 3rem;
+    background-color: transparent;
 
     .one,
     .two,
     .tree {
       background-color: #fff;
-      height: 5px;
+      height: 4px;
       width: 100%;
       margin: 6px auto;
 
