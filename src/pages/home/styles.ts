@@ -39,78 +39,38 @@ export const BoxElement = styled.div`
   justify-content: center;
   padding: 0 1rem;
 
-  margin-top: 5rem;
-
-  /* .one {
-    font-size: 3.4rem;
-    font-weight: 400;
-  }
-
-  .two {
-    font-size: 4.4rem;
-    font-weight: 400;
-  }
-
-  .tree {
-    font-size: 5.4rem;
-    font-weight: 800;
-  } */
-
-  /* @media (max-width: 1060px) {
-    margin-top: 6rem;
-    .one {
-      font-size: 2.5rem;
-    }
-    .two {
-      font-size: 3.5rem;
-    }
-    .tree {
-      font-size: 4.4rem;
-    }
-  } */
-  /* 
-  @media (max-width: 780px) {
-    margin-top: 2rem;
-
-    .texts {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 1rem;
-    }
-    .one {
-      font-size: 1rem;
-    }
-    .two {
-      font-size: 1.5rem;
-    }
-    .tree {
-      font-size: 2rem;
-    }
-  } */
+  margin-top: 7rem;
 `
 
 export const BoxText = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  padding: 0 5rem;
+  align-items: flex-start;
+  justify-content: center;
+  /* background-color: red; */
+  padding: 0 1rem;
 
   .one {
-    font-size: calc(1rem + 10%);
+    font-size: calc(4vw + 40%);
+    margin-left: 10vw;
   }
   .two {
-    font-size: calc(1.2rem + 20%);
+    margin-left: 10vw;
+    font-size: calc(5vw + 40%);
   }
   .tree {
-    font-size: calc(1rem + 30%);
+    margin-left: 10vw;
+    font-size: calc(5vw + 30%);
     font-weight: 600;
   }
 `
 
 export const BoxIco = styled.div`
   display: flex;
-  width: 10%;
   align-items: center;
   justify-content: center;
+  /* background-color: red; */
 
   @media (max-width: 780px) {
   }
@@ -120,13 +80,80 @@ export const ContainerButton = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
-  height: 4.5rem;
-  margin-top: 4rem;
+  width: calc(30vw + 4rem);
+  height: calc(5vw + 3rem);
+  margin-top: 1rem;
+  margin-left: 10vw;
+
+  .b1 {
+    width: calc(5vw + 15%);
+    height: calc(3vw + 20%);
+
+    button {
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      background-color: ${color.orange[10]};
+
+      align-items: center;
+      justify-content: center;
+
+      color: #fff;
+    }
+  }
+  .b2 {
+    width: calc(5vw + 15%);
+    height: calc(3vw + 20%);
+
+    button {
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      background-color: ${color.green[10]};
+
+      align-items: center;
+      justify-content: center;
+
+      color: #fff;
+    }
+  }
 
   @media (max-width: 780px) {
-    width: 17rem;
+    width: 14rem;
     height: 3rem;
+
+    .b1 {
+      width: calc(5vw + 5rem);
+      height: calc(3vw + 1.6rem);
+
+      button {
+        width: 100%;
+        height: 100%;
+        border-radius: 6px;
+        background-color: ${color.orange[10]};
+
+        align-items: center;
+        justify-content: center;
+
+        color: #fff;
+      }
+    }
+    .b2 {
+      width: calc(5vw + 5rem);
+      height: calc(3vw + 1.6rem);
+
+      button {
+        width: 100%;
+        height: 100%;
+        border-radius: 6px;
+        background-color: ${color.green[10]};
+
+        align-items: center;
+        justify-content: center;
+
+        color: #fff;
+      }
+    }
   }
 `
 

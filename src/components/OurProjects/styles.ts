@@ -109,16 +109,18 @@ export const ContentText = styled.div`
     display: flex;
     align-items: center;
     margin-top: 6vw;
+    justify-content: space-between;
+
+    .logo {
+      width: calc(4vw + 5.5rem);
+      margin-right: 20%;
+    }
 
     h1 {
       color: #44bf17;
       font-weight: 600;
-      font-size: calc(1vw + 2rem);
+      font-size: calc(1vw + 1.5rem);
       margin-left: calc((-1vw) + (1rem));
-    }
-
-    div {
-      margin-left: 30px;
     }
   }
 `
@@ -127,6 +129,14 @@ export const Box = styled.div`
   display: flex;
   align-items: center;
   margin-top: calc(1vw + 1rem);
+
+  .folha1 {
+    width: 1.5rem;
+  }
+
+  .folha {
+    width: 2rem;
+  }
 `
 
 export const BoxText = styled.div`

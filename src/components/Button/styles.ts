@@ -26,7 +26,7 @@ export const Container = styled.div<Props>`
   background-color: ${({ variant: h }) => propsVariat[h]};
   padding: 5px 1rem;
   border-radius: 8px;
-  min-width: calc(5vw + 10%);
+  min-width: calc(4vw + 10%);
 
   &:hover {
     opacity: 0.9;

@@ -9,7 +9,7 @@ interface Props {
 }
 
 export function Logo({
-  size = '5vw',
+  size = '100%',
   colorL = color.dark[20],
   colorF = color.green[20],
   colorR = color.dark[20],

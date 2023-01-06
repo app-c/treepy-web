@@ -94,6 +94,7 @@ export const ContentButton = styled.div`
     display: flex;
     flex-direction: row;
     left: -17vw;
+    z-index: 1;
 
     @media (max-width: 1500px) {
       left: -13vw;
@@ -109,6 +110,7 @@ export const ContentButton = styled.div`
 
     @media (max-width: 450px) {
       left: -55px;
+      z-index: 1;
     }
   }
 

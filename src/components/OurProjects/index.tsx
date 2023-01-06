@@ -1,3 +1,6 @@
+import { color } from '../../styles/colors'
+import { Folha } from '../Icones/folha'
+import { Logo } from '../Logo'
 import { Box, BoxText, Container, ContentImage, ContentText } from './styles'
 
 export function OurProject() {
@@ -16,8 +19,10 @@ export function OurProject() {
         </div>
 
         <div className="content">
-          <Box className="box">
-            <div>ICONE</div>
+          <Box>
+            <div className="folha1">
+              <Folha cor={color.green[40]} />
+            </div>
 
             <BoxText>
               <h3>Acompanhe o plantio das suas árvores</h3>
@@ -29,7 +34,9 @@ export function OurProject() {
           </Box>
 
           <Box>
-            <div>ICONE</div>
+            <div className="folha">
+              <Folha />
+            </div>
 
             <BoxText>
               <h3>
@@ -44,7 +51,9 @@ export function OurProject() {
           </Box>
 
           <Box>
-            <div>ICONE</div>
+            <div className="folha">
+              <Folha />
+            </div>
 
             <BoxText>
               <h3>Compre seus créditos Treepy Cashs direto com a gente</h3>
@@ -60,7 +69,9 @@ export function OurProject() {
         <div className="contact">
           <h1>Seja um parceiro</h1>
 
-          <div>LOGO</div>
+          <div className="logo">
+            <Logo />
+          </div>
 
           <div>Clique aqui</div>
         </div>

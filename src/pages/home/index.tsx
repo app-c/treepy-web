@@ -34,8 +34,12 @@ export function Home() {
             <p className="tree">um lugar melhor</p>
 
             <ContainerButton>
-              <Button title="PARA VOCÊ" variant="B" />
-              <Button title="PARA SUA EMPRESA" variant="A" />
+              <div className="b1">
+                <button>PARA VOCE</button>
+              </div>
+              <div className="b2">
+                <button>PARA SUA EMPRESA</button>
+              </div>
             </ContainerButton>
           </BoxText>
 

@@ -48,7 +48,8 @@ export const BoxLink = styled.div<ProsLinks>`
   width: 100%;
   position: fixed;
   margin-top: 2rem;
-  height: calc(1vw + 8%);
+  height: calc(1vw + 9.5%);
+  z-index: 100;
 
   ul {
     display: flex;
@@ -63,7 +64,7 @@ export const BoxLink = styled.div<ProsLinks>`
     a {
       color: #fff;
       font-weight: 500;
-      font-size: calc(1.5vw + 15%);
+      font-size: calc(1.3vw + 10%);
       text-decoration: none;
     }
   }
@@ -77,7 +78,7 @@ export const BoxLink = styled.div<ProsLinks>`
     ${(props) =>
       props.show &&
       css`
-        position: fixed;
+        position: relative;
 
         top: 0;
         left: 0;
@@ -86,10 +87,12 @@ export const BoxLink = styled.div<ProsLinks>`
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 10;
 
         .nave {
           display: flex;
           justify-content: center;
+          /* z-index: 10; */
 
           ul {
             text-align: center;
@@ -113,7 +116,6 @@ export const BoxLink = styled.div<ProsLinks>`
 
         height: 100vh;
         width: 70vw;
-        z-index: 10;
 
         .menu-toggle {
           .one {
