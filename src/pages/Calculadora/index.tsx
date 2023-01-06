@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { Button } from '../../components/Button'
 import { Header } from '../../components/Header'
 import { ArrowL } from '../../components/Icones/arrowL'
@@ -15,21 +15,22 @@ import {
   Content,
   ContentIco,
   Ico,
-  Input
+  Input,
+  Table,
 } from './styles'
 
 import 'keen-slider/keen-slider.min.css'
 import {
   IVeiculoCProps,
-  ModalVeiculosColetivo
+  ModalVeiculosColetivo,
 } from '../../components/ModalVeiculosColetivo'
 import {
   IVeiculoProps,
-  ModalVeiculosPessoal
+  ModalVeiculosPessoal,
 } from '../../components/ModalVeiculosPessoal'
 
-interface PropsEletric {
-  item: string
+interface PropsItens {
+  item: 'Kw/mês' | 'R$/mês' | 'm³/mês' | 'Botijões/mês'
   co2: number
 }
 
@@ -38,10 +39,15 @@ export function Calculadora() {
   const [item, setItem] = useState<IVeiculoProps[]>([])
   const [itemC, setItemC] = useState<IVeiculoCProps[]>([])
 
-  const [eletric, setEletric] = useState<PropsEletric>({
+  const [eletric, setEletric] = useState<PropsItens>({
     item: 'Kw/mês',
     co2: 0,
-  } as PropsEletric)
+  } as PropsItens)
+
+  const [gas, setGas] = useState<PropsItens>({
+    item: 'Kw/mês',
+    co2: 0,
+  } as PropsItens)
 
   const handleNext = useCallback(async () => {
     if (next <= 4) {
@@ -89,10 +95,61 @@ export function Calculadora() {
     [itemC],
   )
 
-  const vlorEletric = (eletric.co2 * 173.4678) / 142.28
+  const totalCo2 = useMemo(() => {
+    let vlMsEletriv = 0
+    let vlAnEletriv = 0
 
-  const vle = vlorEletric.toFixed(2)
-  console.log(vlorEletric)
+    let vlMsGas = 0
+    let vlAnGas = 0
+
+    console.log(gas.item)
+
+    switch (eletric.item) {
+      case 'Kw/mês':
+        break
+
+      case 'R$/mês':
+        break
+
+      default:
+        break
+    }
+
+    if (eletric.item === 'Kw/mês') {
+      vlMsEletriv = (eletric.co2 * 12.45) / 166
+      vlAnEletriv = (eletric.co2 * 149.4) / 166
+    }
+
+    if (eletric.item === 'R$/mês') {
+      vlMsEletriv = (eletric.co2 * 14.4556) / 142.28
+      vlAnEletriv = (eletric.co2 * 173.4678) / 142.28
+    }
+
+    if (gas.item === 'Kw/mês') {
+      vlMsGas = (gas.co2 * 21.8688) / 136.68
+      vlAnGas = (gas.co2 * 262.4256) / 136.68
+    }
+
+    if (gas.item === 'm³/mês') {
+      vlMsGas = (gas.co2 * 21.8688) / 136.68
+      vlAnGas = (gas.co2 * 262.4256) / 136.68
+    }
+
+    if (gas.item === 'Botijões/mês') {
+      vlMsGas = (gas.co2 * 0.3673) / 0.125
+      vlAnGas = (gas.co2 * 4.407) / 0.125
+    }
+
+    const vlEM = vlMsEletriv.toFixed(2)
+    const vlAN = vlAnEletriv.toFixed(2)
+    const vlMGas = vlMsGas.toFixed(2)
+    const vlANGas = vlAnGas.toFixed(2)
+
+    return {
+      eleTric: { mes: vlEM, anual: vlAN },
+      gas: { mes: vlMGas, anual: vlANGas },
+    }
+  }, [eletric.co2, eletric.item, gas.co2, gas.item])
 
   return (
     <Box>
@@ -118,80 +175,93 @@ export function Calculadora() {
 
         <BoxContent>
           {next === 1 && (
-            <Card>
+            <>
               <div className="t">
                 <h1>Consumo de </h1>
                 <h1 className="t2">eletricidade</h1>
               </div>
+              <Card>
+                <p>
+                  Insira seu consumo MENSAL ou o valor pago de energia elétrica.
+                  As informaçoes constam na sua conta de energia elétrica.
+                </p>
 
-              <p>
-                Insira seu consumo MENSAL ou o valor pago de energia elétrica.
-                As informaçoes constam na sua conta de energia elétrica.
-              </p>
-
-              <BoxSelect
-                name="eletric"
-                value={eletric.item}
-                onChange={(h) =>
-                  setEletric({
-                    item: h.currentTarget.value,
-                    co2: eletric.co2,
-                  })
-                }
-              >
-                <option value="Kw/mês">Kw/mês</option>
-                <option value="R$/mes">R$/mes</option>
-              </BoxSelect>
-              <Input
-                type="text"
-                placeholder="Insira o valor"
-                onChange={(h) =>
-                  setEletric({
-                    item: eletric.item,
-                    co2: Number(h.currentTarget.value),
-                  })
-                }
-              />
-              <div>
-                <p>Emissões mensais {vle} (Kg CO2e)</p>
-                <p>emissões anuais (Kg CO2e)</p>
-              </div>
-            </Card>
+                <BoxSelect
+                  name="eletric"
+                  value={eletric.item}
+                  onChange={(h) =>
+                    setEletric({
+                      item: h.currentTarget.value,
+                      co2: eletric.co2,
+                    })
+                  }
+                >
+                  <option value="Kw/mês">Kw/mês</option>
+                  <option value="R$/mês">R$/mes</option>
+                </BoxSelect>
+                <Input
+                  type="text"
+                  placeholder="Insira o valor"
+                  onChange={(h) =>
+                    setEletric({
+                      item: eletric.item,
+                      co2: Number(h.currentTarget.value),
+                    })
+                  }
+                />
+                <div>
+                  <p>Emissões mensais: {totalCo2.eleTric.mes} (Kg CO2e)</p>
+                  <p>emissões anuais: {totalCo2.eleTric.anual} (Kg CO2e)</p>
+                </div>
+              </Card>
+            </>
           )}
 
           {next === 2 && (
-            <Card>
+            <>
               <div className="t">
                 <h1>Consumo de </h1>
-                <h1 className="t2">eletricidade</h1>
+                <h1 className="t2">Gás</h1>
               </div>
+              <Card>
+                <p>
+                  Insira seu consumo MENSAL ou o valor pago de gás. As
+                  informações constam na sua conta de gás. Mas se preferir pode
+                  inserir a quantidade de botijões de gás que consome em sua
+                  casa.
+                </p>
 
-              <p>
-                Insira seu consumo MENSAL ou o valor pago de gás. As informações
-                constam na sua conta de gás. Mas se preferir pode inserir a
-                quantidade de botijões de gás que consome em sua casa.
-              </p>
+                <BoxSelect
+                  name="gas"
+                  value={gas.item}
+                  onChange={(h) =>
+                    setGas({
+                      item: h.currentTarget.value,
+                      co2: gas.co2,
+                    })
+                  }
+                >
+                  <option value="Kw/mês">Kw/mês</option>
+                  <option value="m³/mês">m³/mes</option>
+                  <option value="Botijões/mês">Botijões/mês</option>
+                </BoxSelect>
 
-              <BoxSelect
-                name="eletric"
-                value={eletric.item}
-                onChange={(h) =>
-                  setEletric({
-                    item: h.currentTarget.value,
-                    co2: eletric.co2,
-                  })
-                }
-              >
-                <option value="Kw/mês">Kw/mês</option>
-                <option value="R$/mes">R$/mes</option>
-              </BoxSelect>
-
-              <Input type="text" placeholder="Insira o valor" />
-              <div>
-                <p>Emissões mensais {} (Kg CO2e)</p>
-                <p>emissões anuais (Kg CO2e)</p>
-              </div>
-            </Card>
+                <Input
+                  type="text"
+                  placeholder="Insira o valor"
+                  onChange={(h) =>
+                    setGas({
+                      item: gas.item,
+                      co2: Number(h.currentTarget.value),
+                    })
+                  }
+                />
+                <div>
+                  <p>Emissões mensais: {totalCo2.gas.mes} (Kg CO2e)</p>
+                  <p>emissões anuais: {totalCo2.gas.anual} (Kg CO2e)</p>
+                </div>
+              </Card>
+            </>
           )}
 
           {next === 3 && (
@@ -212,7 +282,7 @@ export function Calculadora() {
               />
 
               {/* <ContentItens> */}
-              <table>
+              <Table>
                 <tr>
                   <th>Transporte</th>
                   <th>Quilometragem</th>
@@ -228,7 +298,7 @@ export function Calculadora() {
                     <td>{h.Quilometragem}</td>
                     <td>{h.co2}</td>
                     <td>
-                      <div className="cancel">
+                      <div className="button-cancel">
                         <Button
                           title="X"
                           variant="C"
@@ -238,7 +308,7 @@ export function Calculadora() {
                     </td>
                   </tr>
                 ))}
-              </table>
+              </Table>
               {/* </ContentItens> */}
 
               <div>

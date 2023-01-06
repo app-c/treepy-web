@@ -27,6 +27,10 @@ export const Container = styled.div<Props>`
   padding: 10px;
   border-radius: 8px;
 
+  &:hover {
+    opacity: 0.7;
+  }
+
   @media (max-width: 780px) {
     font-size: 0.3rem;
     width: 7rem;

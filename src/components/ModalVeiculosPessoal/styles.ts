@@ -109,3 +109,9 @@ export const Closed = styled(Dialog.Close)`
   width: 100%;
   background-color: transparent;
 `
+
+export const BoxSelect = styled.select`
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+`

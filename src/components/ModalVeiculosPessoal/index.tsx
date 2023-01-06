@@ -4,13 +4,14 @@ import { veiculosP } from '../../utils/veiculosPessoal'
 import { Button } from '../Button'
 import {
   BoxContent,
+  BoxSelect,
   ButtonAdd,
   Closed,
   Container,
   Content,
   ContentButton,
   Input,
-  Overlay
+  Overlay,
 } from './styles'
 
 export interface IVeiculoProps {
@@ -149,7 +150,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                 {/* OPTONS */}
 
                 {car === '0' && (
-                  <select
+                  <BoxSelect
                     onChange={(h) => setCar(h.currentTarget.value)}
                     name="car"
                     value={car}
@@ -162,7 +163,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     <option value="Bicicleta elétrica">
                       bicicleta elétrica
                     </option>
-                  </select>
+                  </BoxSelect>
                 )}
 
                 {combus === '0' &&
@@ -170,7 +171,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                   car !== 'Bicicleta' &&
                   car !== 'Bicicleta elétrica' &&
                   car !== 'Patinete elétrico' && (
-                    <select
+                    <BoxSelect
                       onChange={(h) => setCombus(h.currentTarget.value)}
                       name="car"
                       value={combus}
@@ -182,14 +183,14 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                       <option value="Etanol">Etanol</option>
                       <option value="Híbrido">Híbrido</option>
                       <option value="GNV">GNV</option>
-                    </select>
+                    </BoxSelect>
                   )}
 
                 {combus !== 'Elétrico' &&
                   combus !== 'Híbrido' &&
                   combus !== '0' &&
                   power === '0' && (
-                    <select
+                    <BoxSelect
                       onChange={(h) => setPower(h.currentTarget.value)}
                       name="power"
                       value={power}
@@ -199,11 +200,11 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                       <option value="1.0 à 1.5"> 1.0 à 1.5</option>
                       <option value="1.6 à 2.0">1.6 à 2.0</option>
                       <option value="Maior que 2.0">Maior que 2.0</option>
-                    </select>
+                    </BoxSelect>
                   )}
 
                 {combus === 'Elétrico' && power === '0' && (
-                  <select
+                  <BoxSelect
                     onChange={(h) => setPower(h.currentTarget.value)}
                     name="power"
                     value={power}
@@ -217,11 +218,11 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     <option value="Chevrolet Bolt">Chevrolet Bolt</option>
                     <option value="Jaguar I-Pace">Jaguar I-Pace</option>
                     <option value="Outro">Outro</option>
-                  </select>
+                  </BoxSelect>
                 )}
 
                 {combus === 'Híbrido' && combusH === '0' && (
-                  <select
+                  <BoxSelect
                     onChange={(h) => setCombusH(h.currentTarget.value)}
                     name="car"
                     value={combusH}
@@ -232,11 +233,11 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     <option value="Diesel">Diesel</option>
                     <option value="Gasolina">Gasolina</option>
                     <option value="Etanol">Etanol</option>
-                  </select>
+                  </BoxSelect>
                 )}
 
                 {car === 'Moto' && (
-                  <select
+                  <BoxSelect
                     onChange={(h) => setPower(h.currentTarget.value)}
                     name="power"
                     value={power}
@@ -246,7 +247,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     <option value="Até 125cc"> Até 125cc</option>
                     <option value="126cc à 250cc">126cc à 250cc</option>
                     <option value="Maior que 250cc">Maior que 250cc</option>
-                  </select>
+                  </BoxSelect>
                 )}
 
                 {combus !== '0' && car !== '0' && power !== '0' && (

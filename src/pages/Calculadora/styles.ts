@@ -59,6 +59,26 @@ export const Ico = styled.img`
 export const BoxContent = styled.div`
   align-self: flex-end;
   margin-right: 10rem;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  .t {
+    display: flex;
+    margin-bottom: 1rem;
+    align-self: flex-start;
+    h1 {
+      font-size: calc(1vw + 1rem);
+    }
+
+    .t2 {
+      color: ${color.green[10]};
+      margin-left: 10px;
+    }
+  }
 `
 
 export const Content = styled.div<PropsProgres>`
@@ -117,7 +137,7 @@ export const Card = styled.div`
   color: #fff;
 
   p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
   }
 
@@ -126,19 +146,7 @@ export const Card = styled.div`
     display: flex;
     width: 80%;
     align-items: center;
-    justify-content: space-around;
-  }
-
-  .t {
-    display: flex;
-    h1 {
-      margin: 0.9rem 0;
-      font-size: 2vw;
-    }
-
-    .t2 {
-      color: ${color.green[10]};
-    }
+    justify-content: space-between;
   }
 
   table {
@@ -186,5 +194,27 @@ export const BoxSelect = styled.select`
 
   option {
     color: ${color.dark[20]};
+  }
+`
+
+export const Table = styled.table`
+  border: 1px solid ${color.green[10]};
+  border-collapse: collapse;
+
+  th,
+  td {
+    text-align: center;
+    padding: 5px;
+
+    .button-cancel {
+      display: flex;
+      height: 2rem;
+      width: 2.5rem;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      top: -20px;
+      left: 1.5rem;
+    }
   }
 `

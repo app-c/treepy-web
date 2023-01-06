@@ -20,19 +20,19 @@ export function Header() {
         <Nave className="nave">
           <ul>
             <li>
-              <a href="#home">HOME</a>
+              <a href="/">HOME</a>
             </li>
             <li>
-              <a href="#us">SOBRE NÓS</a>
+              <a href="/us">SOBRE NÓS</a>
             </li>
             <li>
               <a href="#how">COMO FUNCIONA</a>
             </li>
             <li>
-              <a href="#calc">CALCULADORA</a>
+              <a href="/calc">CALCULADORA</a>
             </li>
             <li>
-              <a href="#contact">CONTATO</a>
+              <a href="/contact">CONTATO</a>
             </li>
             <Buttom>CADASTRE-SE</Buttom>
           </ul>
