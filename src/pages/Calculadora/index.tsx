@@ -16,17 +16,17 @@ import {
   ContentIco,
   Ico,
   Input,
-  Table,
+  Table
 } from './styles'
 
 import 'keen-slider/keen-slider.min.css'
 import {
   IVeiculoCProps,
-  ModalVeiculosColetivo,
+  ModalVeiculosColetivo
 } from '../../components/ModalVeiculosColetivo'
 import {
   IVeiculoProps,
-  ModalVeiculosPessoal,
+  ModalVeiculosPessoal
 } from '../../components/ModalVeiculosPessoal'
 
 interface PropsItens {

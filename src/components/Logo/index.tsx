@@ -1,5 +1,5 @@
 import { color } from '../../styles/colors'
-import { Container, Box } from './styles'
+import { Box, Container } from './styles'
 
 interface Props {
   size?: string

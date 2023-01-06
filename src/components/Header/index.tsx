@@ -1,11 +1,22 @@
 import { useState } from 'react'
 import { Logo } from '../Logo'
-import { BoxLink, BoxLog, Buttom, Container, Menu, Nave } from './styles'
+import {
+  BoxContato,
+  BoxLink,
+  BoxLog,
+  Buttom,
+  Container,
+  Menu,
+  Nave
+} from './styles'
 
 export function Header() {
   const [show, setShow] = useState(false)
   return (
     <Container>
+      <BoxContato>
+        <p>Fone: 99 9999999</p>
+      </BoxContato>
       <BoxLink show={show} className="menu-section on">
         <BoxLog show={show} className="logo">
           <Logo size="10rem" colorL="#fff" colorF="#fff" />

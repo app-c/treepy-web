@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { color } from '../../styles/colors'
 import folha from '../../assets/folha.svg'
+import { color } from '../../styles/colors'
 
 export const Container = styled.div`
   display: flex;
   flex: 1;
-  height: 100hv;
+  height: 100vh;
 `
 
 export const Content = styled.div`
@@ -33,11 +33,15 @@ export const Image = styled.img`
 
 export const BoxElement = styled.div`
   display: flex;
+  flex: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
   padding: 0 1rem;
 
-  margin-top: 10rem;
+  margin-top: 5rem;
 
-  .one {
+  /* .one {
     font-size: 3.4rem;
     font-weight: 400;
   }
@@ -50,9 +54,9 @@ export const BoxElement = styled.div`
   .tree {
     font-size: 5.4rem;
     font-weight: 800;
-  }
+  } */
 
-  @media (max-width: 1060px) {
+  /* @media (max-width: 1060px) {
     margin-top: 6rem;
     .one {
       font-size: 2.5rem;
@@ -63,8 +67,8 @@ export const BoxElement = styled.div`
     .tree {
       font-size: 4.4rem;
     }
-  }
-
+  } */
+  /* 
   @media (max-width: 780px) {
     margin-top: 2rem;
 
@@ -83,12 +87,23 @@ export const BoxElement = styled.div`
     .tree {
       font-size: 2rem;
     }
-  }
+  } */
 `
 
 export const BoxText = styled.div`
-  width: 90%;
+  width: 100%;
   padding: 0 5rem;
+
+  .one {
+    font-size: calc(1rem + 10%);
+  }
+  .two {
+    font-size: calc(1.2rem + 20%);
+  }
+  .tree {
+    font-size: calc(1rem + 30%);
+    font-weight: 600;
+  }
 `
 
 export const BoxIco = styled.div`
@@ -105,12 +120,12 @@ export const ContainerButton = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 35rem;
+  width: 100%;
   height: 4.5rem;
   margin-top: 4rem;
 
   @media (max-width: 780px) {
-    width: 15rem;
+    width: 17rem;
     height: 3rem;
   }
 `

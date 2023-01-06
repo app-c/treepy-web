@@ -8,14 +8,14 @@ interface ProsLinks {
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
-  height: calc(2vw + 10%);
+  height: calc(2vw + 11%);
   width: 100%;
-  position: absolute;
+  position: fixed;
 
   background-color: rgba(35, 61, 29, 0.554);
 
   @media (max-width: 780px) {
-    height: 3rem;
+    height: calc(1vw + 12%);
   }
 `
 
@@ -36,7 +36,7 @@ export const BoxLog = styled.div<ProsLinks>`
         position: absolute;
 
         top: 3vw;
-        left: 10vw;
+        left: 5rem;
       `}
   }
 `
@@ -46,6 +46,9 @@ export const BoxLink = styled.div<ProsLinks>`
   justify-content: space-around;
   /* padding-right: calc(0.2vw + 3%); */
   width: 100%;
+  position: fixed;
+  margin-top: 2rem;
+  height: calc(1vw + 8%);
 
   ul {
     display: flex;
@@ -74,7 +77,7 @@ export const BoxLink = styled.div<ProsLinks>`
     ${(props) =>
       props.show &&
       css`
-        position: absolute;
+        position: fixed;
 
         top: 0;
         left: 0;
@@ -93,6 +96,7 @@ export const BoxLink = styled.div<ProsLinks>`
             display: block;
 
             a {
+              transition-duration: 2s;
               padding: 10px;
               margin-bottom: 2rem;
               width: 100%;
@@ -176,4 +180,18 @@ export const Menu = styled.button`
       transition-duration: 0.3s;
     }
   }
+`
+
+export const BoxContato = styled.div`
+  display: flex;
+  position: absolute;
+  background-color: ${color.dark[10]};
+  width: 100%;
+
+  align-items: center;
+
+  height: 2rem;
+
+  color: #fff;
+  padding-left: calc(1vw + 10%);
 `

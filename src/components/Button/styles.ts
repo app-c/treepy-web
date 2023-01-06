@@ -24,19 +24,20 @@ export const Container = styled.div<Props>`
   align-items: center;
   justify-content: center;
   background-color: ${({ variant: h }) => propsVariat[h]};
-  padding: 10px;
+  padding: 5px 1rem;
   border-radius: 8px;
+  min-width: calc(5vw + 10%);
 
   &:hover {
-    opacity: 0.7;
+    opacity: 0.9;
   }
 
-  @media (max-width: 780px) {
+  /* @media (max-width: 780px) {
     font-size: 0.3rem;
     width: 7rem;
     border-radius: 5px;
     padding: 5px;
-  }
+  } */
 `
 
 export const Button = styled.button`
@@ -45,7 +46,7 @@ export const Button = styled.button`
   height: 100%;
 
   font-weight: 400;
-  font-size: 1vw;
+  font-size: calc(1vw + 50%);
   background-color: transparent;
   align-items: center;
   justify-content: center;
