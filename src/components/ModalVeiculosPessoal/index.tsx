@@ -12,6 +12,7 @@ import {
   ContentButton,
   Input,
   Overlay,
+  Title,
 } from './styles'
 
 export interface IVeiculoProps {
@@ -108,14 +109,14 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
     <Container>
       <Dialog.Root>
         <Dialog.Trigger asChild>
-          <ButtonAdd>adicionar transporte</ButtonAdd>
+          <ButtonAdd>Adicionar transporte</ButtonAdd>
         </Dialog.Trigger>
 
         <Dialog.Portal>
           <Overlay />
 
           <Content>
-            <Dialog.Title>adicionar transporte</Dialog.Title>
+            <Title>Adicionar transporte</Title>
 
             <BoxContent>
               <div className="box">
@@ -166,11 +167,8 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                   </BoxSelect>
                 )}
 
-                {combus === '0' &&
-                  car !== '0' &&
-                  car !== 'Bicicleta' &&
-                  car !== 'Bicicleta elétrica' &&
-                  car !== 'Patinete elétrico' && (
+                {combus === '0' && car === 'Carro' && (
+                  <div>
                     <BoxSelect
                       onChange={(h) => setCombus(h.currentTarget.value)}
                       name="car"
@@ -184,10 +182,26 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                       <option value="Híbrido">Híbrido</option>
                       <option value="GNV">GNV</option>
                     </BoxSelect>
-                  )}
+                  </div>
+                )}
+
+                {combus === '0' && car === 'Moto' && (
+                  <div>
+                    <BoxSelect
+                      onChange={(h) => setCombus(h.currentTarget.value)}
+                      name="car"
+                      value={combus}
+                    >
+                      <option value="0">selecione o tipo de combustível</option>
+                      <option value="Gasolina">Gasolina</option>
+                      <option value="Etanol">Etanol</option>
+                    </BoxSelect>
+                  </div>
+                )}
 
                 {combus !== 'Elétrico' &&
                   combus !== 'Híbrido' &&
+                  car !== 'Moto' &&
                   combus !== '0' &&
                   power === '0' && (
                     <BoxSelect
@@ -236,7 +250,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                   </BoxSelect>
                 )}
 
-                {car === 'Moto' && (
+                {car === 'Moto' && combus !== '0' && (
                   <BoxSelect
                     onChange={(h) => setPower(h.currentTarget.value)}
                     name="power"

@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react'
-import fundo from '../../assets/img_fundo_home.jpeg'
+import Banner from '../../components/Banner'
 import { Button } from '../../components/Button'
 import { ButtonContact } from '../../components/ButtonContact'
 import { Calc } from '../../components/Calc'
@@ -9,47 +9,27 @@ import { HowToDo } from '../../components/HowToDo'
 import { ArrowL } from '../../components/Icones/arrowL'
 import { ArrowR } from '../../components/Icones/arrowR'
 import { OurProject } from '../../components/OurProjects'
-import { BoxElement, BoxIco, BoxText, ContainerButton, Content } from './styles'
+import {
+  BoxBanner,
+  BoxCalc,
+  BoxElement,
+  BoxIco,
+  BoxText,
+  ContainerButton,
+  Content,
+} from './styles'
 
 export function Home() {
   return (
     <Box display="flex" flexDirection="column">
-      <Content
-        style={{
-          backgroundImage: `url(${fundo})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-        }}
-      >
-        <Header />
+      <BoxBanner>
+        <Banner />
+      </BoxBanner>
+      <Header />
 
-        <BoxElement>
-          <BoxIco>
-            <ArrowL cor="#fff" size="2rem" />
-          </BoxIco>
-
-          <BoxText className="texts">
-            <p className="one">fazendo</p>
-            <p className="two">do mundo</p>
-            <p className="tree">um lugar melhor</p>
-
-            <ContainerButton>
-              <div className="b1">
-                <button>PARA VOCE</button>
-              </div>
-              <div className="b2">
-                <button>PARA SUA EMPRESA</button>
-              </div>
-            </ContainerButton>
-          </BoxText>
-
-          <BoxIco>
-            <ArrowR cor="#fff" size="2rem" />
-          </BoxIco>
-        </BoxElement>
-      </Content>
-
-      <Calc />
+      <BoxCalc>
+        <Calc />
+      </BoxCalc>
 
       <div id="how">
         <HowToDo />

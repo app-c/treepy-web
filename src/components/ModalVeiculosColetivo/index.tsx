@@ -4,13 +4,15 @@ import { veiculosC } from '../../utils/veiculosCol'
 import { Button } from '../Button'
 import {
   BoxContent,
+  BoxSelect,
   ButtonAdd,
   Closed,
   Container,
   Content,
   ContentButton,
   Input,
-  Overlay
+  Overlay,
+  Title,
 } from './styles'
 
 export interface IVeiculoCProps {
@@ -62,7 +64,7 @@ export function ModalVeiculosColetivo({ setItemC }: Props) {
           <Overlay />
 
           <Content>
-            <Dialog.Title>adicionar transporte</Dialog.Title>
+            <Title>adicionar transporte</Title>
 
             <BoxContent>
               <div className="box">
@@ -76,7 +78,7 @@ export function ModalVeiculosColetivo({ setItemC }: Props) {
                 {/* OPTONS */}
 
                 {car === '0' && (
-                  <select
+                  <BoxSelect
                     onChange={(h) => setCar(h.currentTarget.value)}
                     name="car"
                     value={car}
@@ -86,7 +88,7 @@ export function ModalVeiculosColetivo({ setItemC }: Props) {
                         {h.veiculo}
                       </option>
                     ))}
-                  </select>
+                  </BoxSelect>
                 )}
 
                 {car !== '0' && (

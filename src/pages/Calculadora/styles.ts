@@ -1,19 +1,81 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { color } from '../../styles/colors'
+import car from '../../assets/car1.svg'
+import elet from '../../assets/eletric1.svg'
+import gas from '../../assets/gas1.svg'
+import bus from '../../assets/bus1.svg'
+import garfo from '../../assets/garfo1.svg'
+import money from '../../assets/money.svg'
 
 interface PropsProgres {
   progres?: boolean
   step?: number
 }
 
-export const Box = styled.div`
+export const Box = styled.div<PropsProgres>`
   display: flex;
+  flex: 1;
   flex-direction: column;
   height: 100vh;
-  background-color: #e7e7e7;
+  background-color: #fff;
+
+  ${(props) =>
+    props.step === 1 &&
+    css`
+      background-image: url(${elet});
+      background-repeat: no-repeat;
+      background-size: 30%;
+      background-position-y: 100%;
+    `}
+
+  ${(props) =>
+    props.step === 2 &&
+    css`
+      background-image: url(${gas});
+      background-repeat: no-repeat;
+      background-size: 30%;
+      background-position-y: 100%;
+    `}
+
+    ${(props) =>
+    props.step === 3 &&
+    css`
+      background-image: url(${car});
+      background-repeat: no-repeat;
+      background-size: 30%;
+      background-position-y: 100%;
+    `}
+
+    ${(props) =>
+    props.step === 4 &&
+    css`
+      background-image: url(${bus});
+      background-repeat: no-repeat;
+      background-size: 30%;
+      background-position-y: 100%;
+    `}
+
+    ${(props) =>
+    props.step === 5 &&
+    css`
+      background-image: url(${garfo});
+      background-repeat: no-repeat;
+      background-size: 30%;
+      background-position-y: 100%;
+    `}
+
+    ${(props) =>
+    props.step === 6 &&
+    css`
+      background-image: url(${money});
+      background-repeat: no-repeat;
+      background-size: 25%;
+      background-position-y: 100%;
+    `}
 `
 
 export const Container = styled.div`
+  margin-top: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -217,4 +279,115 @@ export const Table = styled.table`
       left: 1.5rem;
     }
   }
+`
+
+export const BoxResultado = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`
+
+export const ContainerResult = styled.div`
+  display: grid;
+  /* background-color: green; */
+  width: 70%;
+  margin-left: 27%;
+
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+  .table {
+    .title {
+      font-size: 2.4rem;
+      color: ${color.dark[20]};
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1rem;
+      color: ${color.dark[20]};
+      margin-bottom: 10px;
+    }
+
+    .botton {
+      font-size: 2rem;
+      font-weight: 300;
+      margin-top: 2rem;
+
+      span {
+        font-weight: 400;
+      }
+    }
+    table {
+      width: 100%;
+      margin-top: 2rem;
+
+      th {
+        color: ${color.green[40]};
+        font-size: 1.6rem;
+      }
+
+      tr,
+      th {
+        text-align: start;
+        padding: 2px;
+        /* border-bottom: 1px solid ${color.dark[10]}; */
+      }
+
+      td {
+        padding: 0.6rem;
+        border-bottom: 1px solid ${color.dark[10]};
+      }
+    }
+  }
+
+  .result {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5rem;
+
+    h1 {
+      font-size: 4rem;
+      color: ${color.green[40]};
+      font-weight: 400;
+    }
+
+    span {
+      font-size: 2rem;
+      color: ${color.green[40]};
+      font-weight: 500;
+      margin-left: 10px;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+
+      h3 {
+        font-size: 2rem;
+        color: ${color.green[40]};
+      }
+    }
+
+    p {
+      font-size: 2rem;
+      color: ${color.dark[20]};
+      margin-top: 2rem;
+    }
+  }
+`
+
+export const Botao = styled.button`
+  border: none;
+  background-color: ${color.green[10]};
+  width: 35%;
+  padding: 3%;
+  border-radius: 25px;
+
+  color: #fff;
+  font-size: 1.3rem;
+
+  align-self: center;
+  margin-top: 6rem;
 `

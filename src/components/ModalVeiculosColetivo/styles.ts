@@ -16,7 +16,7 @@ export const Overlay = styled(Dialog.Overlay)`
 
 export const ContentSelect = styled(Select.Content)`
   overflow: hidden;
-  background-color: white;
+  background-color: #891818;
   border-radius: 6px;
   box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
     0px 10px 20px -15px rgba(22, 23, 24, 0.2);
@@ -25,9 +25,10 @@ export const ContentSelect = styled(Select.Content)`
 export const Content = styled(Dialog.Content)`
   min-width: 20rem;
   padding: 1rem;
-  background-color: #dfdfdf;
+  background-color: #ffffffff;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
 
   align-items: center;
   justify-content: center;
@@ -72,7 +73,7 @@ export const BoxContent = styled.div`
       align-items: center;
 
       h3 {
-        font-weight: 400;
+        font-weight: 300;
       }
 
       p {
@@ -108,4 +109,17 @@ export const ContentButton = styled.div`
 export const Closed = styled(Dialog.Close)`
   width: 100%;
   background-color: transparent;
+`
+
+export const BoxSelect = styled.select`
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+
+  background-color: #fff;
+  border: 0.8px solid ${color.green[10]};
+`
+
+export const Title = styled(Dialog.Title)`
+  font-weight: 400;
 `

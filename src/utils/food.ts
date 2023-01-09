@@ -1,5 +1,9 @@
 export const food = [
   {
+    fod: 'Selecione sua dieta',
+    co2: 0,
+  },
+  {
     fod: 'Consumo carne bovina. Frango e porco de maneira esporádica',
     co2: 538.11,
   },

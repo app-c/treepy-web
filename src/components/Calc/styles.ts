@@ -2,8 +2,12 @@ import styled from 'styled-components'
 import { color } from '../../styles/colors'
 import { FiChevronRight } from 'react-icons/fi'
 
+import calc from '../../assets/calc.svg'
+
 export const Container = styled.div`
   display: grid;
+  background-color: red;
+  width: 100%;
 
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   grid-template-rows: 30rem;
@@ -89,6 +93,11 @@ export const ContentButton = styled.div`
   align-items: center;
   justify-content: center;
 
+  background-image: url(${calc});
+  background-repeat: no-repeat;
+  background-position: 100%;
+  background-size: 35%;
+
   .icon {
     position: relative;
     display: flex;
@@ -124,6 +133,10 @@ export const ContentButton = styled.div`
       margin-left: -10%;
       height: 4rem;
     }
+  }
+
+  @media (max-width: 800px) {
+    background-size: 60%;
   }
 `
 
