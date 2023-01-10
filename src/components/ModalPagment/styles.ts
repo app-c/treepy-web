@@ -13,10 +13,8 @@ export const Overlay = styled(Dialog.Overlay)`
 `
 
 export const Content = styled(Dialog.Content)`
-  width: 100vw;
-  height: 100vh;
   padding: 1rem;
-  background-color: #727272ff;
+  background-color: ${color.green[20]};
   display: flex;
   flex-direction: column;
   border-radius: 5px;
@@ -31,7 +29,9 @@ export const Content = styled(Dialog.Content)`
 `
 export const Closed = styled(Dialog.Close)``
 
-export const BoxContent = styled.div``
+export const BoxContent = styled.div`
+  width: 80vw;
+`
 
 export const Button = styled.button``
 
@@ -49,6 +49,9 @@ export const Botao = styled.button`
   margin-top: 6rem;
 `
 
-export const BoxCard = styled.div``
-
-export const ContentCard = styled.div``
+export const Bt = styled.button`
+  width: 6rem;
+  height: 3rem;
+  border-radius: 5px;
+  background-color: ${color.green[30]};
+`

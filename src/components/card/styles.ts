@@ -1,0 +1,65 @@
+import styled from 'styled-components'
+import { color } from '../../styles/colors'
+
+export const Container = styled.div`
+  margin: 2rem 0;
+  display: 100%;
+
+  .content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 1rem 6rem;
+    /* background-color: red; */
+    margin-bottom: 4rem;
+  }
+`
+
+export const BoxCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid ${color.green[10]};
+  width: 100%;
+  height: 30rem;
+  padding: 1.5rem;
+  border-radius: 5px;
+`
+
+export const ContentCard = styled.div`
+  color: #fff;
+  .option {
+    display: flex;
+    margin: 1rem 0;
+  }
+`
+
+export const Boxform = styled.div`
+  label {
+    margin-top: 1rem 0;
+
+    input {
+      width: 4rem;
+      padding: 5px 20px;
+      border: 1px solid ${color.dark[30]};
+      border-radius: 5px;
+      width: 100%;
+      margin: 1rem 0;
+      color: ${color.dark[20]};
+    }
+  }
+  .content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    grid-gap: 3rem;
+  }
+`
+
+export const BoxItem = styled.div`
+  background-color: #ffffffd5;
+  width: 100%;
+`
+
+export const BoxItens = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`

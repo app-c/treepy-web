@@ -1,55 +1,34 @@
-import {
-  Botao,
-  BoxCard,
-  BoxContent,
-  Button,
-  Closed,
-  Container,
-  Content,
-  ContentCard,
-} from './styles'
+import { Botao, BoxContent, Button, Closed, Container, Content } from './styles'
 import * as Dialog from '@radix-ui/react-dialog'
+import { Card } from '../card'
+import { DataPerson } from '../dataPerson'
+import { useState } from 'react'
 
 export function ModalPayment() {
+  const [steep, setSteep] = useState(1)
   return (
-    <Container>
-      <Dialog.Root>
-        <Dialog.Trigger asChild>
-          <Botao>Compre agora</Botao>
-        </Dialog.Trigger>
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <Botao>Compre agora</Botao>
+      </Dialog.Trigger>
 
-        <Dialog.Portal>
-          <Dialog.Overlay />
+      <Dialog.Portal>
+        <Dialog.Overlay />
 
-          <Content>
-            <BoxCard>
-              <ContentCard>
-                <label>
-                  <p>select</p>
-                  <p>Cartão de Crédito</p>
-                </label>
+        <Content>
+          <BoxContent>
+            {steep === 1 && (
+              <DataPerson dataPerson={() => {}} setStep={(h) => setSteep(h)} />
+            )}
 
-                <form action="">
-                  <label>
-                    <p>Número do cartão</p>
-                    <input type="text" />
-                  </label>
+            {steep === 2 && <Card />}
 
-                  <label>
-                    <p>Data de vencimento</p>
-                    <input type="text" />
-                  </label>
-                </form>
-              </ContentCard>
-            </BoxCard>
-            <BoxContent>
-              <Closed>
-                <Button>CANCELAR</Button>
-              </Closed>
-            </BoxContent>
-          </Content>
-        </Dialog.Portal>
-      </Dialog.Root>
-    </Container>
+            <Closed>
+              <Button onClick={() => setSteep(1)}>CANCELAR</Button>
+            </Closed>
+          </BoxContent>
+        </Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   )
 }
