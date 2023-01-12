@@ -9,6 +9,12 @@ export const Container = styled.div`
   background-size: cover;
   background-position: center;
 
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  z-index: 1;
+  background-attachment: fixed;
+
   height: 45vw;
 
   color: #fff;

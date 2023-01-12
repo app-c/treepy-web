@@ -3,7 +3,7 @@ import {
   BoxFolha,
   BoxGridFolha,
   ContentFolha,
-  ContentTextFolha,
+  ContentTextFolha
 } from './styles'
 
 export function Folha() {

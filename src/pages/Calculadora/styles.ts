@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components'
-import { color } from '../../styles/colors'
+import bus from '../../assets/bus1.svg'
 import car from '../../assets/car1.svg'
 import elet from '../../assets/eletric1.svg'
-import gas from '../../assets/gas1.svg'
-import bus from '../../assets/bus1.svg'
 import garfo from '../../assets/garfo1.svg'
+import gas from '../../assets/gas1.svg'
 import money from '../../assets/money.svg'
+import { color } from '../../styles/colors'
 
 interface PropsProgres {
   progres?: boolean
@@ -305,13 +305,13 @@ export const ContainerResult = styled.div`
     }
 
     p {
-      font-size: 1rem;
+      font-size: calc(1vw + 1vh);
       color: ${color.dark[20]};
       margin-bottom: 10px;
     }
 
     .botton {
-      font-size: 2rem;
+      font-size: calc(1vw + 1.5vh);
       font-weight: 300;
       margin-top: 2rem;
 
@@ -348,13 +348,13 @@ export const ContainerResult = styled.div`
     padding-left: 5rem;
 
     h1 {
-      font-size: 4rem;
+      font-size: calc(3vw + 0.5rem);
       color: ${color.green[40]};
       font-weight: 400;
     }
 
     span {
-      font-size: 2rem;
+      font-size: calc(1.5vw + 0.5rem);
       color: ${color.green[40]};
       font-weight: 500;
       margin-left: 10px;
@@ -365,13 +365,13 @@ export const ContainerResult = styled.div`
       align-items: center;
 
       h3 {
-        font-size: 2rem;
+        font-size: calc(3vw * 1rem);
         color: ${color.green[40]};
       }
     }
 
     p {
-      font-size: 2rem;
+      font-size: calc(1.5vw + 30%);
       color: ${color.dark[20]};
       margin-top: 2rem;
     }

@@ -9,12 +9,13 @@ type PropsInput = {
 export const Box = styled.div<PropsInput>`
   p {
     margin-bottom: 5px;
+    font-size: 1rem;
 
     ${(h) =>
       h.isFilled &&
       css`
         color: ${color.green[10]};
-        font-weight: 600;
+        font-weight: 500;
       `}
   }
 `
@@ -28,7 +29,7 @@ export const Container = styled.div<PropsInput>`
   border-radius: 10px;
 
   background-color: #e0e0e0f8;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
 
   ${(h) =>
     h.isFocus &&

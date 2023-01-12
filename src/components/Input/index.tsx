@@ -10,8 +10,9 @@ import { Box, Container } from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
+  place?: string
 }
-export function Input({ name, ...rest }: InputProps) {
+export function Input({ name, place, ...rest }: InputProps) {
   const inputRef = useRef<HTMLInputElement>(null)
 
   const [isFocused, setIsFocused] = useState(false)
@@ -35,7 +36,7 @@ export function Input({ name, ...rest }: InputProps) {
 
   return (
     <Box isFilled={isFilled} isFocus={isFocused}>
-      <p>{name}</p>
+      <p>{place}</p>
       <Container isFilled={isFilled} isFocus={isFocused}>
         <input
           defaultValue={defaultValue}

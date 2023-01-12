@@ -6,7 +6,6 @@ import { ArrowR } from '../../components/Icones/arrowR'
 import { color } from '../../styles/colors'
 import { icones } from '../../utils/iconeCalc'
 import {
-  Botao,
   Box,
   BoxContent,
   BoxIcones,
@@ -19,21 +18,21 @@ import {
   ContentIco,
   Ico,
   Input,
-  Table,
+  Table
 } from './styles'
 
 import { food } from '../../utils/food'
 
 import 'keen-slider/keen-slider.min.css'
+import { ModalPayment } from '../../components/ModalPagment'
 import {
   IVeiculoCProps,
-  ModalVeiculosColetivo,
+  ModalVeiculosColetivo
 } from '../../components/ModalVeiculosColetivo'
 import {
   IVeiculoProps,
-  ModalVeiculosPessoal,
+  ModalVeiculosPessoal
 } from '../../components/ModalVeiculosPessoal'
-import { ModalPayment } from '../../components/ModalPagment'
 
 interface PropsItens {
   item: 'Kw/mês' | 'R$/mês' | 'm³/mês' | 'Botijões/mês' | string
@@ -229,6 +228,7 @@ export function Calculadora() {
   }, [eletric.co2, eletric.item, gas.co2, gas.item, item, itemC, itemFood.item])
 
   const tree = (totalCo2.total[6].co2 * 5) / 0.9606
+  const brl = tree * 10.5
 
   return (
     <Box step={step}>
@@ -278,7 +278,7 @@ export function Calculadora() {
               <h1>TreepyCash</h1>
               <label htmlFor="">
                 <h3>R$</h3>
-                <h1 style={{ marginLeft: 10 }}>490,00</h1>
+                <h1 style={{ marginLeft: 10 }}>{brl.toFixed(2)}</h1>
               </label>
 
               <p>
@@ -290,8 +290,6 @@ export function Calculadora() {
               </p>
 
               <ModalPayment />
-
-              {/* <Botao>Compre agora</Botao> */}
             </div>
           </ContainerResult>
         </BoxResultado>

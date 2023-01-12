@@ -1,6 +1,4 @@
 import styled from 'styled-components'
-import { color } from '../../styles/colors'
-import { theme } from '../../styles/theme'
 import mao from '../../assets/mao.png'
 
 export const Container = styled.div`
@@ -41,11 +39,11 @@ export const ContentText = styled.div`
 
     h1 {
       font-weight: 600;
-      font-size: calc(2vw + 0.5rem);
+      font-size: calc(3vw + 20%);
     }
 
     p {
-      font-size: calc(0.5vw + 0.55rem);
+      font-size: calc(1vw + 10%);
     }
 
     line {
@@ -108,18 +106,18 @@ export const ContentText = styled.div`
   .contact {
     display: flex;
     align-items: center;
-    margin-top: 6vw;
+    margin-top: 1vh;
     justify-content: space-between;
 
     .logo {
       width: calc(4vw + 5.5rem);
-      margin-right: 20%;
+      margin-right: 10%;
     }
 
     h1 {
       color: #44bf17;
       font-weight: 600;
-      font-size: calc(1vw + 1.5rem);
+      font-size: calc(2vw + 35%);
       margin-left: calc((-1vw) + (1rem));
     }
   }
@@ -128,7 +126,7 @@ export const ContentText = styled.div`
 export const Box = styled.div`
   display: flex;
   align-items: center;
-  margin-top: calc(1vw + 1rem);
+  margin-top: calc(1vh + 1rem);
 
   .folha1 {
     width: 1.5rem;

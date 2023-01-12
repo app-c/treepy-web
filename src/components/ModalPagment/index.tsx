@@ -1,8 +1,8 @@
-import { Botao, BoxContent, Button, Closed, Container, Content } from './styles'
 import * as Dialog from '@radix-ui/react-dialog'
+import { useState } from 'react'
 import { Card } from '../card'
 import { DataPerson } from '../dataPerson'
-import { useState } from 'react'
+import { Botao, BoxContent, Button, Closed, Content } from './styles'
 
 export function ModalPayment() {
   const [steep, setSteep] = useState(1)

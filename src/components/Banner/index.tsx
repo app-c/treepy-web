@@ -59,7 +59,12 @@ export default function Banner() {
 
   return (
     <div style={{ background: '#dfdfdf' }}>
-      <Parallax ref={parallax} pages={3} horizontal>
+      <Parallax
+        style={{ overflow: 'hidden' }}
+        ref={parallax}
+        pages={3}
+        horizontal
+      >
         <Parallalayer offset={0} speed={0.6} onClick={() => scroll(1)}>
           <Content
             style={{

@@ -5,23 +5,36 @@ import savana from '../../assets/savana.png'
 
 export const Container = styled.div`
   width: 100vw;
-  height: 60rem;
+  height: 90vh;
 
   background-image: url(${savana});
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position-y: -20vh;
 
+  position: relative;
+  overflow: hidden;
   display: flex;
-  /* background: radial-gradient(
-    129.86% 284.46% at -11.08% 64.4%,
-    #fd8e05 0%,
-    #ffba3f 46.62%,
-    #fd9104 100%
-  ); */
+  z-index: 1;
+  background-attachment: fixed;
+
   padding: 10rem 15rem;
   align-items: center;
   justify-content: center;
+
+  /* &::after {
+    content: '';
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    z-index: 8;
+    background: linear-gradient(
+      to bottom,
+      rgb(14, 14, 14) 0,
+      rgb(0, 0, 0) 40%,
+      rgb(35, 35, 35) 100%
+    );
+  } */
 
   @media (max-width: 1200px) {
     padding: 5rem;
@@ -37,7 +50,7 @@ export const BoxCard = styled.div`
   display: grid;
   width: 100vw;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  grid-template-rows: 35rem;
+  grid-template-rows: 55vh;
 
   grid-gap: 1rem;
 

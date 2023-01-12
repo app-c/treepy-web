@@ -1,13 +1,13 @@
-import styled from 'styled-components'
 import * as Dialog from '@radix-ui/react-dialog'
+import styled from 'styled-components'
 import { color } from '../../styles/colors'
 
 export const Container = styled.div``
 
 export const Overlay = styled(Dialog.Overlay)`
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  width: 70vw;
+  height: 70vh;
   inset: 0;
   background-color: rgba(26, 26, 26, 0.859);
 `
@@ -39,11 +39,11 @@ export const Botao = styled.button`
   border: none;
   background-color: ${color.green[10]};
   width: 35%;
-  padding: 3%;
+  padding: 4%;
   border-radius: 25px;
 
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 100%;
 
   align-self: center;
   margin-top: 6rem;

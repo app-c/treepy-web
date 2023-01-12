@@ -9,10 +9,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   height: calc(2vw + 11%);
-  width: 100%;
+  width: 100vw;
   position: fixed;
+  z-index: 2;
 
-  background-color: rgba(35, 61, 29, 0.554);
+  background-color: rgba(34, 71, 26, 0.597);
 
   @media (max-width: 780px) {
     height: calc(1vw + 12%);
@@ -66,6 +67,11 @@ export const BoxLink = styled.div<ProsLinks>`
       font-weight: 500;
       font-size: calc(1.3vw + 10%);
       text-decoration: none;
+      transition: 1s;
+
+      &:hover {
+        text-decoration: solid 2px underline;
+      }
     }
   }
 
@@ -140,8 +146,8 @@ export const Nave = styled.div`
 `
 
 export const Buttom = styled.button`
-  height: 100%;
-  width: 10rem;
+  height: 90%;
+  width: 9vw;
   padding: 10px;
   background: #fff;
 

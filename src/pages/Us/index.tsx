@@ -16,6 +16,7 @@ export function Us() {
           <p>Esse é o porque existimos</p>
         </div>
       </Container>
+
       <About />
 
       <HowToDo />
