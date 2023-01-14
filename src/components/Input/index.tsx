@@ -1,18 +1,20 @@
 import { useField } from '@unform/core'
-import {
+import React, {
   InputHTMLAttributes,
   useCallback,
   useEffect,
   useRef,
   useState,
 } from 'react'
+import { cep, currency, number } from '../../utils/mask'
 import { Box, Container } from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   place?: string
+  mask?: 'cep' | 'price' | 'text' | 'number'
 }
-export function Input({ name, place, ...rest }: InputProps) {
+export function Input({ name, place, mask = 'text', ...rest }: InputProps) {
   const inputRef = useRef<HTMLInputElement>(null)
 
   const [isFocused, setIsFocused] = useState(false)
@@ -34,6 +36,27 @@ export function Input({ name, place, ...rest }: InputProps) {
     })
   }, [fieldName, registerField])
 
+  const handleChange = useCallback(
+    async (e: React.FormEvent<HTMLInputElement>) => {
+      if (mask === 'cep') {
+        cep(e)
+      }
+
+      if (mask === 'price') {
+        currency(e)
+      }
+
+      if (mask === 'number') {
+        number(e)
+      }
+
+      if (mask === 'text') {
+        e.currentTarget.value.toLocaleUpperCase()
+      }
+    },
+    [mask],
+  )
+
   return (
     <Box isFilled={isFilled} isFocus={isFocused}>
       {/* <p>{place}</p> */}
@@ -41,6 +64,7 @@ export function Input({ name, place, ...rest }: InputProps) {
         <input
           defaultValue={defaultValue}
           onFocus={() => setIsFocused(true)}
+          onKeyUp={handleChange}
           onBlur={handleInput}
           ref={inputRef}
           {...rest}

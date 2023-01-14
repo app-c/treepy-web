@@ -29,7 +29,7 @@ export const Container = styled.div<PropsInput>`
   border-radius: 10px;
 
   background-color: #fff;
-  margin-bottom: 10px;
+  margin: 1rem;
 
   ${(h) =>
     h.isFocus &&

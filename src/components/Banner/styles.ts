@@ -1,8 +1,93 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { color } from '../../styles/colors'
-import { Parallax, ParallaxLayer, IParallax } from '@react-spring/parallax'
+import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 
-export const Container = styled.div``
+interface PropsSlide {
+  pag: boolean
+}
+
+export const Container = styled.div`
+  width: 300%;
+  overflow: hidden;
+
+  display: flex;
+
+  input {
+    display: none;
+    position: fixed;
+  }
+
+  .ico1 {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 3%;
+    /* display: none; */
+
+    @media (max-width: 450px) {
+      top: 20%;
+    }
+  }
+
+  .ico2 {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: 3%;
+
+    @media (max-width: 450px) {
+      top: 20%;
+    }
+  }
+
+  .slides {
+    display: flex;
+    width: 300%;
+  }
+
+  .slide {
+    width: 100vw;
+    transition: 3s;
+  }
+
+  #slide1:checked ~ .s1 {
+    margin-left: 0;
+  }
+
+  #slide2:checked ~ .s1 {
+    margin-left: -33.5%;
+  }
+
+  #slide3:checked ~ .s1 {
+    margin-left: -66.7%;
+  }
+
+  .navigation {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+  }
+`
+
+export const Label = styled.label<PropsSlide>`
+  width: 25px;
+  height: 25px;
+  border-radius: 13px;
+  background-color: #ffffff79;
+  margin: 15px;
+  transition: 0.4s;
+  border: 1px solid #fff;
+
+  ${(props) =>
+    props.pag &&
+    css`
+      background-color: #fff;
+    `}
+
+  cursor: pointer;
+`
 
 export const Content = styled.div`
   display: flex;
@@ -10,7 +95,8 @@ export const Content = styled.div`
   width: 100vw;
   background: #3a2a2a;
   height: 100vh;
-  background-position: 50% 0%;
+  background-position: 50%;
+  transform: translate(-50);
   position: relative;
 
   p {
@@ -57,8 +143,9 @@ export const BoxText = styled.div`
   }
 `
 
-export const BoxIco = styled.div`
+export const BoxIco = styled.button`
   display: flex;
+  background-color: transparent;
   align-items: center;
   justify-content: center;
   /* background-color: red; */

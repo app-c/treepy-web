@@ -45,6 +45,14 @@ export const ContentForm = styled(Form)`
   .buton {
     margin-top: 3rem;
   }
+
+  .content {
+    display: flex;
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 `
 
 const appearFromLeft = keyframes`
@@ -78,11 +86,5 @@ export const BoxForm = styled.div`
 
   .end {
     margin-top: 2rem;
-
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
   }
 `

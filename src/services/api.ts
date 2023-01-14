@@ -1,13 +1,12 @@
 import axios from 'axios'
 
+const local = 'http://localhost:3333'
+
 const pag = 'https://sandbox.api.pagseguro.com/'
 export const pagSeg = axios.create({
   baseURL: pag,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    'Control-Allow-Origin': '*',
-    Token: 'sfg999666t673t7t82',
-    mode: 'no-cors',
-  },
+})
+
+export const api = axios.create({
+  baseURL: local,
 })

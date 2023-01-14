@@ -11,10 +11,9 @@ import { BoxBanner, BoxCalc } from './styles'
 export function Home() {
   return (
     <Box display="flex" flexDirection="column">
-      <BoxBanner>
-        <Banner />
-      </BoxBanner>
       <Header />
+
+      <Banner />
 
       <BoxCalc>
         <Calc />

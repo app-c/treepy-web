@@ -9,7 +9,7 @@ export const Container = styled.div`
 `
 
 export const BoxBanner = styled.div`
-  position: static;
+  /* position: static; */
 `
 
 export const Image = styled.img`
@@ -20,7 +20,7 @@ export const Image = styled.img`
 
 export const BoxCalc = styled.div`
   display: flex;
-  margin-top: 100vh;
+  /* margin-top: 100vh; */
 `
 
 export const BoxFolha = styled.div``
