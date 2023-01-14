@@ -3,10 +3,8 @@ import { Button } from '../Button'
 import { Input } from '../Input'
 import { Container, Content } from './styles'
 
-import * as Yup from 'yup'
 import { useCallback, useRef } from 'react'
 import { FormHandles } from '@unform/core'
-import { getvalidationErrors } from '../../utils/getValidationErrors'
 
 interface DataProps {
   name: string

@@ -4,7 +4,7 @@ import { Box, Container } from './styles'
 interface Props {
   size?: string
   cor?: string
-  borderColor: string
+  borderColor?: string
 }
 
 export function Folha({

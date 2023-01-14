@@ -17,7 +17,7 @@ export function Us() {
         </div>
       </Container>
 
-      <About />
+      <About type="a" />
 
       <HowToDo />
 

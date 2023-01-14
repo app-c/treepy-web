@@ -10,13 +10,13 @@ export const Box = styled.div<PropsInput>`
   p {
     margin-bottom: 5px;
     font-size: 1rem;
-
+    /* 
     ${(h) =>
       h.isFilled &&
       css`
         color: ${color.green[10]};
         font-weight: 500;
-      `}
+      `} */
   }
 `
 
@@ -28,7 +28,7 @@ export const Container = styled.div<PropsInput>`
   align-items: center;
   border-radius: 10px;
 
-  background-color: #e0e0e0f8;
+  background-color: #fff;
   margin-bottom: 10px;
 
   ${(h) =>

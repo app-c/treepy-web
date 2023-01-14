@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import { Calculadora } from '../pages/Calculadora'
 import { Contact } from '../pages/contact'
 import { Home } from '../pages/home'
+import { SignUp } from '../pages/signUp'
 import { Test } from '../pages/test'
 import { Us } from '../pages/Us'
 
@@ -13,6 +14,7 @@ export function Router() {
       <Route path="/calc" element={<Calculadora />} />
       <Route path="/test" element={<Test />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/signUp" element={<SignUp />} />
     </Routes>
   )
 }

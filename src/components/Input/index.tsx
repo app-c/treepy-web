@@ -36,7 +36,7 @@ export function Input({ name, place, ...rest }: InputProps) {
 
   return (
     <Box isFilled={isFilled} isFocus={isFocused}>
-      <p>{place}</p>
+      {/* <p>{place}</p> */}
       <Container isFilled={isFilled} isFocus={isFocused}>
         <input
           defaultValue={defaultValue}

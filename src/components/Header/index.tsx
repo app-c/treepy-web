@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Logo } from '../Logo'
 import {
   BoxContato,
@@ -7,11 +8,13 @@ import {
   Buttom,
   Container,
   Menu,
-  Nave
+  Nave,
 } from './styles'
 
 export function Header() {
+  const nav = useNavigate()
   const [show, setShow] = useState(false)
+
   return (
     <Container>
       <BoxContato>
@@ -45,7 +48,7 @@ export function Header() {
             <li>
               <a href="/contact">CONTATO</a>
             </li>
-            <Buttom>CADASTRE-SE</Buttom>
+            <Buttom onClick={() => nav('/signUp')}>CADASTRE-SE</Buttom>
           </ul>
         </Nave>
       </BoxLink>

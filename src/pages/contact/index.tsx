@@ -14,7 +14,7 @@ export function Contact() {
 
       <About type="b" />
 
-      <Form>
+      <Form onSubmit={() => {}}>
         <Box>
           <h1>Fale com o nosso time</h1>
 

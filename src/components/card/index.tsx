@@ -9,7 +9,7 @@ import {
   BoxItem,
   BoxItens,
   Container,
-  ContentCard
+  ContentCard,
 } from './styles'
 
 interface PropsSelect {
@@ -17,7 +17,7 @@ interface PropsSelect {
 }
 
 interface Props {
-  itemPersonal: object
+  itemPersonal?: object
 }
 
 export function Card({ itemPersonal }: Props) {
@@ -145,7 +145,7 @@ export function Card({ itemPersonal }: Props) {
 
         <Button title="Finalizar compra" variant="B" />
       </Form>
-      <Button title="comprar" pres={handleBuy} />
+      <Button variant="A" title="comprar" pres={() => {}} />
     </Container>
   )
 }

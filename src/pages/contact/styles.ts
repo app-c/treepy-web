@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import fundo from '../../assets/mao.png'
+import fundo from '../../assets/lago.png'
 import { color } from '../../styles/colors'
 
 export const Container = styled.div``
@@ -24,14 +24,14 @@ export const Box = styled.div`
 
   h1 {
     align-self: center;
-    color: ${color.dark[20]};
+    color: #fff;
     font-size: 2.5rem;
     margin-bottom: 5px;
   }
 
   p {
     align-self: center;
-    color: ${color.dark[20]};
+    color: #fff;
     font-size: 1.4rem;
     margin-bottom: 3rem;
   }
