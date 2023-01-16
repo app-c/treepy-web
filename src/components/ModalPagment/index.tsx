@@ -2,10 +2,15 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { useState } from 'react'
 import { Card } from '../card'
 import { DataPerson } from '../dataPerson'
-import { Botao, BoxContent, Button, Closed, Content } from './styles'
+import { Botao, BoxContent, Button, Closed, Content, Overlay } from './styles'
 
-export function ModalPayment() {
+interface Props {
+  amount: number
+}
+export function ModalPayment({ amount }: Props) {
   const [steep, setSteep] = useState(1)
+
+  console.log(amount)
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -13,7 +18,7 @@ export function ModalPayment() {
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <Dialog.Overlay />
+        <Overlay />
 
         <Content>
           <BoxContent>
@@ -21,7 +26,7 @@ export function ModalPayment() {
               <DataPerson dataPerson={() => {}} setStep={(h) => setSteep(h)} />
             )}
 
-            {steep === 2 && <Card />}
+            {steep === 2 && <Card amount={amount} />}
 
             <Closed>
               <Button onClick={() => setSteep(1)}>CANCELAR</Button>

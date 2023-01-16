@@ -5,16 +5,17 @@ import { color } from '../../styles/colors'
 export const Container = styled.div``
 
 export const Overlay = styled(Dialog.Overlay)`
-  position: fixed;
-  width: 70vw;
-  height: 70vh;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
   inset: 0;
   background-color: rgba(26, 26, 26, 0.859);
+  z-index: 20;
 `
 
 export const Content = styled(Dialog.Content)`
   padding: 1rem;
-  background-color: ${color.green[20]};
+  background-color: ${color.green[30]};
   display: flex;
   flex-direction: column;
   border-radius: 5px;
@@ -26,6 +27,7 @@ export const Content = styled(Dialog.Content)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 25;
 `
 export const Closed = styled(Dialog.Close)``
 

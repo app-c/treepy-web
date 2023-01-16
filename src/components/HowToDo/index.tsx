@@ -3,6 +3,7 @@ import { BoxCard, Container } from './styles'
 export function HowToDo() {
   return (
     <Container>
+      <h1>COMO FUNCIONA</h1>
       <BoxCard>
         <div>
           <p className="title">Suas compras valem árvores</p>

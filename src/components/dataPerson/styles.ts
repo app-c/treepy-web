@@ -15,6 +15,10 @@ export const Container = styled.div`
   padding: 2rem;
   border-radius: 10px;
   border: 1px solid ${color.green[10]};
+
+  h1 {
+    margin-bottom: 1rem;
+  }
 `
 
 export const Bttom = styled.button``
@@ -28,8 +32,10 @@ export const Content = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 
   .person {
+    align-self: stretch;
   }
 
   .localy {
+    align-self: stretch;
   }
 `

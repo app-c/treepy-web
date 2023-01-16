@@ -59,7 +59,7 @@ export function SignUp() {
         .post('/user/create-user', dt)
         .then((h) => {
           if (h.status === 200) {
-            alert('Sucesso', 'Você já pode logar na sua conta')
+            alert('Sucesso')
           }
         })
         .catch((h) => console.log(h.response.data.message, 'erro'))

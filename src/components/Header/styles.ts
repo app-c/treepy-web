@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 import { color } from '../../styles/colors'
 
@@ -203,3 +204,5 @@ export const BoxContato = styled.div`
   color: #fff;
   padding-left: calc(1vw + 10%);
 `
+
+export const Li = styled(Link)``

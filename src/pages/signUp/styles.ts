@@ -41,6 +41,7 @@ export const BoxLogo = styled.div`
 
 export const ContentForm = styled(Form)`
   width: 100%;
+  margin-top: 5rem;
 
   .buton {
     margin-top: 3rem;

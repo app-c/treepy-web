@@ -7,6 +7,7 @@ import {
   BoxLog,
   Buttom,
   Container,
+  Li,
   Menu,
   Nave,
 } from './styles'
@@ -34,19 +35,19 @@ export function Header() {
         <Nave className="nave">
           <ul>
             <li>
-              <a href="/">HOME</a>
+              <Li to="/">HOME</Li>
             </li>
             <li>
-              <a href="/us">SOBRE NÓS</a>
+              <Li to="/us">SOBRE NÓS</Li>
             </li>
             <li>
-              <a href="#how">COMO FUNCIONA</a>
+              <Li to="/#how">COMO FUNCIONA</Li>
             </li>
             <li>
-              <a href="/calc">CALCULADORA</a>
+              <Li to="/calc">CALCULADORA</Li>
             </li>
             <li>
-              <a href="/contact">CONTATO</a>
+              <Li to="/contact">CONTATO</Li>
             </li>
             <Buttom onClick={() => nav('/signIn')}>ENTRAR</Buttom>
           </ul>

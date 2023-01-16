@@ -257,7 +257,7 @@ export const ContentFolha = styled.div`
   width: calc(15vh + 9.4vw);
   height: calc(15vh + 15vw);
 
-  transition: 1s;
+  transition: 0.4s;
 
   &:hover {
     width: calc(20vh + 10vw);

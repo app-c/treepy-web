@@ -1,7 +1,9 @@
 import * as Dialog from '@radix-ui/react-dialog'
+import { Form } from '@unform/web'
 import React, { useState } from 'react'
 import { veiculosP } from '../../utils/veiculosPessoal'
 import { Button } from '../Button'
+import { Input } from '../Input'
 import {
   BoxContent,
   BoxSelect,
@@ -10,7 +12,6 @@ import {
   Container,
   Content,
   ContentButton,
-  Input,
   Overlay,
   Title,
 } from './styles'
@@ -267,50 +268,70 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                 {combus !== '0' && car !== '0' && power !== '0' && (
                   <div className="input">
                     <h3>km</h3>
-                    <Input
-                      onChange={(h) => setKm(h.currentTarget.value)}
-                      placeholder="digite o km do veículo"
-                    />
+                    <Form>
+                      <Input
+                        mask="number"
+                        name="km"
+                        onChange={(h) => setKm(h.currentTarget.value)}
+                        placeholder="digite o km do veículo"
+                      />
+                    </Form>
                   </div>
                 )}
 
                 {combus === 'Híbrido' && car !== '0' && combusH !== '0' && (
                   <div className="input">
                     <h3>km</h3>
-                    <Input
-                      onChange={(h) => setKm(h.currentTarget.value)}
-                      placeholder="digite o km do veículo"
-                    />
+                    <Form>
+                      <Input
+                        mask="number"
+                        name="km"
+                        onChange={(h) => setKm(h.currentTarget.value)}
+                        placeholder="digite o km do veículo"
+                      />
+                    </Form>
                   </div>
                 )}
 
                 {car === 'Bicicleta' && (
                   <div className="input">
                     <h3>km</h3>
-                    <Input
-                      onChange={(h) => setKm(h.currentTarget.value)}
-                      placeholder="digite o km do veículo"
-                    />
+                    <Form>
+                      <Input
+                        mask="number"
+                        name="km"
+                        onChange={(h) => setKm(h.currentTarget.value)}
+                        placeholder="digite o km do veículo"
+                      />
+                    </Form>
                   </div>
                 )}
 
                 {car === 'Bicicleta elétrica' && (
                   <div className="input">
                     <h3>km</h3>
-                    <Input
-                      onChange={(h) => setKm(h.currentTarget.value)}
-                      placeholder="digite o km do veículo"
-                    />
+                    <Form>
+                      <Input
+                        mask="number"
+                        name="km"
+                        onChange={(h) => setKm(h.currentTarget.value)}
+                        placeholder="digite o km do veículo"
+                      />
+                    </Form>
                   </div>
                 )}
 
                 {car === 'Patinete elétrico' && (
                   <div className="input">
                     <h3>km</h3>
-                    <Input
-                      onChange={(h) => setKm(h.currentTarget.value)}
-                      placeholder="digite o km do veículo"
-                    />
+                    <Form>
+                      <Input
+                        mask="number"
+                        name="km"
+                        onChange={(h) => setKm(h.currentTarget.value)}
+                        placeholder="digite o km do veículo"
+                      />
+                    </Form>
                   </div>
                 )}
               </div>

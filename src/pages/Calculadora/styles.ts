@@ -190,7 +190,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  border-radius: 2rem;
+  border-radius: 1rem;
   background-color: ${color.green[40]};
   width: 50vw;
 
@@ -206,7 +206,7 @@ export const Card = styled.div`
   div {
     margin-top: 20px;
     display: flex;
-    width: 80%;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
   }

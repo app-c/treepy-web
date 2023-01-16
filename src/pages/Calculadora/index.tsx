@@ -17,8 +17,7 @@ import {
   Content,
   ContentIco,
   Ico,
-  Input,
-  Table
+  Table,
 } from './styles'
 
 import { food } from '../../utils/food'
@@ -27,12 +26,14 @@ import 'keen-slider/keen-slider.min.css'
 import { ModalPayment } from '../../components/ModalPagment'
 import {
   IVeiculoCProps,
-  ModalVeiculosColetivo
+  ModalVeiculosColetivo,
 } from '../../components/ModalVeiculosColetivo'
 import {
   IVeiculoProps,
-  ModalVeiculosPessoal
+  ModalVeiculosPessoal,
 } from '../../components/ModalVeiculosPessoal'
+import { Form } from '@unform/web'
+import { Input } from '../../components/Input'
 
 interface PropsItens {
   item: 'Kw/mês' | 'R$/mês' | 'm³/mês' | 'Botijões/mês' | string
@@ -289,7 +290,7 @@ export function Calculadora() {
                 Comece agora a compensação com apenas um <span>TreepCash</span>
               </p>
 
-              <ModalPayment />
+              <ModalPayment amount={brl} />
             </div>
           </ContainerResult>
         </BoxResultado>
@@ -315,53 +316,60 @@ export function Calculadora() {
           <BoxContent>
             {step === 1 && (
               <>
-                <div className="t">
-                  <h1>Consumo de </h1>
-                  <h1 className="t2">eletricidade</h1>
-                </div>
-                <Card>
-                  <p>
-                    Insira seu consumo MENSAL ou o valor pago de energia
-                    elétrica. As informaçoes constam na sua conta de energia
-                    elétrica.
-                  </p>
+                <Form>
+                  <h1>
+                    Consumo de <span className="t2">eletricidade</span>{' '}
+                  </h1>
 
-                  <BoxSelect
-                    name="eletric"
-                    value={eletric.item}
-                    onChange={(h) =>
-                      setEletric({
-                        item: h.currentTarget.value,
-                        co2: eletric.co2,
-                      })
-                    }
-                  >
-                    <option value="Kw/mês">Kw/mês</option>
-                    <option value="R$/mês">R$/mes</option>
-                  </BoxSelect>
-                  <Input
-                    type="text"
-                    placeholder="Insira o valor"
-                    onChange={(h) =>
-                      setEletric({
-                        item: eletric.item,
-                        co2: Number(h.currentTarget.value),
-                      })
-                    }
-                  />
-                  <div>
-                    <p>Emissões mensais: {totalCo2.eleTric.mes} (Kg CO2e)</p>
-                    <p>emissões anuais: {totalCo2.eleTric.anual} (Kg CO2e)</p>
-                  </div>
-                </Card>
+                  <Card>
+                    <p>
+                      Insira seu consumo MENSAL ou o valor pago de energia
+                      elétrica. As informaçoes constam na sua conta de energia
+                      elétrica.
+                    </p>
+
+                    <BoxSelect
+                      name="eletric"
+                      value={eletric.item}
+                      onChange={(h) =>
+                        setEletric({
+                          item: h.currentTarget.value,
+                          co2: eletric.co2,
+                        })
+                      }
+                    >
+                      <option value="Kw/mês">Kw/mês</option>
+                      <option value="R$/mês">R$/mes</option>
+                    </BoxSelect>
+
+                    <Input
+                      sizeH="2.5rem"
+                      label={eletric.item}
+                      name="eletric"
+                      mask={eletric.item === 'Kw/mês' ? 'number' : 'price'}
+                      placeholder="Insira o valor"
+                      onChange={(h) =>
+                        setEletric({
+                          item: eletric.item,
+                          co2: Number(h.currentTarget.value),
+                        })
+                      }
+                    />
+                    <div>
+                      <p>Emissões mensais: {totalCo2.eleTric.mes} (Kg CO2e)</p>
+                      <p>emissões anuais: {totalCo2.eleTric.anual} (Kg CO2e)</p>
+                    </div>
+                  </Card>
+                </Form>
               </>
             )}
 
             {step === 2 && (
               <>
                 <div className="t">
-                  <h1>Consumo de </h1>
-                  <h1 className="t2">Gás</h1>
+                  <h1>
+                    Consumo de <span className="t2">Gás</span>{' '}
+                  </h1>
                 </div>
                 <Card>
                   <p>
@@ -385,17 +393,20 @@ export function Calculadora() {
                     <option value="m³/mês">m³/mes</option>
                     <option value="Botijões/mês">Botijões/mês</option>
                   </BoxSelect>
-
-                  <Input
-                    type="text"
-                    placeholder="Insira o valor"
-                    onChange={(h) =>
-                      setGas({
-                        item: gas.item,
-                        co2: Number(h.currentTarget.value),
-                      })
-                    }
-                  />
+                  <Form className="form">
+                    <Input
+                      name="gas"
+                      sizeH="3rem"
+                      type="text"
+                      placeholder="Insira o valor"
+                      onChange={(h) =>
+                        setGas({
+                          item: gas.item,
+                          co2: Number(h.currentTarget.value),
+                        })
+                      }
+                    />
+                  </Form>
                   <div>
                     <p>Emissões mensais: {totalCo2.gas.mes} (Kg CO2e)</p>
                     <p>emissões anuais: {totalCo2.gas.anual} (Kg CO2e)</p>
@@ -405,137 +416,144 @@ export function Calculadora() {
             )}
 
             {step === 3 && (
-              <Card>
+              <>
                 <div className="t">
-                  <h1>Transporte</h1>
-                  <h1 className="t2">individual</h1>
+                  <h1>
+                    Transporte <span className="t2">individual</span>
+                  </h1>
                 </div>
+                <Card>
+                  <p>
+                    Insira as informações sobre o seu transporte individual
+                    utilizado no dia a dia. É possível inserir mais de um tipo
+                    de transporte.
+                  </p>
 
-                <p>
-                  Insira as informações sobre o seu transporte individual
-                  utilizado no dia a dia. É possível inserir mais de um tipo de
-                  transporte.
-                </p>
+                  <ModalVeiculosPessoal
+                    setItem={(h: IVeiculoProps) => setItem([...item, h])}
+                  />
 
-                <ModalVeiculosPessoal
-                  setItem={(h: IVeiculoProps) => setItem([...item, h])}
-                />
-
-                {/* <ContentItens> */}
-                <Table>
-                  <tr>
-                    <th>Transporte</th>
-                    <th>Quilometragem</th>
-                    <th>Emissões (KgCO2e)</th>
-                    <th>Excluir</th>
-                  </tr>
-
-                  {item.map((h) => (
-                    <tr key={String(h.id)}>
-                      <td>
-                        {h.Meio_de_transporte}/{h.Combustível_Tipo}
-                      </td>
-                      <td>{h.Quilometragem}</td>
-                      <td>{h.co2}</td>
-                      <td>
-                        <div className="button-cancel">
-                          <Button
-                            title="X"
-                            variant="C"
-                            pres={() => removeItem(h.id)}
-                          />
-                        </div>
-                      </td>
+                  {/* <ContentItens> */}
+                  <Table>
+                    <tr>
+                      <th>Transporte</th>
+                      <th>Quilometragem</th>
+                      <th>Emissões (KgCO2e)</th>
+                      <th>Excluir</th>
                     </tr>
-                  ))}
-                </Table>
-                {/* </ContentItens> */}
 
-                <div>
-                  <p>Emissões mensais: {totalCo2.transInd.mes} (Kg CO2e)</p>
-                  <p>emissões anuais: {totalCo2.transInd.anual} (Kg CO2e)</p>
-                </div>
-              </Card>
+                    {item.map((h) => (
+                      <tr key={String(h.id)}>
+                        <td>
+                          {h.Meio_de_transporte}/{h.Combustível_Tipo}
+                        </td>
+                        <td>{h.Quilometragem}</td>
+                        <td>{h.co2}</td>
+                        <td>
+                          <div className="button-cancel">
+                            <Button
+                              title="X"
+                              variant="C"
+                              pres={() => removeItem(h.id)}
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </Table>
+                  {/* </ContentItens> */}
+
+                  <div>
+                    <p>Emissões mensais: {totalCo2.transInd.mes} (Kg CO2e)</p>
+                    <p>emissões anuais: {totalCo2.transInd.anual} (Kg CO2e)</p>
+                  </div>
+                </Card>
+              </>
             )}
 
             {step === 4 && (
-              <Card>
+              <>
                 <div className="t">
-                  <h1>Transporte</h1>
-                  <h1 className="t2">coletivo</h1>
+                  <h1>
+                    Transporte <span className="t2">Coletivo</span>{' '}
+                  </h1>
                 </div>
+                <Card>
+                  <p>
+                    Insira as informações sobre o seu transporte coletivo
+                    utilizado no dia a dia. É possível inserir mais de um tipo
+                    de transporte.
+                  </p>
 
-                <p>
-                  Insira as informações sobre o seu transporte coletivo
-                  utilizado no dia a dia. É possível inserir mais de um tipo de
-                  transporte.
-                </p>
+                  <ModalVeiculosColetivo
+                    setItemC={(h: IVeiculoCProps) => setItemC([...itemC, h])}
+                  />
 
-                <ModalVeiculosColetivo
-                  setItemC={(h: IVeiculoCProps) => setItemC([...itemC, h])}
-                />
-
-                <Table>
-                  <tr>
-                    <th>Transporte</th>
-                    <th>Quilometragem</th>
-                    <th>Emissões (KgCO2e)</th>
-                    <th>Excluir</th>
-                  </tr>
-
-                  {itemC.map((h) => (
-                    <tr key={String(h.id)}>
-                      <td>{h.veiculo}</td>
-                      <td>{h.Quilometragem}</td>
-                      <td>{h.co2}</td>
-                      <td>
-                        <div className="button-cancel">
-                          <Button
-                            title="X"
-                            variant="C"
-                            pres={() => removeItemC(h.id)}
-                          />
-                        </div>
-                      </td>
+                  <Table>
+                    <tr>
+                      <th>Transporte</th>
+                      <th>Quilometragem</th>
+                      <th>Emissões (KgCO2e)</th>
+                      <th>Excluir</th>
                     </tr>
-                  ))}
-                </Table>
-                <div>
-                  <p>Emissões mensais: {totalCo2.transCol.mes} (Kg CO2e)</p>
-                  <p>emissões anuais: {totalCo2.transCol.anual} (Kg CO2e)</p>
-                </div>
-              </Card>
+
+                    {itemC.map((h) => (
+                      <tr key={String(h.id)}>
+                        <td>{h.veiculo}</td>
+                        <td>{h.Quilometragem}</td>
+                        <td>{h.co2}</td>
+                        <td>
+                          <div className="button-cancel">
+                            <Button
+                              title="X"
+                              variant="C"
+                              pres={() => removeItemC(h.id)}
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </Table>
+                  <div>
+                    <p>Emissões mensais: {totalCo2.transCol.mes} (Kg CO2e)</p>
+                    <p>emissões anuais: {totalCo2.transCol.anual} (Kg CO2e)</p>
+                  </div>
+                </Card>
+              </>
             )}
 
             {step === 5 && (
-              <Card>
+              <>
                 <div className="t">
                   <h1>Alimentação</h1>
                 </div>
-                <p>
-                  Escolha o consumo que melhor define a sua dieta no dia a dia
-                </p>
 
-                <BoxSelect
-                  value={itemFood.item}
-                  onChange={(h) => {
-                    setItemFood({
-                      item: h.currentTarget.value,
-                      co2: itemFood.co2,
-                    })
-                  }}
-                >
-                  {food.map((h) => (
-                    <option key={h.fod} value={h.fod}>
-                      {h.fod}
-                    </option>
-                  ))}
-                </BoxSelect>
-                <div>
-                  <p>Emissões mensais: {totalCo2.food.mes} (Kg CO2e)</p>
-                  <p>emissões anuais: {totalCo2.food.anual} (Kg CO2e)</p>
-                </div>
-              </Card>
+                <Card>
+                  <p>
+                    Escolha o consumo que melhor define a sua dieta no dia a dia
+                  </p>
+
+                  <BoxSelect
+                    value={itemFood.item}
+                    onChange={(h) => {
+                      setItemFood({
+                        item: h.currentTarget.value,
+                        co2: itemFood.co2,
+                      })
+                    }}
+                  >
+                    {food.map((h) => (
+                      <option key={h.fod} value={h.fod}>
+                        {h.fod}
+                      </option>
+                    ))}
+                  </BoxSelect>
+                  <div>
+                    <p>Emissões mensais: {totalCo2.food.mes} (Kg CO2e)</p>
+                    <p>emissões anuais: {totalCo2.food.anual} (Kg CO2e)</p>
+                  </div>
+                </Card>
+              </>
             )}
 
             <Content step={step}>

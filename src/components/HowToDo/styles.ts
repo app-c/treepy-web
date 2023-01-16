@@ -5,7 +5,7 @@ import savana from '../../assets/savana.png'
 
 export const Container = styled.div`
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
 
   background-image: url(${savana});
   background-size: cover;
@@ -15,12 +15,18 @@ export const Container = styled.div`
   position: relative;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   z-index: 1;
   background-attachment: fixed;
 
   padding: 10rem 15rem;
   align-items: center;
   justify-content: center;
+  color: #fff;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
 
   /* &::after {
     content: '';
@@ -48,7 +54,7 @@ export const Container = styled.div`
 
 export const BoxCard = styled.div`
   display: grid;
-  width: 100vw;
+  width: 80vw;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   grid-template-rows: 55vh;
 

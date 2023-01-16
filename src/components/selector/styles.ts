@@ -22,23 +22,23 @@ export const Container = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border: 0.3rem solid ${color.orange[10]};
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0.21rem solid ${color.green[40]};
   border-radius: 1rem;
 `
 
 export const Circle = styled.div<PropsSelect>`
-  width: 0.9rem;
-  height: 0.9rem;
+  width: 0.6rem;
+  height: 0.6rem;
   opacity: 0;
-  transition: 1s;
+  transition: 0.6s;
 
   ${(h) =>
     h.selected &&
     css`
       opacity: 1;
-      background-color: red;
+      background-color: ${color.green[20]};
     `};
 
   border-radius: 0.5rem;

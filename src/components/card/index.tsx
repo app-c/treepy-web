@@ -17,10 +17,10 @@ interface PropsSelect {
 }
 
 interface Props {
-  itemPersonal?: object
+  amount: number
 }
 
-export function Card({ itemPersonal }: Props) {
+export function Card({ amount }: Props) {
   const [select, setSelect] = useState<PropsSelect>({ type: 'cartao' })
 
   const handleSubmitPayment = useCallback(async (data: object) => {}, [])
@@ -59,28 +59,6 @@ export function Card({ itemPersonal }: Props) {
     //   .post('/orders', data)
     //   .then((h) => console.log(h.data(), 'sucesso'))
     //   .catch((h) => console.log(h.response))
-
-    const options = {
-      method: 'POST',
-      headers: {
-        accept: 'application/json',
-        'Content-type': 'application/json',
-      },
-    }
-
-    await fetch('https://google.com', {
-      // mode: 'no-cors',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'Control-Allow-Origin': '*',
-        Token: 'sfg999666t673t7t82',
-      },
-      method: 'GET',
-      // body: JSON.stringify(data),
-    })
-      .then((h) => console.log(h))
-      .catch((h) => console.log(h))
   }, [])
 
   return (
@@ -88,8 +66,17 @@ export function Card({ itemPersonal }: Props) {
       <Form onSubmit={handleSubmitPayment}>
         <div className="content">
           <BoxItem>
-            <span>TreepyCash</span>
-            <p>R$ 490,00</p>
+            <div className="item">
+              <span>TreepyCash</span>
+              <p>R$ {amount}</p>
+              <Form>
+                <Input
+                  label="Pagar parte do valor"
+                  sizeW="50%"
+                  name="partial"
+                />
+              </Form>
+            </div>
 
             <BoxItens>
               <Selector
@@ -145,7 +132,6 @@ export function Card({ itemPersonal }: Props) {
 
         <Button title="Finalizar compra" variant="B" />
       </Form>
-      <Button variant="A" title="comprar" pres={() => {}} />
     </Container>
   )
 }

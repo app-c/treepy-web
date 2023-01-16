@@ -7,9 +7,9 @@ import { api } from '../../services/api'
 import { BoxForm, BoxLogo, Container, Content, ContentForm, Li } from './styles'
 import * as Yup from 'yup'
 import { FormHandles } from '@unform/core'
-import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/authcontext'
 import { getValidationErrors } from '../../utils/getValidationErrors'
+import { color } from '../../styles/colors'
 
 interface PropsSingUp {
   email: string
@@ -55,7 +55,7 @@ export function SignIn() {
       <Content>
         <BoxLogo>
           <div className="logo">
-            <Logo />
+            <Logo colorF={color.orange[20]} colorL="#fff" />
           </div>
         </BoxLogo>
 
@@ -64,8 +64,8 @@ export function SignIn() {
             {/* <AnimetedForm> */}
             <h1>Entre com sua conta</h1>
             <div className="inputs">
-              <Input placeholder="E-mail" name="email" />
-              <Input placeholder="Senha" name="password" />
+              <Input sizeH="3rem" placeholder="E-mail" name="email" />
+              <Input sizeH="3rem" placeholder="Senha" name="password" />
             </div>
 
             <Li to={'/signUp'}>criar uma conta</Li>
