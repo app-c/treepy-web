@@ -4,6 +4,7 @@ import { color } from '../../styles/colors'
 type PropsInput = {
   isFocus: boolean
   isFilled: boolean
+  isErro: boolean
 }
 
 export const Box = styled.div<PropsInput>`
@@ -23,13 +24,14 @@ export const Box = styled.div<PropsInput>`
 export const Container = styled.div<PropsInput>`
   width: 100%;
   height: 2.8rem;
+  padding: 5px 1rem;
 
   display: flex;
   align-items: center;
   border-radius: 10px;
 
   background-color: #fff;
-  margin: 1rem;
+  margin: 1rem 0;
 
   ${(h) =>
     h.isFocus &&
@@ -43,10 +45,17 @@ export const Container = styled.div<PropsInput>`
       border: 2px solid ${color.green[10]};
     `}
 
+    ${(h) =>
+    h.isErro &&
+    css`
+      border: 2px solid #c90606;
+      color: #c90606;
+    `}
+
 
   input {
     flex: 1;
-    padding: 5px 1rem;
+    margin: 0;
     background: transparent;
   }
 `

@@ -60,7 +60,7 @@ export function Input({ name, place, mask = 'text', ...rest }: InputProps) {
   return (
     <Box isFilled={isFilled} isFocus={isFocused}>
       {/* <p>{place}</p> */}
-      <Container isFilled={isFilled} isFocus={isFocused}>
+      <Container isErro={!!error} isFilled={isFilled} isFocus={isFocused}>
         <input
           defaultValue={defaultValue}
           onFocus={() => setIsFocused(true)}

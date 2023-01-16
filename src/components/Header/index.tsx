@@ -48,7 +48,7 @@ export function Header() {
             <li>
               <a href="/contact">CONTATO</a>
             </li>
-            <Buttom onClick={() => nav('/signUp')}>CADASTRE-SE</Buttom>
+            <Buttom onClick={() => nav('/signIn')}>ENTRAR</Buttom>
           </ul>
         </Nave>
       </BoxLink>

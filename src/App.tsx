@@ -1,15 +1,15 @@
-import { Home } from './pages/home'
-import { ChakraProvider } from '@chakra-ui/react'
-import { theme } from './styles/theme'
 import { GlobalStyle } from './styles/global'
 import { BrowserRouter } from 'react-router-dom'
 import { Router } from './routes'
+import { AuthProvider } from './context/authcontext'
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Router />
+        <AuthProvider>
+          <Router />
+        </AuthProvider>
       </BrowserRouter>
       <GlobalStyle />
     </div>

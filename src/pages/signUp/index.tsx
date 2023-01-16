@@ -7,6 +7,7 @@ import { Input } from '../../components/Input'
 import { Logo } from '../../components/Logo'
 import { api } from '../../services/api'
 import { BoxForm, BoxLogo, Container, Content, ContentForm } from './styles'
+import * as Yup from 'yup'
 
 interface PropsSingUp {
   name: string
@@ -23,23 +24,47 @@ interface PropsSingUp {
 
 export function SignUp() {
   const handleSubmit = useCallback(async (data: PropsSingUp) => {
+    try {
+      const schema = Yup.object().shape({
+        email: Yup.string().email().required('nome obrigatorio'),
+        password: Yup.string().min(6, 'senha minimo 6 digitos'),
+        name: Yup.string().required(),
+        midle_name: Yup.string().required(),
+        street: Yup.string().required(),
+        bairro: Yup.string().required(),
+        number_home: Yup.string().required(),
+        city: Yup.string().required(),
+        state: Yup.string().required(),
+        cep: Yup.string().required(),
+      })
+
+      await schema.validate(data, {
+        abortEarly: false,
+      })
+
+      const dt = {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        midle_name: data.midle_name,
+        street: data.street,
+        bairro: data.bairro,
+        number_home: data.number_home,
+        city: data.city,
+        state: data.state,
+        cep: data.cep,
+      }
+
+      await api
+        .post('/user/create-user', dt)
+        .then((h) => {
+          if (h.status === 200) {
+            alert('Sucesso', 'Você já pode logar na sua conta')
+          }
+        })
+        .catch((h) => console.log(h.response.data.message, 'erro'))
+    } catch (error) {}
     console.log(data)
-    // const dt = {
-    //   name: data.name,
-    //   email: data.email,
-    //   password: data.password,
-    //   midle_name: data.midle_name,
-    //   street: data.street,
-    //   bairro: data.bairro,
-    //   number_home: data.number_home,
-    //   city: data.city,
-    //   state: data.state,
-    //   cep: data.cep,
-    // }
-    // await api
-    //   .post('/user/create-user', dt)
-    //   .then((h) => console.log(h.status, 'sucesso'))
-    //   .catch((h) => console.log(h.response.data.message, 'erro'))
   }, [])
 
   return (

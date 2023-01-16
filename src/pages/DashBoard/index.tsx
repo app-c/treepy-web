@@ -1,9 +1,9 @@
 import { Container } from './styles'
 
-export function SignIn() {
+export function DashBoard() {
   return (
     <Container>
-      <h1>SignIn</h1>
+      <h1>DashBoard</h1>
     </Container>
   )
 }
