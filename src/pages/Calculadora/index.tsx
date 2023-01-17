@@ -290,7 +290,7 @@ export function Calculadora() {
                 Comece agora a compensação com apenas um <span>TreepCash</span>
               </p>
 
-              <ModalPayment amount={brl} />
+              <ModalPayment amount={brl} tree={tree} />
             </div>
           </ContainerResult>
         </BoxResultado>
@@ -348,12 +348,15 @@ export function Calculadora() {
                       name="eletric"
                       mask={eletric.item === 'Kw/mês' ? 'number' : 'price'}
                       placeholder="Insira o valor"
-                      onChange={(h) =>
+                      onChange={(h) => {
+                        let vl = h.currentTarget.value
+                        vl = vl.replace(/\D/g, '')
+
                         setEletric({
                           item: eletric.item,
-                          co2: Number(h.currentTarget.value),
+                          co2: Number(vl),
                         })
-                      }
+                      }}
                     />
                     <div>
                       <p>Emissões mensais: {totalCo2.eleTric.mes} (Kg CO2e)</p>
@@ -382,12 +385,12 @@ export function Calculadora() {
                   <BoxSelect
                     name="gas"
                     value={gas.item}
-                    onChange={(h) =>
+                    onChange={(h) => {
                       setGas({
                         item: h.currentTarget.value,
                         co2: gas.co2,
                       })
-                    }
+                    }}
                   >
                     <option value="Kw/mês">Kw/mês</option>
                     <option value="m³/mês">m³/mes</option>
@@ -399,12 +402,14 @@ export function Calculadora() {
                       sizeH="3rem"
                       type="text"
                       placeholder="Insira o valor"
-                      onChange={(h) =>
+                      onChange={(h) => {
+                        let vl = h.currentTarget.value
+                        vl = vl.replace(/\D/g, '')
                         setGas({
                           item: gas.item,
-                          co2: Number(h.currentTarget.value),
+                          co2: Number(vl),
                         })
-                      }
+                      }}
                     />
                   </Form>
                   <div>

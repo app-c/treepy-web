@@ -6,8 +6,9 @@ import { Botao, BoxContent, Button, Closed, Content, Overlay } from './styles'
 
 interface Props {
   amount: number
+  tree: number
 }
-export function ModalPayment({ amount }: Props) {
+export function ModalPayment({ amount, tree }: Props) {
   const [steep, setSteep] = useState(1)
 
   console.log(amount)
@@ -26,7 +27,7 @@ export function ModalPayment({ amount }: Props) {
               <DataPerson dataPerson={() => {}} setStep={(h) => setSteep(h)} />
             )}
 
-            {steep === 2 && <Card amount={amount} />}
+            {steep === 2 && <Card tree={tree} amount={amount} />}
 
             <Closed>
               <Button onClick={() => setSteep(1)}>CANCELAR</Button>

@@ -7,7 +7,7 @@ export const Container = styled.div``
 export const Overlay = styled(Dialog.Overlay)`
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 200vh;
   inset: 0;
   background-color: rgba(26, 26, 26, 0.859);
   z-index: 20;
@@ -19,7 +19,7 @@ export const Content = styled(Dialog.Content)`
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-
+  height: 80vh;
   align-items: center;
   justify-content: center;
 
@@ -32,6 +32,7 @@ export const Content = styled(Dialog.Content)`
 export const Closed = styled(Dialog.Close)``
 
 export const BoxContent = styled.div`
+  overflow: scroll;
   width: 80vw;
 `
 

@@ -19,7 +19,7 @@ export const BoxCard = styled.div`
   flex-direction: column;
   border: 1px solid ${color.green[10]};
   width: 100%;
-  height: 30rem;
+  height: 20rem;
   padding: 1.5rem;
   border-radius: 5px;
 `
@@ -54,12 +54,13 @@ export const Boxform = styled.div`
 `
 
 export const BoxItem = styled.div`
-  background-color: #ffffffd5;
-  width: 100%;
+  height: 100%;
+  padding: 1rem;
 `
 
 export const BoxItens = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin: 20px;
 `

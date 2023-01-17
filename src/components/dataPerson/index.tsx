@@ -99,7 +99,7 @@ export function DataPerson({ setStep, dataPerson }: Props) {
             <Input name="city" placeholder="cidade" />
 
             <Input name="region" placeholder="estado" />
-            <Input name="postal_code" placeholder="CEP" />
+            <Input mask="cep" name="postal_code" placeholder="CEP" />
           </div>
         </Content>
 
