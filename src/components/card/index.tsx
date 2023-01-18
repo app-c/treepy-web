@@ -131,7 +131,7 @@ export function Card({ amount, tree }: Props) {
               <span>TreepyCash</span>
               <p>R$ {amount.toFixed(2)}</p>
               <p>arvores {tree.toFixed(2)}</p>
-              <Form>
+              <Form onSubmit={() => {}}>
                 <Input
                   label="Pagar parte do valor"
                   sizeW="50%"

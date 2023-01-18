@@ -5,8 +5,8 @@ export const Container = styled.div`
   display: grid;
   background-color: ${color.dark[20]};
 
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-rows: calc(35vw + 5rem);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: calc(20vw + 5rem);
   color: #fff;
 
   @media (max-width: 980px) {
@@ -38,13 +38,8 @@ export const BoxContact = styled.div`
   justify-content: center;
   padding: 10rem;
 
-  div {
-    display: flex;
-    margin-top: 1rem;
-
-    strong {
-      margin-left: 20px;
-    }
+  p {
+    margin-bottom: 10px;
   }
 
   @media (max-width: 1500px) {
@@ -57,7 +52,16 @@ export const BoxMidia = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  padding: 10rem;
+  padding: 5rem;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+  }
 
   @media (max-width: 1500px) {
     padding: 5rem 2rem;

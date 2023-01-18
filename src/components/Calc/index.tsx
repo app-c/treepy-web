@@ -1,5 +1,6 @@
 import { Container, ContentButton, ContentText, Ico } from './styles'
 import { Button } from '../Button'
+import { Link } from 'react-router-dom'
 
 const icon = [1, 2, 3, 4, 5]
 
@@ -26,7 +27,9 @@ export function Calc() {
         </div>
 
         <div className="buttom">
-          <Button variant="A" title="Calcule agora" />
+          <Link className="linboton" to={'/calc'}>
+            Calcule agora
+          </Link>
         </div>
       </ContentButton>
     </Container>

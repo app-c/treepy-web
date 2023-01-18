@@ -6,13 +6,15 @@ import {
   ContentTextFolha,
 } from './styles'
 
+import gota from '../../assets/gota.svg'
+
 export function Folha() {
   return (
     <Box>
       <BoxFolha>
         <ContentTextFolha>
           <div>
-            <p>texto</p>
+            <img src={gota} alt={gota} />
             <p className="title">Mindset</p>
           </div>
           <line className="line" />

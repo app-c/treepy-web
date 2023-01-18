@@ -8,11 +8,13 @@ interface ProsLinks {
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: row;
   height: calc(2vw + 11%);
   width: 100vw;
+  /* height: 20%; */
   position: fixed;
   z-index: 2;
+
+  align-items: center;
 
   background-color: rgba(34, 71, 26, 0.597);
 
@@ -31,6 +33,7 @@ export const BoxLog = styled.div<ProsLinks>`
   @media (max-width: 780px) {
     position: absolute;
     left: calc(2vw + 5%);
+    width: calc(2vw + 15%);
 
     ${(props) =>
       props.show &&
@@ -46,12 +49,12 @@ export const BoxLog = styled.div<ProsLinks>`
 export const BoxLink = styled.div<ProsLinks>`
   display: flex;
   justify-content: space-around;
-  /* padding-right: calc(0.2vw + 3%); */
   width: 100%;
-  position: fixed;
-  margin-top: 2rem;
-  height: calc(1vw + 9.5%);
+  /* height: 69%; */
   z-index: 100;
+  position: absolute;
+  bottom: 0;
+  top: 2rem;
 
   ul {
     display: flex;
@@ -65,7 +68,7 @@ export const BoxLink = styled.div<ProsLinks>`
 
     a {
       color: #fff;
-      font-weight: 500;
+      font-weight: 400;
       font-size: calc(1.3vw + 10%);
       text-decoration: none;
       transition: 1s;
@@ -85,7 +88,7 @@ export const BoxLink = styled.div<ProsLinks>`
     ${(props) =>
       props.show &&
       css`
-        position: relative;
+        position: fixed;
 
         top: 0;
         left: 0;
@@ -95,11 +98,11 @@ export const BoxLink = styled.div<ProsLinks>`
         justify-content: center;
         align-items: center;
         z-index: 10;
+        height: 100vh;
 
         .nave {
           display: flex;
           justify-content: center;
-          /* z-index: 10; */
 
           ul {
             text-align: center;
@@ -146,11 +149,22 @@ export const Nave = styled.div`
   flex-direction: row;
 `
 
-export const Buttom = styled.button`
-  height: 90%;
-  width: 9vw;
+export const Buttom = styled.button<ProsLinks>`
+  height: 100%;
+  width: 7vw;
   padding: 10px;
   background: #fff;
+  color: ${color.orange[20]};
+  font-size: calc(1vw + 20%);
+  transition: 0.4s;
+
+  @media (max-width: 1100px) {
+    font-size: calc(1vw + 15%);
+  }
+
+  @media (max-width: 900px) {
+    font-size: 60%;
+  }
 
   &:hover {
     opacity: 0.9;
@@ -158,6 +172,12 @@ export const Buttom = styled.button`
 
   @media (max-width: 780px) {
     height: 5rem;
+    ${(props) =>
+      props.show &&
+      css`
+        width: 100%;
+        border-radius: 5px;
+      `}
   }
 `
 
@@ -168,15 +188,23 @@ export const NaveLink = styled.div`
   padding-right: 10rem;
 `
 
-export const Menu = styled.button`
+export const Menu = styled.button<ProsLinks>`
   @media (max-width: 780px) {
     width: 40px;
     height: 30px;
 
     position: fixed;
-    top: 2.8rem;
+    top: 2.3rem;
     right: 3rem;
-    background-color: transparent;
+    background-color: #00000000;
+    transition: 0.4s;
+
+    ${(props) =>
+      props.show &&
+      css`
+        top: 3vw;
+        left: 60vw;
+      `}
 
     .one,
     .two,
@@ -186,16 +214,17 @@ export const Menu = styled.button`
       width: 100%;
       margin: 6px auto;
 
-      transition-duration: 0.3s;
+      transition-duration: 2s;
     }
   }
 `
 
 export const BoxContato = styled.div`
   display: flex;
-  position: absolute;
   background-color: ${color.dark[10]};
   width: 100%;
+  position: absolute;
+  top: 0;
 
   align-items: center;
 

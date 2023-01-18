@@ -37,11 +37,12 @@ export const ContentText = styled.div`
   }
 
   h2 {
-    font-size: 3.5vw;
+    font-size: calc(3vw + 10%);
   }
 
   p {
-    font-size: 1.7vw;
+    font-size: calc(2vw + 10%);
+    font-weight: 300;
   }
 
   /* @media (max-width: 1500px) {
@@ -64,11 +65,11 @@ export const ContentText = styled.div`
     }
 
     h2 {
-      font-size: 1.8rem;
+      font-size: calc(3vw + 15%);
     }
 
     p {
-      font-size: 1.2rem;
+      font-size: calc(2.4vw + 10%);
     }
   }
 
@@ -78,7 +79,7 @@ export const ContentText = styled.div`
     }
 
     h2 {
-      font-size: 1.2rem;
+      font-size: calc(1vw + 10%);
     }
 
     p {
@@ -102,19 +103,13 @@ export const ContentButton = styled.div`
     position: relative;
     display: flex;
     flex-direction: row;
-    left: -17vw;
+    left: -37%;
     z-index: 1;
+    align-items: center;
+    justify-content: center;
 
-    @media (max-width: 1500px) {
-      left: -13vw;
-    }
-
-    @media (max-width: 950px) {
-      left: -10vw;
-    }
-
-    @media (max-width: 780px) {
-      left: -18vw;
+    @media (max-width: 1200px) {
+      left: -30%;
     }
 
     @media (max-width: 450px) {
@@ -125,9 +120,19 @@ export const ContentButton = styled.div`
 
   .buttom {
     display: flex;
-    height: 6rem;
-    background-color: red;
+    height: 3rem;
+    border-radius: 5px;
+    padding: 0 1rem;
+    align-items: center;
+    justify-content: center;
+    background-color: ${color.green[40]};
     margin-left: 1vw;
+    color: #fff;
+
+    .linboton {
+      color: #fff;
+      text-decoration: none;
+    }
 
     @media (max-width: 850px) {
       margin-left: -10%;
@@ -145,14 +150,14 @@ export const Ico = styled(FiChevronRight)`
   font-size: 5vw;
   color: #fff;
 
-  /* @media (max-width: 1500px) {
+  @media (min-width: 1500px) {
     font-size: 60px;
-    margin-right: -20px;
-  } */
+    margin-right: -25px;
+  }
 
   @media (max-width: 950px) {
     font-size: 7vw;
-    margin-right: -2.5vw;
+    margin-right: -4vw;
   }
 
   @media (max-width: 780px) {

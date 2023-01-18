@@ -22,23 +22,31 @@ export const BoxC = styled.div`
 export const Container = styled.div`
   display: grid;
 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
   grid-gap: 2.5rem;
 `
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
+  border: 3px solid #cbcbcb;
+  padding: 1rem;
+  border-radius: 5px;
 `
 
 export const Avatar = styled.div`
   background-color: ${color.dark[10]};
   width: 100%;
   height: 10vw;
+  border-radius: 5px;
 `
 
 export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
 
   h4 {
     margin-bottom: 10px;
@@ -48,12 +56,22 @@ export const Content = styled.div`
   p {
     font-weight: 300;
   }
+`
 
-  div {
+export const Links = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 70%;
+  flex: 1;
+  /* margin-top: 1rem; */
+  /* top: 2rem; */
+  align-self: baseline !important;
+
+  a {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    width: 70%;
-    margin-top: 3rem;
+    justify-content: center;
   }
 `

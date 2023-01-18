@@ -316,7 +316,7 @@ export function Calculadora() {
           <BoxContent>
             {step === 1 && (
               <>
-                <Form>
+                <Form onSubmit={() => {}}>
                   <h1>
                     Consumo de <span className="t2">eletricidade</span>{' '}
                   </h1>

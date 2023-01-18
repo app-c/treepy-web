@@ -13,7 +13,7 @@ export const Content = styled.div`
 
 export const Image = styled.img`
   width: 100%;
-  height: 100vh;
+  height: 100%;
 `
 export const Inova = styled.img`
   width: 15vw;

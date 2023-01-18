@@ -17,42 +17,50 @@ export function Header() {
   const [show, setShow] = useState(false)
 
   return (
-    <Container>
-      <BoxContato>
-        <p>Fone: 99 9999999</p>
-      </BoxContato>
-      <BoxLink show={show} className="menu-section on">
-        <BoxLog show={show} className="logo">
-          <Logo size="10rem" colorL="#fff" colorF="#fff" />
-        </BoxLog>
+    <>
+      <Container>
+        <BoxContato>
+          <p>Fone: 99 9999999</p>
+        </BoxContato>
+        <BoxLink show={show} className="menu-section on">
+          <BoxLog show={show} className="logo">
+            <Logo size="10rem" colorL="#fff" colorF="#fff" />
+          </BoxLog>
 
-        <Menu onClick={() => setShow(!show)} className="menu-toggle">
-          <div className="one"></div>
-          <div className="two"></div>
-          <div className="tree"></div>
-        </Menu>
+          <Menu
+            show={show}
+            onClick={() => setShow(!show)}
+            className="menu-toggle"
+          >
+            <div className="one"></div>
+            <div className="two"></div>
+            <div className="tree"></div>
+          </Menu>
 
-        <Nave className="nave">
-          <ul>
-            <li>
-              <Li to="/">HOME</Li>
-            </li>
-            <li>
-              <Li to="/us">SOBRE NÓS</Li>
-            </li>
-            <li>
-              <Li to="/#how">COMO FUNCIONA</Li>
-            </li>
-            <li>
-              <Li to="/calc">CALCULADORA</Li>
-            </li>
-            <li>
-              <Li to="/contact">CONTATO</Li>
-            </li>
-            <Buttom onClick={() => nav('/signIn')}>ENTRAR</Buttom>
-          </ul>
-        </Nave>
-      </BoxLink>
-    </Container>
+          <Nave className="nave">
+            <ul>
+              <li>
+                <Li to="/">HOME</Li>
+              </li>
+              <li>
+                <Li to="/us">SOBRE NÓS</Li>
+              </li>
+              <li>
+                <Li to="/#how">COMO FUNCIONA</Li>
+              </li>
+              <li>
+                <Li to="/calc">CALCULADORA</Li>
+              </li>
+              <li>
+                <Li to="/contact">CONTATO</Li>
+              </li>
+              <Buttom show={show} onClick={() => nav('/signIn')}>
+                ÁREA DO CLIENTE
+              </Buttom>
+            </ul>
+          </Nave>
+        </BoxLink>
+      </Container>
+    </>
   )
 }

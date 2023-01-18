@@ -35,7 +35,7 @@ export function OurProject() {
 
           <Box>
             <div className="folha">
-              <Folha />
+              <Folha cor={color.orange[20]} />
             </div>
 
             <BoxText>
@@ -52,7 +52,7 @@ export function OurProject() {
 
           <Box>
             <div className="folha">
-              <Folha />
+              <Folha cor={color.green[10]} />
             </div>
 
             <BoxText>

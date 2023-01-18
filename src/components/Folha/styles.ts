@@ -35,6 +35,10 @@ export const ContentTextFolha = styled.div`
 
     align-items: center;
 
+    img {
+      width: 50px;
+    }
+
     .title {
       font-weight: 600;
       font-size: 2rem;

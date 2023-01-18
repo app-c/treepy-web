@@ -268,7 +268,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                 {combus !== '0' && car !== '0' && power !== '0' && (
                   <div className="input">
                     <h3>km</h3>
-                    <Form>
+                    <Form onSubmit={() => {}}>
                       <Input
                         mask="number"
                         name="km"
@@ -282,7 +282,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                 {combus === 'Híbrido' && car !== '0' && combusH !== '0' && (
                   <div className="input">
                     <h3>km</h3>
-                    <Form>
+                    <Form onSubmit={() => {}}>
                       <Input
                         mask="number"
                         name="km"
@@ -296,7 +296,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                 {car === 'Bicicleta' && (
                   <div className="input">
                     <h3>km</h3>
-                    <Form>
+                    <Form onSubmit={() => {}}>
                       <Input
                         mask="number"
                         name="km"
@@ -310,7 +310,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                 {car === 'Bicicleta elétrica' && (
                   <div className="input">
                     <h3>km</h3>
-                    <Form>
+                    <Form onSubmit={() => {}}>
                       <Input
                         mask="number"
                         name="km"
@@ -324,7 +324,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                 {car === 'Patinete elétrico' && (
                   <div className="input">
                     <h3>km</h3>
-                    <Form>
+                    <Form onSubmit={() => {}}>
                       <Input
                         mask="number"
                         name="km"

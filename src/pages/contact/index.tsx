@@ -24,16 +24,16 @@ export function Contact() {
               <Input
                 placeholder="Nome"
                 aria-placeholder="Nome"
-                place="Nome"
+                label="Nome"
                 name="name"
               />
               <Input
                 placeholder="digite seu sobrenome"
-                place="Sobrenome"
+                label="Sobrenome"
                 name="midlename"
               />
               <Input
-                place="E-mail"
+                label="E-mail"
                 placeholder="Digite seu email"
                 name="email"
               />

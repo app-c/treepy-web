@@ -10,7 +10,7 @@ export const Container = styled.div`
   background-image: url(${savana});
   background-size: cover;
   background-repeat: no-repeat;
-  background-position-y: -20vh;
+  background-position-y: 50%;
 
   position: relative;
   overflow: hidden;
