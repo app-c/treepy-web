@@ -1,3 +1,4 @@
+import { ColorModeContext } from '@chakra-ui/react'
 import { Form } from '@unform/web'
 import React, { useCallback, useState } from 'react'
 import { api } from '../../services/api'
@@ -30,6 +31,7 @@ export function Card({ amount, tree }: Props) {
   const [name, setName] = React.useState('')
   const [expMonth, setExpMonth] = React.useState('')
   const [expYear, setExpYear] = React.useState('')
+  const [brand, setBrand] = React.useState('')
   const [securityCode, setSecurityCode] = React.useState('')
   console.log(tree)
 
@@ -77,11 +79,30 @@ export function Card({ amount, tree }: Props) {
     month: expMonth,
     year: expYear,
     security: securityCode,
+    brand,
   }
 
   React.useEffect(() => {
-    
-  }, [])
+    if (numberCard.length >= 6) {
+      let appId = ''
+
+      api.post('/pay-pag/session').then((h) => {
+        const parser = new DOMParser()
+        const xml = parser.parseFromString(h.data, 'text/xml')
+        appId = xml.lastChild?.firstChild?.textContent || ''
+        api
+          .post('/pay-pag/brand', {
+            tk: appId,
+            creditCard: numberCard,
+          })
+          .then((h) => {
+            const rs = h.data
+            console.log(rs.bin)
+            setBrand(rs.bin.brand.name)
+          })
+      })
+    }
+  }, [numberCard])
 
   return (
     <Container>
@@ -131,6 +152,7 @@ export function Card({ amount, tree }: Props) {
                       onChange={(h) => setNumberCard(h.currentTarget.value)}
                       name="number"
                       type="text"
+                      placeholder="Digite o número do cartão"
                     />
 
                     <div className="content">
@@ -140,21 +162,25 @@ export function Card({ amount, tree }: Props) {
                         name="exp_month"
                         className="data"
                         type="text"
+                        placeholder="Mês"
                       />
 
                       <Input
                         maxLength={2}
                         onChange={(h) => setExpYear(h.currentTarget.value)}
                         name="exp_year"
+                        placeholder="Ano"
                       />
                       <Input
                         onChange={(h) => setSecurityCode(h.currentTarget.value)}
                         name="security_code"
+                        placeholder="csv"
                       />
                     </div>
                     <Input
                       onChange={(h) => setName(h.currentTarget.value)}
                       name="holder"
+                      placeholder="Nome do titular"
                     />
                   </Boxform>
                 </ContentCard>

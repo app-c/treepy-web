@@ -6,6 +6,7 @@ interface PropsCard {
   month: string
   year: string
   security: string
+  brand: string
 }
 
 interface Props {
@@ -16,7 +17,7 @@ export function CardType({ infoCard }: Props) {
   return (
     <S.Container>
       <S.Bandeira>
-        <h1>visa</h1>
+        <h1>{infoCard.brand}</h1>
       </S.Bandeira>
 
       <S.Contents>

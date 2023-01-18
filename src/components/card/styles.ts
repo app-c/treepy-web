@@ -4,6 +4,7 @@ import { color } from '../../styles/colors'
 export const Container = styled.div`
   margin: 2rem 0;
   display: 100%;
+  padding: 0 3rem;
 
   .content {
     display: grid;
@@ -18,7 +19,7 @@ export const BoxCard = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid ${color.green[10]};
-  width: 100%;
+  /* width: 0%; */
   height: 20rem;
   padding: 1.5rem;
   border-radius: 5px;

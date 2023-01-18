@@ -18,6 +18,9 @@ export const Bandeira = styled.div`
 
   font-weight: bold;
   color: #fff;
+  h1 {
+    font-size: 1rem;
+  }
 `
 
 export const Contents = styled.div`
