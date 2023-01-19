@@ -37,6 +37,10 @@ export const Container = styled.div`
       font-size: calc(1vw + 0.5rem);
     }
   }
+
+  @media (max-width: 780px) {
+    height: 40vh;
+  }
 `
 
 export const Content = styled.div``

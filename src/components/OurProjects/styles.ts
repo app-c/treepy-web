@@ -3,6 +3,7 @@ import mao from '../../assets/mao.png'
 
 export const Container = styled.div`
   background-color: #e3e3e3;
+  width: 100vw;
 
   display: grid;
 
@@ -73,8 +74,11 @@ export const ContentText = styled.div`
         font-size: calc(0.5vw + 1rem);
       }
     }
+  }
 
-    @media (max-width: 820px) {
+  @media (max-width: 820px) {
+    width: 100vw;
+    .header {
       align-items: center;
       justify-content: center;
 

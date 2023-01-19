@@ -7,6 +7,7 @@ export const Container = styled.div``
 
 export const Content = styled.div`
   display: grid;
+  width: 100vw;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   /* grid-template-rows: 35vw; */
 `
@@ -24,6 +25,7 @@ export const BoxWorld = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  width: 100vw;
 
   /* width: 50vw;
   height: 50vh; */

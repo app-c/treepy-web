@@ -10,7 +10,7 @@ export const Container = styled.div`
   background-image: url(${savana});
   background-size: cover;
   background-repeat: no-repeat;
-  background-position-y: 50%;
+  background-position-y: 100%;
 
   position: relative;
   overflow: hidden;
@@ -48,14 +48,15 @@ export const Container = styled.div`
 
   @media (max-width: 780px) {
     padding: 1rem;
-    height: 50rem;
+    height: 100rem;
+    background-position: center;
   }
 `
 
 export const BoxCard = styled.div`
   display: grid;
   width: 80vw;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   grid-template-rows: 55vh;
 
   grid-gap: 1rem;
@@ -90,12 +91,18 @@ export const BoxCard = styled.div`
       font-size: 1.5rem;
       font-weight: 600;
       text-align: center;
-
-      @media (max-width: 780px) {
-        font-size: 1rem;
-      }
     }
 
+    @media (max-width: 780px) {
+      .title {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+      }
+
+      line {
+        width: 100%;
+      }
+    }
     p {
       text-align: center;
     }

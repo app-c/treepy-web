@@ -15,7 +15,7 @@ export const Container = styled.div`
   z-index: 1;
   background-attachment: fixed;
 
-  height: 45vw;
+  height: 65vw;
 
   color: #fff;
 
@@ -24,6 +24,21 @@ export const Container = styled.div`
 
   h1 {
     font-size: calc(2vw + 1rem);
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: calc(1vw + 0.5rem);
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 780px) {
+    height: 30vh;
+    background-size: 80vh;
+  }
+
+  h1 {
+    font-size: calc(2vw + 40%);
     margin-bottom: 20px;
   }
 
