@@ -8,32 +8,30 @@ interface ProsLinks {
 
 export const Container = styled.div`
   display: flex;
-  height: calc(2vw + 11%);
+  flex-direction: column;
+  /* height: calc(2vw + 11%); */
   width: 100vw;
-  /* height: 20%; */
   position: fixed;
   z-index: 2;
+  /* height: 7rem; */
 
-  align-items: center;
-
-  background-color: rgba(34, 71, 26, 0.597);
+  background-color: rgba(34, 71, 26, 0.5);
 
   @media (max-width: 780px) {
-    height: calc(1vw + 12%);
+    height: 5rem;
   }
 `
 
 export const BoxLog = styled.div<ProsLinks>`
   display: flex;
-  width: calc(2vw + 20%);
+  width: calc(2vw + 10%);
   align-items: center;
-  justify-content: center;
-  left: 10px;
+  /* justify-content: center; */
 
   @media (max-width: 780px) {
     position: absolute;
-    left: calc(2vw + 5%);
-    width: calc(2vw + 15%);
+    left: 2rem;
+    top: 37%;
 
     ${(props) =>
       props.show &&
@@ -42,49 +40,70 @@ export const BoxLog = styled.div<ProsLinks>`
 
         top: 3vw;
         left: 5rem;
-      `}
+      `};
+  }
+
+  @media (max-width: 450px) {
+    width: calc(4vw + 20%);
+    top: 33%;
   }
 `
 
 export const BoxLink = styled.div<ProsLinks>`
   display: flex;
-  justify-content: space-around;
-  width: 100%;
-  /* height: 69%; */
-  z-index: 100;
-  position: absolute;
-  bottom: 0;
-  top: 2rem;
+  align-items: center;
+  justify-content: space-between;
+`
 
-  ul {
+export const Nave = styled.div<ProsLinks>`
+  display: flex;
+  flex-direction: row;
+  height: 7rem;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 4rem;
+
+  .buton {
     display: flex;
-  }
-
-  li {
-    justify-content: space-between;
+    height: 100%;
+    width: 7rem;
+    background-color: #fff;
     align-items: center;
-    margin-right: 1.5vw;
-    display: flex;
+    justify-content: center;
 
-    a {
-      color: #fff;
-      font-weight: 400;
-      font-size: calc(1.3vw + 10%);
+    padding: 0.5rem;
+
+    transition: 1s;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .link {
       text-decoration: none;
-      transition: 1s;
+      text-align: center;
+      color: ${color.orange[20]};
+    }
 
-      &:hover {
-        text-decoration: solid 2px underline;
-      }
+    @media (max-width: 780px) {
+      ${(h) =>
+        h.show &&
+        css`
+          height: 3rem;
+          width: 100%;
+          border-radius: 5px;
+        `}
     }
   }
 
   @media (max-width: 780px) {
-    .nave {
-      display: none;
+    display: none;
 
-      transition: 2s;
-    }
+    transition: 2s;
+
     ${(props) =>
       props.show &&
       css`
@@ -95,115 +114,48 @@ export const BoxLink = styled.div<ProsLinks>`
         background-color: ${color.dark[20]};
 
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         z-index: 10;
         height: 100vh;
 
-        .nave {
-          display: flex;
-          justify-content: center;
-
-          ul {
-            text-align: center;
-            display: block;
-
-            a {
-              transition-duration: 2s;
-              padding: 10px;
-              margin-bottom: 2rem;
-              width: 100%;
-              font-size: 1rem;
-
-              transition-duration: 0.5s;
-
-              &:hover {
-                background-color: ${color.green[40]};
-              }
-            }
-          }
-        }
-
         height: 100vh;
         width: 70vw;
-
-        .menu-toggle {
-          .one {
-            transform: rotate(45deg) translate(7px, 7px);
-          }
-
-          .two {
-            opacity: 0;
-          }
-
-          .tree {
-            transform: rotate(-45deg) translate(8px, -9px);
-          }
-        }
+        transition: 1s;
       `}
   }
-`
-
-export const Nave = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-export const Buttom = styled.button<ProsLinks>`
-  height: 100%;
-  width: 7vw;
-  padding: 10px;
-  background: #fff;
-  color: ${color.orange[20]};
-  font-size: calc(1vw + 20%);
-  transition: 0.4s;
-
-  @media (max-width: 1100px) {
-    font-size: calc(1vw + 15%);
-  }
-
-  @media (max-width: 900px) {
-    font-size: 60%;
-  }
-
-  &:hover {
-    opacity: 0.9;
-  }
-
-  @media (max-width: 780px) {
-    height: 5rem;
-    ${(props) =>
-      props.show &&
-      css`
-        width: 100%;
-        border-radius: 5px;
-      `}
-  }
-`
-
-export const BoxButton = styled.button``
-
-export const NaveLink = styled.div`
-  display: flex;
-  padding-right: 10rem;
 `
 
 export const Menu = styled.button<ProsLinks>`
   @media (max-width: 780px) {
     width: 40px;
     height: 30px;
-
     position: fixed;
+
     top: 2.3rem;
-    right: 3rem;
+    right: 10%;
     background-color: #00000000;
     transition: 0.4s;
+    z-index: 100;
 
     ${(props) =>
       props.show &&
       css`
         top: 3vw;
         left: 60vw;
+
+        .one {
+          transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .two {
+          opacity: 0;
+        }
+
+        .tree {
+          transform: rotate(-45deg) translate(8px, -9px);
+        }
       `}
 
     .one,
@@ -214,7 +166,7 @@ export const Menu = styled.button<ProsLinks>`
       width: 100%;
       margin: 6px auto;
 
-      transition-duration: 2s;
+      transition-duration: 1s;
     }
   }
 `
@@ -223,7 +175,6 @@ export const BoxContato = styled.div`
   display: flex;
   background-color: ${color.dark[10]};
   width: 100%;
-  position: absolute;
   top: 0;
 
   align-items: center;
@@ -234,4 +185,20 @@ export const BoxContato = styled.div`
   padding-left: calc(1vw + 10%);
 `
 
-export const Li = styled(Link)``
+export const Li = styled(Link)<ProsLinks>`
+  color: #fff;
+  font-weight: 400;
+  font-size: calc(1.3vw + 10%);
+  text-decoration: none;
+  transition: 1s;
+  margin: 0 15px;
+
+  @media (max-width: 780px) {
+    ${(h) =>
+      h.show &&
+      css`
+        font-size: 1.1rem;
+        margin: 10px 0;
+      `}
+  }
+`

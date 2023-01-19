@@ -7,7 +7,7 @@ interface PropsSlide {
 }
 
 export const Container = styled.div`
-  width: 300%;
+  width: 100vw;
   overflow: hidden;
 
   display: flex;
@@ -22,7 +22,6 @@ export const Container = styled.div`
     z-index: 2;
     top: 50%;
     left: 3%;
-    /* display: none; */
 
     @media (max-width: 450px) {
       top: 20%;
