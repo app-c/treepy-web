@@ -6,7 +6,7 @@ export const Container = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 
-  height: 30vw;
+  height: 50vw;
   width: 100vw;
 
   display: flex;

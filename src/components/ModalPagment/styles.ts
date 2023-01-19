@@ -33,7 +33,7 @@ export const Closed = styled(Dialog.Close)``
 
 export const BoxContent = styled.div`
   overflow: scroll;
-  width: 80vw;
+  width: 100vw;
 `
 
 export const Button = styled.button``
@@ -41,15 +41,15 @@ export const Button = styled.button``
 export const Botao = styled.button`
   border: none;
   background-color: ${color.green[10]};
-  width: 35%;
+  width: 100%;
   padding: 4%;
+  height: 100%;
   border-radius: 25px;
 
   color: #fff;
   font-size: 100%;
 
   align-self: center;
-  margin-top: 6rem;
 `
 
 export const Bt = styled.button`

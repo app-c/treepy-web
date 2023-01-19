@@ -82,26 +82,36 @@ export const Container = styled.div`
   /* justify-content: center; */
   padding: 4rem;
 
+  span {
+    color: ${color.green[10]};
+  }
+
   .header {
     display: flex;
     margin-bottom: 1rem;
     h1 {
       font-size: 2.4vw;
     }
+  }
 
-    .t2 {
-      color: ${color.green[10]};
-      margin-left: 20px;
+  @media (max-width: 780px) {
+    .header {
+      display: flex;
+      margin-bottom: 1rem;
+
+      h1 {
+        font-size: 1.5rem;
+      }
     }
   }
 `
 
 export const BoxIcones = styled.div`
   display: flex;
-  width: 50vw;
   align-items: center;
   justify-content: space-around;
   margin-bottom: 2rem;
+  width: 40vw;
 `
 export const ContentIco = styled.div<PropsProgres>`
   display: flex;
@@ -112,10 +122,26 @@ export const ContentIco = styled.div<PropsProgres>`
   border-radius: 3.5rem;
   width: 7rem;
   height: 7rem;
+
+  @media (max-width: 1100px) {
+    height: 5rem;
+    width: 5rem;
+    border: 2.5rem;
+  }
+
+  @media (max-width: 850px) {
+    height: 3rem;
+    width: 3rem;
+    border: 1.5rem;
+  }
 `
 
 export const Ico = styled.img`
   width: 2.5vw;
+
+  @media (max-width: 780px) {
+    width: 4.5vw;
+  }
 `
 
 export const BoxContent = styled.div`
@@ -135,10 +161,19 @@ export const BoxContent = styled.div`
     h1 {
       font-size: calc(1vw + 1rem);
     }
+  }
 
-    .t2 {
-      color: ${color.green[10]};
-      margin-left: 10px;
+  @media (max-width: 780px) {
+    align-self: center;
+    width: 100vw;
+    margin: 0;
+    padding: 2rem;
+
+    h1 {
+      font-size: 1.3rem;
+      /* align-self: center; */
+      margin-left: 5rem;
+      margin-bottom: 1rem;
     }
   }
 `
@@ -148,6 +183,8 @@ export const Content = styled.div<PropsProgres>`
   width: 40vw;
   align-items: center;
   justify-content: space-between;
+
+  transition: 0.5s;
 
   .p {
     width: 6vw;
@@ -163,26 +200,18 @@ export const Content = styled.div<PropsProgres>`
   }
 
   .prev {
-    display: flex;
-    opacity: ${({ step: h }) => (h! <= 1 ? 0 : 1)};
-    width: 10vw;
-    height: 3vw;
-
-    div {
-      display: flex;
-      width: 100%;
-    }
+    ${(h) =>
+      h.step! === 1 &&
+      css`
+        opacity: 0;
+      `}
   }
 
   .next {
-    display: flex;
-    width: 10vw;
-    height: 3vw;
+  }
 
-    div {
-      display: flex;
-      width: 100%;
-    }
+  @media (max-width: 780px) {
+    width: 90vw;
   }
 `
 
@@ -224,6 +253,10 @@ export const Card = styled.div`
       }
     }
   }
+
+  @media (max-width: 780px) {
+    width: 100vw;
+  }
 `
 
 export const Input = styled.input`
@@ -237,7 +270,7 @@ export const Input = styled.input`
 
 export const ContentItens = styled.div`
   /* display: flex; */
-  background-color: red;
+  /* background-color: red; */
   border-radius: 10px;
   width: 1px;
 
@@ -249,13 +282,12 @@ export const ContentItens = styled.div`
 export const BoxSelect = styled.select`
   margin-bottom: 1rem;
   border-radius: 5px;
-  height: 2vw;
+  height: 2rem;
   padding: 0.1rem 2rem;
 
-  font-size: 1.2rem;
-
-  option {
-    color: ${color.dark[20]};
+  font-size: 1rem;
+  color: ${color.dark[40]} option {
+    color: ${color.dark[30]};
   }
 `
 
@@ -267,6 +299,7 @@ export const Table = styled.table`
   td {
     text-align: center;
     padding: 5px;
+    font-size: 1rem;
 
     .button-cancel {
       display: flex;
@@ -277,6 +310,15 @@ export const Table = styled.table`
       position: relative;
       top: -20px;
       left: 1.5rem;
+    }
+
+    @media (max-width: 780px) {
+      font-size: 0.67rem;
+
+      .button-cancel {
+        left: 0;
+        height: 1.5rem;
+      }
     }
   }
 `
@@ -300,8 +342,12 @@ export const ContainerResult = styled.div`
   .table {
     .title {
       font-size: 2.4rem;
-      color: ${color.dark[20]};
+      color: ${color.dark[30]};
       font-weight: bold;
+
+      @media (max-width: 780px) {
+        font-size: 1.8rem;
+      }
     }
 
     p {
@@ -326,6 +372,10 @@ export const ContainerResult = styled.div`
       th {
         color: ${color.green[40]};
         font-size: 1.6rem;
+
+        @media (max-width: 780px) {
+          font-size: 1.2rem;
+        }
       }
 
       tr,
@@ -375,6 +425,23 @@ export const ContainerResult = styled.div`
       color: ${color.dark[20]};
       margin-top: 2rem;
     }
+
+    @media (max-width: 780px) {
+      .modalbox {
+        display: flex;
+        width: 7rem;
+        height: 3.5rem;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+      }
+    }
+  }
+
+  @media (max-width: 780px) {
+    width: 100vw;
+    margin: 0;
+    padding: 1rem;
   }
 `
 

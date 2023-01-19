@@ -80,12 +80,19 @@ export function DataPerson({ setStep, dataPerson }: Props) {
               }}
             >
               <Input
+                maxLength={2}
                 mask="number"
                 sizeW="5rem"
                 name="area"
                 placeholder="(xx)"
               />
-              <Input mask="number" name="phone" placeholder="telefone" />
+              <Input
+                maxLength={9}
+                sizeW="9rem"
+                mask="number"
+                name="phone"
+                placeholder="telefone"
+              />
             </div>
             <Input name="locality" placeholder="bairro" />
             <Input name="street" placeholder="rua" />
@@ -93,17 +100,22 @@ export function DataPerson({ setStep, dataPerson }: Props) {
 
           <div className="localy">
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Input mask="number" name="number" placeholder="número" />
-              <Input name="complement" placeholder="complemento" />
+              <Input
+                sizeW="6rem"
+                mask="number"
+                name="number"
+                placeholder="número"
+              />
+              <Input sizeW="8rem" name="complement" placeholder="complemento" />
             </div>
             <Input name="city" placeholder="cidade" />
 
-            <Input name="region" placeholder="estado" />
+            <Input maxLength={2} name="region" placeholder="estado" />
             <Input mask="cep" name="postal_code" placeholder="CEP" />
           </div>
         </Content>
 
-        <Button variant="AB" type="submit" title="CONTINUAR" />
+        <Button sizeH="2.2rem" variant="AB" type="submit" title="CONTINUAR" />
       </Form>
     </Container>
   )

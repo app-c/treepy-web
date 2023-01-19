@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { color } from '../../styles/colors'
 type Props = {
   variant: 'A' | 'AB' | 'AC' | 'B' | 'C'
+  sizeW?: string
+  sizeH?: string
 }
 
 const propsVariat = {
@@ -20,6 +22,8 @@ export const Box = styled.div`
 
 export const Container = styled.div<Props>`
   display: flex;
+  width: ${(h) => h.sizeW};
+  height: ${(h) => h.sizeH};
 
   align-items: center;
   justify-content: center;

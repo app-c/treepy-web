@@ -1,4 +1,5 @@
 import { Box } from '@chakra-ui/react'
+import { useRef } from 'react'
 import Banner from '../../components/Banner'
 import { ButtonContact } from '../../components/ButtonContact'
 import { Calc } from '../../components/Calc'
@@ -9,8 +10,11 @@ import { OurProject } from '../../components/OurProjects'
 import { BoxBanner, BoxCalc } from './styles'
 
 export function Home() {
+  const refScrol = useRef(null)
+
+  console.log(refScrol.current)
   return (
-    <Box display="flex" flexDirection="column">
+    <Box ref={refScrol} display="flex" flexDirection="column">
       <Header />
 
       <Banner />

@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 70vh;
+  /* height: 70vh; */
   align-items: center;
   justify-content: center;
   margin: 2rem 0;
@@ -18,6 +18,10 @@ export const Container = styled.div`
 
   h1 {
     margin-bottom: 1rem;
+  }
+
+  @media (max-width: 780px) {
+    /* height: 100vh; */
   }
 `
 
@@ -37,5 +41,14 @@ export const Content = styled.div`
 
   .localy {
     align-self: stretch;
+  }
+
+  @media (max-width: 780px) {
+    grid-gap: 1rem 0;
+    width: 100%;
+
+    .person {
+      align-items: center;
+    }
   }
 `

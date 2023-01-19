@@ -290,15 +290,18 @@ export function Calculadora() {
                 Comece agora a compensação com apenas um <span>TreepCash</span>
               </p>
 
-              <ModalPayment amount={brl} tree={tree} />
+              <div className="modalbox">
+                <ModalPayment amount={brl} tree={tree} />
+              </div>
             </div>
           </ContainerResult>
         </BoxResultado>
       ) : (
         <Container>
           <div className="header">
-            <h1>Calcule seu</h1>
-            <h1 className="t2">consumo</h1>
+            <h1>
+              Calcule seu <span>consumo</span>{' '}
+            </h1>
           </div>
 
           <BoxIcones>
@@ -318,7 +321,7 @@ export function Calculadora() {
               <>
                 <Form onSubmit={() => {}}>
                   <h1>
-                    Consumo de <span className="t2">eletricidade</span>{' '}
+                    Consumo de <span className="ele">eletricidade</span>{' '}
                   </h1>
 
                   <Card>
@@ -343,8 +346,7 @@ export function Calculadora() {
                     </BoxSelect>
 
                     <Input
-                      sizeH="2.5rem"
-                      label={eletric.item}
+                      sizeH="2.2rem"
                       name="eletric"
                       mask={eletric.item === 'Kw/mês' ? 'number' : 'price'}
                       placeholder="Insira o valor"
@@ -399,7 +401,7 @@ export function Calculadora() {
                   <Form className="form">
                     <Input
                       name="gas"
-                      sizeH="3rem"
+                      sizeH="2.2rem"
                       type="text"
                       placeholder="Insira o valor"
                       onChange={(h) => {
@@ -569,9 +571,13 @@ export function Calculadora() {
               </div>
 
               <div className="prev">
-                <div>
-                  <Button pres={handlePreview} title="Voltar" variant="A" />
-                </div>
+                <Button
+                  sizeH="3rem"
+                  sizeW="8rem"
+                  pres={handlePreview}
+                  title="Voltar"
+                  variant="A"
+                />
               </div>
 
               <div className="step">
@@ -580,6 +586,8 @@ export function Calculadora() {
                     pres={handleNext}
                     title={step === 5 ? 'Resultado' : 'Próximo'}
                     variant="AB"
+                    sizeH="3rem"
+                    sizeW="8rem"
                   />
                 </div>
               </div>
