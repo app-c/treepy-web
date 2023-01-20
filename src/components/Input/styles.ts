@@ -36,7 +36,7 @@ export const Container = styled.div<PropsInput>`
   align-items: center;
   border-radius: 7px;
 
-  background-color: #fff;
+  background-color: #f0f0f0;
   margin: 1rem 0;
 
   ${(h) =>

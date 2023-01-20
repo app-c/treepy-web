@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import { useRef } from 'react'
+import { Outlet } from 'react-router-dom'
 import Banner from '../../components/Banner'
 import { ButtonContact } from '../../components/ButtonContact'
 import { Calc } from '../../components/Calc'
@@ -38,6 +39,8 @@ export function Home() {
       <div id="contact">
         <ButtonContact />
       </div>
+
+      <Outlet />
     </Box>
   )
 }

@@ -10,6 +10,7 @@ import { FormHandles } from '@unform/core'
 import { useAuth } from '../../context/authcontext'
 import { getValidationErrors } from '../../utils/getValidationErrors'
 import { color } from '../../styles/colors'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 interface PropsSingUp {
   email: string
@@ -19,8 +20,7 @@ interface PropsSingUp {
 export function SignIn() {
   const formRef = useRef<FormHandles>(null)
   const { signIn, user } = useAuth()
-
-  console.log(user)
+  const navgate = useNavigate()
 
   const handleSubmit = useCallback(
     async (data: PropsSingUp) => {
@@ -45,7 +45,9 @@ export function SignIn() {
         console.log(errors)
         formRef.current?.setErrors(errors)
       }
+      navgate('/dash')
     },
+
     [signIn],
   )
 
@@ -77,6 +79,8 @@ export function SignIn() {
           </BoxForm>
         </ContentForm>
       </Content>
+
+      <Outlet />
     </Container>
   )
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Logo } from '../Logo'
 import {
   BoxContato,
@@ -11,13 +11,16 @@ import {
   Nave,
 } from './styles'
 
-export function Header() {
-  const nav = useNavigate()
+interface Props {
+  color?: string
+}
+
+export function Header({ color = 'rgba(34, 71, 26, 0.5)' }: Props) {
   const [show, setShow] = useState(false)
 
   return (
     <>
-      <Container>
+      <Container color={color}>
         <BoxContato>
           <p>atendimento@treepy.com.br</p>
         </BoxContato>

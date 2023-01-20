@@ -6,7 +6,11 @@ interface ProsLinks {
   show: boolean
 }
 
-export const Container = styled.div`
+interface HeaderProps {
+  color: string
+}
+
+export const Container = styled.div<HeaderProps>`
   display: flex;
   flex-direction: column;
   /* height: calc(2vw + 11%); */
@@ -15,7 +19,7 @@ export const Container = styled.div`
   z-index: 2;
   /* height: 7rem; */
 
-  background-color: rgba(34, 71, 26, 0.5);
+  background-color: ${({ color }) => color};
 
   @media (max-width: 780px) {
     height: 5rem;
