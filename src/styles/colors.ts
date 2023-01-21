@@ -11,6 +11,7 @@ export const color = {
   orange: {
     '10': '#FE4700',
     '20': '#B73D04',
+    '30': '#B73D04',
   },
   dark: {
     '10': '#0B0A0A',

@@ -7,6 +7,8 @@ import {
 } from './styles'
 
 import gota from '../../assets/gota.svg'
+import { FolhaAnimeted } from '../FolhaAnimeted'
+import { color } from '../../styles/colors'
 
 export function Folha() {
   return (
@@ -21,41 +23,37 @@ export function Folha() {
         </ContentTextFolha>
 
         <BoxGridFolha>
-          <ContentFolha>
-            <div className="folha1">
-              <h3>Promação de um futuro melhor às próximas geraões</h3>
-              <p>Pensar no planeta é zelar por um futuro melhor</p>
-            </div>
-          </ContentFolha>
+          <FolhaAnimeted
+            title="Promação de um futuro melhor às próximas gerações"
+            text="Pensar no planeta é zelar por um futuro melhor"
+            cor={color.green[20]}
+          />
 
-          <ContentFolha>
-            <div className="folha2">
-              <h3>Tecnologia em prol do meio ambiente</h3>
-              <p>
-                A tecnologia sendo usada para reduzir os impactos negativos no
-                planeta
-              </p>
-            </div>
-          </ContentFolha>
+          <FolhaAnimeted
+            title="Tecnologia em prol do meio ambiente"
+            text=" A tecnologia sendo usada para reduzir os impactos negativos no
+            planeta"
+            sizeY="20rem"
+            sizeX="15rem"
+            cor={color.orange[20]}
+          />
 
-          <ContentFolha>
-            <div className="folha3">
-              <h3>Promação de um futuro melhor às próximas geraões</h3>
-              <p>
-                Primeiro Programa de Créditos focado na geração de valor para o
-                meio ambiente
-              </p>
-            </div>
-          </ContentFolha>
+          <FolhaAnimeted
+            title="Promação de um futuro melhor às próximas gerações"
+            text="Primeiro Programa de Créditos focado na geração de valor para o
+            meio ambiente"
+            sizeY="20rem"
+            sizeX="15rem"
+            cor={color.green[40]}
+          />
 
-          <ContentFolha>
-            <div className="folha4">
-              <h3>Compensação de danos causados</h3>
-              <p>
-                Oportunidade de compensar os danos causados ao meio ambiente
-              </p>
-            </div>
-          </ContentFolha>
+          <FolhaAnimeted
+            title="Compensação de danos causados"
+            text="Oportunidade de compensar os danos causados ao meio ambiente"
+            sizeY="20rem"
+            sizeX="15rem"
+            cor={color.green[10]}
+          />
         </BoxGridFolha>
       </BoxFolha>
     </Box>
