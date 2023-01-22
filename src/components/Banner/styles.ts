@@ -1,12 +1,33 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { color } from '../../styles/colors'
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 
 interface PropsSlide {
-  pag: boolean
+  pag: string
 }
 
-export const Container = styled.div`
+const ani = keyframes`
+  25% {
+    margin-left: 0;
+  }
+
+  50% {
+    margin-left: -33.5%;
+
+  }
+
+  90% {
+    margin-left: -66.7%;
+
+  }
+
+
+  100% {
+    margin-left: 0;
+  }
+`
+
+export const Container = styled.div<PropsSlide>`
   width: 100vw;
   overflow: hidden;
 
@@ -50,16 +71,22 @@ export const Container = styled.div`
   }
 
   #slide1:checked ~ .s1 {
-    margin-left: 0;
+    animation: ${ani} 10s;
+    animation-iteration-count: infinite;
+    margin-left: ${(h) => h.pag};
+
+    &:hover {
+      animation-play-state: paused;
+    }
   }
 
-  #slide2:checked ~ .s1 {
+  /* #slide2:checked ~ .s1 {
     margin-left: -33.5%;
   }
 
   #slide3:checked ~ .s1 {
     margin-left: -66.7%;
-  }
+  } */
 
   .navigation {
     position: absolute;
@@ -237,15 +264,6 @@ export const ContainerButton = styled.div`
 export const Boxtest = styled.div`
   height: 100vh;
 `
-
-export const BoxParallax = styled(Parallax)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: blue;
-`
-
-export const Parallalayer = styled(ParallaxLayer)``
 
 export const Text = styled.div`
   position: absolute;

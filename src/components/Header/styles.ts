@@ -13,7 +13,7 @@ interface HeaderProps {
 export const Container = styled.div<HeaderProps>`
   display: flex;
   flex-direction: column;
-  /* height: calc(2vw + 11%); */
+  height: calc(2vw + 10%);
   width: 100vw;
   position: fixed;
   z-index: 2;
@@ -28,7 +28,7 @@ export const Container = styled.div<HeaderProps>`
 
 export const BoxLog = styled(Link)<ProsLinks>`
   display: flex;
-  width: calc(2vw + 10%);
+  width: calc(2vw + 8%);
   align-items: center;
   margin-right: 20%;
 
@@ -62,7 +62,7 @@ export const BoxLink = styled.div<ProsLinks>`
 export const Nave = styled.div<ProsLinks>`
   display: flex;
   flex-direction: row;
-  height: 7rem;
+  height: 5rem;
   align-items: center;
   justify-content: space-between;
 

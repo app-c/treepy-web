@@ -6,7 +6,15 @@ import { Header } from '../../components/Header'
 import { Input } from '../../components/Input'
 import { Logo } from '../../components/Logo'
 import { api } from '../../services/api'
-import { BoxForm, BoxLogo, Container, Content, ContentForm } from './styles'
+import {
+  Box1,
+  Box2,
+  BoxForm,
+  BoxLogo,
+  Container,
+  Content,
+  ContentForm,
+} from './styles'
 import * as Yup from 'yup'
 
 interface PropsSingUp {
@@ -71,42 +79,40 @@ export function SignUp() {
     <Container>
       <Header />
       <Content>
-        <BoxLogo>
-          <div className="logo">
-            <Logo />
-          </div>
-        </BoxLogo>
-
-        <BoxForm>
-          {/* <AnimetedForm> */}
-
-          <ContentForm onSubmit={handleSubmit}>
-            <div className="content">
-              <Input placeholder="Nome" name="name" />
-              <Input placeholder="Sobrenome" name="midle_name" />
-            </div>
-            <Input placeholder="E-mail" name="email" />
-            <Input placeholder="Senha" name="password" />
-
-            <div className="end">
-              <Input placeholder="Rua" name="street" />
-              <Input placeholder="Bairro" name="bairro" />
-              <div></div>
-
+        <ContentForm onSubmit={handleSubmit}>
+          <BoxForm>
+            <Box1>
               <div className="content">
-                <Input mask="number" placeholder="Numero" name="number_home" />
-                <Input mask="cep" placeholder="CEP" name="cep" />
+                <Input placeholder="Nome" name="name" />
+                <Input placeholder="Sobrenome" name="midle_name" />
               </div>
-              <Input placeholder="Cidade" name="city" />
-              <Input placeholder="Estado" name="state" />
-            </div>
+              <Input placeholder="E-mail" name="email" />
+              <Input placeholder="Senha" name="password" />
+              <Input placeholder="Rua" name="street" />
+            </Box1>
 
-            <div className="buton">
-              <Button variant="B" title="CRIAR CONTA" />
-            </div>
-          </ContentForm>
-          {/* </AnimetedForm> */}
-        </BoxForm>
+            <Box2>
+              <div className="end">
+                <Input placeholder="Bairro" name="bairro" />
+
+                <div className="content">
+                  <Input
+                    mask="number"
+                    placeholder="Numero"
+                    name="number_home"
+                  />
+                  <Input mask="cep" placeholder="CEP" name="cep" />
+                </div>
+                <Input placeholder="Cidade" name="city" />
+                <Input placeholder="Estado" name="state" />
+              </div>
+            </Box2>
+            {/* </AnimetedForm> */}
+          </BoxForm>
+          <div className="buton">
+            <Button variant="B" title="CRIAR CONTA" />
+          </div>
+        </ContentForm>
       </Content>
     </Container>
   )

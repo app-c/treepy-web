@@ -61,7 +61,7 @@ export function Calculadora() {
   } as PropsItens)
 
   const [gas, setGas] = useState<PropsItens>({
-    item: 'Kw/mês',
+    item: 'R$/mês',
     co2: 0,
   } as PropsItens)
 
@@ -127,13 +127,13 @@ export function Calculadora() {
     }
 
     if (eletric.item === 'R$/mês') {
-      vlMsEletriv = (eletric.co2 * 14.4556) / 142.28
-      vlAnEletriv = (eletric.co2 * 173.4678) / 142.28
+      vlMsEletriv = ((eletric.co2 / 100) * 14.4556) / 142.28
+      vlAnEletriv = ((eletric.co2 / 100) * 173.4678) / 142.28
     }
 
-    if (gas.item === 'Kw/mês') {
-      vlMsGas = (gas.co2 * 21.8688) / 136.68
-      vlAnGas = (gas.co2 * 262.4256) / 136.68
+    if (gas.item === 'R$/mês') {
+      vlMsGas = ((gas.co2 / 100) * 21.8688) / 136.68
+      vlAnGas = ((gas.co2 / 100) * 262.4256) / 136.68
     }
 
     if (gas.item === 'm³/mês') {
@@ -186,13 +186,13 @@ export function Calculadora() {
       {
         item: 'Eletricidade',
         co2: vlAnEletriv / 1000,
-        porcent: vlAnEletriv > 0 ? tl / vlAnEletriv : 0,
+        porcent: vlAnEletriv > 0 ? (vlAnEletriv / tl) * 100 : 0,
       },
 
       {
         item: 'Gás',
         co2: vlAnGas / 1000,
-        porcent: vlAnGas > 0 ? tl / vlAnGas : 0,
+        porcent: vlAnGas > 0 ? (vlAnGas / tl) * 100 : 0,
       },
 
       {
@@ -204,7 +204,7 @@ export function Calculadora() {
       {
         item: 'Transporte coletivo',
         co2: vlTransColAnu / 1000,
-        porcent: vlTransColAnu > 0 ? tl / vlTransColAnu : 0,
+        porcent: vlTransColAnu > 0 ? (vlTransColAnu / tl) * 100 : 0,
       },
 
       { item: 'Resíduos sólidos', co2: 0, porcent: 0 },
@@ -212,7 +212,7 @@ export function Calculadora() {
       {
         item: 'Alimentação',
         co2: vlFoodAno / 1000,
-        porcent: vlFoodAno > 0 ? tl / vlFoodAno : 0,
+        porcent: vlFoodAno > 0 ? (vlFoodAno / tl) * 100 : 0,
       },
 
       { item: 'total', co2: tl / 1000, porcent: tl > 0 ? (tl / tl) * 100 : 0 },
@@ -228,12 +228,14 @@ export function Calculadora() {
     }
   }, [eletric.co2, eletric.item, gas.co2, gas.item, item, itemC, itemFood.item])
 
-  const tree = (totalCo2.total[6].co2 * 5) / 0.9606
+  let tree = (totalCo2.total[6].co2 * 5) / 0.9606
+  const [u, c] = String(tree).split('.').map(Number)
+  tree = c > 5 ? u + 1 : u
   const brl = tree * 10.5
 
   return (
     <Box step={step}>
-      <Header />
+      <Header color={color.green[40]} />
 
       {step === 6 ? (
         <BoxResultado>
@@ -253,6 +255,7 @@ export function Calculadora() {
             <div className="table">
               <p className="title">Resultado</p>
               <p>Resumo anual de suas emissões de gases de efeito estufa</p>
+
               <table>
                 <tr>
                   <th>Fonte</th>
@@ -271,7 +274,7 @@ export function Calculadora() {
 
               <p className="botton">
                 Para compensar suas emeissões de CO2 é necessário plantar{' '}
-                <span>{tree.toFixed(2)} árvores/ano.</span>
+                <span>{tree.toFixed(0)} árvores/ano.</span>
               </p>
             </div>
 
@@ -346,7 +349,7 @@ export function Calculadora() {
                     </BoxSelect>
 
                     <Input
-                      sizeH="2.2rem"
+                      sizeH="2rem"
                       name="eletric"
                       mask={eletric.item === 'Kw/mês' ? 'number' : 'price'}
                       placeholder="Insira o valor"
@@ -371,11 +374,9 @@ export function Calculadora() {
 
             {step === 2 && (
               <>
-                <div className="t">
-                  <h1>
-                    Consumo de <span className="t2">Gás</span>{' '}
-                  </h1>
-                </div>
+                <h1>
+                  Consumo de <span className="t2">Gás</span>{' '}
+                </h1>
                 <Card>
                   <p>
                     Insira seu consumo MENSAL ou o valor pago de gás. As
@@ -387,21 +388,22 @@ export function Calculadora() {
                   <BoxSelect
                     name="gas"
                     value={gas.item}
-                    onChange={(h) => {
+                    onChange={(h) =>
                       setGas({
                         item: h.currentTarget.value,
                         co2: gas.co2,
                       })
-                    }}
+                    }
                   >
-                    <option value="Kw/mês">Kw/mês</option>
+                    <option value="R$/mês">R$/mês</option>
                     <option value="m³/mês">m³/mes</option>
                     <option value="Botijões/mês">Botijões/mês</option>
                   </BoxSelect>
                   <Form className="form">
                     <Input
+                      mask={gas.item === 'R$/mês' ? 'price' : 'number'}
                       name="gas"
-                      sizeH="2.2rem"
+                      sizeH="2rem"
                       type="text"
                       placeholder="Insira o valor"
                       onChange={(h) => {
@@ -572,7 +574,7 @@ export function Calculadora() {
 
               <div className="prev">
                 <Button
-                  sizeH="3rem"
+                  sizeH="2.5rem"
                   sizeW="8rem"
                   pres={handlePreview}
                   title="Voltar"
@@ -586,7 +588,7 @@ export function Calculadora() {
                     pres={handleNext}
                     title={step === 5 ? 'Resultado' : 'Próximo'}
                     variant="AB"
-                    sizeH="3rem"
+                    sizeH="2.5rem"
                     sizeW="8rem"
                   />
                 </div>

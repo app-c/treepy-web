@@ -7,85 +7,59 @@ export const Container = styled.div`
   display: flex;
 
   height: 100vh;
-  /* background-color: red; */
   flex-direction: column;
 `
 
 export const Content = styled.div`
-  display: grid;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  /* grid-gap: 1rem 2rem; */
-`
-
-export const BoxLogo = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    rgb(255, 255, 255) 0,
-    #415225 80%,
-    #26350e 100%
-  );
-  /* background-color: linear-gradient(90deg, #fdfaf4 0%, #26350e 100%); */
-  .logo {
-    width: 60vh;
-  }
+  margin-top: 10rem;
 `
 
 export const ContentForm = styled(Form)`
-  width: 100%;
-  margin-top: 5rem;
-
+  display: flex;
+  flex-direction: column;
   .buton {
-    margin-top: 3rem;
+    margin-top: 2rem;
+    width: 90vw;
+    align-self: center;
   }
 
   .content {
-    display: flex;
-    width: 65%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 0 1rem;
   }
 `
 
 const appearFromLeft = keyframes`
-  form {
+  0% {
     opacity: 0;
-    transform: translateX(-50px)
+    transform: translateX(-50px) scale(0.95) rotate(1deg);
   }
 
-  form {
+  100% {
     opacity: 1;
-    transform: translateX(0px)
+    transform: translateX(0px) scale(1);
+
   }
-`
-
-export const AnimetedForm = styled.div`
-  width: 100%;
-  height: 100%;
-
-  animation: ${appearFromLeft};
 `
 
 export const BoxForm = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: ${color.green[20]};
+  animation: ${appearFromLeft} 0.4s;
+  display: grid;
+  width: 100vw;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-gap: 0 3rem;
 
   padding: 0 3rem;
 
   .end {
-    margin-top: 2rem;
   }
 `
+export const Box1 = styled.div``
+
+export const Box2 = styled.div``

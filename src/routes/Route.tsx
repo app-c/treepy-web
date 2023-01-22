@@ -1,25 +1,9 @@
-import { Route, Routes } from 'react-router-dom'
-import { Calculadora } from '../pages/Calculadora'
-import { Contact } from '../pages/contact'
-import { DashBoard } from '../pages/DashBoard'
-import { Home } from '../pages/home'
-import { SignIn } from '../pages/signIn/index '
-import { SignUp } from '../pages/signUp'
-import { Test } from '../pages/test'
-import { Us } from '../pages/Us'
-import { AuthRoute } from './AuthRoute'
+import React from 'react'
+import { Navigate, Outlet } from 'react-router-dom'
+import { useAuth } from '../context/authcontext'
 
-export function RouterApp() {
-  return (
-    <Routes>
-      <Route
-        path="dash"
-        element={
-          <AuthRoute>
-            <DashBoard />
-          </AuthRoute>
-        }
-      />
-    </Routes>
-  )
+export function RouteApp() {
+  const { user } = useAuth()
+
+  return user ? <Navigate to="/dash" /> : <Outlet />
 }

@@ -20,8 +20,10 @@ import mao from '../../assets/mao.png'
 import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax'
 
 export default function Banner() {
-  const [slides, setSlides] = useState('slide1')
+  const [slides, setSlides] = useState('')
+  const eleRef = useRef(null)
   const [pag, setPag] = useState(1)
+  const [slid, setSled] = React.useState(0)
 
   const addPage = useCallback(async () => {
     if (pag < 3) {
@@ -36,24 +38,30 @@ export default function Banner() {
     }
   }, [pag])
 
-  useEffect(() => {
-    if (pag < 4) {
-      setTimeout(() => {
-        addPage()
-        // setPag(pag + 1)
-      }, 3500)
-    }
+  // useEffect(() => {
+  //   if (pag < 4) {
+  //     setTimeout(() => {
+  //       addPage()
+  //       // setPag(pag + 1)
+  //     }, 3500)
+  //   }
 
-    if (pag > 2) {
-      setTimeout(() => {
-        setPag(1)
-      }, 3500)
-    }
+  //   if (pag > 2) {
+  //     setTimeout(() => {
+  //       setPag(1)
+  //     }, 3500)
+  //   }
+  // }, [pag])
+
+  React.useEffect(() => {}, [])
+
+  const add = React.useCallback(() => {
+    const sd = pag + 33.5
+    setSlides(`-${sd}%`)
   }, [pag])
 
-  console.log(pag, slides)
   return (
-    <Container>
+    <Container pag={slides}>
       <div className="slides">
         <input type="radio" name={'slide'} id={`slide${pag}`} checked />
 
@@ -61,15 +69,15 @@ export default function Banner() {
           <BoxIco onClick={subPag}>
             <ArrowL cor="#fff" size="2rem" />
           </BoxIco>
-        </div>
-
+        </div> */}
+        {/* 
         <div className="ico2">
-          <BoxIco onClick={addPage}>
+          <BoxIco onClick={add}>
             <ArrowR cor="#fff" size="2rem" />
           </BoxIco>
         </div> */}
 
-        <div className="slide s1">
+        <div ref={eleRef} className="slide s1">
           <Content
             style={{
               backgroundImage: `url(${fundo})`,

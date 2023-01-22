@@ -75,11 +75,11 @@ export const Box = styled.div<PropsProgres>`
 `
 
 export const Container = styled.div`
-  margin-top: 6rem;
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
   padding: 4rem;
 
   span {
@@ -89,8 +89,9 @@ export const Container = styled.div`
   .header {
     display: flex;
     margin-bottom: 1rem;
+
     h1 {
-      font-size: 2.4vw;
+      font-size: 2rem;
     }
   }
 
@@ -118,16 +119,10 @@ export const ContentIco = styled.div<PropsProgres>`
   align-items: center;
   justify-content: center;
   background-color: ${({ progres: h }) => (h ? color.green[10] : 'none')};
-  padding: 2rem;
-  border-radius: 3.5rem;
-  width: 7rem;
-  height: 7rem;
-
-  @media (max-width: 1100px) {
-    height: 5rem;
-    width: 5rem;
-    border: 2.5rem;
-  }
+  padding: 1rem;
+  border-radius: 1.5rem;
+  width: 3rem;
+  height: 3rem;
 
   @media (max-width: 850px) {
     height: 3rem;
@@ -137,30 +132,21 @@ export const ContentIco = styled.div<PropsProgres>`
 `
 
 export const Ico = styled.img`
-  width: 2.5vw;
-
-  @media (max-width: 780px) {
-    width: 4.5vw;
-  }
+  width: 150%;
 `
 
 export const BoxContent = styled.div`
+  display: flex;
   align-self: flex-end;
   margin-right: 10rem;
 
-  display: flex;
   flex-direction: column;
 
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
-  .t {
-    display: flex;
-    margin-bottom: 1rem;
-    align-self: flex-start;
-    h1 {
-      font-size: calc(1vw + 1rem);
-    }
+  h1 {
+    font-size: 1.5rem;
   }
 
   @media (max-width: 780px) {
@@ -208,6 +194,7 @@ export const Content = styled.div<PropsProgres>`
   }
 
   .next {
+    background-color: red;
   }
 
   @media (max-width: 780px) {
@@ -223,7 +210,7 @@ export const Card = styled.div`
   background-color: ${color.green[40]};
   width: 50vw;
 
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 
   color: #fff;
 
@@ -233,7 +220,7 @@ export const Card = styled.div`
   }
 
   div {
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     width: 100%;
     align-items: center;
@@ -259,15 +246,6 @@ export const Card = styled.div`
   }
 `
 
-export const Input = styled.input`
-  margin-bottom: 1rem;
-  border-radius: 5px;
-  height: 2vw;
-  padding: 1rem 2rem;
-
-  font-size: 1.5rem;
-`
-
 export const ContentItens = styled.div`
   /* display: flex; */
   /* background-color: red; */
@@ -282,7 +260,7 @@ export const ContentItens = styled.div`
 export const BoxSelect = styled.select`
   margin-bottom: 1rem;
   border-radius: 5px;
-  height: 2rem;
+  height: 1.6rem;
   padding: 0.1rem 2rem;
 
   font-size: 1rem;
@@ -334,14 +312,15 @@ export const BoxResultado = styled.div`
 export const ContainerResult = styled.div`
   display: grid;
   /* background-color: green; */
-  width: 70%;
-  margin-left: 27%;
+  width: 80%;
+  margin-left: 30%;
 
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 1rem 5rem;
 
   .table {
     .title {
-      font-size: 2.4rem;
+      font-size: 1.5rem;
       color: ${color.dark[30]};
       font-weight: bold;
 
@@ -351,7 +330,7 @@ export const ContainerResult = styled.div`
     }
 
     p {
-      font-size: calc(1vw + 1vh);
+      font-size: 1rem;
       color: ${color.dark[20]};
       margin-bottom: 10px;
     }
@@ -365,29 +344,26 @@ export const ContainerResult = styled.div`
         font-weight: 400;
       }
     }
+
     table {
       width: 100%;
-      margin-top: 2rem;
+      margin-top: 1rem;
 
       th {
         color: ${color.green[40]};
-        font-size: 1.6rem;
-
-        @media (max-width: 780px) {
-          font-size: 1.2rem;
-        }
+        font-size: 1rem;
       }
 
       tr,
       th {
         text-align: start;
         padding: 2px;
-        /* border-bottom: 1px solid ${color.dark[10]}; */
+        border-bottom: 1px solid ${color.dark[10]};
       }
 
       td {
-        padding: 0.6rem;
-        border-bottom: 1px solid ${color.dark[10]};
+        padding: 0.1rem;
+        /* border-bottom: 1px solid ${color.dark[10]}; */
       }
     }
   }
@@ -395,19 +371,17 @@ export const ContainerResult = styled.div`
   .result {
     display: flex;
     flex-direction: column;
-    padding-left: 5rem;
-
+    width: 70%;
+    margin-top: 2rem;
     h1 {
-      font-size: calc(3vw + 0.5rem);
+      font-size: 2rem;
       color: ${color.green[40]};
       font-weight: 400;
     }
 
     span {
-      font-size: calc(1.5vw + 0.5rem);
       color: ${color.green[40]};
       font-weight: 500;
-      margin-left: 10px;
     }
 
     label {
@@ -421,15 +395,25 @@ export const ContainerResult = styled.div`
     }
 
     p {
-      font-size: calc(1.5vw + 30%);
+      font-size: calc(1vw + 30%);
       color: ${color.dark[20]};
+      margin-top: 2rem;
+    }
+
+    .modalbox {
+      display: flex;
+      width: 9rem;
+      height: 3.5rem;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
       margin-top: 2rem;
     }
 
     @media (max-width: 780px) {
       .modalbox {
         display: flex;
-        width: 7rem;
+        width: 5rem;
         height: 3.5rem;
         align-items: center;
         justify-content: center;
