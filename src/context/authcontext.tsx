@@ -34,17 +34,24 @@ export function AuthProvider({ children }: any) {
   })
 
   const signIn = useCallback(async ({ email, password }: IUser) => {
-    const res = await api.post('/user/session', {
-      email,
-      password,
-    })
+    await api
+      .post('/user/session', {
+        email,
+        password,
+      })
+      .then((h) => {
+        const { token, user } = h.data
 
-    const { token, user } = res.data
+        localStorage.setItem(keyToken, token)
+        localStorage.setItem(keyUser, JSON.stringify(user))
 
-    localStorage.setItem(keyToken, token)
-    localStorage.setItem(keyUser, JSON.stringify(user))
-
-    setData({ token, user })
+        setData({ token, user })
+      })
+      .catch((h) => {
+        if (h.response.data.message === 'senha invalida') {
+          return alert('Senha inválida')
+        }
+      })
   }, [])
 
   return (

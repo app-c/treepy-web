@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { Calculadora } from '../pages/Calculadora'
 import { Contact } from '../pages/contact'
 import { DashBoard } from '../pages/DashBoard'
@@ -20,14 +20,10 @@ export function Router() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/signUp" element={<SignUp />} />
 
-      <Route
-        path="dash"
-        element={
-          <AuthRoute>
-            <DashBoard />
-          </AuthRoute>
-        }
-      />
+      <Route path="/" element={<AuthRoute />}>
+        <Route path="/" element={<Navigate replace to="dash" />} />
+        <Route path="dash" element={<DashBoard />} />
+      </Route>
     </Routes>
   )
 }

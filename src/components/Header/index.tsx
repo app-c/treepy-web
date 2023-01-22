@@ -31,14 +31,14 @@ export function Header({ color = 'rgba(34, 71, 26, 0.5)' }: Props) {
             <div className="two"></div>
             <div className="tree"></div>
           </Menu>
-          <BoxLog show={show} className="logo">
+          <BoxLog to="/" show={show} className="logo">
             <Logo colorL="#fff" colorF="#fff" />
           </BoxLog>
 
           <Nave show={show}>
-            <Li show={show} to="/">
+            {/* <Li show={show} to="/">
               HOME
-            </Li>
+            </Li> */}
             <Li show={show} to="/us">
               SOBRE NÓS
             </Li>

@@ -13,12 +13,11 @@ export const Container = styled.div`
 `
 
 export const Content = styled.div`
-  display: grid;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   /* grid-gap: 1rem 2rem; */
 `
 
@@ -78,13 +77,12 @@ export const AnimetedForm = styled.div`
 `
 
 export const BoxForm = styled.div`
-  height: 100%;
-  width: 100%;
+  width: 50rem;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: ${color.green[20]};
 
   padding: 0 3rem;
 

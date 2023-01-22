@@ -12,15 +12,6 @@ import { AuthRoute } from './AuthRoute'
 export function RouterApp() {
   return (
     <Routes>
-      <Route path="/" element={<Home />}>
-        <Route path="signIn" element={<SignIn />} />
-        <Route path="/us" element={<Us />} />
-      </Route>
-      <Route path="/calc" element={<Calculadora />} />
-      <Route path="/test" element={<Test />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/signUp" element={<SignUp />} />
-
       <Route
         path="dash"
         element={

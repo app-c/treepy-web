@@ -40,26 +40,26 @@ export function SignIn() {
           email: data.email,
           password: data.password,
         })
+        navgate('/dash')
       } catch (err: any) {
         const errors = getValidationErrors(err)
         console.log(errors)
         formRef.current?.setErrors(errors)
       }
-      navgate('/dash')
     },
 
-    [signIn],
+    [navgate, signIn],
   )
 
   return (
     <Container>
-      <Header />
+      <Header color={color.green[40]} />
       <Content>
-        <BoxLogo>
+        {/* <BoxLogo>
           <div className="logo">
             <Logo colorF={color.orange[20]} colorL="#fff" />
           </div>
-        </BoxLogo>
+        </BoxLogo> */}
 
         <ContentForm ref={formRef} onSubmit={handleSubmit}>
           <BoxForm>

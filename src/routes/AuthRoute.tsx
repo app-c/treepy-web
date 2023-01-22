@@ -1,10 +1,15 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
+import React, { Children } from 'react'
+import { Navigate, Outlet, PathRouteProps } from 'react-router-dom'
 import { useAuth } from '../context/authcontext'
 
-export function AuthRoute({ children }: any) {
+interface Props extends PathRouteProps {
+  isPrivate?: boolean
+  component: React.ComponentType
+}
+
+export function AuthRoute({ ...children }: any) {
   const { user } = useAuth()
 
-  const u = true
-  return u ? children : <Navigate to="/" />
+  const u = false
+  return u ? <Outlet /> : <Navigate to="/signIn" />
 }

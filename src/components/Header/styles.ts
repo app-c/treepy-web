@@ -26,11 +26,11 @@ export const Container = styled.div<HeaderProps>`
   }
 `
 
-export const BoxLog = styled.div<ProsLinks>`
+export const BoxLog = styled(Link)<ProsLinks>`
   display: flex;
   width: calc(2vw + 10%);
   align-items: center;
-  /* justify-content: center; */
+  margin-right: 20%;
 
   @media (max-width: 780px) {
     position: absolute;
@@ -192,7 +192,7 @@ export const BoxContato = styled.div`
 export const Li = styled(Link)<ProsLinks>`
   color: #fff;
   font-weight: 400;
-  font-size: calc(1.3vw + 10%);
+  font-size: calc(1vw + 10%);
   text-decoration: none;
   transition: 1s;
   margin: 0 15px;
