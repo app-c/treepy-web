@@ -33,7 +33,9 @@
     "react-elastic-carousel": "^0.11.5",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.6.1",
+    "react-spring": "^9.6.1",
     "styled-components": "^5.3.6",
+    "uuidv4": "^6.2.13",
     "yup": "^0.32.11"
   },
   "devDependencies": {

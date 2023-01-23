@@ -13,7 +13,8 @@ interface AuthState {
 
 interface AuthContextData {
   user: object
-  signIn: (credentials: IUser) => void
+  signIn(credentials: IUser): Promise<void>
+  logOut: () => void
 }
 
 const keyUser = '@treepy:user'
@@ -47,15 +48,23 @@ export function AuthProvider({ children }: any) {
 
         setData({ token, user })
       })
-      .catch((h) => {
-        if (h.response.data.message === 'senha invalida') {
-          return alert('Senha inválida')
-        }
-      })
+    // .catch((h) => {
+    //   if (h.message === 'Network Error') {
+    //     return alert('Erro de conexão com o servidor')
+    //   }
+    //   return alert(`Ops! Algo deu errado. ${h.response.data.message}`)
+    // })
+  }, [])
+
+  const logOut = useCallback(async () => {
+    localStorage.removeItem(keyToken)
+    localStorage.removeItem(keyUser)
+
+    setData({} as AuthState)
   }, [])
 
   return (
-    <AuthContext.Provider value={{ signIn, user: data.user }}>
+    <AuthContext.Provider value={{ signIn, user: data.user, logOut }}>
       {children}
     </AuthContext.Provider>
   )

@@ -2,15 +2,14 @@ import { useCallback, useRef } from 'react'
 import { Button } from '../../components/Button'
 import { Header } from '../../components/Header'
 import { Input } from '../../components/Input'
-import { Logo } from '../../components/Logo'
-import { api } from '../../services/api'
-import { BoxForm, BoxLogo, Container, Content, ContentForm, Li } from './styles'
+import { BoxForm, Container, Content, ContentForm, Li } from './styles'
 import * as Yup from 'yup'
 import { FormHandles } from '@unform/core'
 import { useAuth } from '../../context/authcontext'
 import { getValidationErrors } from '../../utils/getValidationErrors'
 import { color } from '../../styles/colors'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, redirect } from 'react-router-dom'
+import { useToast } from '../../context/ToastContext'
 
 interface PropsSingUp {
   email: string
@@ -19,8 +18,8 @@ interface PropsSingUp {
 
 export function SignIn() {
   const formRef = useRef<FormHandles>(null)
-  const { signIn, user } = useAuth()
-  const navgate = useNavigate()
+  const { signIn } = useAuth()
+  const { addToast } = useToast()
 
   const handleSubmit = useCallback(
     async (data: PropsSingUp) => {
@@ -36,19 +35,28 @@ export function SignIn() {
           abortEarly: false,
         })
 
-        signIn({
+        await signIn({
           email: data.email,
           password: data.password,
         })
-        navgate('/dash')
+
+        redirect('/dash')
       } catch (err: any) {
+        console.log(err.response?.data.message, 'erro')
+
+        addToast({
+          type: 'error',
+          title: 'Erro na autenticação',
+          description:
+            'Ocorreu um erro ao fazer login, verifique suas credenciais',
+        })
+
         const errors = getValidationErrors(err)
-        console.log(errors)
         formRef.current?.setErrors(errors)
       }
     },
 
-    [navgate, signIn],
+    [addToast, signIn],
   )
 
   return (
