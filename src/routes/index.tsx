@@ -3,6 +3,7 @@ import { Calculadora } from '../pages/Calculadora'
 import { Contact } from '../pages/contact'
 import { DashBoard } from '../pages/DashBoard'
 import { Home } from '../pages/home'
+import { Plan } from '../pages/Plan'
 import { SignIn } from '../pages/signIn/index '
 import { SignUp } from '../pages/signUp'
 import { Test } from '../pages/test'
@@ -21,6 +22,7 @@ export function Router() {
         <Route path="/test" element={<Test />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/plan" element={<Plan />} />
       </Route>
 
       <Route path="/" element={<AuthRoute />}>

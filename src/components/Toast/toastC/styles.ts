@@ -1,4 +1,4 @@
-import { animated } from '@react-spring/web'
+import { animated } from 'react-spring'
 import styled, { css } from 'styled-components'
 import { color } from '../../../styles/colors'
 
@@ -24,7 +24,7 @@ const variation = {
   `,
 }
 
-export const Toast = styled.div<Props>`
+export const Toast = styled(animated.div)<Props>`
   width: 360px;
   position: relative;
   padding: 16px;

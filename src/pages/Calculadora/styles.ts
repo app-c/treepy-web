@@ -402,12 +402,11 @@ export const ContainerResult = styled.div`
 
     .modalbox {
       display: flex;
-      width: 9rem;
-      height: 3.5rem;
-      align-items: center;
-      justify-content: center;
       align-self: center;
       margin-top: 2rem;
+
+      width: 100%;
+      justify-content: space-between;
     }
 
     @media (max-width: 780px) {

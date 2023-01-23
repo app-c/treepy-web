@@ -4,37 +4,37 @@ import { PropsMessage, useToast } from '../../../context/ToastContext'
 import * as S from './styles'
 
 interface Props {
-  message: PropsMessage
+  mess: PropsMessage
   style: any
 }
 
-export function ToastC({ message, style }: Props) {
+export function ToastC({ mess, style }: Props) {
   const { removeToas } = useToast()
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      removeToas(message.id)
+      removeToas(mess.id)
     }, 3000)
 
     return () => {
       clearTimeout(timer)
     }
-  }, [message.id, removeToas])
+  }, [mess.id, removeToas])
 
   return (
     <S.Toast
-      key={message.id}
-      description={!!message.description}
-      type={message.type}
+      key={mess.id}
+      description={!!mess.description}
+      type={mess.type}
       style={style}
     >
       <BsFillXCircleFill size={20} />
       <div>
-        <strong>{message.title}</strong>
-        {message.description && <p>{message.description}</p>}
+        <strong>{mess.title}</strong>
+        {mess.description && <p>{mess.description}</p>}
       </div>
 
-      <button onClick={() => removeToas(message.id)}>
+      <button onClick={() => removeToas(mess.id)}>
         <BsFillXCircleFill size={18} />
       </button>
     </S.Toast>

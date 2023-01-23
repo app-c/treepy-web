@@ -23,7 +23,6 @@ import {
 import { food } from '../../utils/food'
 
 import 'keen-slider/keen-slider.min.css'
-import { ModalPayment } from '../../components/ModalPagment'
 import {
   IVeiculoCProps,
   ModalVeiculosColetivo,
@@ -34,6 +33,7 @@ import {
 } from '../../components/ModalVeiculosPessoal'
 import { Form } from '@unform/web'
 import { Input } from '../../components/Input'
+import { Link } from 'react-router-dom'
 
 interface PropsItens {
   item: 'Kw/mês' | 'R$/mês' | 'm³/mês' | 'Botijões/mês' | string
@@ -294,7 +294,15 @@ export function Calculadora() {
               </p>
 
               <div className="modalbox">
-                <ModalPayment amount={brl} tree={tree} />
+                <Button
+                  pres={() => setStep(1)}
+                  variant="C"
+                  sizeW="8rem"
+                  title="REFAZER"
+                />
+                <Link to="/plan" style={{ textDecoration: 'none' }}>
+                  <Button title="veja os planos" sizeW="8rem" variant="AB" />
+                </Link>
               </div>
             </div>
           </ContainerResult>
