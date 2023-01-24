@@ -6,13 +6,13 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { cep, currency, number } from '../../utils/mask'
+import { cep, currency, expire, number } from '../../utils/mask'
 import { Box, Container } from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   label?: string
-  mask?: 'cep' | 'price' | 'text' | 'number'
+  mask?: 'cep' | 'price' | 'text' | 'number' | 'expire'
   sizeW?: string
   sizeH?: string
 }
@@ -62,6 +62,10 @@ export function Input({
       if (mask === 'text') {
         e.currentTarget.value.toLocaleUpperCase()
       }
+
+      if (mask === 'expire') {
+        expire(e)
+      }
     },
     [mask],
   )
@@ -84,8 +88,6 @@ export function Input({
           ref={inputRef}
           {...rest}
         />
-
-        {error}
       </Container>
     </Box>
   )

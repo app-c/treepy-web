@@ -5,6 +5,7 @@ export const Container = styled.div`
   margin: 2rem 0;
   display: 100%;
   padding: 0 3rem;
+  width: 80vw;
 
   .content {
     display: grid;

@@ -25,9 +25,7 @@ export function CardType({ infoCard }: Props) {
         <p>{infoCard.name}</p>
 
         <div>
-          <p>
-            {infoCard.month}/{infoCard.year}
-          </p>
+          <p>{infoCard.month}</p>
           <p>{infoCard.security}</p>
         </div>
       </S.Contents>

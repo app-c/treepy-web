@@ -1,20 +1,9 @@
-import { useTransition } from '@react-spring/web'
-import { Form } from '@unform/web'
 import { useCallback } from 'react'
 import { Button } from '../../components/Button'
 import { Header } from '../../components/Header'
 import { Input } from '../../components/Input'
-import { Logo } from '../../components/Logo'
 import { api } from '../../services/api'
-import {
-  Box1,
-  Box2,
-  BoxForm,
-  BoxLogo,
-  Container,
-  Content,
-  ContentForm,
-} from './styles'
+import { Box1, Box2, BoxForm, Container, Content, ContentForm } from './styles'
 import * as Yup from 'yup'
 
 interface PropsSingUp {

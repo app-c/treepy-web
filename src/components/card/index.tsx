@@ -108,25 +108,49 @@ export function Card({ amount, tree }: Props) {
     <Container>
       <Form onSubmit={handleBuy}>
         <div className="content">
-          <BoxItem>
-            <BoxItens>
-              <Selector
-                pres={() => setSelect({ type: 'cartao' })}
-                title="CARTÃO"
-                selected={select.type === 'cartao'}
-              />
-              <Selector
-                pres={() => setSelect({ type: 'boleto' })}
-                title="BOLETO"
-                selected={select.type === 'boleto'}
-              />
-              <Selector
-                pres={() => setSelect({ type: 'pix' })}
-                title="PIX"
-                selected={select.type === 'pix'}
-              />
-            </BoxItens>
+          <div className="selection">
+            <BoxCard>
+              <ContentCard>
+                <Boxform>
+                  <Input
+                    onChange={(h) => setNumberCard(h.currentTarget.value)}
+                    name="number"
+                    type="text"
+                    placeholder="Digite o número do cartão"
+                  />
 
+                  <div className="content">
+                    <Input
+                      maxLength={2}
+                      onChange={(h) => setExpMonth(h.currentTarget.value)}
+                      name="exp_month"
+                      className="data"
+                      type="text"
+                      placeholder="Mês"
+                    />
+
+                    <Input
+                      maxLength={2}
+                      onChange={(h) => setExpYear(h.currentTarget.value)}
+                      name="exp_year"
+                      placeholder="Ano"
+                    />
+                    <Input
+                      onChange={(h) => setSecurityCode(h.currentTarget.value)}
+                      name="security_code"
+                      placeholder="csv"
+                    />
+                  </div>
+                  <Input
+                    onChange={(h) => setName(h.currentTarget.value)}
+                    name="holder"
+                    placeholder="Nome do titular"
+                  />
+                </Boxform>
+              </ContentCard>
+            </BoxCard>
+          </div>
+          <BoxItem>
             <div className="item">
               <span>TreepyCash</span>
               <p>R$ {amount.toFixed(2)}</p>
@@ -142,66 +166,7 @@ export function Card({ amount, tree }: Props) {
               <CardType infoCard={dataCard} />
             </div>
           </BoxItem>
-
-          <div className="selection">
-            {select.type === 'cartao' && (
-              <BoxCard>
-                <ContentCard>
-                  <Boxform>
-                    <Input
-                      onChange={(h) => setNumberCard(h.currentTarget.value)}
-                      name="number"
-                      type="text"
-                      placeholder="Digite o número do cartão"
-                    />
-
-                    <div className="content">
-                      <Input
-                        maxLength={2}
-                        onChange={(h) => setExpMonth(h.currentTarget.value)}
-                        name="exp_month"
-                        className="data"
-                        type="text"
-                        placeholder="Mês"
-                      />
-
-                      <Input
-                        maxLength={2}
-                        onChange={(h) => setExpYear(h.currentTarget.value)}
-                        name="exp_year"
-                        placeholder="Ano"
-                      />
-                      <Input
-                        onChange={(h) => setSecurityCode(h.currentTarget.value)}
-                        name="security_code"
-                        placeholder="csv"
-                      />
-                    </div>
-                    <Input
-                      onChange={(h) => setName(h.currentTarget.value)}
-                      name="holder"
-                      placeholder="Nome do titular"
-                    />
-                  </Boxform>
-                </ContentCard>
-              </BoxCard>
-            )}
-
-            {select.type === 'boleto' && (
-              <BoxCard>
-                <h1>hello</h1>
-              </BoxCard>
-            )}
-
-            {select.type === 'pix' && (
-              <BoxCard>
-                <h1>pix</h1>
-              </BoxCard>
-            )}
-          </div>
         </div>
-
-        <Button title="Finalizar compra" variant="B" />
       </Form>
     </Container>
   )

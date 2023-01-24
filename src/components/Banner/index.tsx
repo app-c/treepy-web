@@ -1,29 +1,21 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import {
   BoxElement,
-  BoxIco,
-  BoxParallax,
-  Boxtest,
   BoxText,
   Container,
   ContainerButton,
   Content,
   Label,
-  Parallalayer,
   Text,
 } from './styles'
-import { ArrowL } from '../Icones/arrowL'
-import { ArrowR } from '../Icones/arrowR'
 import fundo from '../../assets/img_fundo_home.jpeg'
 import fundo2 from '../../assets/fundo2.png'
 import mao from '../../assets/mao.png'
-import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax'
 
 export default function Banner() {
   const [slides, setSlides] = useState('')
   const eleRef = useRef(null)
   const [pag, setPag] = useState(1)
-  const [slid, setSled] = React.useState(0)
 
   const addPage = useCallback(async () => {
     if (pag < 3) {
@@ -194,11 +186,11 @@ export default function Banner() {
         </div> */}
       </div>
 
-      <div className="navigation">
+      {/* <div className="navigation">
         <Label pag={pag === 1} htmlFor={`slide${pag}`} />
         <Label pag={pag === 2} htmlFor={`slides${pag}`} />
         <Label pag={pag === 3} htmlFor={`slide${pag}`} />
-      </div>
+      </div> */}
     </Container>
   )
 }

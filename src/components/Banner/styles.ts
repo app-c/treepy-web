@@ -1,6 +1,5 @@
 import styled, { css, keyframes } from 'styled-components'
 import { color } from '../../styles/colors'
-import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 
 interface PropsSlide {
   pag: string
@@ -74,10 +73,6 @@ export const Container = styled.div<PropsSlide>`
     animation: ${ani} 10s;
     animation-iteration-count: infinite;
     margin-left: ${(h) => h.pag};
-
-    &:hover {
-      animation-play-state: paused;
-    }
   }
 
   /* #slide2:checked ~ .s1 {

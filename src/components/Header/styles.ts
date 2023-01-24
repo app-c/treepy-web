@@ -62,7 +62,7 @@ export const BoxLink = styled.div<ProsLinks>`
 export const Nave = styled.div<ProsLinks>`
   display: flex;
   flex-direction: row;
-  height: 5rem;
+  height: 100%;
   align-items: center;
   justify-content: space-between;
 
@@ -196,6 +196,12 @@ export const Li = styled(Link)<ProsLinks>`
   text-decoration: none;
   transition: 1s;
   margin: 0 15px;
+
+  transition: 0.5s;
+
+  &:hover {
+    text-decoration: underline solid 2px;
+  }
 
   @media (max-width: 780px) {
     ${(h) =>

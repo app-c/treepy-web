@@ -407,7 +407,7 @@ export function Calculadora() {
                     <option value="m³/mês">m³/mes</option>
                     <option value="Botijões/mês">Botijões/mês</option>
                   </BoxSelect>
-                  <Form className="form">
+                  <Form onSubmit={() => {}} className="form">
                     <Input
                       mask={gas.item === 'R$/mês' ? 'price' : 'number'}
                       name="gas"

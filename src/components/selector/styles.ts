@@ -7,6 +7,7 @@ interface PropsSelect {
 
 export const Box = styled.div`
   display: flex;
+  margin: 1rem;
   label {
     align-items: center;
     justify-content: center;
@@ -22,16 +23,17 @@ export const Container = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  border: 0.21rem solid ${color.green[40]};
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid ${color.green[20]};
   border-radius: 1rem;
 `
 
 export const Circle = styled.div<PropsSelect>`
-  width: 0.6rem;
-  height: 0.6rem;
+  width: 0.4rem;
+  height: 0.4rem;
   opacity: 0;
+  border-radius: 0.5rem;
   transition: 0.6s;
 
   ${(h) =>
@@ -40,6 +42,4 @@ export const Circle = styled.div<PropsSelect>`
       opacity: 1;
       background-color: ${color.green[20]};
     `};
-
-  border-radius: 0.5rem;
 `

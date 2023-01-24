@@ -32,3 +32,14 @@ export function number(e: React.FormEvent<HTMLInputElement>) {
   e.currentTarget.value = value
   return e
 }
+
+export function expire(e: React.FormEvent<HTMLInputElement>) {
+  let value = e.currentTarget.value
+
+  value = value.replace(/\D/g, '')
+  value = value.replace(/(\d)(\d{2})$/, '$1/$2')
+
+  e.currentTarget.value = value
+
+  return e
+}
