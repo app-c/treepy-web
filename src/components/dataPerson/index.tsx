@@ -74,6 +74,14 @@ export function DataPerson({
   const [securityCode, setSecurityCode] = React.useState('')
   const [qntParcela, setQntParce] = React.useState('')
 
+  const [user, setUser] = React.useState<object>()
+
+  React.useEffect(() => {
+    const rs = localStorage.getItem('@treepy:step1')
+
+    setUser(JSON.parse(rs))
+  }, [])
+
   const handleSubmit = useCallback(
     async (data: DataProps) => {
       forRef.current?.setErrors({})
@@ -154,6 +162,7 @@ export function DataPerson({
 
   return (
     <Container ref={refContainer}>
+      <h1>{user?.name}</h1>
       <Form style={{ width: '100%' }} ref={forRef} onSubmit={handleSubmit}>
         <Content>
           <div className="person">

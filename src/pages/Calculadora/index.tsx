@@ -233,6 +233,11 @@ export function Calculadora() {
   tree = c > 5 ? u + 1 : u
   const brl = tree * 10.5
 
+  const data = {
+    tree,
+    brl,
+  }
+
   return (
     <Box step={step}>
       <Header color={color.green[40]} />
@@ -300,7 +305,7 @@ export function Calculadora() {
                   sizeW="8rem"
                   title="REFAZER"
                 />
-                <Link to="/plan" style={{ textDecoration: 'none' }}>
+                <Link to={`/plan/${brl}`} style={{ textDecoration: 'none' }}>
                   <Button title="veja os planos" sizeW="8rem" variant="AB" />
                 </Link>
               </div>

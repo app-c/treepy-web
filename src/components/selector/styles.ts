@@ -7,7 +7,7 @@ interface PropsSelect {
 
 export const Box = styled.div`
   display: flex;
-  margin: 1rem;
+  margin-right: 1rem;
   label {
     align-items: center;
     justify-content: center;

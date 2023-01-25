@@ -6,10 +6,15 @@ import { Home } from '../pages/home'
 import { Plan } from '../pages/Plan'
 import { SignIn } from '../pages/signIn/index '
 import { SignUp } from '../pages/signUp'
+import { SignUpPay } from '../pages/signUpPay'
 import { Test } from '../pages/test'
 import { Us } from '../pages/Us'
 import { AuthRoute } from './AuthRoute'
 import { RouteApp } from './Route'
+
+interface Props {
+  dataSignUp?: object
+}
 
 export function Router() {
   return (
@@ -21,8 +26,9 @@ export function Router() {
         <Route path="/calc" element={<Calculadora />} />
         <Route path="/test" element={<Test />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="/plan" element={<Plan />} />
+        <Route path="/signUp/" element={<SignUp />} />
+        <Route path="/signUp/:type" element={<SignUpPay />} />
+        <Route path="/plan/:value" element={<Plan />} />
       </Route>
 
       <Route path="/" element={<AuthRoute />}>
