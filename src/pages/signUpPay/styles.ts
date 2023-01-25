@@ -5,6 +5,7 @@ import { color } from '../../styles/colors'
 export const Container = styled.div`
   flex: 1;
   display: flex;
+  width: 100vw !important;
   padding-bottom: 3rem;
   align-items: center;
 
@@ -23,12 +24,8 @@ export const Content = styled.div`
 export const ContentForm = styled(Form)`
   display: flex;
   flex-direction: column;
-
-  .content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 0 1rem;
-  }
+  width: 100vw;
+  align-items: center;
 
   .buton {
     margin-top: 2rem;
@@ -53,11 +50,12 @@ export const BoxForm = styled.div`
   animation: ${appearFromLeft} 1s;
   display: flex;
   flex-direction: column;
+  margin-top: 8rem;
 
   border: 1px solid ${color.green[10]};
   padding: 2rem;
 
-  width: 40rem;
+  width: 90vw;
 `
 export const Box1 = styled.div``
 
@@ -69,10 +67,10 @@ export const Box2 = styled.div`
 
   width: 70vw;
   align-self: center;
-  padding: 2rem;
+  padding: 2rem 1rem;
   border: 1px solid ${color.green[10]};
 
-  margin-top: 10rem;
+  margin-top: 8rem;
 
   h3 {
     margin-bottom: 2rem;
@@ -88,7 +86,7 @@ export const box = styled.div`
   grid-template-columns: 3fr 1fr;
 
   @media (max-width: 980px) {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: 100%;
   }
 
   grid-gap: 0 1rem;

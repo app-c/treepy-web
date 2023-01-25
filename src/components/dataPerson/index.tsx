@@ -3,6 +3,7 @@ import { Button } from '../Button'
 import { Input } from '../Input'
 import * as Dialog from '@radix-ui/react-dialog'
 import {
+  Box,
   BoxCard,
   BoxDialog,
   Boxform,
@@ -44,8 +45,8 @@ interface DataProps {
 }
 
 interface Props {
-  setStep: (item: number) => void
-  data: PropsSingUp
+  setStep?: (item: number) => void
+  data?: PropsSingUp
   Component?: any
   amount: number
   tree: number
@@ -163,73 +164,50 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
         <Content>
           <div className="person">
             <h2>Dados do comprador</h2>
-            <Input name="name" placeholder="digite seu nome" />
-            <Input name="email" placeholder="digite seu email" />
+            <Input label="Nome" name="name" placeholder="digite seu nome" />
+            <Input name="email" label="E-mail" placeholder="digite seu email" />
 
-            <div className="box">
-              <div>
-                <Input
-                  maxLength={2}
-                  mask="number"
-                  sizeW="4rem"
-                  name="area"
-                  placeholder="(xx)"
-                />
-              </div>
+            <Box>
+              <Input
+                maxLength={2}
+                mask="number"
+                name="area"
+                placeholder="(xx)"
+              />
 
-              <div className="marg">
-                <Input
-                  maxLength={9}
-                  sizeW="9rem"
-                  mask="number"
-                  name="phone"
-                  placeholder="telefone"
-                />
-              </div>
-            </div>
+              <Input
+                maxLength={9}
+                mask="number"
+                name="phone"
+                placeholder="telefone"
+              />
+            </Box>
           </div>
 
           <div className="localy">
             <h3>Endereço do comprador</h3>
 
-            <div className="box">
-              <Input name="street" placeholder="rua" />
+            <Input label="Rua" name="street" placeholder="rua" />
 
-              {/* <Input
-                sizeW="5rem"
-                mask="number"
-                name="number"
-                placeholder="Nº"
-              /> */}
-            </div>
+            <Input label="N°" mask="number" name="number" placeholder="Nº" />
 
-            <div className="box">
-              <div>
-                <Input sizeW="24rem" name="locality" placeholder="bairro" />
-              </div>
+            <Input label="Bairro" name="locality" placeholder="bairro" />
 
-              <div className="marg">
-                <Input
-                  sizeW="8rem"
-                  name="complement"
-                  placeholder="complemento"
-                />
-              </div>
-            </div>
+            <Input
+              label="Complemento"
+              name="complement"
+              placeholder="complemento"
+            />
             <Input name="city" placeholder="cidade" />
 
-            <div className="box">
-              <Input
-                sizeW="6rem"
-                maxLength={2}
-                name="region"
-                placeholder="estado"
-              />
+            <Input
+              maxLength={2}
+              name="region"
+              placeholder="estado"
+              label="Estado"
+            />
 
-              <div className="marg">
-                <Input mask="cep" name="postal_code" placeholder="CEP" />
-              </div>
-            </div>
+            <Input mask="cep" name="postal_code" placeholder="CEP" />
           </div>
         </Content>
 

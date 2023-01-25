@@ -136,34 +136,28 @@ export function SignUpPay() {
       <Header />
       <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
         {step === 1 && (
-          <S.Content>
-            <S.BoxForm>
-              <S.Box1>
-                <div className="content">
-                  <Input placeholder="Nome" name="name" />
-                  <Input placeholder="Sobrenome" name="midle_name" />
-                </div>
-                <Input placeholder="E-mail" name="email" />
-                <Input placeholder="Senha" name="password" />
-                <Input
-                  placeholder="Confirme sua senha"
-                  name="confimationPassword"
-                />
-              </S.Box1>
-            </S.BoxForm>
-          </S.Content>
+          <S.BoxForm>
+            <S.Box1>
+              <div className="content">
+                <Input placeholder="Nome" name="name" />
+                <Input placeholder="Sobrenome" name="midle_name" />
+              </div>
+              <Input placeholder="E-mail" name="email" />
+              <Input placeholder="Senha" name="password" />
+              <Input
+                placeholder="Confirme sua senha"
+                name="confimationPassword"
+              />
+            </S.Box1>
+          </S.BoxForm>
         )}
 
         {step === 2 && (
           <S.Box2>
             <h3>Nos informe seu endereço</h3>
             <S.box>
-              <S.boxInp1>
-                <Input placeholder="rua" name="street" />
-              </S.boxInp1>
-              <S.boxIn2>
-                <Input mask="number" placeholder="N°" name="number_home" />
-              </S.boxIn2>
+              <Input placeholder="rua" name="street" />
+              <Input mask="number" placeholder="N°" name="number_home" />
             </S.box>
             <Input placeholder="bairro" name="localy" />
             <Input placeholder="cidate" name="city" />

@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   /* height: 70vh; */
-  width: 90vw;
+  width: 100vw;
   align-items: center;
   justify-content: center;
 
@@ -25,6 +25,19 @@ export const Container = styled.div`
 `
 
 export const Bttom = styled.button``
+
+export const Box = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+  @media (max-width: 980px) {
+    width: 100%;
+  }
+
+  grid-gap: 0 1rem;
+  .marg {
+  }
+`
 
 export const Content = styled.div`
   display: grid;

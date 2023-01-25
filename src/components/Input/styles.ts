@@ -28,7 +28,7 @@ export const Box = styled.div<PropsInput>`
 `
 
 export const Container = styled.div<PropsInput>`
-  width: ${({ sizeW: h }) => h} !important;
+  width: ${({ sizeW: h }) => h};
   height: ${(h) => h.sizeH};
   padding: 5px 1rem;
 

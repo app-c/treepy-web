@@ -24,7 +24,7 @@ export function ModalPayment({ amount, tree }: Props) {
         <Content>
           <BoxContent>
             {steep === 1 && (
-              <DataPerson dataPerson={() => {}} setStep={(h) => setSteep(h)} />
+              <DataPerson tree={10} amount={10} setStep={(h) => setSteep(h)} />
             )}
 
             {steep === 2 && <Card tree={tree} amount={amount} />}
