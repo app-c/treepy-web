@@ -13,6 +13,8 @@ export const Container = styled.div`
   padding: 2rem;
   border-radius: 10px;
   border: 1px solid ${color.green[10]};
+
+  margin-top: 8rem;
   h1 {
     margin-bottom: 1rem;
   }

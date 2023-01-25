@@ -73,13 +73,12 @@ export const BoxGridFolha = styled.div`
   width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   grid-gap: 2rem;
-  margin-top: 8vh;
 
   @media (max-width: 780px) {
     padding: 0;
   }
 
-  .folha1 {
+  /* .folha1 {
     display: flex;
     justify-content: center;
     background-image: url(${folha});
@@ -124,7 +123,7 @@ export const BoxGridFolha = styled.div`
         font-size: 0.8rem;
       }
     }
-  }
+  } */
 
   .folha2 {
     display: flex;
@@ -271,4 +270,9 @@ export const ContentFolha = styled.div`
   @media (max-width: 780px) {
     margin-bottom: 20px;
   }
+`
+
+export const ContainerFolha = styled.div`
+  background-color: red;
+  /* height: 10rem; */
 `

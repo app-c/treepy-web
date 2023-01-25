@@ -8,8 +8,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0;
-  margin-top: 3rem;
+  height: 100%;
 `
 
 const fol = keyframes`
@@ -49,8 +48,22 @@ export const Box = styled.div<Props>`
     transform: scale(1.2);
   }
 
-  @media (max-width: 780) {
-    transform: scale(0.8);
+  @media (max-width: 780px) {
+    width: 9rem;
+    height: 10rem;
+    padding: 1.2rem;
+    border-radius: 0 4.5rem 0 4.5rem;
+
+    span {
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      align-self: center;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 0.6rem;
+    }
   }
 
   /* transition-property: ; */

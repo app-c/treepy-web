@@ -2,6 +2,7 @@ import {
   Box,
   BoxFolha,
   BoxGridFolha,
+  ContainerFolha,
   ContentFolha,
   ContentTextFolha,
 } from './styles'
@@ -33,8 +34,6 @@ export function Folha() {
             title="Tecnologia em prol do meio ambiente"
             text=" A tecnologia sendo usada para reduzir os impactos negativos no
             planeta"
-            sizeY="20rem"
-            sizeX="15rem"
             cor={color.orange[20]}
           />
 
@@ -42,16 +41,12 @@ export function Folha() {
             title="Promação de um futuro melhor às próximas gerações"
             text="Primeiro Programa de Créditos focado na geração de valor para o
             meio ambiente"
-            sizeY="20rem"
-            sizeX="15rem"
             cor={color.green[40]}
           />
 
           <FolhaAnimeted
             title="Compensação de danos causados"
             text="Oportunidade de compensar os danos causados ao meio ambiente"
-            sizeY="20rem"
-            sizeX="15rem"
             cor={color.green[10]}
           />
         </BoxGridFolha>

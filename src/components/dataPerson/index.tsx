@@ -24,6 +24,7 @@ import { getValidationErrors } from '../../utils/getValidationErrors'
 import { api } from '../../services/api'
 import { CardType } from '../CardType'
 import { useToast } from '../../context/ToastContext'
+import { PropsSingUp } from '../../pages/signUpPay'
 
 interface DataProps {
   name: string
@@ -44,19 +45,13 @@ interface DataProps {
 
 interface Props {
   setStep: (item: number) => void
-  data: (item: DataProps) => void
+  data: PropsSingUp
   Component?: any
   amount: number
   tree: number
 }
 
-export function DataPerson({
-  setStep,
-  dataPerson,
-  amount,
-  tree,
-  Component,
-}: Props) {
+export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
   const forRef = useRef<FormHandles>(null)
   const refContainer = useRef<any>(null)
 
@@ -76,56 +71,51 @@ export function DataPerson({
 
   const [user, setUser] = React.useState<object>()
 
-  React.useEffect(() => {
-    const rs = localStorage.getItem('@treepy:step1')
+  React.useEffect(() => {}, [])
 
-    setUser(JSON.parse(rs))
+  console.log(data)
+
+  const handleSubmit = useCallback(async (data: DataProps) => {
+    forRef.current?.setErrors({})
+
+    try {
+      const schema = Yup.object().shape({
+        name: Yup.string().required('nome obrigatório'),
+        email: Yup.string()
+          .required('email obrigatório')
+          .email('digite um email válido'),
+        locality: Yup.string().required('bairro obrigatório'),
+        street: Yup.string().required('rua obrigatório'),
+        phone: Yup.string().required('número obrigatório'),
+        complement: Yup.string(),
+        city: Yup.string().required('cidade obrigatório'),
+        region: Yup.string().required('estado obrigatório'),
+        postal_code: Yup.string().required(),
+        holder: Yup.string().required(),
+        expire: Yup.string().required(),
+        security_code: Yup.string().required(),
+        area: Yup.string().required('dd obrigatório'),
+      })
+
+      console.log(data)
+
+      await schema.validate(data, {
+        abortEarly: false,
+      })
+
+      // dataPerson(data)
+    } catch (error: any) {
+      addToast({
+        type: 'error',
+        title: 'Erro na autenticação',
+        description:
+          'Ocorreu um erro ao fazer login, verifique suas credenciais',
+      })
+
+      const err = getValidationErrors(error)
+      forRef.current?.setErrors(err)
+    }
   }, [])
-
-  const handleSubmit = useCallback(
-    async (data: DataProps) => {
-      forRef.current?.setErrors({})
-
-      try {
-        const schema = Yup.object().shape({
-          name: Yup.string().required('nome obrigatório'),
-          email: Yup.string()
-            .required('email obrigatório')
-            .email('digite um email válido'),
-          locality: Yup.string().required('bairro obrigatório'),
-          street: Yup.string().required('rua obrigatório'),
-          phone: Yup.string().required('número obrigatório'),
-          complement: Yup.string(),
-          city: Yup.string().required('cidade obrigatório'),
-          region: Yup.string().required('estado obrigatório'),
-          postal_code: Yup.string().required(),
-          holder: Yup.string().required(),
-          expire: Yup.string().required(),
-          security_code: Yup.string().required(),
-          area: Yup.string().required('dd obrigatório'),
-        })
-
-        console.log(data)
-
-        await schema.validate(data, {
-          abortEarly: false,
-        })
-
-        // dataPerson(data)
-      } catch (error: any) {
-        addToast({
-          type: 'error',
-          title: 'Erro na autenticação',
-          description:
-            'Ocorreu um erro ao fazer login, verifique suas credenciais',
-        })
-
-        const err = getValidationErrors(error)
-        forRef.current?.setErrors(err)
-      }
-    },
-    [dataPerson],
-  )
 
   const dataCard = {
     number: numberCard,
@@ -160,10 +150,16 @@ export function DataPerson({
 
   const parcelas = [1, 2, 3, 4]
 
+  console.log(data)
+
   return (
     <Container ref={refContainer}>
-      <h1>{user?.name}</h1>
-      <Form style={{ width: '100%' }} ref={forRef} onSubmit={handleSubmit}>
+      <Form
+        initialData={data}
+        style={{ width: '100%' }}
+        ref={forRef}
+        onSubmit={handleSubmit}
+      >
         <Content>
           <div className="person">
             <h2>Dados do comprador</h2>

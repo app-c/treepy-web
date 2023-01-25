@@ -34,7 +34,7 @@ export function Plan() {
 
       nav(`/signUp/${id}`)
     },
-    [select.type, value],
+    [nav, select.type, value],
   )
 
   return (

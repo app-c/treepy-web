@@ -11,25 +11,34 @@ import { useToast } from '../../context/ToastContext'
 import { useNavigate } from 'react-router'
 import { DataPerson } from '../../components/dataPerson'
 
-interface PropsSingUp {
+export interface PropsSingUp {
   name: string
   email: string
   password: string
   midle_name: string
   street: string
-  bairro: string
+  localy: string
   number_home: string
   city: string
-  state: string
-  cep: string
+  region: string
+  postal_code: string
+}
+
+interface PropsStep1 {
+  name: string
+  email: string
+  password: string
+  midle_name: string
 }
 
 export function SignUpPay() {
   const formRef = useRef<FormHandles>(null)
 
-  const nav = useNavigate()
-
   const { addToast } = useToast()
+  const [dados, setDados] = React.useState<PropsSingUp>({} as PropsSingUp)
+  const [dadosStep1, setDadosStep1] = React.useState<PropsStep1>(
+    {} as PropsStep1,
+  )
 
   const [step, setStep] = React.useState(1)
 
@@ -53,12 +62,25 @@ export function SignUpPay() {
 
         const schema1 = Yup.object().shape({
           street: Yup.string().required(),
-          bairro: Yup.string().required(),
-          number_home: Yup.string().required(),
+          localy: Yup.string().required(),
+          number_home: Yup.number().required(),
           city: Yup.string().required(),
-          state: Yup.string().required(),
-          cep: Yup.string().required(),
+          region: Yup.string().required(),
+          postal_code: Yup.string().required(),
         })
+
+        const dt = {
+          name: dadosStep1.name,
+          midle_name: dadosStep1.midle_name,
+          email: dadosStep1.email,
+          password: dadosStep1.password,
+          street: data.street,
+          localy: data.localy,
+          number_home: data.number_home,
+          city: data.city,
+          region: data.region,
+          postal_code: data.postal_code,
+        }
 
         if (step === 1) {
           await schema.validate(data, {
@@ -66,6 +88,12 @@ export function SignUpPay() {
           })
 
           setStep(2)
+          setDadosStep1({
+            name: data.name,
+            midle_name: data.midle_name,
+            email: data.email,
+            password: data.password,
+          })
         }
 
         if (step === 2) {
@@ -74,26 +102,10 @@ export function SignUpPay() {
           })
 
           setStep(3)
+          setDados(dt)
         }
 
-        const dt = {
-          name: data.name,
-          midle_name: data.midle_name,
-          email: data.email,
-          password: data.password,
-          street: data.street,
-          bairro: data.bairro,
-          number_home: data.number_home,
-          city: data.city,
-          state: data.state,
-          cep: data.cep,
-        }
-
-        const info = JSON.stringify(dt)
-
-        // localStorage.setItem('@treepy:step1')
-
-        await api.post('/user/create-user', dt)
+        // await api.post('/user/create-user', dt)
       } catch (err: any) {
         addToast({
           type: 'error',
@@ -107,8 +119,17 @@ export function SignUpPay() {
       }
       console.log(data)
     },
-    [addToast, step],
+    [
+      addToast,
+      dadosStep1.email,
+      dadosStep1.midle_name,
+      dadosStep1.name,
+      dadosStep1.password,
+      step,
+    ],
   )
+
+  console.log(dados)
 
   return (
     <S.Container>
@@ -141,31 +162,37 @@ export function SignUpPay() {
                 <Input placeholder="rua" name="street" />
               </S.boxInp1>
               <S.boxIn2>
-                <Input placeholder="N°" name="number_home" />
+                <Input mask="number" placeholder="N°" name="number_home" />
               </S.boxIn2>
             </S.box>
-            <Input placeholder="bairro" name="bairro" />
+            <Input placeholder="bairro" name="localy" />
             <Input placeholder="cidate" name="city" />
 
             <S.box>
               <S.boxInp1>
-                <Input placeholder="CEP" name="cep" />
+                <Input
+                  maxLength={2}
+                  autoCapitalize="upercase"
+                  mask="cep"
+                  placeholder="CEP"
+                  name="postal_code"
+                />
               </S.boxInp1>
 
               <S.boxIn2>
-                <Input placeholder="estado" name="state" />
+                <Input placeholder="estado" name="region" />
               </S.boxIn2>
             </S.box>
           </S.Box2>
         )}
         <div className="buton">
-          <Button sizeW="30vw" variant="B" title="CONTINUAR" />
+          {step < 3 && <Button sizeW="30vw" variant="B" title="CONTINUAR" />}
         </div>
       </S.ContentForm>
 
       {step === 3 && (
         <S.box3>
-          <DataPerson amount={10} tree={10} />
+          <DataPerson data={dados} amount={10} tree={10} />
         </S.box3>
       )}
     </S.Container>
