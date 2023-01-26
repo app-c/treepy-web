@@ -109,9 +109,9 @@ export function SignUpPay() {
       } catch (err: any) {
         addToast({
           type: 'error',
-          title: 'Erro na autenticação',
+          title: 'Erro ao realizar o cadastro',
           description:
-            'Ocorreu um erro ao fazer login, verifique suas credenciais',
+            'Ocorreu um erro ao realizar seu cadastro, verifique suas credenciais ou sua conexão com a rede',
         })
 
         const errors = getValidationErrors(err)

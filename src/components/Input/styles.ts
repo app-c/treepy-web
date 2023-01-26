@@ -15,7 +15,7 @@ export const Box = styled.div<PropsInput>`
 
   .label {
     margin-bottom: -10px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     align-self: flex-start;
 
     ${(h) =>

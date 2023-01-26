@@ -163,7 +163,7 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
       >
         <Content>
           <div className="person">
-            <h2>Dados do comprador</h2>
+            <h3>Dados do comprador</h3>
             <Input label="Nome" name="name" placeholder="digite seu nome" />
             <Input name="email" label="E-mail" placeholder="digite seu email" />
 
@@ -187,27 +187,34 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
           <div className="localy">
             <h3>Endereço do comprador</h3>
 
-            <Input label="Rua" name="street" placeholder="rua" />
+            <Box>
+              <Input label="Rua" name="street" placeholder="rua" />
 
-            <Input label="N°" mask="number" name="number" placeholder="Nº" />
+              <Input label="N°" mask="number" name="number" placeholder="Nº" />
+            </Box>
 
-            <Input label="Bairro" name="locality" placeholder="bairro" />
+            <Box>
+              <Input label="Bairro" name="locality" placeholder="bairro" />
 
-            <Input
-              label="Complemento"
-              name="complement"
-              placeholder="complemento"
-            />
+              <Input
+                label="Complemento"
+                name="complement"
+                placeholder="complemento"
+              />
+            </Box>
+
             <Input name="city" placeholder="cidade" />
 
-            <Input
-              maxLength={2}
-              name="region"
-              placeholder="estado"
-              label="Estado"
-            />
+            <Box>
+              <Input
+                maxLength={2}
+                name="region"
+                placeholder="estado"
+                label="Estado"
+              />
 
-            <Input mask="cep" name="postal_code" placeholder="CEP" />
+              <Input mask="cep" name="postal_code" placeholder="CEP" />
+            </Box>
           </div>
         </Content>
 
@@ -270,8 +277,8 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
 
             <BoxItem>
               {/* <CardType infoCard={dataCard} /> */}
-              <h3>Informçoes da compra</h3>
-              <span>TreepyCash</span>
+              <h3>Resumo da compra</h3>
+              <span>Treepycash</span>
               <p>R$ {amount.toFixed(2)}</p>
 
               <p>arvores {tree.toFixed(2)}</p>
@@ -280,30 +287,12 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
           </div>
         </ContainerCard>
 
-        <Dialog.Root>
-          <Dialog.Trigger asChild>
-            <Button
-              sizeH="2.2rem"
-              variant="AB"
-              type="submit"
-              title="FINALIZAR COMPRA"
-            />
-          </Dialog.Trigger>
-
-          <Dialog.Portal>
-            <Overlay />
-
-            <ContentDialog>
-              <h2>Adicionar transporte</h2>
-
-              <BoxDialog>
-                <Closed>
-                  <Button variant="C" title="CANCELAR" />
-                </Closed>
-              </BoxDialog>
-            </ContentDialog>
-          </Dialog.Portal>
-        </Dialog.Root>
+        <Button
+          sizeH="2.2rem"
+          variant="AB"
+          type="submit"
+          title="FINALIZAR COMPRA"
+        />
       </Form>
     </Container>
   )

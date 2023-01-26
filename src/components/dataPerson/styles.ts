@@ -48,6 +48,9 @@ export const Content = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 
   .person {
+    h3 {
+      margin-bottom: 2rem;
+    }
     .box {
       width: 100%;
       display: flex;
@@ -59,6 +62,9 @@ export const Content = styled.div`
   }
 
   .localy {
+    h3 {
+      margin-bottom: 2rem;
+    }
     display: flex;
     flex-direction: column;
 

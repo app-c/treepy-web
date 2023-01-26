@@ -91,10 +91,10 @@ export const Container = styled.div`
     margin-bottom: 1rem;
 
     h1 {
-      font-size: 2rem;
+      font-size: clamp(1rem, 4vw, 2rem);
     }
   }
-
+  /* 
   @media (max-width: 780px) {
     .header {
       display: flex;
@@ -104,7 +104,7 @@ export const Container = styled.div`
         font-size: 1.5rem;
       }
     }
-  }
+  } */
 `
 
 export const BoxIcones = styled.div`
@@ -112,7 +112,8 @@ export const BoxIcones = styled.div`
   align-items: center;
   justify-content: space-around;
   margin-bottom: 2rem;
-  width: 40vw;
+  width: clamp(30vw, 80vw, 20rem);
+  background-color: red;
 `
 export const ContentIco = styled.div<PropsProgres>`
   display: flex;
@@ -121,14 +122,14 @@ export const ContentIco = styled.div<PropsProgres>`
   background-color: ${({ progres: h }) => (h ? color.green[10] : 'none')};
   padding: 1rem;
   border-radius: 1.5rem;
-  width: 3rem;
-  height: 3rem;
+  width: clamp(2rem, 3.5rem, 4rem);
+  height: clamp(2rem, 3.5rem, 4rem);
 
-  @media (max-width: 850px) {
+  /* @media (max-width: 850px) {
     height: 3rem;
     width: 3rem;
     border: 1.5rem;
-  }
+  } */
 `
 
 export const Ico = styled.img`
@@ -410,13 +411,16 @@ export const ContainerResult = styled.div`
     }
 
     @media (max-width: 780px) {
+      align-items: center;
+      width: 100vw;
+      p {
+        font-size: calc(1vw + 60%);
+        color: ${color.dark[20]};
+        margin-top: 2rem;
+      }
       .modalbox {
-        display: flex;
-        width: 5rem;
-        height: 3.5rem;
-        align-items: center;
-        justify-content: center;
-        align-self: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
       }
     }
   }

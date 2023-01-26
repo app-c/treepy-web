@@ -33,7 +33,7 @@ import {
 } from '../../components/ModalVeiculosPessoal'
 import { Form } from '@unform/web'
 import { Input } from '../../components/Input'
-import { Link } from 'react-router-dom'
+import { json, Link } from 'react-router-dom'
 
 interface PropsItens {
   item: 'Kw/mês' | 'R$/mês' | 'm³/mês' | 'Botijões/mês' | string
@@ -238,6 +238,8 @@ export function Calculadora() {
     brl,
   }
 
+  const dt = JSON.stringify(data)
+
   return (
     <Box step={step}>
       <Header color={color.green[40]} />
@@ -302,11 +304,11 @@ export function Calculadora() {
                 <Button
                   pres={() => setStep(1)}
                   variant="C"
-                  sizeW="8rem"
+                  sizeW="10rem"
                   title="REFAZER"
                 />
-                <Link to={`/plan/${brl}`} style={{ textDecoration: 'none' }}>
-                  <Button title="veja os planos" sizeW="8rem" variant="AB" />
+                <Link to={`/plan/${dt}`} style={{ textDecoration: 'none' }}>
+                  <Button title="veja os planos" sizeW="10rem" variant="AB" />
                 </Link>
               </div>
             </div>
