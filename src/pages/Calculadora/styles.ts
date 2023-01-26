@@ -17,7 +17,8 @@ export const Box = styled.div<PropsProgres>`
   flex: 1;
   flex-direction: column;
   height: 100vh;
-  background-color: #fff;
+
+  align-items: center;
 
   ${(props) =>
     props.step === 1 &&
@@ -112,8 +113,7 @@ export const BoxIcones = styled.div`
   align-items: center;
   justify-content: space-around;
   margin-bottom: 2rem;
-  width: clamp(30vw, 80vw, 20rem);
-  background-color: red;
+  width: clamp(30vw, 80vw, 40rem);
 `
 export const ContentIco = styled.div<PropsProgres>`
   display: flex;
@@ -138,31 +138,30 @@ export const Ico = styled.img`
 
 export const BoxContent = styled.div`
   display: flex;
-  align-self: flex-end;
-  margin-right: 10rem;
-
   flex-direction: column;
+  align-self: flex-end;
+  margin-left: clamp(0, 10rem, 2rem)
 
   justify-content: center;
   align-items: center;
 
-  h1 {
-    font-size: 1.5rem;
-  }
+  /* h1 {
+    margin-bottom: 1rem;
+  } */
 
   @media (max-width: 780px) {
     align-self: center;
     width: 100vw;
     margin: 0;
-    padding: 2rem;
+    padding: 1rem;
 
     h1 {
-      font-size: 1.3rem;
-      /* align-self: center; */
-      margin-left: 5rem;
-      margin-bottom: 1rem;
     }
   }
+`
+
+export const SubTitle = styled.p`
+  font-size: clamp(1rem, 4vw, 2rem);
 `
 
 export const Content = styled.div<PropsProgres>`
@@ -216,7 +215,7 @@ export const Card = styled.div`
   color: #fff;
 
   p {
-    font-size: 1rem;
+    font-size: clamp(0.2rem, 1rem + 2vw, 1rem);
     margin-bottom: 1rem;
   }
 

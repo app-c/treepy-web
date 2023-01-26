@@ -28,15 +28,13 @@ export const Bttom = styled.button``
 
 export const Box = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
   @media (max-width: 980px) {
     width: 100%;
   }
 
   grid-gap: 0 1rem;
-  .marg {
-  }
 `
 
 export const Content = styled.div`

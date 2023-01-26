@@ -17,6 +17,7 @@ import {
   Content,
   ContentIco,
   Ico,
+  SubTitle,
   Table,
 } from './styles'
 
@@ -337,11 +338,10 @@ export function Calculadora() {
           <BoxContent>
             {step === 1 && (
               <>
+                <SubTitle>
+                  Consumo de <span className="ele">eletricidade</span>{' '}
+                </SubTitle>
                 <Form onSubmit={() => {}}>
-                  <h1>
-                    Consumo de <span className="ele">eletricidade</span>{' '}
-                  </h1>
-
                   <Card>
                     <p>
                       Insira seu consumo MENSAL ou o valor pago de energia

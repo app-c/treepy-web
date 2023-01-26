@@ -213,7 +213,12 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
                 label="Estado"
               />
 
-              <Input mask="cep" name="postal_code" placeholder="CEP" />
+              <Input
+                label="CEP"
+                mask="cep"
+                name="postal_code"
+                placeholder="CEP"
+              />
             </Box>
           </div>
         </Content>
