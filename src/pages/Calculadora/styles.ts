@@ -312,7 +312,7 @@ export const BoxResultado = styled.div`
 export const ContainerResult = styled.div`
   display: grid;
   /* background-color: green; */
-  width: 80%;
+  width: 100%;
   margin-left: 30%;
 
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -371,7 +371,7 @@ export const ContainerResult = styled.div`
   .result {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 100%;
     margin-top: 2rem;
     h1 {
       font-size: 2rem;

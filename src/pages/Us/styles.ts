@@ -20,13 +20,12 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
 
-    width: 100%;
     height: 100%;
 
     color: #fff;
 
     h1 {
-      font-size: calc(2.5vw + 2rem);
+      font-size: clamp(2rem, 6vw, 10vw);
       font-weight: 600;
     }
 
@@ -34,7 +33,7 @@ export const Container = styled.div`
       font-weight: 300;
       opacity: 0.9;
       font-style: italic;
-      font-size: calc(1vw + 0.5rem);
+      font-size: clamp(0.5rem, 3vw, 2rem);
     }
   }
 

@@ -2,21 +2,7 @@ import { Form } from '@unform/web'
 import { Button } from '../Button'
 import { Input } from '../Input'
 import * as Dialog from '@radix-ui/react-dialog'
-import {
-  Box,
-  BoxCard,
-  BoxDialog,
-  Boxform,
-  BoxItem,
-  BoxSelect,
-  Closed,
-  Container,
-  ContainerCard,
-  Content,
-  ContentCard,
-  ContentDialog,
-  Overlay,
-} from './styles'
+import * as S from './styles'
 
 import React, { useCallback, useRef } from 'react'
 import { FormHandles } from '@unform/core'
@@ -26,6 +12,7 @@ import { api } from '../../services/api'
 import { CardType } from '../CardType'
 import { useToast } from '../../context/ToastContext'
 import { PropsSingUp } from '../../pages/signUpPay'
+import { Selector } from '../selector'
 
 interface DataProps {
   name: string
@@ -52,6 +39,10 @@ interface Props {
   tree: number
 }
 
+interface SelectProps {
+  type: 'cartao' | 'pix' | 'boleto'
+}
+
 export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
   const forRef = useRef<FormHandles>(null)
   const refContainer = useRef<any>(null)
@@ -69,6 +60,8 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
   const [brand, setBrand] = React.useState('')
   const [securityCode, setSecurityCode] = React.useState('')
   const [qntParcela, setQntParce] = React.useState('')
+
+  const [select, setSelect] = React.useState<SelectProps>({ type: 'cartao' })
 
   const [user, setUser] = React.useState<object>()
 
@@ -154,20 +147,39 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
   console.log(data)
 
   return (
-    <Container ref={refContainer}>
+    <S.Container ref={refContainer}>
+      <S.BoxSelector>
+        <Selector
+          selected={select.type === 'cartao'}
+          title="Cartão"
+          pres={() => setSelect({ type: 'cartao' })}
+        />
+
+        <Selector
+          selected={select.type === 'pix'}
+          title="PIX"
+          pres={() => setSelect({ type: 'pix' })}
+        />
+
+        <Selector
+          selected={select.type === 'boleto'}
+          title="boleto"
+          pres={() => setSelect({ type: 'boleto' })}
+        />
+      </S.BoxSelector>
       <Form
         initialData={data}
         style={{ width: '100%' }}
         ref={forRef}
         onSubmit={handleSubmit}
       >
-        <Content>
+        <S.Content>
           <div className="person">
             <h3>Dados do comprador</h3>
             <Input label="Nome" name="name" placeholder="digite seu nome" />
             <Input name="email" label="E-mail" placeholder="digite seu email" />
 
-            <Box>
+            <S.Box>
               <Input
                 maxLength={2}
                 mask="number"
@@ -181,19 +193,19 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
                 name="phone"
                 placeholder="telefone"
               />
-            </Box>
+            </S.Box>
           </div>
 
           <div className="localy">
             <h3>Endereço do comprador</h3>
 
-            <Box>
+            <S.Box>
               <Input label="Rua" name="street" placeholder="rua" />
 
               <Input label="N°" mask="number" name="number" placeholder="Nº" />
-            </Box>
+            </S.Box>
 
-            <Box>
+            <S.Box>
               <Input label="Bairro" name="locality" placeholder="bairro" />
 
               <Input
@@ -201,11 +213,11 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
                 name="complement"
                 placeholder="complemento"
               />
-            </Box>
+            </S.Box>
 
             <Input name="city" placeholder="cidade" />
 
-            <Box>
+            <S.Box>
               <Input
                 maxLength={2}
                 name="region"
@@ -219,78 +231,80 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
                 name="postal_code"
                 placeholder="CEP"
               />
-            </Box>
+            </S.Box>
           </div>
-        </Content>
+        </S.Content>
 
-        <ContainerCard>
-          <div className="content">
-            <BoxCard>
-              <h3>Dados do cartão</h3>
-              <ContentCard>
-                <Boxform>
-                  <Input
-                    onChange={(h) => setName(h.currentTarget.value)}
-                    name="holder"
-                    placeholder="Nome do titular"
-                  />
-                  <Input
-                    onChange={(h) => setNumberCard(h.currentTarget.value)}
-                    name="number"
-                    type="text"
-                    placeholder="Digite o número do cartão"
-                  />
-
-                  <div className="content">
+        <S.ContainerCard>
+          {select.type === 'cartao' && (
+            <div className="content">
+              <S.BoxCard>
+                <h3>Dados do cartão</h3>
+                <S.ContentCard>
+                  <S.Boxform>
                     <Input
-                      maxLength={5}
-                      onChange={(h) => setExpMonth(h.currentTarget.value)}
-                      name="expire"
-                      label="Validade"
-                      placeholder="mês/ano"
-                      mask="expire"
-                      sizeW="6rem"
+                      onChange={(h) => setName(h.currentTarget.value)}
+                      name="holder"
+                      placeholder="Nome do titular"
+                    />
+                    <Input
+                      onChange={(h) => setNumberCard(h.currentTarget.value)}
+                      name="number"
+                      type="text"
+                      placeholder="Digite o número do cartão"
                     />
 
-                    <Input
-                      onChange={(h) => setSecurityCode(h.currentTarget.value)}
-                      name="security_code"
-                      placeholder="cvv"
-                      label="CVV do cartão"
-                      mask="number"
-                      maxLength={3}
-                    />
+                    <div className="content">
+                      <Input
+                        maxLength={5}
+                        onChange={(h) => setExpMonth(h.currentTarget.value)}
+                        name="expire"
+                        label="Validade"
+                        placeholder="mês/ano"
+                        mask="expire"
+                        sizeW="6rem"
+                      />
 
-                    <div className="selectparc">
-                      <span className="prc">Parcelas</span>
-                      <BoxSelect
-                        onChange={(h) => setQntParce(h.currentTarget.value)}
-                        name="qntParcela"
-                        value={qntParcela}
-                      >
-                        {parcelas.map((h) => (
-                          <option key={h} value={h}>
-                            {h}
-                          </option>
-                        ))}
-                      </BoxSelect>
+                      <Input
+                        onChange={(h) => setSecurityCode(h.currentTarget.value)}
+                        name="security_code"
+                        placeholder="cvv"
+                        label="CVV do cartão"
+                        mask="number"
+                        maxLength={3}
+                      />
+
+                      <div className="selectparc">
+                        <span className="prc">Parcelas</span>
+                        <S.BoxSelect
+                          onChange={(h) => setQntParce(h.currentTarget.value)}
+                          name="qntParcela"
+                          value={qntParcela}
+                        >
+                          {parcelas.map((h) => (
+                            <option key={h} value={h}>
+                              {h}
+                            </option>
+                          ))}
+                        </S.BoxSelect>
+                      </div>
                     </div>
-                  </div>
-                </Boxform>
-              </ContentCard>
-            </BoxCard>
+                  </S.Boxform>
+                </S.ContentCard>
+              </S.BoxCard>
 
-            <BoxItem>
-              {/* <CardType infoCard={dataCard} /> */}
-              <h3>Resumo da compra</h3>
-              <span>Treepycash</span>
-              <p>R$ {amount.toFixed(2)}</p>
+              <S.BoxItem>
+                {/* <CardType infoCard={dataCard} /> */}
+                <h3>Resumo da compra</h3>
+                <span>Treepycash</span>
+                <p>R$ {amount.toFixed(2)}</p>
 
-              <p>arvores {tree.toFixed(2)}</p>
-              <div className="item"></div>
-            </BoxItem>
-          </div>
-        </ContainerCard>
+                <p>arvores {tree.toFixed(2)}</p>
+                <div className="item"></div>
+              </S.BoxItem>
+            </div>
+          )}
+        </S.ContainerCard>
 
         <Button
           sizeH="2.2rem"
@@ -299,6 +313,6 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
           title="FINALIZAR COMPRA"
         />
       </Form>
-    </Container>
+    </S.Container>
   )
 }

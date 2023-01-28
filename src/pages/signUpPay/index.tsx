@@ -138,10 +138,8 @@ export function SignUpPay() {
         {step === 1 && (
           <S.BoxForm>
             <S.Box1>
-              <div className="content">
-                <Input placeholder="Nome" name="name" />
-                <Input placeholder="Sobrenome" name="midle_name" />
-              </div>
+              <Input placeholder="Nome" name="name" />
+              <Input placeholder="Sobrenome" name="midle_name" />
               <Input placeholder="E-mail" name="email" />
               <Input placeholder="Senha" name="password" />
               <Input

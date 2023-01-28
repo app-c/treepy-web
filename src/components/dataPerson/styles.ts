@@ -24,6 +24,15 @@ export const Container = styled.div`
   }
 `
 
+export const BoxSelector = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  width: clamp(200px, 300px, 500px);
+
+  margin-bottom: 3rem;
+`
+
 export const Bttom = styled.button``
 
 export const Box = styled.div`

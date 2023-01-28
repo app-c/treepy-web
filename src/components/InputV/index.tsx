@@ -7,7 +7,7 @@ import React, {
   useState,
 } from 'react'
 import { cep, currency, number } from '../../utils/mask'
-import { Box, Container } from './styles'
+import { Container } from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
@@ -16,7 +16,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   sizeW?: string
   sizeH?: string
 }
-export function Input({
+export function InputV({
   name,
   label,
   sizeW = '100%',
@@ -67,26 +67,23 @@ export function Input({
   )
 
   return (
-    <Box isFilled={isFilled}>
-      <p className="label">{label}</p>
-      <Container
-        sizeW={sizeW}
-        sizeH={sizeH}
-        isErro={!!error}
-        isFilled={isFilled}
-        isFocus={isFocused}
-      >
-        <input
-          defaultValue={defaultValue}
-          onFocus={() => setIsFocused(true)}
-          onKeyUp={handleChange}
-          onBlur={handleInput}
-          ref={inputRef}
-          {...rest}
-        />
+    <Container
+      sizeW={sizeW}
+      sizeH={sizeH}
+      isErro={!!error}
+      isFilled={isFilled}
+      isFocus={isFocused}
+    >
+      <input
+        defaultValue={defaultValue}
+        onFocus={() => setIsFocused(true)}
+        onKeyUp={handleChange}
+        onBlur={handleInput}
+        ref={inputRef}
+        {...rest}
+      />
 
-        {error}
-      </Container>
-    </Box>
+      {error}
+    </Container>
   )
 }

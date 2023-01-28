@@ -6,16 +6,26 @@ interface PropsSlide {
 }
 
 const ani = keyframes`
-  25% {
+  20% {
     margin-left: 0;
   }
 
-  50% {
+  40% {
     margin-left: -33.5%;
 
   }
 
-  90% {
+  60% {
+    margin-left: -33.5%;
+
+  }
+
+  80% {
+    margin-left: -66.7%;
+
+  }
+
+  95% {
     margin-left: -66.7%;
 
   }

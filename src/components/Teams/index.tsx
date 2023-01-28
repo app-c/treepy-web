@@ -77,33 +77,6 @@ export function Teams() {
           </Content>
 
           <Links>
-            <a href="https://www.instagram.com/danilo_simoes/img">
-              <AiFillInstagram size={40} color={color.green[20]} />
-            </a>
-
-            <a href="https://www.instagram.com/motta.aai/">
-              <AiFillLinkedin size={40} color={color.green[30]} />
-            </a>
-          </Links>
-        </Box>
-
-        <Box>
-          <Avatar>gelo</Avatar>
-
-          <Content>
-            <h2>Fátima Molina</h2>
-            <h4>
-              Inovação - <span>fatima.molina@treepy.com.br</span>{' '}
-            </h4>
-            <p>
-              Administradora de Empresas com capacitação em Gerenciamento de
-              Projetos pela Vanzolini e MBA em Gestão Estratégica Empresarial
-              pela FIA com 20 anos de experiência no setor de energia nas áreas
-              Comercial, Planejamento Estratégico, Qualidade, P&D e Inovação.
-            </p>
-          </Content>
-
-          <Links>
             <a href="https://www.instagram.com/fat.molina/">
               <AiFillInstagram size={40} color={color.green[20]} />
             </a>

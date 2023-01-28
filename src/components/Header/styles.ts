@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 import { color } from '../../styles/colors'
 
@@ -13,7 +13,7 @@ interface HeaderProps {
 export const Container = styled.div<HeaderProps>`
   display: flex;
   flex-direction: column;
-  height: calc(2vw + 10%);
+  height: clamp(20vh, 6rem);
   width: 100vw;
   position: fixed;
   z-index: 2;
@@ -26,16 +26,16 @@ export const Container = styled.div<HeaderProps>`
   }
 `
 
-export const BoxLog = styled(Link)<ProsLinks>`
+export const BoxLog = styled(NavLink)<ProsLinks>`
   display: flex;
-  width: calc(2vw + 8%);
+  position: fixed;
+  left: 10%;
+  width: calc(5vh + 8vw);
   align-items: center;
-  margin-right: 20%;
 
   @media (max-width: 780px) {
-    position: absolute;
     left: 2rem;
-    top: 37%;
+    top: 2.3rem;
 
     ${(props) =>
       props.show &&
@@ -47,10 +47,10 @@ export const BoxLog = styled(Link)<ProsLinks>`
       `};
   }
 
-  @media (max-width: 450px) {
+  /* @media (max-width: 450px) {
     width: calc(4vw + 20%);
     top: 33%;
-  }
+  } */
 `
 
 export const BoxLink = styled.div<ProsLinks>`

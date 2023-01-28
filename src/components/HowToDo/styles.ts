@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { color } from '../../styles/colors'
 
-import savana from '../../assets/savana.png'
+import savana from '../../assets/savana.jpg'
 
 export const Container = styled.div`
   width: 100vw;
@@ -74,7 +74,7 @@ export const BoxCard = styled.div`
 
     align-items: center;
     justify-content: center;
-    padding: 10px 30px;
+    padding: 10px 20px;
 
     color: #fff;
 
@@ -88,23 +88,25 @@ export const BoxCard = styled.div`
     }
 
     .title {
-      font-size: 1.5rem;
+      font-size: clamp(1rem, 1.7vw, 2.2rem);
       font-weight: 600;
       text-align: center;
     }
 
+    p {
+      text-align: center;
+      font-size: clamp(1rem, 2vw, 1rem);
+    }
+
     @media (max-width: 780px) {
-      .title {
+      /* .title {
         font-size: 1.2rem;
         margin-bottom: 5px;
-      }
+      } */
 
       line {
         width: 100%;
       }
-    }
-    p {
-      text-align: center;
     }
   }
 

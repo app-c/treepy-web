@@ -23,12 +23,18 @@ export const Inova = styled.img`
 export const BoxWorld = styled.div`
   background-image: url(${world});
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   width: 100vw;
 
-  /* width: 50vw;
-  height: 50vh; */
+  /* width: 50vw; */
+  height: 50vh;
+`
+
+export const Texts = styled.p`
+  margin-top: 20px;
+  font-weight: 300;
+  font-size: max(0.8rem, 1.1vw);
 `
 
 export const BoxTexts = styled.div`
@@ -37,7 +43,7 @@ export const BoxTexts = styled.div`
 
   /* justify-content: center; */
   h1 {
-    font-size: calc(1vw + 50%);
+    font-size: calc(2vw + 50%);
     margin-top: 10vh;
     color: ${color.green[20]};
   }
@@ -55,13 +61,9 @@ export const BoxTexts = styled.div`
     .buton {
       display: flex;
       width: 35%;
-      height: 80px;
+      height: 60px;
     }
   }
 
-  p {
-    margin-top: 20px;
-    font-weight: 300;
-  }
   padding: calc(1.4vw + 3rem);
 `
