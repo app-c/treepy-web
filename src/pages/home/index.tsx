@@ -1,5 +1,4 @@
-import { Box } from '@chakra-ui/react'
-import { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Outlet } from 'react-router-dom'
 import Banner from '../../components/Banner'
 import { ButtonContact } from '../../components/ButtonContact'
@@ -8,21 +7,38 @@ import { Folha } from '../../components/Folha'
 import { Header } from '../../components/Header'
 import { HowToDo } from '../../components/HowToDo'
 import { OurProject } from '../../components/OurProjects'
-import { BoxBanner, BoxCalc } from './styles'
+import * as S from './styles'
 
 export function Home() {
-  const refScrol = useRef(null)
+  const ref = useRef<HTMLDivElement>(null)
+  const [scrollPosition, setScrollPosition] = React.useState(0)
 
-  console.log(refScrol.current)
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(ref.current?.scrollTop || 0)
+    }
+
+    const current = ref.current
+    if (!current) return
+
+    current.addEventListener('scroll', handleScroll)
+
+    return () => {
+      current.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  console.log(ref.current?.scrollTop)
+
   return (
-    <Box ref={refScrol} display="flex" flexDirection="column">
+    <S.Container ref={ref}>
       <Header />
 
       <Banner />
 
-      <BoxCalc>
+      <S.BoxCalc>
         <Calc />
-      </BoxCalc>
+      </S.BoxCalc>
 
       <div id="how">
         <HowToDo />
@@ -41,6 +57,6 @@ export function Home() {
       </div>
 
       <Outlet />
-    </Box>
+    </S.Container>
   )
 }

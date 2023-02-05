@@ -13,7 +13,7 @@ interface HeaderProps {
 export const Container = styled.div<HeaderProps>`
   display: flex;
   flex-direction: column;
-  height: clamp(20vh, 6rem);
+  height: clamp(10vh, 8rem, 6rem);
   width: 100vw;
   position: fixed;
   z-index: 2;
@@ -30,12 +30,13 @@ export const BoxLog = styled(NavLink)<ProsLinks>`
   display: flex;
   position: fixed;
   left: 10%;
-  width: calc(5vh + 8vw);
+  align-self: center;
+  width: max(6rem, 10vw);
   align-items: center;
 
   @media (max-width: 780px) {
     left: 2rem;
-    top: 2.3rem;
+    top: 1.5rem;
 
     ${(props) =>
       props.show &&
@@ -44,7 +45,7 @@ export const BoxLog = styled(NavLink)<ProsLinks>`
 
         top: 3vw;
         left: 5rem;
-      `};
+      `}
   }
 
   /* @media (max-width: 450px) {
@@ -62,7 +63,9 @@ export const BoxLink = styled.div<ProsLinks>`
 export const Nave = styled.div<ProsLinks>`
   display: flex;
   flex-direction: row;
-  height: 100%;
+  /* height: 100%; */
+  height: clamp(8vh, 3rem, 8rem);
+
   align-items: center;
   justify-content: space-between;
 
@@ -192,9 +195,8 @@ export const BoxContato = styled.div`
 export const Li = styled(Link)<ProsLinks>`
   color: #fff;
   font-weight: 400;
-  font-size: calc(1vw + 10%);
+  font-size: calc(1vw + 15%);
   text-decoration: none;
-  transition: 1s;
   margin: 0 15px;
 
   transition: 0.5s;
