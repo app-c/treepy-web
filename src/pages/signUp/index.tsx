@@ -3,7 +3,7 @@ import { Button } from '../../components/Button'
 import { Header } from '../../components/Header'
 import { Input } from '../../components/Input'
 import { api } from '../../services/api'
-import { Box1, Box2, BoxForm, Container, Content, ContentForm } from './styles'
+import * as S from './styles'
 import * as Yup from 'yup'
 
 interface PropsSingUp {
@@ -65,12 +65,12 @@ export function SignUp() {
   }, [])
 
   return (
-    <Container>
+    <S.Container>
       <Header />
-      <Content>
-        <ContentForm onSubmit={handleSubmit}>
-          <BoxForm>
-            <Box1>
+      <S.Content>
+        <S.ContentForm onSubmit={handleSubmit}>
+          <S.BoxForm>
+            <S.Box1>
               <div className="content">
                 <Input placeholder="Nome" name="name" />
                 <Input placeholder="Sobrenome" name="midle_name" />
@@ -78,9 +78,9 @@ export function SignUp() {
               <Input placeholder="E-mail" name="email" />
               <Input placeholder="Senha" name="password" />
               <Input placeholder="Rua" name="street" />
-            </Box1>
+            </S.Box1>
 
-            <Box2>
+            <S.Box2>
               <div className="end">
                 <Input placeholder="Bairro" name="bairro" />
 
@@ -95,14 +95,14 @@ export function SignUp() {
                 <Input placeholder="Cidade" name="city" />
                 <Input placeholder="Estado" name="state" />
               </div>
-            </Box2>
+            </S.Box2>
             {/* </AnimetedForm> */}
-          </BoxForm>
+          </S.BoxForm>
           <div className="buton">
-            <Button variant="B" title="CRIAR CONTA" />
+            <Button variant="AC" title="CRIAR CONTA" />
           </div>
-        </ContentForm>
-      </Content>
-    </Container>
+        </S.ContentForm>
+      </S.Content>
+    </S.Container>
   )
 }

@@ -26,6 +26,7 @@ export const Container = styled.div`
 
   h1 {
     margin-bottom: 2rem;
+    font-size: calc(2vw + 3vh);
   }
 
   /* &::after {

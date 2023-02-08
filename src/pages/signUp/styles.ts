@@ -2,12 +2,18 @@ import { Form } from '@unform/web'
 import styled, { keyframes } from 'styled-components'
 import { color } from '../../styles/colors'
 
+import img1 from '../../assets/img1.jpeg'
+
 export const Container = styled.div`
   flex: 1;
   display: flex;
 
   height: 100vh;
   flex-direction: column;
+
+  background-image: url(${img1});
+
+  background-repeat: no-repeat;
 `
 
 export const Content = styled.div`

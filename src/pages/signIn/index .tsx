@@ -63,25 +63,19 @@ export function SignIn() {
     <Container>
       <Header color={color.green[40]} />
       <Content>
-        {/* <BoxLogo>
-          <div className="logo">
-            <Logo colorF={color.orange[20]} colorL="#fff" />
-          </div>
-        </BoxLogo> */}
-
         <ContentForm ref={formRef} onSubmit={handleSubmit}>
           <BoxForm>
             {/* <AnimetedForm> */}
             <h1>Entre com sua conta</h1>
             <div className="inputs">
-              <Input sizeH="3rem" placeholder="E-mail" name="email" />
-              <Input sizeH="3rem" placeholder="Senha" name="password" />
+              <Input sizeH="2.4rem" placeholder="E-mail" name="email" />
+              <Input sizeH="2.4rem" placeholder="Senha" name="password" />
             </div>
 
-            <Li to={'/signUp'}>criar uma conta</Li>
+            <Li to={'/signUp'}>criar conta</Li>
 
             <div className="buton">
-              <Button variant="B" title="ENTRAR" />
+              <Button sizeH="3rem" variant="AC" title="ENTRAR" />
             </div>
             {/* </AnimetedForm> */}
           </BoxForm>

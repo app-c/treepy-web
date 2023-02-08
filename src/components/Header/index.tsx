@@ -42,9 +42,7 @@ export function Header({ color = 'rgba(34, 71, 26, 0.5)' }: Props) {
             <Li show={show} to="/us">
               SOBRE NÓS
             </Li>
-            <Li show={show} to="/#how">
-              COMO FUNCIONA
-            </Li>
+            <a href="#how">COMO FUNCIONA</a>
             <Li show={show} to="/calc">
               CALCULADORA
             </Li>

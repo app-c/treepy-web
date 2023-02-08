@@ -6,7 +6,7 @@ export const BoxC = styled.div`
   flex-direction: column;
   padding: 2vw 10vw;
 
-  h2 {
+  h1 {
     margin-bottom: 10px;
   }
 
@@ -29,15 +29,14 @@ export const Container = styled.div`
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
-  border: 3px solid #cbcbcb;
+  /* border: 3px solid #cbcbcb; */
   padding: 1rem;
   border-radius: 5px;
 `
 
-export const Avatar = styled.div`
-  background-color: ${color.dark[10]};
+export const Avatar = styled.img`
   width: 100%;
-  height: 10vw;
+  /* height: 10vw; */
   border-radius: 5px;
 `
 

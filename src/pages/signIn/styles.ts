@@ -2,6 +2,7 @@ import { Form } from '@unform/web'
 import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import { color } from '../../styles/colors'
+import img2 from '../../assets/img2.jpeg'
 
 export const Container = styled.div`
   flex: 1;
@@ -10,6 +11,13 @@ export const Container = styled.div`
   height: 100vh;
   /* background-color: red; */
   flex-direction: column;
+  align-items: center;
+
+  background-image: url(${img2});
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  background-position: 50%;
 `
 
 export const Content = styled.div`
@@ -17,6 +25,8 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  width: 50vw;
 
   /* grid-gap: 1rem 2rem; */
 `
@@ -45,12 +55,10 @@ export const ContentForm = styled(Form)`
   .buton {
     margin-top: 3rem;
     align-self: center;
-    /* background-color: red; */
     width: 100%;
   }
 
   .inputs {
-    /* background-color: red; */
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -77,27 +85,35 @@ export const AnimetedForm = styled.div`
 `
 
 export const BoxForm = styled.div`
-  width: 50rem;
-  height: 100vh;
+  position: absolute;
+  /* width: 100%; */
+  height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #cdcdcd79;
+  border-radius: 10px;
+
+  top: 20%;
+
+  transform: translate(-50%);
 
   padding: 0 3rem;
 
   .end {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 
   h1 {
     color: #fff;
     margin-bottom: 2rem;
+    font-size: calc(1vw + 2.5vh);
   }
 `
 
 export const Li = styled(Link)`
-  color: ${color.orange[10]};
+  color: ${color.green[10]};
   align-self: flex-start;
   text-decoration: none;
   font-size: calc(60% + 1vh);

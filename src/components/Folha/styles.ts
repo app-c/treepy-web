@@ -5,23 +5,24 @@ import folha2 from '../../assets/folha2.svg'
 import folha3 from '../../assets/folha3.svg'
 
 export const Box = styled.div`
-  background-color: #fff;
-  /* padding: 20px 30px; */
-  height: 100vh;
+  display: flex;
+  width: 100vw;
+  background-color: #fcfcfc;
+  padding: 20px 30px;
+  /* height: 100vh; */
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 
   @media (max-width: 780px) {
     padding: 10px;
+    padding-bottom: 5rem;
   }
 `
 
 export const BoxFolha = styled.div`
   display: flex;
-  /* align-items: center; */
+  width: 100vw;
   flex-direction: column;
-  justify-content: center;
-  height: 100%;
 `
 
 export const ContentTextFolha = styled.div`
@@ -32,6 +33,7 @@ export const ContentTextFolha = styled.div`
 
   div {
     display: flex;
+    margin-top: 6rem;
 
     align-items: center;
 
@@ -69,6 +71,7 @@ export const ContentTextFolha = styled.div`
 
 export const BoxGridFolha = styled.div`
   padding: 0 10rem;
+  margin-top: 2rem;
   display: grid;
   width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

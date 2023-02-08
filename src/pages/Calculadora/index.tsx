@@ -339,13 +339,13 @@ export function Calculadora() {
             {step === 1 && (
               <>
                 <SubTitle>
-                  Consumo de <span className="ele">eletricidade</span>{' '}
+                  Consumo de <span className="ele">energia elétrica</span>{' '}
                 </SubTitle>
                 <Form onSubmit={() => {}}>
                   <Card>
                     <p>
                       Insira seu consumo MENSAL ou o valor pago de energia
-                      elétrica. As informaçoes constam na sua conta de energia
+                      elétrica. As informações constam na sua conta de energia
                       elétrica.
                     </p>
 
@@ -359,8 +359,8 @@ export function Calculadora() {
                         })
                       }
                     >
-                      <option value="Kw/mês">Kw/mês</option>
-                      <option value="R$/mês">R$/mes</option>
+                      <option value="Kwh/mês">Kwh/mês</option>
+                      <option value="R$/mês">R$/mês</option>
                     </BoxSelect>
 
                     <Input
@@ -379,8 +379,8 @@ export function Calculadora() {
                       }}
                     />
                     <div>
-                      <p>Emissões mensais: {totalCo2.eleTric.mes} (Kg CO2e)</p>
-                      <p>emissões anuais: {totalCo2.eleTric.anual} (Kg CO2e)</p>
+                      <p>Emissão mensal: {totalCo2.eleTric.mes} (kg CO²e)</p>
+                      <p>emissão anual: {totalCo2.eleTric.anual} (kg CO2e)</p>
                     </div>
                   </Card>
                 </Form>
@@ -432,8 +432,8 @@ export function Calculadora() {
                     />
                   </Form>
                   <div>
-                    <p>Emissões mensais: {totalCo2.gas.mes} (Kg CO2e)</p>
-                    <p>emissões anuais: {totalCo2.gas.anual} (Kg CO2e)</p>
+                    <p>Emissões mensais: {totalCo2.gas.mes} (kg CO2e)</p>
+                    <p>emissões anuais: {totalCo2.gas.anual} (kg CO2e)</p>
                   </div>
                 </Card>
               </>
@@ -488,8 +488,8 @@ export function Calculadora() {
                   {/* </ContentItens> */}
 
                   <div>
-                    <p>Emissões mensais: {totalCo2.transInd.mes} (Kg CO2e)</p>
-                    <p>emissões anuais: {totalCo2.transInd.anual} (Kg CO2e)</p>
+                    <p>Emissões mensais: {totalCo2.transInd.mes} (kg CO2e)</p>
+                    <p>emissões anuais: {totalCo2.transInd.anual} (kg CO2e)</p>
                   </div>
                 </Card>
               </>
@@ -539,8 +539,8 @@ export function Calculadora() {
                     ))}
                   </Table>
                   <div>
-                    <p>Emissões mensais: {totalCo2.transCol.mes} (Kg CO2e)</p>
-                    <p>emissões anuais: {totalCo2.transCol.anual} (Kg CO2e)</p>
+                    <p>Emissões mensais: {totalCo2.transCol.mes} (kg CO2e)</p>
+                    <p>emissões anuais: {totalCo2.transCol.anual} (kg CO2e)</p>
                   </div>
                 </Card>
               </>
@@ -573,8 +573,8 @@ export function Calculadora() {
                     ))}
                   </BoxSelect>
                   <div>
-                    <p>Emissões mensais: {totalCo2.food.mes} (Kg CO2e)</p>
-                    <p>emissões anuais: {totalCo2.food.anual} (Kg CO2e)</p>
+                    <p>Emissões mensais: {totalCo2.food.mes} (kg CO2e)</p>
+                    <p>emissões anuais: {totalCo2.food.anual} (kg CO2e)</p>
                   </div>
                 </Card>
               </>

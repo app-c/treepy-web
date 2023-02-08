@@ -28,7 +28,7 @@ export const Container = styled.div<HeaderProps>`
 
 export const BoxLog = styled(NavLink)<ProsLinks>`
   display: flex;
-  position: fixed;
+  position: absolute;
   left: 10%;
   align-self: center;
   width: max(6rem, 10vw);
@@ -41,8 +41,6 @@ export const BoxLog = styled(NavLink)<ProsLinks>`
     ${(props) =>
       props.show &&
       css`
-        position: absolute;
-
         top: 3vw;
         left: 5rem;
       `}
@@ -63,14 +61,36 @@ export const BoxLink = styled.div<ProsLinks>`
 export const Nave = styled.div<ProsLinks>`
   display: flex;
   flex-direction: row;
-  /* height: 100%; */
-  height: clamp(8vh, 3rem, 8rem);
+  height: 100%;
+  height: clamp(2vh, 4rem, 8rem);
 
   align-items: center;
   justify-content: space-between;
 
   padding: 0 4rem;
 
+  a {
+    color: #fff;
+    font-weight: 400;
+    font-size: calc(1vw + 15%);
+    text-decoration: none;
+    margin: 0 15px;
+
+    transition: 0.5s;
+
+    &:hover {
+      text-decoration: underline solid 2px;
+    }
+
+    @media (max-width: 780px) {
+      ${(h) =>
+        h.show &&
+        css`
+          font-size: 1.1rem;
+          margin: 10px 0;
+        `}
+    }
+  }
   .buton {
     display: flex;
     height: 100%;

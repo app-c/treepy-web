@@ -19,7 +19,9 @@ export function Us() {
 
       <About type="a" />
 
-      <HowToDo />
+      <div id="how">
+        <HowToDo />
+      </div>
 
       <Teams />
 

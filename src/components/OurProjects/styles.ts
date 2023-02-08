@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import mao from '../../assets/mao.png'
+import mao from '../../assets/mao.jpg'
+import { color } from '../../styles/colors'
 
 export const Container = styled.div`
   background-color: #e3e3e3;
@@ -10,8 +11,51 @@ export const Container = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(620px, 1fr));
   grid-template-rows: 40vw;
 
-  @media (max-width: 920px) {
+  /* @media (max-width: 920px) {
     grid-template-columns: repeat(auto-fit, minmax(410px, 1fr));
+  } */
+`
+
+export const cHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  h1 {
+    font-weight: 600;
+    font-size: calc(2vw + 2vh);
+  }
+
+  p {
+    font-size: calc(1vw + 2vh);
+  }
+
+  line {
+    height: 2px;
+    width: 100%;
+    background-color: #202020;
+  }
+
+  /* @media (max-width: 1920px) {
+      h1 {
+        font-size: 3vw;
+        margin-top: 20px;
+      }
+
+      p {
+        font-size: 1vw;
+      }
+    } */
+
+  @media (max-width: 1200px) {
+    /* h1 {
+      margin-top: 1rem;
+      font-size: calc(1vw + 1.8rem);
+    }
+
+    p {
+      font-size: calc(0.5vw + 1rem);
+    } */
   }
 `
 
@@ -32,49 +76,6 @@ export const ContentImage = styled.div`
 export const ContentText = styled.div`
   background-color: #fff;
   padding: 0 4vw;
-
-  .header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-
-    h1 {
-      font-weight: 600;
-      font-size: calc(3vw + 20%);
-    }
-
-    p {
-      font-size: calc(1vw + 10%);
-    }
-
-    line {
-      height: 2px;
-      width: 100%;
-      background-color: #202020;
-    }
-
-    /* @media (max-width: 1920px) {
-      h1 {
-        font-size: 3vw;
-        margin-top: 20px;
-      }
-
-      p {
-        font-size: 1vw;
-      }
-    } */
-
-    @media (max-width: 1200px) {
-      h1 {
-        margin-top: 1rem;
-        font-size: calc(1vw + 1.8rem);
-      }
-
-      p {
-        font-size: calc(0.5vw + 1rem);
-      }
-    }
-  }
 
   @media (max-width: 820px) {
     width: 100vw;
@@ -106,25 +107,6 @@ export const ContentText = styled.div`
       width: 50vw;
     } */
   }
-
-  .contact {
-    display: flex;
-    align-items: center;
-    margin-top: 1vh;
-    justify-content: space-between;
-
-    .logo {
-      width: calc(4vw + 5.5rem);
-      margin-right: 10%;
-    }
-
-    h1 {
-      color: #44bf17;
-      font-weight: 600;
-      font-size: calc(2vw + 35%);
-      margin-left: calc((-1vw) + (1rem));
-    }
-  }
 `
 
 export const Box = styled.div`
@@ -146,7 +128,11 @@ export const BoxText = styled.div`
 
   h3 {
     font-weight: 600;
-    font-size: calc(1vw + 0.5rem);
+    font-size: calc(1vw + 0.2rem);
+  }
+
+  p {
+    font-size: calc(1vw + 0.1rem);
   }
 
   @media (max-width: 700px) {
@@ -158,4 +144,29 @@ export const BoxText = styled.div`
       font-size: calc(1vw + 0.5rem);
     }
   }
+`
+export const Contact = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 1vh;
+  justify-content: space-between;
+
+  .logo {
+    width: calc(7vw + 10vh);
+    margin-right: 10%;
+    margin-top: -3px;
+  }
+
+  h1 {
+    color: #44bf17;
+    font-weight: 600;
+    font-size: calc(2vw + 0.8vh);
+    margin-left: calc((-1vw) + (1.2rem));
+  }
+`
+
+export const buton = styled.button`
+  background-color: ${color.green[10]};
+  padding: 10px 15px;
+  border-radius: 30px 0 30px 0;
 `

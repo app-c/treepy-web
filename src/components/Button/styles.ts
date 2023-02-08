@@ -9,7 +9,7 @@ type Props = {
 const propsVariat = {
   A: color.green[20],
   AB: color.green[10],
-  AC: color.green[30],
+  AC: color.green[40],
   B: color.orange[10],
   C: color.red[10],
 }
@@ -50,7 +50,7 @@ export const Button = styled.button`
   height: 100%;
 
   font-weight: 400;
-  font-size: calc(1vw + 50%);
+  font-size: calc(1vw + 2vh);
   background-color: transparent;
   align-items: center;
   justify-content: center;

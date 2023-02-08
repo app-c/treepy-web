@@ -80,7 +80,7 @@ export const Container = styled.div<PropsSlide>`
   }
 
   #slide1:checked ~ .s1 {
-    animation: ${ani} 10s;
+    animation: ${ani} 14s;
     animation-iteration-count: infinite;
     margin-left: ${(h) => h.pag};
   }
