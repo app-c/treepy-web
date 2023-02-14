@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import fundo from '../../assets/lago.png'
-import map from '../../assets/map.png'
 import { color } from '../../styles/colors'
 
 export const Container = styled.div``
@@ -9,11 +8,10 @@ export const Box = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  padding: 2rem;
 
   /* height: 70vh; */
 
-  /* background-image: url(${fundo});
+  background-image: url(${fundo});
   background-repeat: no-repeat;
   background-size: cover;
   padding: 2rem;
@@ -22,22 +20,20 @@ export const Box = styled.div`
   overflow: hidden;
   display: flex;
   z-index: 1;
-  background-attachment: fixed; */
-
-  h4 {
-    /* font-size: 2.5rem; */
-    margin-top: 2rem;
-  }
+  background-attachment: fixed;
 
   h1 {
     align-self: center;
-    margin-top: 2rem;
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 5px;
   }
 
   p {
     align-self: center;
+    color: #fff;
     font-size: 1.4rem;
-    margin: 2rem 0;
+    margin-bottom: 3rem;
   }
 
   .button {
@@ -65,24 +61,25 @@ export const Content = styled.div`
     } */
 
     textarea {
+      border: 1px solid ${color.dark[30]};
       margin-top: 1rem;
-      height: 14rem;
+      height: 20vh;
       border-radius: 4px;
       padding: 2rem;
-      background-color: #eeeeee;
-      margin-bottom: 2rem;
     }
   }
 
   .area2 {
-    padding: 0 10vh;
+    textarea {
+      height: 100%;
+      width: 100%;
+      padding: 2rem;
+      border-radius: 4px;
+      border: 1px solid ${color.dark[30]};
+    }
   }
 `
 
-export const BoxMap = styled.div`
-  width: 100vw;
-  height: 40rem;
-  background-image: url(${map});
-  background-size: 100%;
-  background-repeat: no-repeat;
+export const readMor = styled.div`
+  display: flex;
 `

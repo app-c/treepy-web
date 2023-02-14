@@ -12,7 +12,7 @@ export function Contact() {
     <Container>
       <Header />
 
-      <About type="a" />
+      <About type="b" />
 
       <Form onSubmit={() => {}}>
         <Box>

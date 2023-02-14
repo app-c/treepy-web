@@ -60,7 +60,6 @@ export const Content = styled.div`
 export const Links = styled.div`
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
   width: 70%;
   flex: 1;
   /* margin-top: 1rem; */
@@ -72,5 +71,6 @@ export const Links = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-left: 10px;
   }
 `

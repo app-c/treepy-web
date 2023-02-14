@@ -22,7 +22,7 @@ export const Box = styled.div`
 
 export const Container = styled.div<Props>`
   display: flex;
-  width: ${(h) => h.sizeW};
+  width: ${(h) => h.sizeW} !important;
   height: ${(h) => h.sizeH};
 
   align-items: center;
@@ -30,7 +30,7 @@ export const Container = styled.div<Props>`
   background-color: ${({ variant: h }) => propsVariat[h]};
   padding: 5px 1rem;
   border-radius: 8px;
-  min-width: calc(4vw + 10%);
+  /* min-width: calc(4vw + 10%); */
 
   &:hover {
     opacity: 0.9;
@@ -50,7 +50,7 @@ export const Button = styled.button`
   height: 100%;
 
   font-weight: 400;
-  font-size: calc(1vw + 2vh);
+  font-size: calc(16px + 1vw);
   background-color: transparent;
   align-items: center;
   justify-content: center;
