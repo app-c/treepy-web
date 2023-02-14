@@ -5,15 +5,14 @@ import { Button } from '../../components/Button'
 import { ButtonContact } from '../../components/ButtonContact'
 import { Header } from '../../components/Header'
 import { Input } from '../../components/Input'
-import { color } from '../../styles/colors'
-import { Box, BoxMap, Container, Content } from './styles'
+import { Box, Container, Content } from './styles'
 
 export function Contact() {
   return (
     <Container>
-      <Header color={color.green[20]} />
+      <Header />
 
-      <BoxMap />
+      <About type="a" />
 
       <Form onSubmit={() => {}}>
         <Box>
@@ -23,37 +22,35 @@ export function Contact() {
           <Content>
             <div className="area1">
               <Input
-                sizeH="3rem"
                 placeholder="Nome"
                 aria-placeholder="Nome"
+                label="Nome"
                 name="name"
               />
-              <Input sizeH="3rem" placeholder="Digite seu email" name="email" />
+              <Input
+                placeholder="digite seu sobrenome"
+                label="Sobrenome"
+                name="midlename"
+              />
+              <Input
+                label="E-mail"
+                placeholder="Digite seu email"
+                name="email"
+              />
               <textarea placeholder="Endereço" />
-              <Button sizeH="4rem" title="ENVIAR" variant="AC" />
             </div>
-
             <div className="area2">
-              <h4>ANTES DE FALAR COM A GENTE</h4>
-
-              <p>
-                Se você, como a gente quer transformar o mundo em um lugar
-                melhor, entre em contato conosco.
-              </p>
-
-              <p>
-                Se você sentiu falta de alguma informação, mande-nos uma
-                mensagem, será um prazer ouvi-lo.
-              </p>
-
-              <h4>INFORMAÇÕES DE CONTATO</h4>
+              <textarea placeholder="Mensagem" name="textare"></textarea>
             </div>
           </Content>
 
-          <div className="button"></div>
+          <div className="button">
+            <Button title="ENVIAR" variant="B" />
+          </div>
         </Box>
+
+        <ButtonContact />
       </Form>
-      <ButtonContact />
     </Container>
   )
 }
