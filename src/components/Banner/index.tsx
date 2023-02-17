@@ -79,9 +79,10 @@ export default function Banner() {
           >
             <BoxElement>
               <BoxText className="texts">
-                <p className="one">fazendo</p>
-                <p className="two">do mundo</p>
-                <p className="tree">um lugar melhor</p>
+                <p className="one">
+                  Já pensou transcender o valor de sustentabilidade para os seus
+                  clientes?
+                </p>
 
                 <ContainerButton>
                   <div className="b1">
@@ -106,9 +107,9 @@ export default function Banner() {
           >
             <BoxElement>
               <BoxText className="texts">
-                <p className="one">fazendo</p>
-                <p className="two">do mundo</p>
-                <p className="tree">um lugar melhor</p>
+                <p className="one">
+                  Somos uma inovação para o reflorestamento no Brasil
+                </p>
 
                 <ContainerButton>
                   <div className="b1">
@@ -133,9 +134,10 @@ export default function Banner() {
           >
             <BoxElement>
               <BoxText className="texts">
-                <p className="one">fazendo</p>
-                <p className="two">do mundo</p>
-                <p className="tree">um lugar melhor</p>
+                <p className="one">
+                  Temos uma oportunidade de reflorestamento para você ou seu
+                  negócio
+                </p>
 
                 <ContainerButton>
                   <div className="b1">

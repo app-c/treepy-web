@@ -80,7 +80,7 @@ export const Container = styled.div<PropsSlide>`
   }
 
   #slide1:checked ~ .s1 {
-    animation: ${ani} 14s;
+    animation: ${ani} 20s;
     animation-iteration-count: infinite;
     margin-left: ${(h) => h.pag};
   }
@@ -147,7 +147,7 @@ export const BoxElement = styled.div`
   justify-content: center;
   padding: 0 1rem;
 
-  margin-top: 7rem;
+  margin-top: 5rem;
 `
 
 export const BoxText = styled.div`
@@ -160,17 +160,24 @@ export const BoxText = styled.div`
   padding: 0 1rem;
 
   .one {
-    font-size: calc(4vw + 40%);
-    margin-left: 10vw;
-  }
-  .two {
-    margin-left: 10vw;
-    font-size: calc(5vw + 40%);
-  }
-  .tree {
-    margin-left: 10vw;
-    font-size: calc(5vw + 30%);
+    font-size: calc(12px + 2vw);
+    margin-left: 7vw;
+    width: 35rem;
     font-weight: 600;
+    color: #fff;
+    text-shadow: 0.04em 0 #343434;
+  }
+
+  @media (max-width: 780px) {
+    align-items: center;
+    justify-content: center;
+
+    .one {
+      margin-left: 0;
+      width: 80%;
+      text-align: start;
+      font-size: calc(12px + 2vw);
+    }
   }
 `
 

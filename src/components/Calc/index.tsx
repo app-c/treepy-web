@@ -11,8 +11,8 @@ export function Calc() {
         <div>
           <h2>Calculadora de CO2</h2>
           <p>
-            Calcule quantas árvores voê presisará plantar por ano para compensar
-            a emissão de CO2
+            Calcule quantas árvores você presisará plantar por ano para
+            compensar a emissão de CO₂
           </p>
         </div>
       </ContentText>
