@@ -8,7 +8,7 @@ export const Container = styled.div`
 
   display: grid;
 
-  grid-template-columns: repeat(auto-fit, minmax(620px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   grid-template-rows: 40vw;
 
   /* @media (max-width: 920px) {
@@ -23,11 +23,11 @@ export const cHeader = styled.div`
 
   h1 {
     font-weight: 600;
-    font-size: calc(2vw + 2vh);
+    /* font-size: calc(2vw + 2vh); */
   }
 
   p {
-    font-size: calc(1vw + 2vh);
+    /* font-size: calc(1vw + 2vh); */
   }
 
   line {

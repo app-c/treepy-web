@@ -34,6 +34,24 @@ export const GlobalStyle = createGlobalStyle`
 
     }
 
+    h1 {
+      font-size: calc(12px + 2.5vw);
+      font-weight: 900;
+    }
+
+    h2 {
+      font-size: calc(12px + 2vw);
+      font-weight: 800;
+    }
+    h3 {
+      font-size: calc(12px + 1.5vw);
+      font-weight: 600;
+    }
+
+    p {
+      font-size: calc(.5rem + .7vw)
+    }
+
 
 
     body, input, textarea, button {

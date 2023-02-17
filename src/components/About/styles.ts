@@ -68,9 +68,9 @@ export const BoxWorld = styled.div`
 `
 
 export const Texts = styled.p`
-  margin-top: 20px;
   font-weight: 300;
-  font-size: max(0.8rem, 1.1vw);
+  margin-top: 5px;
+  /* font-size: max(, 1.1vw); */
 `
 
 export const BoxTexts = styled.div<PropsShow>`
@@ -95,19 +95,13 @@ export const BoxTexts = styled.div<PropsShow>`
     `}
 
   /* justify-content: center; */
-  h2 {
-    margin-top: 10vh;
-    margin-bottom: 30px;
+  h1 {
+    margin-bottom: 10px;
     color: ${color.green[20]};
   }
 
   h3 {
     font-weight: 800;
-  }
-
-  p {
-    margin-bottom: 20px;
-    margin-top: 10px;
   }
 
   .interact {

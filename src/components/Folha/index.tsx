@@ -17,7 +17,6 @@ export function Folha() {
       <BoxFolha>
         <ContentTextFolha>
           <div>
-            <img src={gota} alt={gota} />
             <p className="title">Mindset</p>
           </div>
           <line className="line" />

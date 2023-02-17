@@ -10,10 +10,10 @@ export function OurProject() {
 
       <S.ContentText>
         <S.cHeader>
-          <h1>Nossos Projetos</h1>
+          <h2>Nossos Projetos</h2>
           <p>
-            Por meio de uma iniciativa inovadora, a tecnologia agora é uma
-            aliada na compensação ambiental.
+            Damos a oportunidade para todos contribuírem para o reflorestamento
+            na nossa plataforma.
           </p>
           <line />
         </S.cHeader>

@@ -9,9 +9,8 @@ export function ButtonContact() {
       <BoxDescription>
         <h1>Treepy</h1>
         <p>
-          Vista Nascemos da ideia de gerar valor para o meio ambiente, a partir
-          da oportunidade oferecida aos brasileiros de contribuírem para o
-          reflorestamento pro meio da inovação.
+          Nascemos da ideia onde todos podem gerar valor para o meio ambiente a
+          partir de uma plataforma inovadora
         </p>
       </BoxDescription>
 

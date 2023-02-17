@@ -50,7 +50,7 @@ export const Button = styled.button`
   height: 100%;
 
   font-weight: 400;
-  font-size: calc(16px + 1vw);
+  font-size: calc(0.5rem + 1vw);
   background-color: transparent;
   align-items: center;
   justify-content: center;

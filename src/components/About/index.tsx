@@ -29,12 +29,22 @@ export function About({ type = 'a' }: Props) {
           <BoxTexts readMor={showRead}>
             <h1>A Treepy</h1>
             <Texts>
-              Somos a esperança de mudar a realidade de degradação do meio
-              ambiente e da falta de florestas no Brasil. Somos a chance de
-              contribuir para a proteção da biodiversidade, da fauna e da flora,
-              e de preservar recursos hídricos importantes para o planeta.
+              O reflorestamento é crucial para o planeta, não apenas no Brasil,
+              mas em todo o mundo. As florestas são os pulmões da Terra,
+              fornecendo oxigênio e absorvendo o dióxido de carbono da
+              atmosfera.
+            </Texts>
+
+            <Texts>
+              Somos a esperança de mudar a realidade atual do meio ambiente no
+              Brasil. Criamos uma empresa que dá oportunidade para qualquer
+              pessoa ou negócio contribuir para a restauração da floresta e
+              preservar recursos hídricos importantes para o planeta.
+            </Texts>
+
+            <Texts>
               Juntos, podemos dar um novo passo em direção a um futuro mais
-              verde e sustentável, somo a Treepy.
+              verde e sustentável, somos a Treepy
             </Texts>
 
             {showRead && (
@@ -59,17 +69,6 @@ export function About({ type = 'a' }: Props) {
                 </Texts>
 
                 <Texts>
-                  O Treepy Cash é uma maneira que a Treepy criou para incentivar
-                  o reflorestamento. Ele funciona como uma moeda virtual que
-                  representa a quantidade de árvores que serão replantadas em
-                  florestas. Você poderá adquirir seus Treppycash diretamente em
-                  nosso site ou na compra de seus produtos nos parceiros
-                  credenciados, gerando assim os seus créditos para o
-                  reflorestamento. Assim poderá compensar suas emissões de gases
-                  de efeito estufa, apoiando o reflorestamento ao mesmo tempo.
-                </Texts>
-
-                <Texts>
                   Investindo em um futuro sustentável, juntamos forças para a
                   preservação do meio ambiente e a criação de um mundo melhor
                   para as gerações futuras. Com a incorporação de tecnologia e
@@ -87,6 +86,60 @@ export function About({ type = 'a' }: Props) {
                   um futuro mais verde e saudável para nós e para as gerações
                   futuras.
                 </Texts>
+
+                <Mission>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      marginTop: '3rem',
+                    }}
+                  >
+                    <h3>Inovação</h3>
+                    <Texts>
+                      O TreepyCash é uma maneira que a Treepy criou para
+                      incentivar o reflorestamento. Ele funciona como uma moeda
+                      virtual que representa a quantidade de árvores que serão
+                      plantadas na natureza.
+                    </Texts>
+
+                    <Texts>
+                      Você poderá adquirir seus Treepycash diretamente no nosso
+                      site, ou pelas compras de produtos ou serviços em nossos
+                      parceiros. Assim pode´ra compensar suas emeissões de gases
+                      de efeito estufa com reflorestamento.
+                    </Texts>
+                  </div>
+
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      marginTop: '3rem',
+                    }}
+                  >
+                    <h3>Parcerias</h3>
+                    <Texts>
+                      Precisamos começar hoje mesmo a maneira como criamos valor
+                      para os seus clientes e negócios através das ações de
+                      reflorestamento.
+                    </Texts>
+
+                    <Texts>
+                      Muitos negócios gastam recursos e tempo para atingirem
+                      objetivos técnicos porém sem transcender o valor disso
+                      tudo as pessoas que estão sendo impactadas na ponta.
+                    </Texts>
+
+                    <Texts>
+                      Mude isso com a Treepy e vamos juntos criar valor para
+                      todos, entre em contato para montarmos a parceria certaa
+                      para o seu negócio.
+                    </Texts>
+                  </div>
+                </Mission>
               </div>
             )}
 

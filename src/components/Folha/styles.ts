@@ -23,6 +23,8 @@ export const BoxFolha = styled.div`
   display: flex;
   width: 100vw;
   flex-direction: column;
+  height: 100vh;
+  justify-content: center;
 `
 
 export const ContentTextFolha = styled.div`
@@ -33,7 +35,7 @@ export const ContentTextFolha = styled.div`
 
   div {
     display: flex;
-    margin-top: 6rem;
+    margin-top: 3rem;
 
     align-items: center;
 
