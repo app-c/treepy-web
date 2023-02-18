@@ -23,6 +23,10 @@ export const GlobalStyle = createGlobalStyle`
         outline: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
 
         color: #878787;
@@ -44,7 +48,7 @@ export const GlobalStyle = createGlobalStyle`
       font-weight: 800;
     }
     h3 {
-      font-size: calc(12px + 1.5vw);
+      font-size: calc(1rem + .7vw);
       font-weight: 600;
     }
 

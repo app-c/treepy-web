@@ -2,6 +2,15 @@ import styled from 'styled-components'
 import mao from '../../assets/mao.jpg'
 import { color } from '../../styles/colors'
 
+export const box = styled.div`
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
 export const Container = styled.div`
   background-color: #e3e3e3;
   width: 100vw;
@@ -95,17 +104,7 @@ export const ContentText = styled.div`
   }
 
   .content {
-    /* width: 100vw; */
-
     padding: 10px;
-
-    div {
-      /* margin-bottom: 1px; */
-    }
-
-    /* @media (max-width: 1080px) {
-      width: 50vw;
-    } */
   }
 `
 
@@ -152,7 +151,7 @@ export const Contact = styled.div`
   justify-content: space-between;
 
   .logo {
-    width: calc(7vw + 10vh);
+    width: calc(2rem + 7vw);
     margin-right: 10%;
     margin-top: -3px;
   }
@@ -160,7 +159,7 @@ export const Contact = styled.div`
   h1 {
     color: #44bf17;
     font-weight: 600;
-    font-size: calc(2vw + 0.8vh);
+    font-size: calc(0.5rem + 1.5vw);
     margin-left: calc((-1vw) + (1.2rem));
   }
 `

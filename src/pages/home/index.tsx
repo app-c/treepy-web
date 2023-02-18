@@ -7,6 +7,8 @@ import { Folha } from '../../components/Folha'
 import { Header } from '../../components/Header'
 import { HowToDo } from '../../components/HowToDo'
 import { OurProject } from '../../components/OurProjects'
+import { Contact } from '../contact'
+import { Us } from '../Us'
 import * as S from './styles'
 
 export function Home() {
@@ -14,49 +16,44 @@ export function Home() {
   const [scrollPosition, setScrollPosition] = React.useState(0)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(ref.current?.scrollTop || 0)
-    }
-
-    const current = ref.current
-    if (!current) return
-
-    current.addEventListener('scroll', handleScroll)
-
-    return () => {
-      current.removeEventListener('scroll', handleScroll)
-    }
+    window.addEventListener('scroll', (h) => {})
   }, [])
-
-  console.log(ref.current?.scrollTop)
 
   return (
     <S.Container ref={ref}>
       <Header />
 
-      <Banner />
+      <S.ScrollBar>
+        <div id="top">
+          <Banner />
+        </div>
 
-      <S.BoxCalc>
-        <Calc />
-      </S.BoxCalc>
+        <S.BoxCalc>
+          <Calc />
+        </S.BoxCalc>
 
-      <div id="how">
-        <HowToDo />
-      </div>
+        <div id="how">
+          <HowToDo />
+        </div>
 
-      <div id="">
-        <Folha />
-      </div>
+        <div id="">
+          <Folha />
+        </div>
 
-      <div id="projec">
-        <OurProject />
-      </div>
+        <div id="projec">
+          <OurProject />
+        </div>
 
-      <div id="contact">
-        <ButtonContact />
-      </div>
+        <div id="us">
+          <Us />
+        </div>
 
-      <Outlet />
+        <div id="contact">
+          <Contact />
+        </div>
+
+        <Outlet />
+      </S.ScrollBar>
     </S.Container>
   )
 }

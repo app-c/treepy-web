@@ -12,10 +12,10 @@ export const Container = styled.div`
   background-repeat: no-repeat;
   background-position-y: 100%;
 
+  flex-direction: column;
   position: relative;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
   z-index: 1;
   background-attachment: fixed;
 

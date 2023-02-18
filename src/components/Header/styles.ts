@@ -26,7 +26,7 @@ export const Container = styled.div<HeaderProps>`
   }
 `
 
-export const BoxLog = styled(NavLink)<ProsLinks>`
+export const BoxLog = styled.a<ProsLinks>`
   display: flex;
   position: absolute;
   left: 10%;
@@ -212,7 +212,7 @@ export const BoxContato = styled.div`
   padding-left: calc(1vw + 10%);
 `
 
-export const Li = styled(Link)<ProsLinks>`
+export const Li = styled.a<ProsLinks>`
   color: #fff;
   font-weight: 400;
   font-size: calc(1vw + 15%);

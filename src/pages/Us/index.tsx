@@ -10,7 +10,6 @@ export function Us() {
   return (
     <div>
       <Container>
-        <Header />
         <div className="text">
           <h1>SOBRE NÓS</h1>
           <p>Esse é o porque existimos</p>
@@ -19,15 +18,9 @@ export function Us() {
 
       <About type="a" />
 
-      <div id="how">
-        <HowToDo />
-      </div>
-
       <Teams />
 
       <Move />
-
-      <ButtonContact />
     </div>
   )
 }

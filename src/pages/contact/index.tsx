@@ -10,8 +10,6 @@ import { Box, Container, Content } from './styles'
 export function Contact() {
   return (
     <Container>
-      <Header />
-
       <About type="b" />
 
       <Form onSubmit={() => {}}>

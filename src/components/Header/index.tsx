@@ -31,7 +31,7 @@ export function Header({ color = 'rgba(34, 71, 26, 0.5)' }: Props) {
             <div className="two"></div>
             <div className="tree"></div>
           </Menu>
-          <BoxLog to="/" show={show} className="logo">
+          <BoxLog href="#top" show={show} className="logo">
             <Logo colorL="#fff" colorF="#fff" />
           </BoxLog>
 
@@ -39,14 +39,12 @@ export function Header({ color = 'rgba(34, 71, 26, 0.5)' }: Props) {
             {/* <Li show={show} to="/">
               HOME
             </Li> */}
-            <Li show={show} to="/us">
+            <Li show={show} href="#us">
               SOBRE NÓS
             </Li>
-            <a href="#how">COMO FUNCIONA</a>
-            <Li show={show} to="/calc">
-              CALCULADORA
-            </Li>
-            <Li show={show} to="/contact">
+            <Li href="#how">COMO FUNCIONA</Li>
+            <Link to="/calc">CALCULADORA</Link>
+            <Li show={show} href="#contact">
               CONTATO
             </Li>
 

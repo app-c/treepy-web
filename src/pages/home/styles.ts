@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import folha from '../../assets/folha.svg'
-import { color } from '../../styles/colors'
+// import { color } from '../../styles/colors'
 
 export const Container = styled.div`
   display: flex;
@@ -8,6 +8,24 @@ export const Container = styled.div`
   flex: 1;
   overflow: scroll;
   height: 100%;
+`
+
+export const ScrollBar = styled.div`
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `
 
 export const BoxBanner = styled.div`

@@ -14,6 +14,12 @@ export const Container = styled.div`
 
   align-items: center;
 
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  z-index: 1;
+  background-attachment: fixed;
+
   .text {
     display: flex;
     flex-direction: column;

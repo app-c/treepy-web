@@ -35,6 +35,7 @@ import {
 import { Form } from '@unform/web'
 import { Input } from '../../components/Input'
 import { json, Link } from 'react-router-dom'
+import { HeaderC } from '../../components/HeaderC'
 
 interface PropsItens {
   item: 'Kw/mês' | 'R$/mês' | 'm³/mês' | 'Botijões/mês' | string
@@ -243,7 +244,7 @@ export function Calculadora() {
 
   return (
     <Box step={step}>
-      <Header color={color.green[40]} />
+      <HeaderC />
 
       {step === 6 ? (
         <BoxResultado>

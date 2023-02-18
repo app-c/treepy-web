@@ -11,16 +11,16 @@ import fatima from '../../assets/fatima.jpg'
 export function Teams() {
   return (
     <BoxC>
-      <h2>Conheça nossa equipe</h2>
+      <h3>Conheça nossa equipe</h3>
       <line className="line" />
       <Container>
         <Box>
           <Avatar src={carlos} />
 
           <Content>
-            <h2>Carlos Motta</h2>
+            <h3>Carlos Motta</h3>
             <h4>
-              Financeiro - <span>carlos.motta@treepy.com.br</span>{' '}
+              Financeiro <span>carlos.motta@treepy.com.br</span>{' '}
             </h4>
           </Content>
           <Links>
@@ -38,7 +38,7 @@ export function Teams() {
           <Avatar src={danilo} />
 
           <Content>
-            <h2>Danilo Simões</h2>
+            <h3>Danilo Simões</h3>
             <h4>
               Jurídico e RH - <span>danilo.simoes@treepy.com.br</span>{' '}
             </h4>
@@ -58,7 +58,7 @@ export function Teams() {
           <Avatar src={fatima} />
 
           <Content>
-            <h2>Fátima Molina</h2>
+            <h3>Fátima Molina</h3>
             <h4>
               Inovação - <span>fatima.molina@treepy.com.br</span>{' '}
             </h4>
@@ -79,7 +79,7 @@ export function Teams() {
           <Avatar src={luciana} />
 
           <Content>
-            <h2>Luciana Escames</h2>
+            <h3>Luciana Escames</h3>
             <h4>
               Meio Ambiente - <span>luciana.escames@treepy.com.br</span>{' '}
             </h4>
@@ -100,7 +100,7 @@ export function Teams() {
           <Avatar src={tonoli} />
 
           <Content>
-            <h2>Marcos Tonoli</h2>
+            <h3>Marcos Tonoli</h3>
             <h4>
               Operação - <span>marcos.tonoli@treepy.com.br</span>{' '}
             </h4>
