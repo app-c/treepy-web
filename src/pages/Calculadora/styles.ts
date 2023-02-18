@@ -76,12 +76,10 @@ export const Box = styled.div<PropsProgres>`
 `
 
 export const Container = styled.div`
-  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem;
 
   span {
     color: ${color.green[10]};
@@ -92,7 +90,7 @@ export const Container = styled.div`
     margin-bottom: 1rem;
 
     h1 {
-      font-size: clamp(1rem, 4vw, 2rem);
+      /* font-size: clamp(1rem, 4vw, 2rem); */
     }
   }
   /* 
@@ -113,7 +111,7 @@ export const BoxIcones = styled.div`
   align-items: center;
   justify-content: space-around;
   margin-bottom: 2rem;
-  width: clamp(30vw, 80vw, 40rem);
+  width: 80%;
 `
 export const ContentIco = styled.div<PropsProgres>`
   display: flex;
@@ -121,9 +119,9 @@ export const ContentIco = styled.div<PropsProgres>`
   justify-content: center;
   background-color: ${({ progres: h }) => (h ? color.green[10] : 'none')};
   padding: 1rem;
-  border-radius: 1.5rem;
-  width: clamp(2rem, 3.5rem, 4rem);
-  height: clamp(2rem, 3.5rem, 4rem);
+  border-radius: calc(2rem + 1vw);
+  width: calc(4rem + 1vw);
+  height: calc(4rem + 1vw);
 
   /* @media (max-width: 850px) {
     height: 3rem;
@@ -133,21 +131,15 @@ export const ContentIco = styled.div<PropsProgres>`
 `
 
 export const Ico = styled.img`
-  width: 150%;
+  width: 80%;
 `
 
 export const BoxContent = styled.div`
   display: flex;
   flex-direction: column;
   align-self: flex-end;
-  margin-left: clamp(0, 10rem, 2rem)
 
-  justify-content: center;
   align-items: center;
-
-  /* h1 {
-    margin-bottom: 1rem;
-  } */
 
   @media (max-width: 780px) {
     align-self: center;
@@ -160,8 +152,8 @@ export const BoxContent = styled.div`
   }
 `
 
-export const SubTitle = styled.p`
-  font-size: clamp(1rem, 4vw, 2rem);
+export const SubTitle = styled.h3`
+  /* font-size: clamp(1rem, 4vw, 2rem); */
 `
 
 export const Content = styled.div<PropsProgres>`
@@ -205,7 +197,7 @@ export const Content = styled.div<PropsProgres>`
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 4rem 2rem;
   border-radius: 1rem;
   background-color: ${color.green[40]};
   width: 50vw;
@@ -215,7 +207,6 @@ export const Card = styled.div`
   color: #fff;
 
   p {
-    font-size: clamp(0.2rem, 1rem + 2vw, 1rem);
     margin-bottom: 1rem;
   }
 
@@ -260,7 +251,7 @@ export const ContentItens = styled.div`
 export const BoxSelect = styled.select`
   margin-bottom: 1rem;
   border-radius: 5px;
-  height: 1.6rem;
+  height: 2rem;
   padding: 0.1rem 2rem;
 
   font-size: 1rem;
@@ -313,7 +304,7 @@ export const ContainerResult = styled.div`
   display: grid;
   /* background-color: green; */
   width: 100%;
-  margin-left: 30%;
+  margin-left: 20%;
 
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 1rem 5rem;
@@ -372,7 +363,6 @@ export const ContainerResult = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: 2rem;
     h1 {
       font-size: 2rem;
       color: ${color.green[40]};

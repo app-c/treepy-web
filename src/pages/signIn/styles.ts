@@ -20,6 +20,18 @@ export const Container = styled.div`
   background-position: 50%;
 `
 
+const appearFromLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-40%)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%)
+  }
+`
+
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -29,24 +41,6 @@ export const Content = styled.div`
   width: 50vw;
 
   /* grid-gap: 1rem 2rem; */
-`
-
-export const BoxLogo = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    rgb(255, 255, 255) 0,
-    #415225 80%,
-    #26350e 100%
-  );
-  /* background-color: linear-gradient(90deg, #fdfaf4 0%, #26350e 100%); */
-  .logo {
-    width: 60vh;
-  }
 `
 
 export const ContentForm = styled(Form)`
@@ -65,26 +59,8 @@ export const ContentForm = styled(Form)`
   }
 `
 
-const appearFromLeft = keyframes`
-  form {
-    opacity: 0;
-    transform: translateX(-50px)
-  }
-
-  form {
-    opacity: 1;
-    transform: translateX(0px)
-  }
-`
-
-export const AnimetedForm = styled.div`
-  width: 100%;
-  height: 100%;
-
-  animation: ${appearFromLeft};
-`
-
 export const BoxForm = styled.div`
+  animation: ${appearFromLeft} 2s;
   position: absolute;
   /* width: 100%; */
   height: 70vh;
@@ -117,4 +93,20 @@ export const Li = styled(Link)`
   align-self: flex-start;
   text-decoration: none;
   font-size: calc(60% + 1vh);
+`
+
+export const CreateAccont = styled.div`
+  background-color: #fff;
+  position: fixed;
+  align-self: center;
+  top: 90%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  font-size: calc(12px + 1vw);
 `

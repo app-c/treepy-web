@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components'
 
-import world from '../../assets/mundo.png'
+import world from '../../assets/flor.png'
 import { color } from '../../styles/colors'
 
 interface PropsShow {
@@ -19,12 +19,10 @@ export const Content = styled.div<PropsShow>`
   ${(h) =>
     h.readMor &&
     css`
-      width: 100vw;
-      grid-template-columns: repeat(auto-fit, minmax(750px, 0.8fr));
-
-      @media (max-width: 750px) {
-        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-      }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     `}
 `
 
@@ -76,17 +74,19 @@ export const Texts = styled.p`
 export const BoxTexts = styled.div<PropsShow>`
   display: flex;
   flex-direction: column;
+  width: 70vw;
 
   ${(h) =>
     h.readMor &&
     css`
-      display: flex;
-      width: 100vw;
+      width: 70vw;
+      align-items: center;
+      justify-content: center;
 
       h2 {
         margin-top: 10vw;
         margin-bottom: 20px;
-        color: ${color.green[20]};
+        color: ${color.green[10]};
       }
 
       h3 {
@@ -121,15 +121,17 @@ export const BoxTexts = styled.div<PropsShow>`
 `
 
 export const Box = styled.div`
-  width: 100vw;
+  width: 70vw;
   padding: 2rem;
   align-items: center;
   justify-content: center;
+  align-self: center;
 `
 
 export const Mission = styled.div`
   display: grid;
-  width: 80vw;
+  width: 100%;
+  margin-top: 2rem;
 
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1rem 2rem;

@@ -8,7 +8,7 @@ import {
   Label,
   Text,
 } from './styles'
-import fundo from '../../assets/floresta.jpg'
+import fundo from '../../assets/floresta.jpeg'
 import fundo2 from '../../assets/moça.jpg'
 import mao from '../../assets/mao.jpg'
 

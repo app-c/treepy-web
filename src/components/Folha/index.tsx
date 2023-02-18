@@ -46,7 +46,7 @@ export function Folha() {
           <FolhaAnimeted
             title="Compensação de danos causados"
             text="Oportunidade de compensar os danos causados ao meio ambiente"
-            cor={color.green[10]}
+            cor={color.green[30]}
           />
         </BoxGridFolha>
       </BoxFolha>

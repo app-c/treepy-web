@@ -13,7 +13,6 @@ interface HeaderProps {
 export const Container = styled.div<HeaderProps>`
   display: flex;
   flex-direction: column;
-  height: clamp(10vh, 8rem, 6rem);
   width: 100vw;
   position: fixed;
   z-index: 2;
@@ -62,7 +61,7 @@ export const Nave = styled.div<ProsLinks>`
   display: flex;
   flex-direction: row;
   height: 100%;
-  height: clamp(2vh, 4rem, 8rem);
+  height: calc(3rem + 2vw);
 
   align-items: center;
   justify-content: space-between;
@@ -113,6 +112,7 @@ export const Nave = styled.div<ProsLinks>`
       text-decoration: none;
       text-align: center;
       color: ${color.orange[20]};
+      font-size: calc();
     }
 
     @media (max-width: 780px) {

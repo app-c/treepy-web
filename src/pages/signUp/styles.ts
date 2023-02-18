@@ -2,17 +2,22 @@ import { Form } from '@unform/web'
 import styled, { keyframes } from 'styled-components'
 import { color } from '../../styles/colors'
 
-import img1 from '../../assets/img1.jpeg'
+import img1 from '../../assets/arvore.png'
 
 export const Container = styled.div`
   flex: 1;
   display: flex;
+  align-items: center;
+
+  color: #fff;
 
   height: 100vh;
+  width: 100vw;
   flex-direction: column;
 
   background-image: url(${img1});
-
+  background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
 `
 
@@ -22,22 +27,17 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 10rem;
 `
 
 export const ContentForm = styled(Form)`
+  width: 100vw;
+  align-items: center;
   display: flex;
   flex-direction: column;
   .buton {
     margin-top: 2rem;
-    width: 90vw;
+    width: 95%;
     align-self: center;
-  }
-
-  .content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 0 1rem;
   }
 `
 
@@ -66,6 +66,10 @@ export const BoxForm = styled.div`
   .end {
   }
 `
-export const Box1 = styled.div``
+export const Box1 = styled.div`
+  background-color: rgb(174, 174, 174, 0.8);
+  padding: 4rem;
+  border-radius: 5px;
+`
 
 export const Box2 = styled.div``

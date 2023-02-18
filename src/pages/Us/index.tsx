@@ -1,7 +1,4 @@
-import { About } from '../../components/About'
-import { ButtonContact } from '../../components/ButtonContact'
-import { Header } from '../../components/Header'
-import { HowToDo } from '../../components/HowToDo'
+import { About2 } from '../../components/About2'
 import { Move } from '../../components/Move'
 import { Teams } from '../../components/Teams'
 import { Container } from './styles'
@@ -16,7 +13,7 @@ export function Us() {
         </div>
       </Container>
 
-      <About type="a" />
+      <About2 />
 
       <Teams />
 

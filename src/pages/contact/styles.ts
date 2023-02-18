@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import fundo from '../../assets/lago.png'
+import fundo from '../../assets/fundoUs.png'
 import { color } from '../../styles/colors'
 
 export const Container = styled.div``
@@ -8,12 +8,11 @@ export const Box = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-
-  /* height: 70vh; */
+  height: 100vh;
 
   background-image: url(${fundo});
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   padding: 2rem;
 
   position: relative;

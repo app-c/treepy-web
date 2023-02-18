@@ -2,7 +2,7 @@ import { useCallback, useRef } from 'react'
 import { Button } from '../../components/Button'
 import { Header } from '../../components/Header'
 import { Input } from '../../components/Input'
-import { BoxForm, Container, Content, ContentForm, Li } from './styles'
+import * as S from './styles'
 import * as Yup from 'yup'
 import { FormHandles } from '@unform/core'
 import { useAuth } from '../../context/authcontext'
@@ -10,6 +10,7 @@ import { getValidationErrors } from '../../utils/getValidationErrors'
 import { color } from '../../styles/colors'
 import { Outlet, redirect } from 'react-router-dom'
 import { useToast } from '../../context/ToastContext'
+import { HeaderC } from '../../components/HeaderC'
 
 interface PropsSingUp {
   email: string
@@ -60,29 +61,30 @@ export function SignIn() {
   )
 
   return (
-    <Container>
-      <Header color={color.green[40]} />
-      <Content>
-        <ContentForm ref={formRef} onSubmit={handleSubmit}>
-          <BoxForm>
-            {/* <AnimetedForm> */}
+    <S.Container>
+      <HeaderC type="2" />
+      <S.Content>
+        <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
+          <S.BoxForm>
             <h1>Entre com sua conta</h1>
             <div className="inputs">
               <Input sizeH="2.4rem" placeholder="E-mail" name="email" />
               <Input sizeH="2.4rem" placeholder="Senha" name="password" />
             </div>
-
-            <Li to={'/signUp'}>criar conta</Li>
-
+            <S.Li to={'/forgot'}>Esqueceu sua senha?</S.Li>
             <div className="buton">
               <Button sizeH="3rem" variant="AC" title="ENTRAR" />
             </div>
-            {/* </AnimetedForm> */}
-          </BoxForm>
-        </ContentForm>
-      </Content>
+            <S.CreateAccont>
+              <S.Li to={'/signUp'} style={{ color: color.green[30] }}>
+                não tenho conta
+              </S.Li>
+            </S.CreateAccont>
+          </S.BoxForm>
+        </S.ContentForm>
+      </S.Content>
 
       <Outlet />
-    </Container>
+    </S.Container>
   )
 }

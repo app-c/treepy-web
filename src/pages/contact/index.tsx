@@ -10,7 +10,7 @@ import { Box, Container, Content } from './styles'
 export function Contact() {
   return (
     <Container>
-      <About type="b" />
+      <About />
 
       <Form onSubmit={() => {}}>
         <Box>
@@ -26,16 +26,11 @@ export function Contact() {
                 name="name"
               />
               <Input
-                placeholder="digite seu sobrenome"
-                label="Sobrenome"
-                name="midlename"
-              />
-              <Input
                 label="E-mail"
                 placeholder="Digite seu email"
                 name="email"
               />
-              <textarea placeholder="Endereço" />
+              <Input placeholder="assunto" label="Assunto" name="assunt" />
             </div>
             <div className="area2">
               <textarea placeholder="Mensagem" name="textare"></textarea>

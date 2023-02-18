@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import crianca from '../../assets/criança.jpg'
+import crianca from '../../assets/flor-1.png'
 
 export const Container = styled.div`
   display: flex;

@@ -25,8 +25,8 @@ export const Box = styled.div<Props>`
   justify-content: center;
 
   background-color: ${(h) => h.color};
-  width: 23rem;
-  height: 17rem;
+  width: calc(11rem + 6vw);
+  height: calc(10rem + 10vw);
   padding: 1.2rem;
 
   border-radius: 0 7rem 0 7rem;
@@ -37,7 +37,7 @@ export const Box = styled.div<Props>`
   text-align: center;
 
   span {
-    font-size: 1.3vw;
+    font-size: calc(0.5rem + 0.6vw);
     margin-bottom: 1rem;
     align-self: center;
     font-weight: 600;
@@ -49,13 +49,13 @@ export const Box = styled.div<Props>`
   }
 
   @media (max-width: 1100px) {
-    width: 9rem;
-    height: 10rem;
+    width: calc(10rem + 10vw);
+    height: calc(10rem + 10vw);
     padding: 1.2rem;
     border-radius: 0 4.5rem 0 4.5rem;
 
     span {
-      font-size: 1vw;
+      /* font-size: 1vw; */
       margin-bottom: 1rem;
       align-self: center;
       font-weight: 600;
@@ -73,7 +73,7 @@ export const Box = styled.div<Props>`
     border-radius: 0 4.5rem 0 4.5rem;
 
     span {
-      font-size: 0.8rem;
+      /* font-size: 0.8rem; */
       margin-bottom: 1rem;
       align-self: center;
       font-weight: 600;
