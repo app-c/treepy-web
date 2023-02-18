@@ -260,6 +260,20 @@ export const BoxSelect = styled.select`
   }
 `
 
+export const Buton = styled.button`
+  display: flex;
+  height: 2rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: ${color.red[10]};
+  color: #fff;
+  font-weight: 900;
+`
+
 export const Table = styled.table`
   border: 1px solid ${color.green[10]};
   border-collapse: collapse;
@@ -270,24 +284,8 @@ export const Table = styled.table`
     padding: 5px;
     font-size: 1rem;
 
-    .button-cancel {
-      display: flex;
-      height: 2rem;
-      width: 2.5rem;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      top: -20px;
-      left: 1.5rem;
-    }
-
     @media (max-width: 780px) {
       font-size: 0.67rem;
-
-      .button-cancel {
-        left: 0;
-        height: 1.5rem;
-      }
     }
   }
 `
@@ -297,7 +295,6 @@ export const BoxResultado = styled.div`
   flex-direction: column;
   flex: 1;
   align-items: center;
-  justify-content: center;
 `
 
 export const ContainerResult = styled.div`

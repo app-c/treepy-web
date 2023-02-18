@@ -11,6 +11,7 @@ import {
   BoxIcones,
   BoxResultado,
   BoxSelect,
+  Buton,
   Card,
   Container,
   ContainerResult,
@@ -391,7 +392,7 @@ export function Calculadora() {
             {step === 2 && (
               <>
                 <SubTitle>
-                  Consumo de <span className="t2">Gás</span>{' '}
+                  Consumo de <span className="t2">gás</span>{' '}
                 </SubTitle>
                 <Card>
                   <p>
@@ -412,7 +413,7 @@ export function Calculadora() {
                     }
                   >
                     <option value="R$/mês">R$/mês</option>
-                    <option value="m³/mês">m³/mes</option>
+                    <option value="m³/mês">m³/mês</option>
                     <option value="Botijões/mês">Botijões/mês</option>
                   </BoxSelect>
                   <Form onSubmit={() => {}} className="form">
@@ -433,8 +434,8 @@ export function Calculadora() {
                     />
                   </Form>
                   <div>
-                    <p>Emissões mensais: {totalCo2.gas.mes} (kg CO₂e)</p>
-                    <p>emissões anuais: {totalCo2.gas.anual} (kg CO₂e)</p>
+                    <p>Emissão mensal: {totalCo2.gas.mes} (kg CO₂e)</p>
+                    <p>emissão anual: {totalCo2.gas.anual} (kg CO₂e)</p>
                   </div>
                 </Card>
               </>
@@ -443,9 +444,9 @@ export function Calculadora() {
             {step === 3 && (
               <>
                 <div className="t">
-                  <h1>
+                  <SubTitle>
                     Transporte <span className="t2">individual</span>
-                  </h1>
+                  </SubTitle>
                 </div>
                 <Card>
                   <p>
@@ -475,13 +476,7 @@ export function Calculadora() {
                         <td>{h.Quilometragem}</td>
                         <td>{h.co2}</td>
                         <td>
-                          <div className="button-cancel">
-                            <Button
-                              title="X"
-                              variant="C"
-                              pres={() => removeItem(h.id)}
-                            />
-                          </div>
+                          <Buton onClick={() => removeItem(h.id)}>X</Buton>
                         </td>
                       </tr>
                     ))}
@@ -499,9 +494,9 @@ export function Calculadora() {
             {step === 4 && (
               <>
                 <div className="t">
-                  <h1>
-                    Transporte <span className="t2">Coletivo</span>{' '}
-                  </h1>
+                  <SubTitle>
+                    Transporte <span className="t2">coletivo</span>{' '}
+                  </SubTitle>
                 </div>
                 <Card>
                   <p>
@@ -528,13 +523,7 @@ export function Calculadora() {
                         <td>{h.Quilometragem}</td>
                         <td>{h.co2}</td>
                         <td>
-                          <div className="button-cancel">
-                            <Button
-                              title="X"
-                              variant="C"
-                              pres={() => removeItemC(h.id)}
-                            />
-                          </div>
+                          <Buton onClick={() => removeItemC(h.id)}>X</Buton>
                         </td>
                       </tr>
                     ))}
@@ -550,7 +539,7 @@ export function Calculadora() {
             {step === 5 && (
               <>
                 <div className="t">
-                  <h1>Alimentação</h1>
+                  <SubTitle>Alimentação</SubTitle>
                 </div>
 
                 <Card>

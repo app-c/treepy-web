@@ -1,5 +1,5 @@
 export const veiculosC = [
-  { veiculo: 'selecione um veiculo', id: 0, co2: 0 },
+  { veiculo: 'Selecione um veiculo', id: 0, co2: 0 },
   { veiculo: 'Táxi', id: 1, co2: 138.3694 },
   { veiculo: 'Metrô', id: 2, co2: 4 },
   { veiculo: 'Trem urbano', id: 3, co2: 10.5 },

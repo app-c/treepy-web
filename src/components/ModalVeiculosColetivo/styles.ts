@@ -122,4 +122,5 @@ export const BoxSelect = styled.select`
 
 export const Title = styled(Dialog.Title)`
   font-weight: 400;
+  font-size: calc(0.5rem + 1vw);
 `

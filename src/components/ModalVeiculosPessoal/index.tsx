@@ -157,13 +157,13 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     name="car"
                     value={car}
                   >
-                    <option value="0">selecionar veículo</option>
-                    <option value="Carro">carro</option>
-                    <option value="Moto">moto</option>
-                    <option value="Bicicleta">bicicleta</option>
+                    <option value="0">Selecionar veículo</option>
+                    <option value="Carro">Carro</option>
+                    <option value="Moto">Moto</option>
+                    <option value="Bicicleta">Bicicleta</option>
                     <option value="Patinete elétrico">Patinete elétrico</option>
                     <option value="Bicicleta elétrica">
-                      bicicleta elétrica
+                      Bicicleta elétrica
                     </option>
                   </BoxSelect>
                 )}
@@ -175,7 +175,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                       name="car"
                       value={combus}
                     >
-                      <option value="0">selecione o tipo de combustível</option>
+                      <option value="0">Selecione o tipo de combustível</option>
                       <option value="Diesel">Diesel</option>
                       <option value="Gasolina">Gasolina</option>
                       <option value="Elétrico">Elétrico</option>
@@ -193,7 +193,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                       name="car"
                       value={combus}
                     >
-                      <option value="0">selecione o tipo de combustível</option>
+                      <option value="0">Selecione o tipo de combustível</option>
                       <option value="Gasolina">Gasolina</option>
                       <option value="Etanol">Etanol</option>
                     </BoxSelect>
@@ -210,7 +210,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                       name="power"
                       value={power}
                     >
-                      <option value="0">selecione a potência do veículo</option>
+                      <option value="0">Selecione a potência do veículo</option>
 
                       <option value="1.0 à 1.5"> 1.0 à 1.5</option>
                       <option value="1.6 à 2.0">1.6 à 2.0</option>
@@ -224,7 +224,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     name="power"
                     value={power}
                   >
-                    <option value="0">selecione o modelo do veículo</option>
+                    <option value="0">Selecione o modelo do veículo</option>
 
                     <option value="Renault Zoe">Cerry Arrizo 5e</option>
                     <option value="JAC iEV40">JAC iEV40</option>
@@ -232,6 +232,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     <option value="BMW i3">BMW i3</option>
                     <option value="Chevrolet Bolt">Chevrolet Bolt</option>
                     <option value="Jaguar I-Pace">Jaguar I-Pace</option>
+                    <option value="Renault Zoe">Renault Zoe</option>
                     <option value="Outro">Outro</option>
                   </BoxSelect>
                 )}
@@ -243,7 +244,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     value={combusH}
                   >
                     <option value="0">
-                      selecione o tipo de combustível/híbrido
+                      Selecione o tipo de combustível/híbrido
                     </option>
                     <option value="Diesel">Diesel</option>
                     <option value="Gasolina">Gasolina</option>
@@ -257,7 +258,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     name="power"
                     value={power}
                   >
-                    <option value="0">selecione a potência do veículo</option>
+                    <option value="0">Selecione a potência do veículo</option>
 
                     <option value="Até 125cc"> Até 125cc</option>
                     <option value="126cc à 250cc">126cc à 250cc</option>
@@ -340,19 +341,19 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                 <ContentButton>
                   {combus !== '0' && car !== '0' && km !== '' && power !== '0' && (
                     <div className="button">
-                      <Button title="salvar" variant="A" pres={handleAddItem} />
+                      <Button title="Salvar" variant="A" pres={handleAddItem} />
                     </div>
                   )}
 
                   {combus === 'Híbrido' && car !== '0' && km !== '' && (
                     <div className="button">
-                      <Button title="salvar" variant="A" pres={handleAddItem} />
+                      <Button title="Salvar" variant="A" pres={handleAddItem} />
                     </div>
                   )}
 
                   {car === 'Bicicleta' && (
                     <div className="button">
-                      <Button title="salvar" variant="A" pres={handleAddItem} />
+                      <Button title="Salvar" variant="A" pres={handleAddItem} />
                     </div>
                   )}
 

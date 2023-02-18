@@ -1,7 +1,9 @@
 import * as Dialog from '@radix-ui/react-dialog'
+import { Form } from '@unform/web'
 import React, { useState } from 'react'
 import { veiculosC } from '../../utils/veiculosCol'
 import { Button } from '../Button'
+import { Input } from '../Input'
 import {
   BoxContent,
   BoxSelect,
@@ -10,7 +12,6 @@ import {
   Container,
   Content,
   ContentButton,
-  Input,
   Overlay,
   Title,
 } from './styles'
@@ -57,14 +58,14 @@ export function ModalVeiculosColetivo({ setItemC }: Props) {
     <Container>
       <Dialog.Root>
         <Dialog.Trigger asChild>
-          <ButtonAdd>adicionar transporte</ButtonAdd>
+          <ButtonAdd>Adicionar transporte</ButtonAdd>
         </Dialog.Trigger>
 
         <Dialog.Portal>
           <Overlay />
 
           <Content>
-            <Title>adicionar transporte</Title>
+            <Title>Adicionar transporte</Title>
 
             <BoxContent>
               <div className="box">
@@ -94,10 +95,14 @@ export function ModalVeiculosColetivo({ setItemC }: Props) {
                 {car !== '0' && (
                   <div className="input">
                     <h3>km</h3>
-                    <Input
-                      onChange={(h) => setKm(h.currentTarget.value)}
-                      placeholder="digite o km do veículo"
-                    />
+                    <Form onSubmit={() => {}}>
+                      <Input
+                        mask="number"
+                        name="km"
+                        onChange={(h) => setKm(h.currentTarget.value)}
+                        placeholder="digite o km do veículo"
+                      />
+                    </Form>
                   </div>
                 )}
               </div>
