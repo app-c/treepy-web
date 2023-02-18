@@ -63,7 +63,6 @@ export const Texts = styled.p`
 export const BoxTexts = styled.div<PropsShow>`
   display: flex;
   flex-direction: column;
-  width: 70vw;
 
   ${(h) =>
     h.readMor &&

@@ -15,7 +15,7 @@ export const box = styled.div`
 `
 
 export const logoBox = styled.div`
-  width: calc(5rem + 5vw);
+  width: calc(5rem + 6vw);
   background-color: rgb(202, 202, 202, 0.8);
   padding: 10px;
   border-radius: 5px;

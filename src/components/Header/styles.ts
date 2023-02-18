@@ -27,10 +27,10 @@ export const Container = styled.div<HeaderProps>`
 
 export const BoxLog = styled.a<ProsLinks>`
   display: flex;
-  position: absolute;
-  left: 10%;
+  /* position: absolute; */
+  margin-left: 6rem;
   align-self: center;
-  width: max(6rem, 10vw);
+  width: calc(4rem + 4vw);
   align-items: center;
 
   @media (max-width: 780px) {
@@ -71,7 +71,7 @@ export const Nave = styled.div<ProsLinks>`
   a {
     color: #fff;
     font-weight: 400;
-    font-size: calc(1vw + 15%);
+    font-size: calc(12px + 0.3vw);
     text-decoration: none;
     margin: 0 15px;
 
@@ -98,7 +98,7 @@ export const Nave = styled.div<ProsLinks>`
     align-items: center;
     justify-content: center;
 
-    padding: 0.5rem;
+    padding: 5px;
 
     transition: 1s;
 
@@ -112,7 +112,7 @@ export const Nave = styled.div<ProsLinks>`
       text-decoration: none;
       text-align: center;
       color: ${color.orange[20]};
-      font-size: calc();
+      font-size: calc(12px + 0.2vw);
     }
 
     @media (max-width: 780px) {

@@ -17,9 +17,11 @@ export function About2() {
   return (
     <Container>
       <Content readMor={showRead}>
-        <div className="image">
-          <Image readMor={showRead} src={flor} alt="mundo" />
-        </div>
+        {!showRead && (
+          <div className="image">
+            <Image readMor={showRead} src={flor} alt="mundo" />
+          </div>
+        )}
 
         <BoxTexts readMor={showRead}>
           <h1>A Treepy</h1>

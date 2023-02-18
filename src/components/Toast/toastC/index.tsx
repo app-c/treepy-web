@@ -14,7 +14,7 @@ export function ToastC({ mess, style }: Props) {
   useEffect(() => {
     const timer = setTimeout(() => {
       removeToas(mess.id)
-    }, 3000)
+    }, 6000)
 
     return () => {
       clearTimeout(timer)

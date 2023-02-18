@@ -14,6 +14,7 @@ export const Container = styled.div`
   height: 100vh;
   width: 100vw;
   flex-direction: column;
+  padding-bottom: 2rem;
 
   background-image: url(${img1});
   background-position: center;
@@ -34,11 +35,16 @@ export const ContentForm = styled(Form)`
   align-items: center;
   display: flex;
   flex-direction: column;
-  .buton {
-    margin-top: 2rem;
-    width: 95%;
-    align-self: center;
-  }
+  padding-bottom: 2rem;
+`
+
+export const button = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  align-self: center;
+  width: 20rem;
 `
 
 const appearFromLeft = keyframes`
@@ -57,19 +63,29 @@ const appearFromLeft = keyframes`
 export const BoxForm = styled.div`
   animation: ${appearFromLeft} 0.4s;
   display: grid;
-  width: 100vw;
+  width: 90vw;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  grid-gap: 0 3rem;
+  grid-gap: 1rem 3rem;
 
-  padding: 0 3rem;
+  padding: 1rem 3rem;
 
+  @media (max-width: 780px) {
+    width: 80vw;
+    padding: 0;
+    align-items: center;
+  }
   .end {
   }
 `
 export const Box1 = styled.div`
-  background-color: rgb(174, 174, 174, 0.8);
+  background-color: rgb(174, 174, 174, 0.6);
   padding: 4rem;
   border-radius: 5px;
+
+  @media (max-width: 780px) {
+    padding: 20px;
+    width: 80vw;
+  }
 `
 
 export const Box2 = styled.div``

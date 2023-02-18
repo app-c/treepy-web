@@ -22,18 +22,20 @@ export function Header({ color = 'rgba(34, 71, 26, 0.5)' }: Props) {
     <>
       <Container color={color}>
         <BoxContato>
-          <p>atendimento@treepy.com.br</p>
+          <a href="mailto:atendimento@treepy.com.br">
+            atendimento@treepy.com.br
+          </a>
         </BoxContato>
 
         <BoxLink show={show}>
+          <BoxLog href="#top" show={show} className="logo">
+            <Logo colorL="#fff" colorF="#fff" />
+          </BoxLog>
           <Menu show={show} onClick={() => setShow(!show)}>
             <div className="one"></div>
             <div className="two"></div>
             <div className="tree"></div>
           </Menu>
-          <BoxLog href="#top" show={show} className="logo">
-            <Logo colorL="#fff" colorF="#fff" />
-          </BoxLog>
 
           <Nave show={show}>
             {/* <Li show={show} to="/">
@@ -42,7 +44,9 @@ export function Header({ color = 'rgba(34, 71, 26, 0.5)' }: Props) {
             <Li show={show} href="#us">
               SOBRE NÓS
             </Li>
-            <Li href="#how">COMO FUNCIONA</Li>
+            <Li show={show} href="#how">
+              COMO FUNCIONA
+            </Li>
             <Link to="/calc">CALCULADORA</Link>
             <Li show={show} href="#contact">
               CONTATO

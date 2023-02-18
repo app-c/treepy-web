@@ -1,50 +1,57 @@
-import React, { useCallback, useRef } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { Button } from '../../components/Button'
-import { Header } from '../../components/Header'
 import { Input } from '../../components/Input'
 import { api } from '../../services/api'
 import * as S from './styles'
 import * as Yup from 'yup'
+import { HeaderC } from '../../components/HeaderC'
 import { getValidationErrors } from '../../utils/getValidationErrors'
 import { FormHandles } from '@unform/core'
 import { useToast } from '../../context/ToastContext'
-import { useNavigate } from 'react-router'
+import { Loading } from '../../components/Loading'
+import { useNavigate } from 'react-router-dom'
 import { DataPerson } from '../../components/dataPerson'
 
-export interface PropsSingUp {
+interface PropsSingUp {
   name: string
   email: string
   password: string
   midle_name: string
   street: string
-  localy: string
+  bairro: string
   number_home: string
   city: string
-  region: string
-  postal_code: string
+  state: string
+  cep: string
 }
 
-interface PropsStep1 {
+interface Step1 {
   name: string
+  midle_name: string
   email: string
   password: string
-  midle_name: string
 }
 
 export function SignUpPay() {
+  const [step, setStepe] = useState(1)
+  const [dadosStep1, setDadosStep1] = useState<Step1>({
+    name: '',
+    midle_name: '',
+    email: '',
+    password: '',
+  })
   const formRef = useRef<FormHandles>(null)
-
   const { addToast } = useToast()
-  const [dados, setDados] = React.useState<PropsSingUp>({} as PropsSingUp)
-  const [dadosStep1, setDadosStep1] = React.useState<PropsStep1>(
-    {} as PropsStep1,
-  )
+  const nv = useNavigate()
 
-  const [step, setStep] = React.useState(1)
+  const [load, setLoad] = useState(false)
+  const [dados, setDados] = useState<PropsSingUp>()
 
   const handleSubmit = useCallback(
     async (data: PropsSingUp) => {
       formRef.current?.setErrors({})
+      setLoad(true)
+
       try {
         const passwordSchema = Yup.string().required('Password is required')
 
@@ -62,11 +69,13 @@ export function SignUpPay() {
 
         const schema1 = Yup.object().shape({
           street: Yup.string().required(),
-          localy: Yup.string().required(),
           number_home: Yup.number().required(),
           city: Yup.string().required(),
-          region: Yup.string().required(),
-          postal_code: Yup.string().required(),
+          bairro: Yup.string().required(),
+          state: Yup.string()
+            .uppercase()
+            .required('Estado deve ser com letras mausculas'),
+          cep: Yup.string().required().min(9),
         })
 
         const dt = {
@@ -75,11 +84,11 @@ export function SignUpPay() {
           email: dadosStep1.email,
           password: dadosStep1.password,
           street: data.street,
-          localy: data.localy,
+          bairro: data.bairro,
           number_home: data.number_home,
           city: data.city,
-          region: data.region,
-          postal_code: data.postal_code,
+          state: data.state,
+          cep: data.cep,
         }
 
         if (step === 1) {
@@ -87,37 +96,48 @@ export function SignUpPay() {
             abortEarly: false,
           })
 
-          setStep(2)
+          setStepe(2)
           setDadosStep1({
             name: data.name,
             midle_name: data.midle_name,
             email: data.email,
             password: data.password,
           })
+          setLoad(false)
         }
 
         if (step === 2) {
+          setLoad(true)
           await schema1.validate(data, {
             abortEarly: false,
           })
 
-          setStep(3)
-          setDados(dt)
-        }
+          await api.post('/user/create-user', dt).then((h) => {
+            if (h.status === 200) {
+              alert('Sucesso')
+              setLoad(false)
+              nv('/signIn')
+            }
+          })
 
-        // await api.post('/user/create-user', dt)
+          setDados(dt)
+          setStepe(3)
+        }
       } catch (err: any) {
+        setLoad(false)
+        const msn = err.response?.data
+          ? err.response.data.message
+          : 'Ocorreu um erro ao realizar seu cadastro, verifique suas credenciais ou sua conexão com a rede'
         addToast({
           type: 'error',
           title: 'Erro ao realizar o cadastro',
-          description:
-            'Ocorreu um erro ao realizar seu cadastro, verifique suas credenciais ou sua conexão com a rede',
+          description: msn,
         })
 
         const errors = getValidationErrors(err)
+        console.log(errors)
         formRef.current?.setErrors(errors)
       }
-      console.log(data)
     },
     [
       addToast,
@@ -125,68 +145,84 @@ export function SignUpPay() {
       dadosStep1.midle_name,
       dadosStep1.name,
       dadosStep1.password,
+      nv,
       step,
     ],
   )
 
-  console.log(dados)
+  console.log(step)
 
   return (
     <S.Container>
-      <Header />
-      <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
+      <HeaderC type="3" />
+
+      <h1>Crie sua conta Treepy</h1>
+      <S.Content>
         {step === 1 && (
-          <S.BoxForm>
+          <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
             <S.Box1>
-              <Input placeholder="Nome" name="name" />
-              <Input placeholder="Sobrenome" name="midle_name" />
-              <Input placeholder="E-mail" name="email" />
-              <Input placeholder="Senha" name="password" />
+              <div className="content">
+                <Input label="Nome" placeholder="Nome" name="name" />
+                <Input
+                  label="Sobrenome"
+                  placeholder="Sobrenome"
+                  name="midle_name"
+                />
+              </div>
+              <Input label="Email" placeholder="E-mail" name="email" />
+              <Input label="Senha" placeholder="Senha" name="password" />
               <Input
+                label="Confirmaçao de senha"
                 placeholder="Confirme sua senha"
                 name="confimationPassword"
               />
             </S.Box1>
-          </S.BoxForm>
+            <S.button>
+              {load ? <Loading /> : <Button variant="AC" title="PRÓXIMO" />}
+            </S.button>
+
+            {/* </AnimetedForm> */}
+          </S.ContentForm>
         )}
 
         {step === 2 && (
+          <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
+            <S.Box1>
+              <div className="end">
+                <Input placeholder="Rua" name="street" />
+                <Input placeholder="Bairro" name="bairro" />
+
+                <div className="content">
+                  <Input
+                    mask="number"
+                    placeholder="Numero"
+                    name="number_home"
+                  />
+                  <Input
+                    maxLength={9}
+                    mask="cep"
+                    placeholder="CEP"
+                    name="cep"
+                  />
+                </div>
+                <Input placeholder="Cidade" name="city" />
+                <Input maxLength={2} placeholder="Estado" name="state" />
+              </div>
+            </S.Box1>
+
+            {/* </AnimetedForm> */}
+            <S.button>
+              {load ? <Loading /> : <Button variant="AC" title="CRIAR CONTA" />}
+            </S.button>
+          </S.ContentForm>
+        )}
+
+        {step === 3 && (
           <S.Box2>
-            <h3>Nos informe seu endereço</h3>
-            <S.box>
-              <Input placeholder="rua" name="street" />
-              <Input mask="number" placeholder="N°" name="number_home" />
-            </S.box>
-            <Input placeholder="bairro" name="localy" />
-            <Input placeholder="cidate" name="city" />
-
-            <S.box>
-              <S.boxInp1>
-                <Input
-                  maxLength={2}
-                  autoCapitalize="upercase"
-                  mask="cep"
-                  placeholder="CEP"
-                  name="postal_code"
-                />
-              </S.boxInp1>
-
-              <S.boxIn2>
-                <Input placeholder="estado" name="region" />
-              </S.boxIn2>
-            </S.box>
+            <DataPerson data={dados} amount={10} tree={10} />
           </S.Box2>
         )}
-        <div className="buton">
-          {step < 3 && <Button sizeW="30vw" variant="B" title="CONTINUAR" />}
-        </div>
-      </S.ContentForm>
-
-      {step === 3 && (
-        <S.box3>
-          <DataPerson data={dados} amount={10} tree={10} />
-        </S.box3>
-      )}
+      </S.Content>
     </S.Container>
   )
 }

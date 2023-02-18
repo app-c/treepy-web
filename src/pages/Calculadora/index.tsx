@@ -594,7 +594,7 @@ export function Calculadora() {
                     title={step === 5 ? 'Resultado' : 'Próximo'}
                     variant="AB"
                     sizeH="2.5rem"
-                    sizeW="8.6rem"
+                    sizeW="10rem"
                   />
                 </div>
               </div>

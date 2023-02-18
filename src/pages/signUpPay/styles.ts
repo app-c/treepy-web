@@ -2,14 +2,24 @@ import { Form } from '@unform/web'
 import styled, { keyframes } from 'styled-components'
 import { color } from '../../styles/colors'
 
+import img1 from '../../assets/arvore.png'
+
 export const Container = styled.div`
   flex: 1;
   display: flex;
-  width: 100vw !important;
-  padding-bottom: 3rem;
   align-items: center;
 
+  color: #fff;
+
+  height: 100vh;
+  width: 100vw;
   flex-direction: column;
+  padding-bottom: 2rem;
+
+  background-image: url(${img1});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 `
 
 export const Content = styled.div`
@@ -18,19 +28,23 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 10rem;
 `
 
 export const ContentForm = styled(Form)`
-  display: flex;
-  flex-direction: column;
   width: 100vw;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+`
 
-  .buton {
-    margin-top: 2rem;
-    align-self: center;
-  }
+export const button = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  align-self: center;
+  width: 20rem;
 `
 
 const appearFromLeft = keyframes`
@@ -47,53 +61,31 @@ const appearFromLeft = keyframes`
 `
 
 export const BoxForm = styled.div`
-  animation: ${appearFromLeft} 1s;
-  display: flex;
-  flex-direction: column;
-  margin-top: 8rem;
-
-  border: 1px solid ${color.green[10]};
-  padding: 2rem;
-
-  width: 90vw;
-`
-export const Box1 = styled.div``
-
-export const box3 = styled.div``
-
-export const Box2 = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  width: 70vw;
-  align-self: center;
-  padding: 2rem 1rem;
-  border: 1px solid ${color.green[10]};
-
-  margin-top: 8rem;
-
-  h3 {
-    margin-bottom: 2rem;
-  }
-
-  @media (max-width: 980px) {
-    width: 90vw;
-  }
-`
-
-export const box = styled.div`
+  animation: ${appearFromLeft} 0.4s;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  width: 90vw;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-gap: 1rem 3rem;
 
-  @media (max-width: 980px) {
-    grid-template-columns: 100%;
+  padding: 1rem 3rem;
+
+  @media (max-width: 780px) {
+    width: 80vw;
+    padding: 0;
+    align-items: center;
   }
+  .end {
+  }
+`
+export const Box1 = styled.div`
+  background-color: rgb(174, 174, 174, 0.6);
+  padding: 4rem;
+  border-radius: 5px;
 
-  grid-gap: 0 1rem;
-  .marg {
+  @media (max-width: 780px) {
+    padding: 20px;
+    width: 80vw;
   }
 `
 
-export const boxInp1 = styled.div``
-
-export const boxIn2 = styled.div``
+export const Box2 = styled.div``

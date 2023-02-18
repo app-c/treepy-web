@@ -6,6 +6,7 @@ interface PropsButon extends ButtonHTMLAttributes<HTMLButtonElement> {
   sizeW?: string
   sizeH?: string
   pres?: () => void
+  load?: boolean
 }
 export function Button({
   variant = 'A',
@@ -13,10 +14,11 @@ export function Button({
   sizeH = '100%',
   sizeW = '100%',
   pres,
+  load,
   ...res
 }: PropsButon) {
   return (
-    <Container sizeH={sizeH} sizeW={sizeW} variant={variant}>
+    <Container load={load} sizeH={sizeH} sizeW={sizeW} variant={variant}>
       <Bot {...res} onClick={pres}>
         {title}
       </Bot>

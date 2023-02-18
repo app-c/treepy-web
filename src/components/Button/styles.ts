@@ -1,9 +1,10 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { color } from '../../styles/colors'
 type Props = {
   variant: 'A' | 'AB' | 'AC' | 'B' | 'C'
   sizeW?: string
   sizeH?: string
+  load?: boolean
 }
 
 const propsVariat = {
@@ -31,6 +32,14 @@ export const Container = styled.div<Props>`
   padding: 5px 1rem;
   border-radius: 8px;
   /* min-width: calc(4vw + 10%); */
+
+  ${(h) =>
+    h.load &&
+    css`
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+    `}
 
   &:hover {
     opacity: 0.9;

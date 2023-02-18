@@ -8,18 +8,17 @@ export const Box = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100vh;
 
   background-image: url(${fundo});
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   padding: 2rem;
-
+  /* 
   position: relative;
   overflow: hidden;
   display: flex;
   z-index: 1;
-  background-attachment: fixed;
+  background-attachment: fixed; */
 
   h1 {
     align-self: center;
