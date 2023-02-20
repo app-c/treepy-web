@@ -11,7 +11,7 @@ export const Container = styled.div`
 
   color: #fff;
 
-  height: 100vh;
+  /* height: 100vh; */
   width: 100vw;
   flex-direction: column;
   padding-bottom: 2rem;

@@ -157,13 +157,13 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
 
         <Selector
           selected={select.type === 'pix'}
-          title="PIX"
+          title="Pix"
           pres={() => setSelect({ type: 'pix' })}
         />
 
         <Selector
           selected={select.type === 'boleto'}
-          title="boleto"
+          title="Boleto"
           pres={() => setSelect({ type: 'boleto' })}
         />
       </S.BoxSelector>
@@ -307,7 +307,7 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
         </S.ContainerCard>
 
         <Button
-          sizeH="2.2rem"
+          sizeH="2.5rem"
           variant="AB"
           type="submit"
           title="FINALIZAR COMPRA"

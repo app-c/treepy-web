@@ -26,7 +26,7 @@ export const Content = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
 `
 
@@ -50,7 +50,7 @@ export const button = styled.div`
 const appearFromLeft = keyframes`
   0% {
     opacity: 0;
-    transform: translateX(-50px) scale(0.95) rotate(1deg);
+    transform: translateX(-50px) scale(0.85) rotate(2deg); 
   }
 
   100% {
@@ -61,7 +61,6 @@ const appearFromLeft = keyframes`
 `
 
 export const BoxForm = styled.div`
-  animation: ${appearFromLeft} 0.4s;
   display: grid;
   width: 90vw;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -78,6 +77,8 @@ export const BoxForm = styled.div`
   }
 `
 export const Box1 = styled.div`
+  animation: ${appearFromLeft} 1.5s;
+
   background-color: rgb(174, 174, 174, 0.6);
   padding: 4rem;
   border-radius: 5px;

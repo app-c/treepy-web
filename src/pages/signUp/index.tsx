@@ -149,7 +149,7 @@ export function SignUp() {
 
   return (
     <S.Container>
-      <HeaderC type="3" />
+      <HeaderC type="1" />
 
       <h1>Crie sua conta Treepy</h1>
       <S.Content>

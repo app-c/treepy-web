@@ -8,9 +8,9 @@ interface Props {
 
 export function Selector({ selected, pres, title }: Props) {
   return (
-    <Box>
+    <Box onClick={pres}>
       <label htmlFor="">
-        <Container onClick={pres}>
+        <Container>
           <Circle selected={selected} />
         </Container>
         <p>{title}</p>

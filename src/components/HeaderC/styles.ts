@@ -4,21 +4,24 @@ import { color } from '../../styles/colors'
 
 export const Container = styled.div`
   width: 100vw;
-  padding: 2rem;
+  /* padding: 1rem; */
   /* position: absolute; */
+  background-color: rgba(74, 136, 79, 0.3);
+  margin-bottom: 2rem;
 `
 
 export const box = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
 `
 
 export const logoBox = styled.div`
-  width: calc(5rem + 6vw);
-  background-color: rgb(202, 202, 202, 0.8);
+  width: calc(5rem + 4vw);
   padding: 10px;
   border-radius: 5px;
+  margin-left: 3vw;
 `
 
 export const boxAccount = styled.div`
@@ -29,7 +32,7 @@ export const boxAccount = styled.div`
   justify-content: center;
 
   width: calc(5vw + 50px);
-  height: calc(2.5vw + 30px);
+  height: 100%;
   padding: 10px;
   border-radius: 5px;
 `

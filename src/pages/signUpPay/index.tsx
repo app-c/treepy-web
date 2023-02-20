@@ -12,7 +12,7 @@ import { Loading } from '../../components/Loading'
 import { useNavigate } from 'react-router-dom'
 import { DataPerson } from '../../components/dataPerson'
 
-interface PropsSingUp {
+export interface PropsSingUp {
   name: string
   email: string
   password: string
@@ -116,7 +116,6 @@ export function SignUpPay() {
             if (h.status === 200) {
               alert('Sucesso')
               setLoad(false)
-              nv('/signIn')
             }
           })
 
@@ -145,7 +144,6 @@ export function SignUpPay() {
       dadosStep1.midle_name,
       dadosStep1.name,
       dadosStep1.password,
-      nv,
       step,
     ],
   )
@@ -154,9 +152,12 @@ export function SignUpPay() {
 
   return (
     <S.Container>
-      <HeaderC type="3" />
-
-      <h1>Crie sua conta Treepy</h1>
+      <HeaderC type="1" />
+      {step === 3 ? (
+        <h2>Forma de pagamento</h2>
+      ) : (
+        <h2>Crie sua conta Treepy</h2>
+      )}
       <S.Content>
         {step === 1 && (
           <S.ContentForm ref={formRef} onSubmit={handleSubmit}>

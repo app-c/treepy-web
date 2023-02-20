@@ -5,9 +5,15 @@ interface PropsSelect {
   selected: boolean
 }
 
-export const Box = styled.div`
+export const Box = styled.button`
   display: flex;
   margin-right: 1rem;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+
   label {
     align-items: center;
     justify-content: center;
@@ -15,17 +21,18 @@ export const Box = styled.div`
 
     p {
       margin-left: 10px;
+      color: #fff;
     }
   }
 `
 
-export const Container = styled.button`
+export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 1.1rem;
   height: 1.1rem;
-  border: 2px solid ${color.green[20]};
+  border: 2px solid ${color.orange[20]};
   border-radius: 1rem;
 `
 
@@ -40,6 +47,6 @@ export const Circle = styled.div<PropsSelect>`
     h.selected &&
     css`
       opacity: 1;
-      background-color: ${color.green[20]};
+      background-color: ${color.orange[20]};
     `};
 `
