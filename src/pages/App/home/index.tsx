@@ -11,16 +11,28 @@ import { Contact } from '../contact'
 import { Us } from '../Us'
 import * as S from './styles'
 
-export function Home() {
-  const ref = useRef<HTMLDivElement>(null)
-  const [scrollPosition, setScrollPosition] = React.useState(0)
+import { Element } from 'react-scroll'
 
-  useEffect(() => {
-    window.addEventListener('scroll', (h) => {})
-  }, [])
+export function Home() {
+  // const ref = useRef<HTMLDivElement>(null)
+  const [opacity, setOpacity] = React.useState(1)
+
+  const handleScroll = () => {
+    const position = window.pageYOffset
+    if (position > 200) {
+      setOpacity(0.5)
+    } else {
+      setOpacity(1)
+    }
+  }
+
+  // useEffect(() => {
+  //   window.addEventListener('scroll', (h) => {
+  //   })
+  // }, [])
 
   return (
-    <S.Container ref={ref}>
+    <S.Container>
       <Header />
 
       <S.ScrollBar>
@@ -28,9 +40,17 @@ export function Home() {
           <Banner />
         </div>
 
-        <S.BoxCalc>
-          <Calc />
-        </S.BoxCalc>
+        <Element
+          name="elementCom"
+          className="element"
+          onScroll={(h) => console.log(h)}
+        >
+          <S.elementCom>
+            <S.BoxCalc>
+              <Calc />
+            </S.BoxCalc>
+          </S.elementCom>
+        </Element>
 
         <div id="how">
           <HowToDo />

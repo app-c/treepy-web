@@ -4,11 +4,15 @@ import { FiChevronRight } from 'react-icons/fi'
 
 import calc from '../../assets/calc.svg'
 
+export const box = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+  width: 100vw;
+`
+
 export const Container = styled.div`
   display: grid;
-  background-color: red;
-  width: 100%;
-
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   grid-template-rows: 30rem;
 
@@ -32,32 +36,13 @@ export const ContentText = styled.div`
   justify-content: center;
 
   div {
-    /* background-color: red; */
-    width: 80%;
-  }
-
-  h2 {
-    font-size: calc(3vw + 10%);
+    width: calc(20rem + 16vw);
   }
 
   p {
     font-size: calc(2vw + 10%);
     font-weight: 300;
   }
-
-  /* @media (max-width: 1500px) {
-    div {
-      width: 80%;
-    }
-
-    h2 {
-      font-size: 3rem;
-    }
-
-    p {
-      font-size: 1.4rem;
-    }
-  } */
 
   @media (max-width: 850px) {
     div {
@@ -77,14 +62,6 @@ export const ContentText = styled.div`
     div {
       width: 90%;
     }
-
-    h2 {
-      font-size: calc(1vw + 10%);
-    }
-
-    p {
-      font-size: 1rem;
-    }
   }
 `
 
@@ -103,7 +80,7 @@ export const ContentButton = styled.div`
     position: relative;
     display: flex;
     flex-direction: row;
-    left: -37%;
+    left: -33%;
     z-index: 1;
     align-items: center;
     justify-content: center;
@@ -113,7 +90,7 @@ export const ContentButton = styled.div`
     }
 
     @media (max-width: 450px) {
-      left: -55px;
+      left: -20px;
       z-index: 1;
     }
   }
@@ -122,11 +99,10 @@ export const ContentButton = styled.div`
     display: flex;
     height: 3rem;
     border-radius: 5px;
-    padding: 0 1rem;
+    padding: 0 calc(0.5rem + 0.5vw);
     align-items: center;
     justify-content: center;
     background-color: ${color.green[40]};
-    margin-left: 1vw;
     color: #fff;
 
     .linboton {
@@ -135,7 +111,6 @@ export const ContentButton = styled.div`
     }
 
     @media (max-width: 850px) {
-      margin-left: -10%;
       height: 4rem;
     }
   }

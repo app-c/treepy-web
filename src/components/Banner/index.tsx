@@ -16,7 +16,6 @@ export default function Banner() {
   }, [pag])
 
   const subPag = useCallback(async () => {
-    console.log(pag, '34')
     if (pag > 1) {
       setPag(pag - 1)
     }

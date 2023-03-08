@@ -1747,6 +1747,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-scroll@^1.8.6":
+  version "1.8.6"
+  resolved "https://registry.yarnpkg.com/@types/react-scroll/-/react-scroll-1.8.6.tgz#a2b1ea795279548172cd9a2c99fa4e5568297ffb"
+  integrity sha512-aMTiNgcmA7dwn1yjoHsiL78RfRnKCXzFyMbv63VrZTXloSfNePBdKtVObC3/My6irwDf0Oz0U4VjEC/vrv6/9w==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^18.0.24":
   version "18.0.25"
   resolved "https://registry.npmjs.org/@types/react/-/react-18.0.25.tgz"
@@ -4084,6 +4091,11 @@ lodash.mergewith@4.6.2:
   resolved "https://registry.npmjs.org/lodash.mergewith/-/lodash.mergewith-4.6.2.tgz"
   integrity sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==
 
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  integrity sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==
+
 lodash@^4.17.11, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
@@ -4672,7 +4684,7 @@ prettier@^2.6.2:
   resolved "https://registry.npmjs.org/prettier/-/prettier-2.7.1.tgz"
   integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
 
-prop-types@^15.6.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -4816,6 +4828,14 @@ react-router@6.6.1:
   integrity sha512-YkvlYRusnI/IN0kDtosUCgxqHeulN5je+ew8W+iA1VvFhf86kA+JEI/X/8NqYcr11hCDDp906S+SGMpBheNeYQ==
   dependencies:
     "@remix-run/router" "1.2.1"
+
+react-scroll@^1.8.9:
+  version "1.8.9"
+  resolved "https://registry.yarnpkg.com/react-scroll/-/react-scroll-1.8.9.tgz#96f8a82f882b187970c2338759225c7e619d915b"
+  integrity sha512-9m7ztraiX/l6L7erzYAD3fhnveNckei6/NkWfqwN2e0FRdoE2W6Pk4oi2Nah7mWpPCPAeIgegfaqZACTimPOwg==
+  dependencies:
+    lodash.throttle "^4.1.1"
+    prop-types "^15.7.2"
 
 react-spring@^9.6.1:
   version "9.6.1"

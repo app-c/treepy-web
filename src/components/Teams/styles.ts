@@ -4,7 +4,7 @@ import { color } from '../../styles/colors'
 export const BoxC = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2vw 10vw;
+  padding: calc(0.5rem + 1vw);
 
   h1 {
     margin-bottom: 10px;
@@ -20,11 +20,26 @@ export const BoxC = styled.div`
 `
 
 export const Container = styled.div`
-  display: grid;
+  display: flex;
+  overflow: scroll;
 
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 15px;
+  }
 
-  grid-gap: 2.5rem;
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #3f3f3f;
+  }
+
+  /* Define o hover da thumb */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #282525;
+  }
 `
 export const Box = styled.div`
   display: flex;
