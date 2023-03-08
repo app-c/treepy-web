@@ -7,7 +7,11 @@ interface PropsShow {
   readMor: boolean
 }
 
-export const Container = styled.div``
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 4rem;
+`
 
 export const Content = styled.div<PropsShow>`
   display: grid;
@@ -127,4 +131,13 @@ export const Mission = styled.div`
 
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1rem 2rem;
+`
+
+export const ul = styled.ul`
+  margin-top: 20px;
+`
+
+export const li = styled.li`
+  margin-bottom: 10px;
+  font-size: calc(12px + 0.5vw);
 `

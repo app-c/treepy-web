@@ -6,7 +6,7 @@ export function Move() {
   const navigate = useNavigate()
   return (
     <Container>
-      <h1>A única maneira de fazer isso acontercer é agir!</h1>
+      <h1>A única maneira de fazer isso acontecer é agir!</h1>
       <p>Comece agora a mudar o planeta em que vivemos</p>
 
       <div>

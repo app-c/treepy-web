@@ -12,6 +12,8 @@ import { Us } from '../pages/App/Us'
 import { AuthRoute } from './AuthRoute'
 import { RouteApp } from './Route'
 import { SignInProv } from '../pages/App/signInProv/index '
+import { Inovation } from '../pages/App/Inovation'
+import { Providers } from '../pages/App/Providers'
 
 // interface Props {
 //   dataSignUp?: object
@@ -31,6 +33,8 @@ export function Router() {
         <Route path="/signUp/" element={<SignUp />} />
         <Route path="/signUp/:type" element={<SignUpPay />} />
         <Route path="/plan/:value" element={<Plan />} />
+        <Route path="/inovation" element={<Inovation />} />
+        <Route path="/provider" element={<Providers />} />
       </Route>
 
       <Route path="/" element={<AuthRoute />}>

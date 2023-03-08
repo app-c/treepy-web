@@ -9,8 +9,6 @@ import { Box, Container, Content } from './styles'
 export function Contact() {
   return (
     <Container>
-      <About />
-
       <Form onSubmit={() => {}}>
         <Box>
           <h1>Fale com o nosso time</h1>

@@ -37,9 +37,10 @@ export function Folha() {
           />
 
           <FolhaAnimeted
-            title="Promação de um futuro melhor às próximas gerações"
-            text="Primeiro Programa de Créditos focado na geração de valor para o
-            meio ambiente"
+            title="Investimento em futuro sustentável"
+            text="Juntando forças 
+            para a preservação 
+            do meio ambiente"
             cor={color.green[40]}
           />
 

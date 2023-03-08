@@ -7,7 +7,6 @@ export const Container = styled.div``
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100vw;
 
   background-image: url(${fundo});
   background-repeat: no-repeat;
@@ -71,7 +70,7 @@ export const Content = styled.div`
     textarea {
       height: 100%;
       width: 100%;
-      padding: 2rem;
+      padding: 1rem;
       border-radius: 4px;
       border: 1px solid ${color.dark[30]};
     }

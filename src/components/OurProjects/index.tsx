@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { color } from '../../styles/colors'
 import { Folha } from '../Icones/folha'
 import { Logo } from '../Logo'
@@ -13,8 +14,7 @@ export function OurProject() {
           <S.cHeader>
             <h2>Nossos Projetos</h2>
             <p>
-              Damos a oportunidade para todos contribuírem para o
-              reflorestamento na nossa plataforma.
+              Oferecemos a oportunidade de todos compensarem seus impactos .
             </p>
             <line />
           </S.cHeader>
@@ -26,56 +26,58 @@ export function OurProject() {
               </div>
 
               <S.BoxText>
-                <h3>Acompanhe o plantio das suas árvores</h3>
-                <p>
-                  você poderá acompanhar o plantio das suas árvores através de
-                  nossa plataforma web, naárea do cliente.
-                </p>
+                <h3>Usuários</h3>
+                <p>Qualquer pessoa pode mitigar as suas emissões de CO2</p>
               </S.BoxText>
             </S.Box>
 
             <S.Box>
-              <div className="folha">
+              <div className="folha1">
                 <Folha cor={color.orange[20]} />
               </div>
 
               <S.BoxText>
-                <h3>
-                  Copre dos parceiros Treepy e converta o seu cashback em
-                  árvores
-                </h3>
+                <h3>Clientes</h3>
                 <p>
-                  Efetuando suas compras em nossos parceiros você poderá
-                  acumular Treepy Cash e direciona-los para o plantio de suas
-                  árvores. (em desenvolvimento)
+                  Contribuem na fidelização dos seus consumidores e vantagem
+                  competitiva)
                 </p>
               </S.BoxText>
             </S.Box>
 
             <S.Box>
-              <div className="folha">
+              <div className="folha1">
                 <Folha cor={color.green[10]} />
               </div>
 
               <S.BoxText>
-                <h3>Compre seus créditos Treepy Cashs direto com a gente</h3>
+                <h3>Parceiros (reflorestadores)</h3>
                 <p>
-                  Você pode também comprar seus Treepy Cashs diretamente do
-                  nosso site na área do cliente, depois de calcular o valor
-                  correto baseado na sua emissão de CO2.
+                  Viabilizam de projetos de reflorestamentos com menor custo
                 </p>
+              </S.BoxText>
+            </S.Box>
+
+            <S.Box>
+              <div className="folha1">
+                <Folha cor={color.green[30]} />
+              </div>
+
+              <S.BoxText>
+                <h3>Planeta (meio ambiente)</h3>
+                <p>Reduzem os efeitos maléficos da emissão de CO2</p>
               </S.BoxText>
             </S.Box>
           </div>
 
           <S.Contact>
-            <h1>Seja um parceiro</h1>
-
-            <div className="logo">
-              <Logo colorL={color.orange[20]} />
-            </div>
-
-            <S.buton>Clique aqui</S.buton>
+            <h4>
+              Quer ser um parceiro?{' '}
+              <Link to="" style={{ color: color.green[40] }}>
+                {' '}
+                Fale conosco
+              </Link>{' '}
+            </h4>
           </S.Contact>
         </S.ContentText>
       </S.Container>

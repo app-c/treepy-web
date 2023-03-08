@@ -1,10 +1,10 @@
 import React from 'react'
 import * as S from './styles'
 
-export function {{pascalCase name}}() {
+export function Parceiros() {
   return (
     <S.Container>
-      <h1>{{pascalCase name}}</h1>
+      <h1>Parceiros</h1>
     </S.Container>
   )
 }

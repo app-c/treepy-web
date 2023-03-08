@@ -21,12 +21,6 @@ export function Header({ color = 'rgba(34, 71, 26, 0.5)' }: Props) {
   return (
     <>
       <Container color={color}>
-        <BoxContato>
-          <a href="mailto:atendimento@treepy.com.br">
-            atendimento@treepy.com.br
-          </a>
-        </BoxContato>
-
         <BoxLink show={show}>
           <BoxLog href="#top" show={show} className="logo">
             <Logo colorL="#fff" colorF="#fff" />
@@ -55,7 +49,7 @@ export function Header({ color = 'rgba(34, 71, 26, 0.5)' }: Props) {
             <div className="buton">
               <div>
                 <Link className="link" to="/signIn">
-                  ÁREA DO CLIENTE
+                  Faça login
                 </Link>
               </div>
             </div>

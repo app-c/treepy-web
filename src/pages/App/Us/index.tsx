@@ -9,7 +9,7 @@ export function Us() {
       <Container>
         <div className="text">
           <h1>SOBRE NÓS</h1>
-          <p>Esse é o porque existimos</p>
+          <p>porque existimos</p>
         </div>
       </Container>
 

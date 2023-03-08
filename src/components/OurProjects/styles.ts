@@ -105,6 +105,7 @@ export const ContentText = styled.div`
 
   .content {
     padding: 10px;
+    margin-top: 3rem;
   }
 `
 
@@ -150,17 +151,10 @@ export const Contact = styled.div`
   margin-top: 1vh;
   justify-content: space-between;
 
-  .logo {
-    width: calc(2rem + 7vw);
-    margin-right: 10%;
-    margin-top: -3px;
-  }
-
-  h1 {
+  h4 {
     color: #44bf17;
     font-weight: 600;
-    font-size: calc(0.5rem + 1.5vw);
-    margin-left: calc((-1vw) + (1.2rem));
+    margin-top: 2rem;
   }
 `
 

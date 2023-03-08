@@ -52,6 +52,11 @@ export const GlobalStyle = createGlobalStyle`
       font-weight: 600;
     }
 
+    h4 {
+      font-size: calc(1rem + .5vw);
+      font-weight: 500;
+    }
+
     p {
       font-size: calc(.5rem + .7vw)
     }
@@ -69,7 +74,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     button {
-        cursor: pointer;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 5px 15px;
+      width: calc(60px + 5vw);
+
     }
 
 `

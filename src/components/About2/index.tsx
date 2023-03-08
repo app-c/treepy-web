@@ -1,68 +1,54 @@
 import React from 'react'
-import inova from '../../assets/inova.png'
 import flor from '../../assets/mundo_mao.jpg'
 import { Button } from '../Button'
-import {
-  BoxTexts,
-  Container,
-  Content,
-  Image,
-  Inova,
-  Mission,
-  Texts,
-} from './styles'
+import * as S from './styles'
 
 export function About2() {
   const [showRead, setShowRead] = React.useState(false)
   return (
-    <Container>
-      <Content readMor={showRead}>
+    <S.Container>
+      <S.Content readMor={showRead}>
         {!showRead && (
           <div className="image">
-            <Image readMor={showRead} src={flor} alt="mundo" />
+            <S.Image readMor={showRead} src={flor} alt="mundo" />
           </div>
         )}
 
-        <BoxTexts readMor={showRead}>
+        <S.BoxTexts readMor={showRead}>
           <h1>A Treepy</h1>
-          <Texts>
-            O reflorestamento é crucial para o planeta, não apenas no Brasil,
-            mas em todo o mundo. As florestas são os pulmões da Terra,
-            fornecendo oxigênio e absorvendo o dióxido de carbono da atmosfera.
-          </Texts>
+          <S.Texts>
+            Nascemos da convicção que juntos podemos contribuir na restauração
+            das florestas e na mitigação das emissões de CO2 na atmosfera.
+          </S.Texts>
 
-          <Texts>
-            Somos a esperança de mudar a realidade atual do meio ambiente no
-            Brasil. Criamos uma empresa que dá oportunidade para qualquer pessoa
-            ou negócio contribuir para a restauração da floresta e preservar
-            recursos hídricos importantes para o planeta.
-          </Texts>
+          <S.Texts>
+            Ajudamos a mudar a realidade atual do meio ambiente no Brasil.
+            Criamos uma empresa que dá oportunidade para qualquer pessoa ou
+            negócio contribuir para um mundo mais verde e sustentável.
+          </S.Texts>
 
-          <Texts>
-            Juntos, podemos dar um novo passo em direção a um futuro mais verde
-            e sustentável, somos a Treepy.
-          </Texts>
+          <S.Texts>
+            Juntos, podemos dar esse passo em direção a um futuro melhor, somos
+            a Treepy.
+          </S.Texts>
 
           {showRead && (
             <div>
-              <Texts>
-                Ao plantar árvores, podemos ajudar a compensar as emissões de
-                dióxido de carbono e, assim, reduzir o impacto da mudança
-                climática. Além disso, as florestas também são uma fonte
-                importante de diversidade biológica e habitat para muitas
-                espécies animais e vegetais.
-              </Texts>
+              <S.Texts>
+                O reflorestamento é crucial não apenas no Brasil, mas em todo o
+                mundo. As florestas são os pulmões da Terra, fornecendo oxigênio
+                e absorvendo o CO2 da atmosfera.
+              </S.Texts>
 
-              <Texts>
+              <S.Texts>
+                Ao plantar árvores, podemos ajudar a compensar as emissões de
+                CO2 e, assim, reduzir o impacto das mudanças climáticas.
                 Investindo em um futuro sustentável, juntamos forças para a
                 preservação do meio ambiente e a criação de um mundo melhor para
-                as gerações futuras. Com a incorporação de tecnologia e
-                inovação, trabalhamos arduamente na redução de emissões de CO2,
-                transformando o que antes era visto como um custo em uma
-                oportunidade de investimento de valor.
-              </Texts>
+                as gerações futuras.
+              </S.Texts>
 
-              <Texts>
+              <S.Texts>
                 Em resumo, o reflorestamento é crucial para a saúde do nosso
                 planeta e para a luta contra a mudança climática. Além disso, o
                 Treepy Cash é uma maneira eficaz de incentivar o
@@ -70,9 +56,9 @@ export function About2() {
                 preservação das florestas. É hora de agir agora, para garantir
                 um futuro mais verde e saudável para nós e para as gerações
                 futuras.
-              </Texts>
+              </S.Texts>
 
-              <Mission>
+              <S.Mission>
                 <div
                   style={{
                     display: 'flex',
@@ -81,50 +67,46 @@ export function About2() {
                     marginTop: '3rem',
                   }}
                 >
-                  <h3>Inovação</h3>
-                  <Texts>
-                    O TreepyCash é uma maneira que a Treepy criou para
-                    incentivar o reflorestamento. Ele funciona como uma moeda
-                    virtual que representa a quantidade de árvores que serão
-                    plantadas na natureza.
-                  </Texts>
+                  <h3 style={{ alignSelf: 'flex-start' }}>Conheça a Treepy</h3>
+                  <h4 style={{ alignSelf: 'flex-start', marginTop: 15 }}>
+                    Missão
+                  </h4>
 
-                  <Texts>
-                    Você poderá adquirir seus Treepycash diretamente no nosso
-                    site, ou pelas compras de produtos ou serviços em nossos
-                    parceiros. Assim pode´ra compensar suas emeissões de gases
-                    de efeito estufa com reflorestamento.
-                  </Texts>
+                  <S.Texts>
+                    “Transformar a cultura das pessoas, criando oportunidade
+                    para todos contribuírem de forma sustentável para o
+                    reflorestamento do planeta”
+                  </S.Texts>
+
+                  <h4 style={{ alignSelf: 'flex-start', marginTop: 15 }}>
+                    Visão
+                  </h4>
+
+                  <S.Texts>
+                    “Ser reconhecida como a principal plataforma de geração de
+                    valor para o meio ambiente perante nossos clientes,
+                    parceiros e usuários”
+                  </S.Texts>
                 </div>
 
                 <div
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: 'center',
                     marginTop: '3rem',
+                    paddingLeft: '4vw',
                   }}
                 >
-                  <h3>Parcerias</h3>
-                  <Texts>
-                    Precisamos começar hoje mesmo a maneira como criamos valor
-                    para os seus clientes e negócios através das ações de
-                    reflorestamento.
-                  </Texts>
-
-                  <Texts>
-                    Muitos negócios gastam recursos e tempo para atingirem
-                    objetivos técnicos porém sem transcender o valor disso tudo
-                    as pessoas que estão sendo impactadas na ponta.
-                  </Texts>
-
-                  <Texts>
-                    Mude isso com a Treepy e vamos juntos criar valor para
-                    todos, entre em contato para montarmos a parceria certaa
-                    para o seu negócio.
-                  </Texts>
+                  <h3 style={{ alignSelf: 'flex-start' }}>Nossos Valores:</h3>
+                  <S.ul>
+                    <S.li>Inovação</S.li>
+                    <S.li>Ética e Transparência</S.li>
+                    <S.li>Excelência no que faz</S.li>
+                    <S.li>Realizaão no trabalho</S.li>
+                    <S.li>Compromisso Ambiental</S.li>
+                  </S.ul>
                 </div>
-              </Mission>
+              </S.Mission>
             </div>
           )}
 
@@ -136,11 +118,14 @@ export function About2() {
                 variant="AC"
               />
             </div>
-
-            <Inova src={inova} />
           </div>
-        </BoxTexts>
-      </Content>
-    </Container>
+        </S.BoxTexts>
+      </S.Content>
+
+      <h3 style={{ alignSelf: 'center', marginTop: 20 }}>
+        A Treepy foi uma das Startups aceleradas pelo programa “InoVativa
+        Brasil”
+      </h3>
+    </S.Container>
   )
 }

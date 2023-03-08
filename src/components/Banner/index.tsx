@@ -1,13 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react'
-import {
-  BoxElement,
-  BoxText,
-  Container,
-  ContainerButton,
-  Content,
-  Label,
-  Text,
-} from './styles'
+import * as S from './styles'
 import fundo from '../../assets/floresta.jpeg'
 import fundo2 from '../../assets/moça.jpg'
 import mao from '../../assets/mao.jpg'
@@ -53,7 +45,7 @@ export default function Banner() {
   }, [pag])
 
   return (
-    <Container pag={slides}>
+    <S.Container pag={slides}>
       <div className="slides">
         <input type="radio" name={'slide'} id={`slide${pag}`} checked />
 
@@ -70,121 +62,106 @@ export default function Banner() {
         </div> */}
 
         <div ref={eleRef} className="slide s1">
-          <Content
+          <S.Content
             style={{
               backgroundImage: `url(${fundo})`,
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
             }}
           >
-            <BoxElement>
-              <BoxText className="texts">
+            <S.BoxElement>
+              <S.BoxText className="texts">
                 <p className="one">
-                  Já pensou transcender o valor de sustentabilidade para os seus
-                  clientes?
+                  Temos uma oportunidade de reflorestamento para você ou para a
+                  sua empresa
                 </p>
 
-                <ContainerButton>
-                  <div className="b1">
-                    <button>PARA VOCE</button>
-                  </div>
-                  <div className="b2">
-                    <button>PARA SUA EMPRESA</button>
-                  </div>
-                </ContainerButton>
-              </BoxText>
-            </BoxElement>
-          </Content>
+                <S.ContainerButton>
+                  <S.button variant="orange">PARA VOCE</S.button>
+                  <S.button variant="green">PARA SUA EMPRESA</S.button>
+                </S.ContainerButton>
+              </S.BoxText>
+            </S.BoxElement>
+          </S.Content>
         </div>
 
         <div className="slide">
-          <Content
+          <S.Content
             style={{
               backgroundImage: `url(${fundo2})`,
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
             }}
           >
-            <BoxElement>
-              <BoxText className="texts">
+            <S.BoxElement>
+              <S.BoxText className="texts">
                 <p className="one">
                   Somos uma inovação para o reflorestamento no Brasil
                 </p>
 
-                <ContainerButton>
-                  <div className="b1">
-                    <button>PARA VOCE</button>
-                  </div>
-                  <div className="b2">
-                    <button>PARA SUA EMPRESA</button>
-                  </div>
-                </ContainerButton>
-              </BoxText>
-            </BoxElement>
-          </Content>
+                <S.ContainerButton>
+                  <S.link to="/inovation">Saiba mais</S.link>
+                </S.ContainerButton>
+              </S.BoxText>
+            </S.BoxElement>
+          </S.Content>
         </div>
 
         <div className="slide">
-          <Content
+          <S.Content
             style={{
               backgroundImage: `url(${mao})`,
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
             }}
           >
-            <BoxElement>
-              <BoxText className="texts">
+            <S.BoxElement>
+              <S.BoxText className="texts">
                 <p className="one">
-                  Temos uma oportunidade de reflorestamento para você ou seu
-                  negócio
+                  As questões climáticas são uma preocupação global Saiba como
+                  você pode ajudar
                 </p>
 
-                <ContainerButton>
-                  <div className="b1">
-                    <button>PARA VOCE</button>
-                  </div>
-                  <div className="b2">
-                    <button>PARA SUA EMPRESA</button>
-                  </div>
-                </ContainerButton>
-              </BoxText>
-            </BoxElement>
-          </Content>
+                <S.ContainerButton>
+                  <S.link to="/provider">Saiba mais</S.link>
+                </S.ContainerButton>
+              </S.BoxText>
+            </S.BoxElement>
+          </S.Content>
         </div>
 
         {/* <div className="slide">
-          <Content
+          <S.Content
             style={{
               backgroundImage: `url(${mao})`,
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
             }}
           >
-            <BoxElement>
+            <S.BoxElement>
               <BoxIco>
                 <ArrowL cor="#fff" size="2rem" />
               </BoxIco>
 
-              <BoxText className="texts">
+              <S.BoxText className="texts">
                 <p className="one">fazendo</p>
                 <p className="two">do mundo</p>
                 <p className="tree">um lugar melhor</p>
 
-                <ContainerButton>
-                  <div className="b1">
+                <S.ContainerButton>
                     <button>PARA VOCE</button>
                   </div>
                   <div className="b2">
                     <button>PARA SUA EMPRESA</button>
                   </div>
-                </ContainerButton>
-              </BoxText>
+                </S.ContainerButton>
+              </S.BoxText>
 
               <BoxIco>
                 <ArrowR cor="#fff" size="2rem" />
               </BoxIco>
-            </BoxElement>
-          </Content>
+            </S.BoxElement>
+          </S.Content>
         </div> */}
       </div>
 
@@ -193,6 +170,6 @@ export default function Banner() {
         <Label pag={pag === 2} htmlFor={`slides${pag}`} />
         <Label pag={pag === 3} htmlFor={`slide${pag}`} />
       </div> */}
-    </Container>
+    </S.Container>
   )
 }

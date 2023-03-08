@@ -1,5 +1,17 @@
+import { Link } from 'react-router-dom'
 import styled, { css, keyframes } from 'styled-components'
 import { color } from '../../styles/colors'
+
+type cor = 'orange' | 'green'
+
+interface PropsButton {
+  variant: cor
+}
+
+const variant = {
+  orange: color.orange[10],
+  green: color.green[10],
+}
 
 interface PropsSlide {
   pag: string
@@ -80,7 +92,7 @@ export const Container = styled.div<PropsSlide>`
   }
 
   #slide1:checked ~ .s1 {
-    animation: ${ani} 20s;
+    animation: ${ani} 25s;
     animation-iteration-count: infinite;
     margin-left: ${(h) => h.pag};
   }
@@ -196,81 +208,26 @@ export const ContainerButton = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: calc(30vw + 4rem);
-  height: calc(5vw + 3rem);
+  align-items: cente;
+  width: calc(15vw + 9rem);
   margin-top: 1rem;
-  margin-left: 10vw;
-
-  .b1 {
-    width: calc(5vw + 15%);
-    height: calc(3vw + 20%);
-
-    button {
-      width: 100%;
-      height: 100%;
-      border-radius: 6px;
-      background-color: ${color.orange[10]};
-
-      align-items: center;
-      justify-content: center;
-
-      color: #fff;
-    }
-  }
-  .b2 {
-    width: calc(5vw + 15%);
-    height: calc(3vw + 20%);
-
-    button {
-      width: 100%;
-      height: 100%;
-      border-radius: 6px;
-      background-color: ${color.green[10]};
-
-      align-items: center;
-      justify-content: center;
-
-      color: #fff;
-    }
-  }
+  margin-left: 7vw;
 
   @media (max-width: 780px) {
     width: 14rem;
-    height: 3rem;
-
-    .b1 {
-      width: calc(5vw + 5rem);
-      height: calc(3vw + 1.6rem);
-
-      button {
-        width: 100%;
-        height: 100%;
-        border-radius: 6px;
-        background-color: ${color.orange[10]};
-
-        align-items: center;
-        justify-content: center;
-
-        color: #fff;
-      }
-    }
-    .b2 {
-      width: calc(5vw + 5rem);
-      height: calc(3vw + 1.6rem);
-
-      button {
-        width: 100%;
-        height: 100%;
-        border-radius: 6px;
-        background-color: ${color.green[10]};
-
-        align-items: center;
-        justify-content: center;
-
-        color: #fff;
-      }
-    }
   }
+`
+export const button = styled.button<PropsButton>`
+  background-color: ${(h) => variant[h.variant]};
+  color: #fff;
+`
+
+export const link = styled(Link)`
+  background-color: ${color.green[10]};
+  padding: 15px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
 `
 
 export const Boxtest = styled.div`
