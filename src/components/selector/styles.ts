@@ -21,7 +21,6 @@ export const Box = styled.button`
 
     p {
       margin-left: 10px;
-      color: #fff;
     }
   }
 `

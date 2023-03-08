@@ -79,30 +79,21 @@ export const BoxTexts = styled.div<PropsShow>`
   ${(h) =>
     h.readMor &&
     css`
-      width: 70vw;
+      width: 80vw;
       align-items: center;
       justify-content: center;
 
-      h2 {
-        margin-top: 10vw;
-        margin-bottom: 20px;
-        color: ${color.green[10]};
-      }
-
       h3 {
         font-weight: 800;
+        color: ${color.green[10]};
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      @media (max-width: 650px) {
+        width: 100vw;
       }
     `}
-
-  /* justify-content: center; */
-  h1 {
-    margin-bottom: 10px;
-    color: ${color.green[20]};
-  }
-
-  h3 {
-    font-weight: 800;
-  }
 
   .interact {
     display: flex;
@@ -136,3 +127,5 @@ export const Mission = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1rem 2rem;
 `
+
+export const BoxContent = styled.div``

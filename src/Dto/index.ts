@@ -35,15 +35,9 @@ interface ICard {
 export interface PropsCard {
   reference_id: string
   customer: PersonCardProps
-  items: [
-    {
-      reference_id: string
-      name: string
-      quantity: number
-      unit_amount: number
-    },
-  ]
-  shipping: {
+  items: {
+    reference_id: string
+    name: string
     address: Shipping
   }
   charges: [
@@ -62,4 +56,88 @@ export interface PropsCard {
       }
     },
   ]
+}
+
+export interface IEnd {
+  bairro: string
+  cep: string
+  city: string
+  fk_user_id: string
+  id: string
+  number_home: string
+  state: string
+  street: string
+}
+
+export interface IProfile {
+  avatar: string
+  fk_user_id: string
+  id: string
+}
+
+export interface PropsUser {
+  email: string
+  id: string
+  midle_name: string
+  name: string
+  end: IEnd
+  profile: IProfile
+}
+
+export interface PropsParcCard {
+  quantity: number
+  installmentAmount: number
+  totalAmount: number
+  interestFree: boolean
+}
+
+export interface IPropsParcelamento {
+  installments: {
+    discover: PropsParcCard[]
+    diners: PropsParcCard[]
+    valecard: PropsParcCard[]
+    banesecard: PropsParcCard[]
+    fortbrasil: PropsParcCard[]
+    jcb: PropsParcCard[]
+    elo: PropsParcCard[]
+    mastercard: PropsParcCard[]
+    sorocred: PropsParcCard[]
+    personalcard: PropsParcCard[]
+    mais: PropsParcCard[]
+    aura: PropsParcCard[]
+    cabal: PropsParcCard[]
+    amex: PropsParcCard[]
+    upbrasil: PropsParcCard[]
+    grandcard: PropsParcCard[]
+    visa: PropsParcCard[]
+    brasilcard: PropsParcCard[]
+    avista: PropsParcCard[]
+    cardban: PropsParcCard[]
+    hipercard: PropsParcCard[]
+    plenocard: PropsParcCard[]
+  }
+  error: false
+}
+
+export interface IPropsBrand {
+  bin: {
+    cardLevel?: string
+    cvvSize: number
+    expirable: string
+    validationAlgorithm: string
+    bank?: string
+    bin: number
+    brand: {
+      name: string
+    }
+    length?: number
+    country: {
+      isoCodeThreeDigits: string
+      isoCode: string
+      name: string
+      id: number
+    }
+    statusMessage: string
+    reasonMessage?: string
+  }
 }

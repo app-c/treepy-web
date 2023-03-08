@@ -3,6 +3,7 @@ import car from '../assets/car.svg'
 import bus from '../assets/bus.svg'
 import gas from '../assets/gas.svg'
 import eletric from '../assets/eletric.svg'
+import trash from '../assets/trash.svg'
 
 export const icones = [
   { id: '1', ico: eletric },
@@ -10,4 +11,5 @@ export const icones = [
   { id: '3', ico: car },
   { id: '4', ico: bus },
   { id: '5', ico: garfo },
+  { id: '6', ico: trash },
 ]

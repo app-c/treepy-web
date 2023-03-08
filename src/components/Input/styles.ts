@@ -30,7 +30,7 @@ export const Box = styled.div<PropsInput>`
 export const Container = styled.div<PropsInput>`
   width: ${({ sizeW: h }) => h};
   height: ${(h) => h.sizeH};
-  padding: 5px 1rem;
+  padding: 2px 1rem;
 
   display: flex;
   align-items: center;
@@ -60,8 +60,8 @@ export const Container = styled.div<PropsInput>`
 
 
   input {
-    flex: 1;
-    margin: 0;
-    background: transparent;
+    width: 100%;
+    height: 100%;
+    background: #00000000;
   }
 `

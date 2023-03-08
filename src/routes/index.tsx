@@ -1,20 +1,21 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Calculadora } from '../pages/Calculadora'
-import { Contact } from '../pages/contact'
-import { DashBoard } from '../pages/DashBoard'
-import { Home } from '../pages/home'
-import { Plan } from '../pages/Plan'
-import { SignIn } from '../pages/signIn/index '
-import { SignUp } from '../pages/signUp'
-import { SignUpPay } from '../pages/signUpPay'
-import { Test } from '../pages/test'
-import { Us } from '../pages/Us'
+import { Calculadora } from '../pages/App/Calculadora'
+import { Contact } from '../pages/App/contact'
+import { DashBoard } from '../pages/Auth/DashBoard'
+import { Home } from '../pages/App/home'
+import { Plan } from '../pages/App/Plan'
+import { SignIn } from '../pages/App/signIn/index '
+import { SignUp } from '../pages/App/signUp'
+import { SignUpPay } from '../pages/App/signUpPay'
+import { Test } from '../pages/App/test'
+import { Us } from '../pages/App/Us'
 import { AuthRoute } from './AuthRoute'
 import { RouteApp } from './Route'
+import { SignInProv } from '../pages/App/signInProv/index '
 
-interface Props {
-  dataSignUp?: object
-}
+// interface Props {
+//   dataSignUp?: object
+// }
 
 export function Router() {
   return (
@@ -22,6 +23,7 @@ export function Router() {
       <Route path="/" element={<RouteApp />}>
         <Route path="/" element={<Home />} />
         <Route path="/signIn" element={<SignIn />} />
+        <Route path="/signInProv" element={<SignInProv />} />
         <Route path="/us" element={<Us />} />
         <Route path="/calc" element={<Calculadora />} />
         <Route path="/test" element={<Test />} />

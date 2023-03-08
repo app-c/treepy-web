@@ -8,11 +8,12 @@ import React, { useCallback, useRef } from 'react'
 import { FormHandles } from '@unform/core'
 import * as Yup from 'yup'
 import { getValidationErrors } from '../../utils/getValidationErrors'
-import { api } from '../../services/api'
+import { api, pag } from '../../services/api'
 import { CardType } from '../CardType'
 import { useToast } from '../../context/ToastContext'
 import { PropsSingUp } from '../../pages/signUpPay'
 import { Selector } from '../selector'
+import { IPropsBrand, IPropsParcelamento, PropsUser } from '../../Dto'
 
 interface DataProps {
   name: string
@@ -33,7 +34,6 @@ interface DataProps {
 
 interface Props {
   setStep?: (item: number) => void
-  data?: PropsSingUp
   Component?: any
   amount: number
   tree: number
@@ -43,13 +43,21 @@ interface SelectProps {
   type: 'cartao' | 'pix' | 'boleto'
 }
 
-export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
+export function DataPerson({ setStep, amount, tree, Component }: Props) {
   const forRef = useRef<FormHandles>(null)
   const refContainer = useRef<any>(null)
 
-  React.useEffect(() => {
-    console.log(refContainer)
-  }, [])
+  const card = PagSeguro.encryptCard({
+    publicKey: 'PUBE8042CBE5AF149459191702768A7074C',
+    holder: 'Nome Sobrenome',
+    number: '4242424242424242',
+    expMonth: '12',
+    expYear: '2030',
+    securityCode: '123',
+  })
+
+  const encrypted = card.encryptedCard
+  console.log(card.errors[0].message, encrypted)
 
   const { addToast } = useToast()
 
@@ -60,14 +68,56 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
   const [brand, setBrand] = React.useState('')
   const [securityCode, setSecurityCode] = React.useState('')
   const [qntParcela, setQntParce] = React.useState('')
+  const [responseBrand, setResponseBrand] = React.useState<IPropsBrand>()
+
+  const [parc, setParc] = React.useState<IPropsParcelamento>()
 
   const [select, setSelect] = React.useState<SelectProps>({ type: 'cartao' })
 
-  const [user, setUser] = React.useState<object>()
+  const [user, setUser] = React.useState<PropsUser>()
 
-  React.useEffect(() => {}, [])
+  const loadData = React.useCallback(async () => {
+    await api
+      .get('/user/find-user')
+      .then((h) => {
+        const rs = h.data
+        setUser(rs)
+      })
+      .catch((h) => console.log(h.response))
+  }, [])
 
-  console.log(data)
+  React.useEffect(() => {
+    if (numberCard.length > 5) {
+      pag.post('/session').then((h) => {
+        const rs = h.data
+        const id = rs.session.id[0]
+        pag
+          .post('/brand', {
+            tk: id,
+            creditCard: numberCard,
+          })
+          .then((h) => {
+            const brand = h.data as IPropsBrand
+            const bandera = brand.bin.brand.name
+            pag
+              .post('/parc', {
+                installment: 10,
+                creditCardBrand: brand.bin.brand.name,
+                maxInstallmentNoInterest: 10,
+                sessionId: id,
+                amount: '1000.00',
+              })
+              .then((h) => {
+                const rs = h.data as IPropsParcelamento
+              })
+          })
+      })
+    }
+  }, [numberCard])
+
+  React.useEffect(() => {
+    loadData()
+  }, [])
 
   const handleSubmit = useCallback(async (data: DataProps) => {
     forRef.current?.setErrors({})
@@ -120,6 +170,18 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
     brand,
   }
 
+  const data = {
+    locality: user?.end.bairro,
+    street: user?.end.street,
+    city: user?.end.city,
+    region: user?.end.state,
+    postal_code: user?.end.cep,
+    holder: user?.name,
+    number: user?.end.number_home,
+    name: user?.name,
+    email: user?.email,
+  }
+
   React.useEffect(() => {
     if (numberCard.length >= 6) {
       const appId = ''
@@ -144,10 +206,9 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
 
   const parcelas = [1, 2, 3, 4]
 
-  console.log(data)
-
   return (
     <S.Container ref={refContainer}>
+      <h3 style={{ marginBottom: 10 }}>Como prefere pagar?</h3>
       <S.BoxSelector>
         <Selector
           selected={select.type === 'cartao'}
@@ -197,7 +258,7 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
           </div>
 
           <div className="localy">
-            <h3>Endereço do comprador</h3>
+            <h3>Endereço do titular</h3>
 
             <S.Box>
               <Input label="Rua" name="street" placeholder="rua" />
@@ -249,7 +310,7 @@ export function DataPerson({ setStep, data, amount, tree, Component }: Props) {
                     />
                     <Input
                       onChange={(h) => setNumberCard(h.currentTarget.value)}
-                      name="number"
+                      name="number-card"
                       type="text"
                       placeholder="Digite o número do cartão"
                     />

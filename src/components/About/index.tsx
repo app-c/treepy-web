@@ -5,6 +5,7 @@ import flor from '../../assets/flor.png'
 import { Button } from '../Button'
 import {
   Box,
+  BoxContent,
   BoxTexts,
   Container,
   Content,
@@ -31,7 +32,7 @@ export function About() {
           </div> */}
 
         <BoxTexts readMor={showRead}>
-          <h2>Agir Agora é preciso: Nós precisamos de você!</h2>
+          <h3>Agir Agora é preciso: Nós precisamos de você!</h3>
           <div>
             <p>
               Estamos enfrentando uma crise climática. Nenhum desafio representa
@@ -54,17 +55,17 @@ export function About() {
 
                 <Box>
                   <Mission>
-                    <div>
-                      <h3 style={{ marginTop: 20 }}>Missão</h3>
+                    <BoxContent>
+                      <h3>Missão</h3>
                       <p>
                         Criar um futuro brilhante para as próximas gerações. Nos
                         unir em nome da preservação do nosso planeta amado.
                         Juntos, podemos fazer a diferença e garantir um futuro
                         vibrante para todos.
                       </p>
-                    </div>
+                    </BoxContent>
 
-                    <div>
+                    <BoxContent>
                       <h3>Visão</h3>
                       <p>
                         Ser a principal empresa que através dos créditos
@@ -73,9 +74,9 @@ export function About() {
                         ambiente para proteger o planeta e garantir uma vida
                         saudável para as gerações futuras
                       </p>
-                    </div>
+                    </BoxContent>
 
-                    <div>
+                    <BoxContent>
                       <h3>Valores</h3>
                       <p>
                         Atuamos com os mais altos valores de ética, moral e
@@ -86,7 +87,7 @@ export function About() {
                         preocupação com o meio ambiente e a responsabilidade
                         social.
                       </p>
-                    </div>
+                    </BoxContent>
                   </Mission>
                 </Box>
                 {/* 

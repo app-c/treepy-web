@@ -123,28 +123,28 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
               <div className="box">
                 {car !== '0' && (
                   <div>
-                    <h3>veículo: </h3>
+                    <h3>Veículo: </h3>
                     <p>{car}</p>
                   </div>
                 )}
 
                 {combus !== '0' && (
                   <div>
-                    <h3>combustível: </h3>
+                    <h3>Combustível: </h3>
                     <p>{combus}</p>
                   </div>
                 )}
 
                 {combusH !== '0' && (
                   <div>
-                    <h3>combustível/hibrido: </h3>
+                    <h3>Combustível/hibrido: </h3>
                     <p>{combusH}</p>
                   </div>
                 )}
 
                 {power !== '0' && (
                   <div>
-                    <h3>potência do motor: </h3>
+                    <h3>Potência do motor: </h3>
                     <p>{power}</p>
                   </div>
                 )}
@@ -274,7 +274,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                         mask="number"
                         name="km"
                         onChange={(h) => setKm(h.currentTarget.value)}
-                        placeholder="digite o km do veículo"
+                        placeholder="Digite o km do veículo"
                       />
                     </Form>
                   </div>

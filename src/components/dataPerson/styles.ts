@@ -13,9 +13,14 @@ export const Container = styled.div`
   padding: 2rem;
   border-radius: 10px;
   border: 1px solid ${color.green[10]};
+  margin-top: 4rem;
 
   h1 {
     margin-bottom: 1rem;
+  }
+
+  h3 {
+    color: ${color.green[40]};
   }
 
   @media (max-width: 780px) {

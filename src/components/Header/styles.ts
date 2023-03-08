@@ -28,7 +28,7 @@ export const Container = styled.div<HeaderProps>`
 export const BoxLog = styled.a<ProsLinks>`
   display: flex;
   /* position: absolute; */
-  margin-left: 6rem;
+  margin-left: 5vw;
   align-self: center;
   width: calc(4rem + 4vw);
   align-items: center;
@@ -209,7 +209,12 @@ export const BoxContato = styled.div`
   height: 2rem;
 
   color: #fff;
-  padding-left: calc(1vw + 10%);
+
+  a {
+    margin-left: 5vw;
+    color: #fff;
+    font-size: calc(10px + 0.4vw);
+  }
 `
 
 export const Li = styled.a<ProsLinks>`

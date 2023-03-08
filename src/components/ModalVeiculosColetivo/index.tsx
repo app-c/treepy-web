@@ -100,7 +100,7 @@ export function ModalVeiculosColetivo({ setItemC }: Props) {
                         mask="number"
                         name="km"
                         onChange={(h) => setKm(h.currentTarget.value)}
-                        placeholder="digite o km do veículo"
+                        placeholder="Digite o km do veículo"
                       />
                     </Form>
                   </div>
@@ -111,7 +111,7 @@ export function ModalVeiculosColetivo({ setItemC }: Props) {
                 <ContentButton>
                   {km !== '' && (
                     <div className="button">
-                      <Button title="salvar" variant="A" pres={handleAddItem} />
+                      <Button title="Salvar" variant="A" pres={handleAddItem} />
                     </div>
                   )}
                 </ContentButton>
