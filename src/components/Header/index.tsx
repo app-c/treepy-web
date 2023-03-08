@@ -32,9 +32,6 @@ export function Header({ color = 'rgba(34, 71, 26, 0.5)' }: Props) {
           </Menu>
 
           <Nave show={show}>
-            {/* <Li show={show} to="/">
-              HOME
-            </Li> */}
             <Li show={show} href="#us">
               SOBRE NÓS
             </Li>
