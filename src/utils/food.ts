@@ -4,7 +4,7 @@ export const food = [
     co2: 0,
   },
   {
-    fod: 'Consumo carne bovina. Frango e porco de maneira esporádica.',
+    fod: 'Consumo carne bovina. Carne de frango e de porco de maneira esporádica.',
     co2: 538.11,
   },
   {
@@ -16,7 +16,7 @@ export const food = [
     co2: 244.68,
   },
   {
-    fod: 'Consumo carne bovina, frango e porco de maneira equilibada.',
+    fod: 'Consumo carne bovina, frango e porco de maneira equilibrada.',
     co2: 313.35,
   },
   { fod: 'Consumo carne de maneira esporádica.', co2: 76.87 },

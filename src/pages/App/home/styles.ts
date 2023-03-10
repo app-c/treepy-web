@@ -5,6 +5,15 @@ export const Container = styled.div`
   flex-direction: column;
   flex: 1;
   height: 100%;
+
+  .folha,
+  .how,
+  .projet,
+  .us,
+  .calc,
+  .folha {
+    visibility: hidden;
+  }
 `
 
 export const ScrollBar = styled.div`

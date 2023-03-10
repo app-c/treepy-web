@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useRef } from 'react'
 import { Outlet } from 'react-router-dom'
 import Banner from '../../../components/Banner'
@@ -12,24 +13,20 @@ import { Us } from '../Us'
 import * as S from './styles'
 
 import { Element } from 'react-scroll'
+import Scroll from 'scrollreveal'
 
 export function Home() {
   // const ref = useRef<HTMLDivElement>(null)
   const [opacity, setOpacity] = React.useState(1)
 
-  const handleScroll = () => {
-    const position = window.pageYOffset
-    if (position > 200) {
-      setOpacity(0.5)
-    } else {
-      setOpacity(1)
-    }
-  }
+  const sr = Scroll({ reset: true })
 
-  // useEffect(() => {
-  //   window.addEventListener('scroll', (h) => {
-  //   })
-  // }, [])
+  useEffect(() => {
+    sr.reveal('.calc', { duration: 2000, delay: 100, distance: '200px' })
+    sr.reveal('.folha', { duration: 1500, delay: 200, distance: '200px' })
+    sr.reveal('.how', { duration: 2000, delay: 100, distance: '200px' })
+    sr.reveal('.projet', { duration: 2000, delay: 100, distance: '200px' })
+  }, [sr])
 
   return (
     <S.Container>
@@ -40,27 +37,19 @@ export function Home() {
           <Banner />
         </div>
 
-        <Element
-          name="elementCom"
-          className="element"
-          onScroll={(h) => console.log(h)}
-        >
-          <S.elementCom>
-            <S.BoxCalc>
-              <Calc />
-            </S.BoxCalc>
-          </S.elementCom>
-        </Element>
+        <S.BoxCalc className="calc">
+          <Calc />
+        </S.BoxCalc>
 
         <div id="how">
           <HowToDo />
         </div>
 
-        <div id="">
+        <div className="folha" id="">
           <Folha />
         </div>
 
-        <div id="projec">
+        <div className="projet" id="projec">
           <OurProject />
         </div>
 

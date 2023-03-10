@@ -47,3 +47,19 @@ export const Container = styled.div`
     margin-bottom: 40px;
   }
 `
+
+export const bt = styled.div`
+  width: calc(50px + 15vw);
+  height: 50px;
+`
+
+export const content = styled.div``
+
+export const box = styled.div`
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+`

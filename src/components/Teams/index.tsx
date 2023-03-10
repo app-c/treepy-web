@@ -19,9 +19,7 @@ export function Teams() {
 
           <S.Content>
             <h3>Carlos Motta</h3>
-            <h4>
-              Financeiro <span>carlos.motta@treepy.com.br</span>{' '}
-            </h4>
+            <span>Head Financeiro e Comercial</span>
           </S.Content>
           <S.Links>
             <a href="https://www.instagram.com/motta.aai/">
@@ -39,9 +37,9 @@ export function Teams() {
 
           <S.Content>
             <h3>Danilo Simões</h3>
-            <h4>
-              Jurídico e RH - <span>danilo.simoes@treepy.com.br</span>{' '}
-            </h4>
+            <span>
+              Head Jurídico e <br /> Recursos Humanos{' '}
+            </span>
           </S.Content>
           <S.Links>
             <a href="https://www.instagram.com/danilo_simoes/img">
@@ -59,9 +57,7 @@ export function Teams() {
 
           <S.Content>
             <h3>Fátima Molina</h3>
-            <h4>
-              Inovação - <span>fatima.molina@treepy.com.br</span>{' '}
-            </h4>
+            <span>Head de Inovação e Novos Negócios</span>
           </S.Content>
 
           <S.Links>
@@ -80,9 +76,7 @@ export function Teams() {
 
           <S.Content>
             <h3>Luciana Escames</h3>
-            <h4>
-              Meio Ambiente - <span>luciana.escames@treepy.com.br</span>{' '}
-            </h4>
+            <span>Hesd de Sustentabilidade e Meio Ambiente</span>
           </S.Content>
 
           <S.Links>
@@ -101,9 +95,7 @@ export function Teams() {
 
           <S.Content>
             <h3>Marcos Tonoli</h3>
-            <h4>
-              Operação - <span>marcos.tonoli@treepy.com.br</span>{' '}
-            </h4>
+            <span>Head de Projetos e Operação</span>
           </S.Content>
 
           <S.Links>

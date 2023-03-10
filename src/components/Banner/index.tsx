@@ -77,7 +77,9 @@ export default function Banner() {
 
                 <S.ContainerButton>
                   <S.button variant="orange">PARA VOCE</S.button>
-                  <S.button variant="green">PARA SUA EMPRESA</S.button>
+                  <S.button style={{ marginLeft: 15 }} variant="green">
+                    PARA SUA EMPRESA
+                  </S.button>
                 </S.ContainerButton>
               </S.BoxText>
             </S.BoxElement>

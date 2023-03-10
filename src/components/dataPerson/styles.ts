@@ -1,4 +1,4 @@
-import * as Dialog from '@radix-ui/react-dialog'
+import { Form } from '@unform/web'
 import styled from 'styled-components'
 import { color } from '../../styles/colors'
 
@@ -13,7 +13,6 @@ export const Container = styled.div`
   padding: 2rem;
   border-radius: 10px;
   border: 1px solid ${color.green[10]};
-  margin-top: 4rem;
 
   h1 {
     margin-bottom: 1rem;
@@ -106,16 +105,30 @@ export const ContainerCard = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
+`
 
-  /* padding: 0 3rem; */
+export const grid = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 1rem 6rem;
+  margin: 2rem 0;
+`
 
-  .content {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-gap: 1rem 6rem;
-    margin: 2rem 0;
+export const gridInpu = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 150px 150px 150px 1fr;
+  grid-gap: 1rem 3rem;
+
+  @media (max-width: 750px) {
+    grid-gap: 1rem;
   }
+`
+
+export const qrCode = styled.img`
+  width: 300px;
+  height: 300px;
 `
 
 export const BoxCard = styled.div`
@@ -144,21 +157,14 @@ export const Boxform = styled.div`
   label {
     margin-top: 1rem 0;
   }
+`
 
-  .content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-    grid-gap: 3rem;
+export const installments = styled.div`
+  display: flex;
+  flex-direction: column;
 
-    .selectparc {
-      display: flex;
-      flex-direction: column;
-      margin-top: -15px;
-
-      .prc {
-        margin-bottom: 5px;
-      }
-    }
+  span {
+    margin-bottom: 3px;
   }
 `
 
@@ -183,35 +189,20 @@ export const BoxSelect = styled.select`
   border-radius: 5px;
 `
 
-export const Overlay = styled(Dialog.Overlay)`
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  inset: 0;
-  background-color: rgba(207, 0, 0, 0.824);
-`
-
-export const ContentDialog = styled(Dialog.Content)`
-  min-width: 20rem;
-  padding: 1rem;
-  background-color: #303030;
+export const form = styled(Form)`
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
+`
 
-  align-items: center;
+export const bt = styled.button`
+  display: flex;
+  background-color: ${color.green[10]};
+  color: #fff;
+  padding: 15px 10px;
+
+  align-self: center;
   justify-content: center;
+  align-items: center;
 
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: calc(2rem + 25vw);
 `
-
-export const BoxDialog = styled.div`
-  width: 100px;
-  height: 100px;
-  background-color: red;
-`
-
-export const Closed = styled(Dialog.Close)``

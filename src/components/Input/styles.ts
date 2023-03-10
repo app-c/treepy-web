@@ -9,27 +9,27 @@ type PropsInput = {
   sizeH?: string
 }
 
-export const Box = styled.div<PropsInput>`
+export const Box = styled.div`
   display: flex;
   flex-direction: column;
+`
 
-  .label {
-    margin-bottom: -10px;
-    font-size: 0.8rem;
-    align-self: flex-start;
+export const label = styled.p<PropsInput>`
+  margin-bottom: -10px;
+  font-size: 0.8rem;
+  /* align-self: flex-start; */
 
-    ${(h) =>
-      h.isFilled &&
-      css`
-        color: ${color.green[10]};
-        font-weight: 500;
-      `}
-  }
+  ${(h) =>
+    h.isFilled &&
+    css`
+      color: ${color.green[10]};
+      font-weight: 500;
+    `}
 `
 
 export const Container = styled.div<PropsInput>`
   width: ${({ sizeW: h }) => h};
-  height: ${(h) => h.sizeH};
+  height: 30px;
   padding: 2px 1rem;
 
   display: flex;

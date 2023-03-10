@@ -220,7 +220,7 @@ export function SignUpPay() {
 
         {step === 3 && (
           <S.Box2>
-            <DataPerson data={dados} amount={10} tree={10} />
+            <DataPerson amount={10} tree={10} />
           </S.Box2>
         )}
       </S.Content>

@@ -27,7 +27,7 @@ export function OurProject() {
 
               <S.BoxText>
                 <h3>Usuários</h3>
-                <p>Qualquer pessoa pode mitigar as suas emissões de CO2</p>
+                <p>Qualquer pessoa pode mitigar as suas emissões de CO₂</p>
               </S.BoxText>
             </S.Box>
 
@@ -65,7 +65,7 @@ export function OurProject() {
 
               <S.BoxText>
                 <h3>Planeta (meio ambiente)</h3>
-                <p>Reduzem os efeitos maléficos da emissão de CO2</p>
+                <p>Reduzem os efeitos maléficos da emissão de CO₂</p>
               </S.BoxText>
             </S.Box>
           </div>
@@ -73,7 +73,7 @@ export function OurProject() {
           <S.Contact>
             <h4>
               Quer ser um parceiro?{' '}
-              <Link to="" style={{ color: color.green[40] }}>
+              <Link to="/parc" style={{ color: color.green[40] }}>
                 {' '}
                 Fale conosco
               </Link>{' '}

@@ -35,36 +35,10 @@ export const cHeader = styled.div`
     /* font-size: calc(2vw + 2vh); */
   }
 
-  p {
-    /* font-size: calc(1vw + 2vh); */
-  }
-
   line {
     height: 2px;
     width: 100%;
     background-color: #202020;
-  }
-
-  /* @media (max-width: 1920px) {
-      h1 {
-        font-size: 3vw;
-        margin-top: 20px;
-      }
-
-      p {
-        font-size: 1vw;
-      }
-    } */
-
-  @media (max-width: 1200px) {
-    /* h1 {
-      margin-top: 1rem;
-      font-size: calc(1vw + 1.8rem);
-    }
-
-    p {
-      font-size: calc(0.5vw + 1rem);
-    } */
   }
 `
 
@@ -77,9 +51,9 @@ export const ContentImage = styled.div`
   background-size: cover;
   background-position: center;
 
-  /* @media (max-width: 1920px) {
-    height: 25rem;
-  } */
+  @media (max-width: 760px) {
+    width: 100vw;
+  }
 `
 
 export const ContentText = styled.div`

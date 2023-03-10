@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { Form } from '@unform/web'
 import { Button } from '../Button'
 import { Input } from '../Input'
@@ -9,25 +10,31 @@ import { FormHandles } from '@unform/core'
 import * as Yup from 'yup'
 import { getValidationErrors } from '../../utils/getValidationErrors'
 import { api, pag } from '../../services/api'
-import { CardType } from '../CardType'
 import { useToast } from '../../context/ToastContext'
-import { PropsSingUp } from '../../pages/signUpPay'
 import { Selector } from '../selector'
 import { IPropsBrand, IPropsParcelamento, PropsUser } from '../../Dto'
+import { Loading } from '../Loading'
+import { brlNumber, _number } from '../../utils/formatNumber'
+import Modal from 'react-modal'
+import { Alert } from '../Alert'
 
 interface DataProps {
   name: string
   email: string
-  locality: string
+  area: string
+  phone_number: string
+  amount: number
   street: string
-  number: string
+  home_number: string
   complement: string
+  locality: string
   city: string
-  region: string
+  region_code: string
   country: string
   postal_code: string
-  area: string
-  holder: string
+  installments: number
+  holder_name: string
+  number_card: string
   expire: string
   security_code: string
 }
@@ -43,21 +50,26 @@ interface SelectProps {
   type: 'cartao' | 'pix' | 'boleto'
 }
 
+interface PropsMosal {
+  show: boolean
+  status: 'DECLINED' | 'PAID' | null
+}
+
 export function DataPerson({ setStep, amount, tree, Component }: Props) {
   const forRef = useRef<FormHandles>(null)
   const refContainer = useRef<any>(null)
 
-  const card = PagSeguro.encryptCard({
-    publicKey: 'PUBE8042CBE5AF149459191702768A7074C',
-    holder: 'Nome Sobrenome',
-    number: '4242424242424242',
-    expMonth: '12',
-    expYear: '2030',
-    securityCode: '123',
-  })
+  // const card = PagSeguro.encryptCard({
+  //   publicKey: 'PUBE8042CBE5AF149459191702768A7074C',
+  //   holder: 'Nome Sobrenome',
+  //   number: '4242424242424242',
+  //   expMonth: '12',
+  //   expYear: '2030',
+  //   securityCode: '123',
+  // })
 
-  const encrypted = card.encryptedCard
-  console.log(card.errors[0].message, encrypted)
+  // const encrypted = card.encryptedCard
+  // console.log(card.errors[0].message, encrypted)
 
   const { addToast } = useToast()
 
@@ -67,10 +79,16 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
   const [expYear, setExpYear] = React.useState('')
   const [brand, setBrand] = React.useState('')
   const [securityCode, setSecurityCode] = React.useState('')
-  const [qntParcela, setQntParce] = React.useState('')
+  const [installments, setInstalments] = React.useState('1')
   const [responseBrand, setResponseBrand] = React.useState<IPropsBrand>()
+  const [showMoal, setShowModal] = React.useState<PropsMosal>({
+    show: false,
+    status: null,
+  })
 
   const [parc, setParc] = React.useState<IPropsParcelamento>()
+  const [load, setLoad] = React.useState(false)
+  const [qrCodePix, setQrCodePix] = React.useState('')
 
   const [select, setSelect] = React.useState<SelectProps>({ type: 'cartao' })
 
@@ -86,80 +104,193 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
       .catch((h) => console.log(h.response))
   }, [])
 
-  React.useEffect(() => {
-    if (numberCard.length > 5) {
-      pag.post('/session').then((h) => {
-        const rs = h.data
-        const id = rs.session.id[0]
-        pag
-          .post('/brand', {
-            tk: id,
-            creditCard: numberCard,
-          })
-          .then((h) => {
-            const brand = h.data as IPropsBrand
-            const bandera = brand.bin.brand.name
-            pag
-              .post('/parc', {
-                installment: 10,
-                creditCardBrand: brand.bin.brand.name,
-                maxInstallmentNoInterest: 10,
-                sessionId: id,
-                amount: '1000.00',
-              })
-              .then((h) => {
-                const rs = h.data as IPropsParcelamento
-              })
-          })
-      })
-    }
-  }, [numberCard])
+  // React.useEffect(() => {
+  //   if (numberCard.length > 5) {
+  //     pag.post('/session').then((h) => {
+  //       const rs = h.data
+  //       const id = rs.session.id[0]
+  //       pag
+  //         .post('/brand', {
+  //           tk: id,
+  //           creditCard: numberCard,
+  //         })
+  //         .then((h) => {
+  //           const brand = h.data as IPropsBrand
+  //           const bandera = brand.bin.brand.name
+  //           pag
+  //             .post('/parc', {
+  //               installment: 10,
+  //               creditCardBrand: brand.bin.brand.name,
+  //               maxInstallmentNoInterest: 10,
+  //               sessionId: id,
+  //               amount: '1000.00',
+  //             })
+  //             .then((h) => {
+  //               const rs = h.data as IPropsParcelamento
+  //             })
+  //         })
+  //     })
+  //   }
+  // }, [numberCard])
 
   React.useEffect(() => {
     loadData()
   }, [])
 
-  const handleSubmit = useCallback(async (data: DataProps) => {
-    forRef.current?.setErrors({})
+  const handleSubmit = useCallback(
+    async (data: DataProps) => {
+      forRef.current?.setErrors({})
 
-    try {
-      const schema = Yup.object().shape({
-        name: Yup.string().required('nome obrigatório'),
-        email: Yup.string()
-          .required('email obrigatório')
-          .email('digite um email válido'),
-        locality: Yup.string().required('bairro obrigatório'),
-        street: Yup.string().required('rua obrigatório'),
-        phone: Yup.string().required('número obrigatório'),
-        complement: Yup.string(),
-        city: Yup.string().required('cidade obrigatório'),
-        region: Yup.string().required('estado obrigatório'),
-        postal_code: Yup.string().required(),
-        holder: Yup.string().required(),
-        expire: Yup.string().required(),
-        security_code: Yup.string().required(),
-        area: Yup.string().required('dd obrigatório'),
-      })
+      const vl = _number(amount.toFixed(2))
+      const total_amount = Number(vl)
+      const postal_code = Number(_number(data.postal_code))
+      const region_code = data.region_code.toUpperCase()
+      const number_card = Number(_number(data.number_card))
 
-      console.log(data)
+      switch (select.type) {
+        case 'cartao':
+          try {
+            setLoad(true)
 
-      await schema.validate(data, {
-        abortEarly: false,
-      })
+            const schema = Yup.object().shape({
+              name: Yup.string().required('nome obrigatório'),
+              email: Yup.string()
+                .required('email obrigatório')
+                .email('digite um email válido'),
+              locality: Yup.string().required('bairro obrigatório'),
+              street: Yup.string().required('rua obrigatório'),
+              phone_number: Yup.string().required('número obrigatório'),
+              complement: Yup.string().required(),
+              city: Yup.string().required('cidade obrigatório'),
+              region_code: Yup.string().required('estado obrigatório'),
+              postal_code: Yup.string().required(),
 
-      // dataPerson(data)
-    } catch (error: any) {
-      addToast({
-        type: 'error',
-        title: 'Erro na autenticação',
-        description:
-          'Ocorreu um erro ao fazer login, verifique suas credenciais',
-      })
+              holder_name: Yup.string().required(),
+              expire: Yup.string().required(),
+              security_code: Yup.string().required(),
+              area: Yup.string().required('dd obrigatório'),
+            })
 
-      const err = getValidationErrors(error)
-      forRef.current?.setErrors(err)
-    }
-  }, [])
+            await schema.validate(data, {
+              abortEarly: false,
+            })
+
+            const [month, year] = data.expire.split('/').map(String)
+
+            const pag = {
+              name: data.name,
+              email: data.email,
+              area: data.area,
+              phone_number: data.phone_number,
+              name_item: 'Treepycach',
+              reference_item_id: new Date().getTime(),
+              amount: total_amount,
+              street: data.street,
+              home_number: data.home_number,
+              complement: data.complement,
+              locality: data.locality,
+              city: data.city,
+              region_code,
+              postal_code,
+              description: `Produto adiquirido: ${tree}, no valor total de R$ ${total_amount}`,
+
+              installments: Number(installments),
+              number_card,
+              exp_month: month,
+              exp_year: `20${year}`,
+              security_code: data.security_code,
+              holder_name: data.holder_name,
+            }
+
+            await api.post('/pay-pag/order-pag', pag).then((h) => {
+              setLoad(false)
+              const rs = h.data
+
+              const status = rs.charges[0]?.status
+              console.log(status)
+              if (status === 'DECLINED') {
+                setShowModal({ show: true, status: 'DECLINED' })
+              }
+
+              if (status === 'PAID') {
+                setShowModal({ show: true, status: 'PAID' })
+              }
+            })
+          } catch (error: any) {
+            setLoad(false)
+            console.log(error)
+            addToast({
+              type: 'error',
+              title: 'Erro',
+              description:
+                'Ocorreu um erro, verifique os campos e tente novamente',
+            })
+
+            const err = getValidationErrors(error)
+            forRef.current?.setErrors(err)
+          }
+
+          break
+
+        case 'pix':
+          try {
+            setLoad(true)
+
+            const schema = Yup.object().shape({
+              name: Yup.string().required('nome obrigatório'),
+              email: Yup.string()
+                .required('email obrigatório')
+                .email('digite um email válido'),
+              locality: Yup.string().required('bairro obrigatório'),
+              street: Yup.string().required('rua obrigatório'),
+              phone_number: Yup.string().required('número obrigatório'),
+              complement: Yup.string().required(),
+              city: Yup.string().required('cidade obrigatório'),
+              region_code: Yup.string().required('estado obrigatório'),
+              postal_code: Yup.string().required(),
+              area: Yup.string().required(),
+            })
+
+            await schema.validate(data, {
+              abortEarly: false,
+            })
+
+            const dt = {
+              name: data.name,
+              email: data.email,
+              area: data.area,
+              phone_number: data.phone_number,
+              item_name: 'Treepycache',
+              amount: total_amount,
+              expiration_date: '2023-03-11T02:35:29.154Z',
+            }
+
+            await api.post('/pay-pag/order-pix', dt).then((h) => {
+              const rs = h.data
+              setQrCodePix(rs.qr_codes[0].links[0].href)
+              setLoad(false)
+            })
+          } catch (error: any) {
+            setLoad(false)
+            console.log(error)
+            addToast({
+              type: 'error',
+              title: 'Erro',
+              description:
+                'Ocorreu um erro, verifique os campos e tente novamente',
+            })
+
+            const err = getValidationErrors(error)
+            forRef.current?.setErrors(err)
+          }
+
+          break
+        default:
+          break
+      }
+    },
+    [addToast, amount, installments, select.type, tree],
+  )
 
   const dataCard = {
     number: numberCard,
@@ -182,32 +313,56 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
     email: user?.email,
   }
 
-  React.useEffect(() => {
-    if (numberCard.length >= 6) {
-      const appId = ''
+  // React.useEffect(() => {
+  //   if (numberCard.length >= 6) {
+  //     const appId = ''
 
-      // api.post('/pay-pag/session').then((h) => {
-      //   const parser = new DOMParser()
-      //   const xml = parser.parseFromString(h.data, 'text/xml')
-      //   appId = xml.lastChild?.firstChild?.textContent || ''
-      //   api
-      //     .post('/pay-pag/brand', {
-      //       tk: appId,
-      //       creditCard: numberCard,
-      //     })
-      //     .then((h) => {
-      //       const rs = h.data
-      //       console.log(rs.bin)
-      //       setBrand(rs.bin.brand.name)
-      //     })
-      // })
-    }
-  }, [numberCard])
+  //     // api.post('/pay-pag/session').then((h) => {
+  //     //   const parser = new DOMParser()
+  //     //   const xml = parser.parseFromString(h.data, 'text/xml')
+  //     //   appId = xml.lastChild?.firstChild?.textContent || ''
+  //     //   api
+  //     //     .post('/pay-pag/brand', {
+  //     //       tk: appId,
+  //     //       creditCard: numberCard,
+  //     //     })
+  //     //     .then((h) => {
+  //     //       const rs = h.data
+  //     //       console.log(rs.bin)
+  //     //       setBrand(rs.bin.brand.name)
+  //     //     })
+  //     // })
+  //   }
+  // }, [numberCard])
 
   const parcelas = [1, 2, 3, 4]
 
+  const closeModal = React.useCallback(async () => {
+    setShowModal({ show: false, status: null })
+  }, [])
+
   return (
     <S.Container ref={refContainer}>
+      {showMoal.status === 'DECLINED' && (
+        <Alert
+          showModal={showMoal.show}
+          type="erro"
+          closed={closeModal}
+          title="Não foi possível realizar a transação"
+          texto="Consulte seu banco e tente novamente"
+        />
+      )}
+
+      {showMoal.status === 'PAID' && (
+        <Alert
+          showModal={showMoal.show}
+          type="sucess"
+          closed={closeModal}
+          title="Pagamento realizado!"
+          texto="Agradecemos sua preocupação com o meio ambiente"
+        />
+      )}
+
       <h3 style={{ marginBottom: 10 }}>Como prefere pagar?</h3>
       <S.BoxSelector>
         <Selector
@@ -228,7 +383,7 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
           pres={() => setSelect({ type: 'boleto' })}
         />
       </S.BoxSelector>
-      <Form
+      <S.form
         initialData={data}
         style={{ width: '100%' }}
         ref={forRef}
@@ -240,21 +395,23 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
             <Input label="Nome" name="name" placeholder="digite seu nome" />
             <Input name="email" label="E-mail" placeholder="digite seu email" />
 
-            <S.Box>
+            <S.gridInpu>
               <Input
                 maxLength={2}
                 mask="number"
                 name="area"
+                label="Área"
                 placeholder="(xx)"
               />
 
               <Input
                 maxLength={9}
+                label="Celular"
                 mask="number"
-                name="phone"
+                name="phone_number"
                 placeholder="telefone"
               />
-            </S.Box>
+            </S.gridInpu>
           </div>
 
           <div className="localy">
@@ -263,7 +420,12 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
             <S.Box>
               <Input label="Rua" name="street" placeholder="rua" />
 
-              <Input label="N°" mask="number" name="number" placeholder="Nº" />
+              <Input
+                label="N°"
+                mask="number"
+                name="home_number"
+                placeholder="Nº"
+              />
             </S.Box>
 
             <S.Box>
@@ -281,7 +443,7 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
             <S.Box>
               <Input
                 maxLength={2}
-                name="region"
+                name="region_code"
                 placeholder="estado"
                 label="Estado"
               />
@@ -298,58 +460,64 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
 
         <S.ContainerCard>
           {select.type === 'cartao' && (
-            <div className="content">
+            <S.grid>
               <S.BoxCard>
                 <h3>Dados do cartão</h3>
                 <S.ContentCard>
                   <S.Boxform>
                     <Input
                       onChange={(h) => setName(h.currentTarget.value)}
-                      name="holder"
+                      name="holder_name"
                       placeholder="Nome do titular"
                     />
                     <Input
                       onChange={(h) => setNumberCard(h.currentTarget.value)}
-                      name="number-card"
-                      type="text"
+                      name="number_card"
+                      mask="card"
                       placeholder="Digite o número do cartão"
+                      maxLength={19}
                     />
 
-                    <div className="content">
-                      <Input
-                        maxLength={5}
-                        onChange={(h) => setExpMonth(h.currentTarget.value)}
-                        name="expire"
-                        label="Validade"
-                        placeholder="mês/ano"
-                        mask="expire"
-                        sizeW="6rem"
-                      />
+                    <S.grid>
+                      <S.gridInpu>
+                        <Input
+                          maxLength={5}
+                          onChange={(h) => setExpMonth(h.currentTarget.value)}
+                          name="expire"
+                          label="Validade"
+                          placeholder="mês/ano"
+                          mask="expire"
+                          sizeW="6rem"
+                        />
 
-                      <Input
-                        onChange={(h) => setSecurityCode(h.currentTarget.value)}
-                        name="security_code"
-                        placeholder="cvv"
-                        label="CVV do cartão"
-                        mask="number"
-                        maxLength={3}
-                      />
-
-                      <div className="selectparc">
-                        <span className="prc">Parcelas</span>
-                        <S.BoxSelect
-                          onChange={(h) => setQntParce(h.currentTarget.value)}
-                          name="qntParcela"
-                          value={qntParcela}
-                        >
-                          {parcelas.map((h) => (
-                            <option key={h} value={h}>
-                              {h}
-                            </option>
-                          ))}
-                        </S.BoxSelect>
-                      </div>
-                    </div>
+                        <Input
+                          onChange={(h) =>
+                            setSecurityCode(h.currentTarget.value)
+                          }
+                          name="security_code"
+                          placeholder="cvv"
+                          label="CVV do cartão"
+                          mask="number"
+                          maxLength={3}
+                        />
+                        <S.installments>
+                          <span className="prc">Parcelas</span>
+                          <S.BoxSelect
+                            onChange={(h) =>
+                              setInstalments(h.currentTarget.value)
+                            }
+                            name="installments"
+                            value={installments}
+                          >
+                            {parcelas.map((h) => (
+                              <option key={h} value={h}>
+                                {h}
+                              </option>
+                            ))}
+                          </S.BoxSelect>
+                        </S.installments>
+                      </S.gridInpu>
+                    </S.grid>
                   </S.Boxform>
                 </S.ContentCard>
               </S.BoxCard>
@@ -363,17 +531,54 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
                 <p>arvores {tree.toFixed(2)}</p>
                 <div className="item"></div>
               </S.BoxItem>
-            </div>
+            </S.grid>
+          )}
+
+          {select.type === 'pix' && (
+            <S.grid>
+              <S.qrCode alt="qr_code" src={qrCodePix} />
+
+              <S.BoxItem>
+                {/* <CardType infoCard={dataCard} /> */}
+                <h3>Resumo da compra</h3>
+                <span>Treepycash</span>
+                <p>R${brlNumber(amount.toFixed(2))}</p>
+
+                <p>Árvores {tree.toFixed(0)}</p>
+                <div className="item"></div>
+              </S.BoxItem>
+            </S.grid>
+          )}
+
+          {select.type === 'boleto' && (
+            <S.grid>
+              <S.qrCode alt="qr_code" src={qrCodePix} />
+
+              <S.BoxItem>
+                {/* <CardType infoCard={dataCard} /> */}
+                <h3>Resumo da compra</h3>
+                <span>Treepycash</span>
+                <p>R$ {amount.toFixed(2)}</p>
+
+                <p>arvores {tree.toFixed(2)}</p>
+                <div className="item"></div>
+              </S.BoxItem>
+            </S.grid>
           )}
         </S.ContainerCard>
 
-        <Button
-          sizeH="2.5rem"
-          variant="AB"
-          type="submit"
-          title="FINALIZAR COMPRA"
-        />
-      </Form>
+        {select.type === 'pix' && (
+          <S.bt>{load ? <Loading /> : <p>Gerar QRCode</p>}</S.bt>
+        )}
+
+        {select.type === 'boleto' && (
+          <S.bt>{load ? <Loading /> : <p>Gerar boleto</p>}</S.bt>
+        )}
+
+        {select.type === 'cartao' && (
+          <S.bt>{load ? <Loading /> : <p>Finalizar compra</p>}</S.bt>
+        )}
+      </S.form>
     </S.Container>
   )
 }

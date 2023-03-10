@@ -13,7 +13,7 @@ interface AuthState {
 
 interface AuthContextData {
   user: object
-  userP: object
+  userP: any
   signIn(credentials: IUser): Promise<void>
   signInP(credentials: IUser): Promise<void>
   logOut: () => void

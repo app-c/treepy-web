@@ -71,7 +71,7 @@ export function ModalVeiculosColetivo({ setItemC }: Props) {
               <div className="box">
                 {car !== '0' && (
                   <div>
-                    <h3>veículo: </h3>
+                    <h3>Veículo: </h3>
                     <p>{car}</p>
                   </div>
                 )}

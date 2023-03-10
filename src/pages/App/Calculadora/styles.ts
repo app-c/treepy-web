@@ -208,7 +208,7 @@ export const Content = styled.div<PropsProgres>`
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 4rem 2rem;
+  padding: 1rem 2rem;
   border-radius: 1rem;
   background-color: ${color.green[40]};
   width: 50vw;

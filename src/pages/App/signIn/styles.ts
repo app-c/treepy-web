@@ -23,12 +23,12 @@ export const Container = styled.div`
 const appearFromLeft = keyframes`
   from {
     opacity: 0;
-    transform: translateX(-40%)
+    transform: translateX(-30%)
   }
 
   to {
     opacity: 1;
-    transform: translateX(-50%)
+    transform: translateX(-45%)
   }
 `
 
@@ -37,10 +37,6 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  width: 50vw;
-
-  /* grid-gap: 1rem 2rem; */
 `
 
 export const ContentForm = styled(Form)`
@@ -62,7 +58,7 @@ export const ContentForm = styled(Form)`
 export const BoxForm = styled.div`
   animation: ${appearFromLeft} 2s;
   position: absolute;
-  /* width: 100%; */
+  width: calc(10rem + 40vw);
   height: 70vh;
   display: flex;
   flex-direction: column;
@@ -73,10 +69,14 @@ export const BoxForm = styled.div`
 
   top: 20%;
 
-  transform: translate(-50%);
+  transform: translate(-45%);
 
   padding: 0 3rem;
 
+  @media (min-width: 750px) {
+    transform: translate(-45%);
+    width: calc(10rem + 30vw);
+  }
   .end {
     margin-top: 1rem;
   }
@@ -84,7 +84,6 @@ export const BoxForm = styled.div`
   h1 {
     color: #fff;
     margin-bottom: 2rem;
-    font-size: calc(1vw + 2.5vh);
   }
 `
 

@@ -34,7 +34,7 @@ import {
 } from '../../../components/ModalVeiculosPessoal'
 import { Form } from '@unform/web'
 import { Input } from '../../../components/Input'
-import { Link, redirect, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { HeaderC } from '../../../components/HeaderC'
 import { brlNumber } from '../../../utils/formatNumber'
 import { useAuth } from '../../../context/authcontext'
@@ -78,7 +78,6 @@ export function Calculadora() {
   } as PropsItens)
 
   const handleNext = useCallback(async () => {
-    console.log(userP)
     if (userP) {
       if (step <= 6) {
         setStep(step + 1)
@@ -250,7 +249,7 @@ export function Calculadora() {
         porcent: vlFoodAno > 0 ? (vlFoodAno / tl) * 100 : 0,
       },
 
-      { item: 'total', co2: tl / 1000, porcent: tl > 0 ? (tl / tl) * 100 : 0 },
+      { item: 'Total', co2: tl / 1000, porcent: tl > 0 ? (tl / tl) * 100 : 0 },
     ]
 
     return {
@@ -308,20 +307,20 @@ export function Calculadora() {
           <ContainerResult>
             <div className="table">
               <p className="title">Resultado</p>
-              <p>Resumo anual de suas emissões de gases de efeito estufa</p>
+              <p>Resumo anual de suas emissões de gases de efeito estufa.</p>
 
               <table>
                 <tr>
                   <th>Fonte</th>
-                  <th>Emissões (CO₂)</th>
+                  <th>Emissões (tCO₂)</th>
                   <th>%</th>
                 </tr>
 
                 {totalCo2.total.map((h) => (
                   <tr key={h.item}>
                     <td>{h.item}</td>
-                    <td>{h.co2.toFixed(2)}</td>
-                    <td>{h.porcent.toFixed(2)} %</td>
+                    <td>{brlNumber(h.co2.toFixed(2))}</td>
+                    <td>{brlNumber(h.porcent.toFixed(2))} %</td>
                   </tr>
                 ))}
               </table>
@@ -335,16 +334,15 @@ export function Calculadora() {
             <div className="result">
               <h1>TreepyCash</h1>
               <label htmlFor="">
-                <h3>R$</h3>
-                <h1 style={{ marginLeft: 10 }}>{cash}</h1>
+                <h3>R${cash}</h3>
               </label>
 
               <p>
                 Compre agora à vista ou parcele os seus{' '}
-                <span>TreepyCashes</span>{' '}
+                <span>TreepyCashes.</span>{' '}
               </p>
               <p>
-                Comece agora a compensação com apenas um <span>TreepCash</span>
+                Comece agora a compensação com apenas um <span>TreepCash.</span>
               </p>
 
               <div className="modalbox">
@@ -355,7 +353,7 @@ export function Calculadora() {
                   title="Refazer"
                 />
                 <Link to={`/plan/${dt}`} style={{ textDecoration: 'none' }}>
-                  <Button title="veja os planos" sizeW="10rem" variant="AB" />
+                  <Button title="Veja os planos" sizeW="10rem" variant="AB" />
                 </Link>
               </div>
             </div>
@@ -440,8 +438,8 @@ export function Calculadora() {
                 </SubTitle>
                 <Card>
                   <p>
-                    Insira seu consumo <span>MENSAL</span> ou o valor pago de
-                    gás. As informações constam na sua conta de gás. Mas se
+                    Insira seu consumo <span>{gas.item}</span> ou o valor pago
+                    de gás. As informações constam na sua conta de gás. Mas se
                     preferir pode inserir a quantidade de botijões de gás que
                     consome em sua casa.
                   </p>
@@ -492,6 +490,7 @@ export function Calculadora() {
                     Transporte <span className="t2">individual</span>
                   </SubTitle>
                 </div>
+
                 <Card>
                   <p>
                     Insira as informações sobre o seu transporte individual
@@ -528,8 +527,8 @@ export function Calculadora() {
                   {/* </ContentItens> */}
 
                   <div>
-                    <p>Emissões mensais: {totalCo2.transInd.mes} (kg CO₂e)</p>
-                    <p>emissões anuais: {totalCo2.transInd.anual} (kg CO₂e)</p>
+                    <p>Emissão mensal: {totalCo2.transInd.mes} (kg CO₂e)</p>
+                    <p>emissão anual: {totalCo2.transInd.anual} (kg CO₂e)</p>
                   </div>
                 </Card>
               </>
@@ -573,8 +572,8 @@ export function Calculadora() {
                     ))}
                   </Table>
                   <div>
-                    <p>Emissões mensais: {totalCo2.transCol.mes} (kg CO₂e)</p>
-                    <p>emissões anuais: {totalCo2.transCol.anual} (kg CO₂e)</p>
+                    <p>Emissões mensal: {totalCo2.transCol.mes} (kg CO₂e)</p>
+                    <p>emissões anual: {totalCo2.transCol.anual} (kg CO₂e)</p>
                   </div>
                 </Card>
               </>
@@ -608,8 +607,8 @@ export function Calculadora() {
                     ))}
                   </BoxSelect>
                   <div>
-                    <p>Emissões mensais: {totalCo2.food.mes} (kg CO₂e)</p>
-                    <p>emissões anuais: {totalCo2.food.anual} (kg CO₂e)</p>
+                    <p>Emissão mensal: {totalCo2.food.mes} (kg CO₂e)</p>
+                    <p>emissão anuais: {totalCo2.food.anual} (kg CO₂e)</p>
                   </div>
                 </Card>
               </>

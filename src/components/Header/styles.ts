@@ -35,13 +35,15 @@ export const BoxLog = styled.a<ProsLinks>`
 
   @media (max-width: 780px) {
     left: 2rem;
-    top: 1.5rem;
+    margin-top: 1rem;
 
     ${(props) =>
       props.show &&
       css`
-        top: 3vw;
-        left: 5rem;
+        position: absolute;
+        top: 1vw;
+        left: 2rem;
+        z-index: 100;
       `}
   }
 
@@ -90,6 +92,7 @@ export const Nave = styled.div<ProsLinks>`
         `}
     }
   }
+
   .buton {
     display: flex;
     height: 100%;
@@ -155,22 +158,38 @@ export const Nave = styled.div<ProsLinks>`
 `
 
 export const Menu = styled.button<ProsLinks>`
+  display: none;
   @media (max-width: 780px) {
-    width: 40px;
-    height: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 50px;
     position: fixed;
+    padding: 5px;
 
-    top: 2.3rem;
-    right: 10%;
-    background-color: #00000000;
+    top: 0.5rem;
+    right: calc(3rem + 13vw);
+
+    transform: translate(1.1rem, 0.1rem);
+    background-color: #4141412f;
     transition: 0.4s;
     z-index: 100;
+
+    .one,
+    .two,
+    .tree {
+      background-color: #fff;
+      height: 4px;
+      width: 100%;
+      margin: 5px auto;
+
+      transition-duration: 1s;
+    }
 
     ${(props) =>
       props.show &&
       css`
         top: 3vw;
-        left: 60vw;
+        left: 50vw;
 
         .one {
           transform: rotate(45deg) translate(7px, 7px);
@@ -184,17 +203,6 @@ export const Menu = styled.button<ProsLinks>`
           transform: rotate(-45deg) translate(8px, -9px);
         }
       `}
-
-    .one,
-    .two,
-    .tree {
-      background-color: #fff;
-      height: 4px;
-      width: 100%;
-      margin: 6px auto;
-
-      transition-duration: 1s;
-    }
   }
 `
 

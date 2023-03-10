@@ -59,9 +59,9 @@ export const BoxWorld = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  width: 100vw;
+  /* width: 100vw; */
 
-  /* width: 50vw; */
+  width: 50vw;
   height: 50vh;
 `
 

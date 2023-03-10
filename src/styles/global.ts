@@ -1,9 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
 
-import { theme } from './theme'
-
-const { color } = theme
-
 export const GlobalStyle = createGlobalStyle`
 
     * {
@@ -31,7 +27,7 @@ export const GlobalStyle = createGlobalStyle`
 
         color: #878787;
 
-        background-color: #fff;
+        background-color: #ffffff;
 
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -39,7 +35,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h1 {
-      font-size: calc(12px + 2.5vw);
+      font-size: clamp(20px, 2.5vw, 3vw);
       font-weight: 900;
     }
 
@@ -58,7 +54,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     p {
-      font-size: calc(.5rem + .7vw)
+      font-size: clamp(16px, 1vw, 2vw);
+      /* font-size: calc(.5rem + .7vw); */
     }
 
 
@@ -76,8 +73,7 @@ export const GlobalStyle = createGlobalStyle`
     button {
       cursor: pointer;
       border-radius: 5px;
-      padding: 5px 15px;
-      width: calc(60px + 5vw);
+      padding: calc(2px .5vw) calc(5px + .5vw)
 
     }
 

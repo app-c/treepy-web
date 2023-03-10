@@ -9,3 +9,11 @@ export function brlNumber(n: string) {
   n = value
   return n
 }
+
+export function _number(e: string) {
+  let value = String(e)
+
+  value = value.replace(/\D/g, '')
+
+  return value
+}

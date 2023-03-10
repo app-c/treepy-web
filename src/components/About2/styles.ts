@@ -15,7 +15,7 @@ export const Container = styled.div`
 
 export const Content = styled.div<PropsShow>`
   display: grid;
-  width: 100vw;
+  /* width: 100vw; */
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   /* grid-template-rows: 35vw; */
   transition: 0.5s;
@@ -47,15 +47,16 @@ export const Image = styled.img<PropsShow>`
   width: 100%;
   height: 100%;
 
+  @media (max-width: 750px) {
+    width: 100vw;
+  }
+
   ${(h) =>
     h.readMor &&
     css`
       animation: ${animetedImage} 1s;
-      width: 100vw;
+      width: 90vw;
     `}
-`
-export const Inova = styled.img`
-  width: 15vw;
 `
 
 export const Texts = styled.p`
@@ -67,6 +68,10 @@ export const Texts = styled.p`
 export const BoxTexts = styled.div<PropsShow>`
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 750px) {
+    width: 100vw;
+  }
 
   ${(h) =>
     h.readMor &&

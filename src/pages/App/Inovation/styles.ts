@@ -38,4 +38,12 @@ export const content = styled.div`
 
   height: 100vh;
   padding: 10px calc(20px + 10vw);
+
+  h1 {
+    color: ${color.green[30]};
+  }
+
+  p {
+    font-size: clamp(16px, 2vw, 1.5vw);
+  }
 `

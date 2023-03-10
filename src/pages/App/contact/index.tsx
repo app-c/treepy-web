@@ -4,17 +4,20 @@ import { About } from '../../../components/About'
 import { Button } from '../../../components/Button'
 import { ButtonContact } from '../../../components/ButtonContact'
 import { Input } from '../../../components/Input'
-import { Box, Container, Content } from './styles'
+import * as S from './styles'
 
 export function Contact() {
   return (
-    <Container>
+    <S.Container>
       <Form onSubmit={() => {}}>
-        <Box>
-          <h1>Fale com o nosso time</h1>
+        <S.Box>
+          <h1>Envie sua mensagem</h1>
 
-          <p>Escreva aqui sua mensagem</p>
-          <Content>
+          <S.subText>
+            Entre em contato com nossa equipe para dúvidas, sugestões e
+            melhorias.
+          </S.subText>
+          <S.Content>
             <div className="area1">
               <Input
                 placeholder="Nome"
@@ -32,15 +35,15 @@ export function Contact() {
             <div className="area2">
               <textarea placeholder="Mensagem" name="textare"></textarea>
             </div>
-          </Content>
+          </S.Content>
 
           <div className="button">
             <Button title="ENVIAR" variant="B" />
           </div>
-        </Box>
+        </S.Box>
 
         <ButtonContact />
       </Form>
-    </Container>
+    </S.Container>
   )
 }

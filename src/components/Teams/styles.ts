@@ -47,6 +47,11 @@ export const Box = styled.div`
   /* border: 3px solid #cbcbcb; */
   padding: 1rem;
   border-radius: 5px;
+
+  span {
+    color: ${color.dark[10]};
+    width: 10rem;
+  }
 `
 
 export const Avatar = styled.img`
@@ -61,11 +66,7 @@ export const Content = styled.div`
   padding: 1rem;
   display: flex;
   flex-direction: column;
-
-  h4 {
-    margin-bottom: 10px;
-    font-weight: 500;
-  }
+  width: clamp(15rem, 25vw, 35vw);
 
   p {
     font-weight: 300;

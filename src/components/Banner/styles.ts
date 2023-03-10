@@ -92,7 +92,8 @@ export const Container = styled.div<PropsSlide>`
   }
 
   #slide1:checked ~ .s1 {
-    animation: ${ani} 25s;
+    animation: ${ani} 20s;
+    animation-timing-function: cubic-bezier(1, 0.25, 0.54, 1.28);
     animation-iteration-count: infinite;
     margin-left: ${(h) => h.pag};
   }
@@ -168,7 +169,6 @@ export const BoxText = styled.div`
   width: 100%;
   align-items: flex-start;
   justify-content: center;
-  /* background-color: red; */
   padding: 0 1rem;
 
   .one {
@@ -207,19 +207,26 @@ export const BoxIco = styled.button`
 export const ContainerButton = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: cente;
-  width: calc(15vw + 9rem);
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
   margin-top: 1rem;
   margin-left: 7vw;
 
   @media (max-width: 780px) {
-    width: 14rem;
+    width: 80vw;
+    justify-content: space-between;
   }
 `
 export const button = styled.button<PropsButton>`
   background-color: ${(h) => variant[h.variant]};
   color: #fff;
+  padding: 10px 20px;
+  width: 150px;
+  height: 60px;
+
+  align-items: center;
+  justify-content: center;
 `
 
 export const link = styled(Link)`

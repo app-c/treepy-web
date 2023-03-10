@@ -6,13 +6,13 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { cep, currency, expire, number } from '../../utils/mask'
-import { Box, Container } from './styles'
+import { card, cep, currency, expire, number } from '../../utils/mask'
+import * as S from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   label?: string
-  mask?: 'cep' | 'price' | 'text' | 'number' | 'expire'
+  mask?: 'cep' | 'price' | 'text' | 'number' | 'expire' | 'card'
   sizeW?: string
   sizeH?: string
 }
@@ -47,33 +47,54 @@ export function Input({
 
   const handleChange = useCallback(
     async (e: React.FormEvent<HTMLInputElement>) => {
-      if (mask === 'cep') {
-        cep(e)
+      switch (mask) {
+        case 'cep':
+          return cep(e)
+
+        case 'number':
+          return number(e)
+
+        case 'price':
+          return currency(e)
+        case 'text':
+          return e.currentTarget.value.toLocaleUpperCase()
+
+        case 'card':
+          return card(e)
+
+        case 'expire':
+          return expire(e)
+
+        default:
+          break
       }
 
-      if (mask === 'price') {
-        currency(e)
-      }
+      // if (mask === 'cep') {
+      // }
 
-      if (mask === 'number') {
-        number(e)
-      }
+      // if (mask === 'price') {
+      //   currency(e)
+      // }
 
-      if (mask === 'text') {
-        e.currentTarget.value.toLocaleUpperCase()
-      }
+      // if (mask === 'number') {
+      //   number(e)
+      // }
 
-      if (mask === 'expire') {
-        expire(e)
-      }
+      // if (mask === 'text') {
+      //   e.currentTarget.value.toLocaleUpperCase()
+      // }
+
+      // if (mask === 'expire') {
+      //   expire(e)
+      // }
     },
     [mask],
   )
 
   return (
-    <Box isFilled={isFilled}>
-      <p className="label">{label}</p>
-      <Container
+    <S.Box>
+      <S.label>{label}</S.label>
+      <S.Container
         sizeW={sizeW}
         sizeH={sizeH}
         isErro={!!error}
@@ -88,7 +109,7 @@ export function Input({
           ref={inputRef}
           {...rest}
         />
-      </Container>
-    </Box>
+      </S.Container>
+    </S.Box>
   )
 }

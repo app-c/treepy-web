@@ -22,20 +22,20 @@ export const Box = styled.div`
   h1 {
     align-self: center;
     color: #fff;
-    font-size: 2.5rem;
     margin-bottom: 5px;
-  }
-
-  p {
-    align-self: center;
-    color: #fff;
-    font-size: 1.4rem;
-    margin-bottom: 3rem;
   }
 
   .button {
     margin-top: 2rem;
+    width: clamp(6rem, 10rem, 12rem);
+    align-self: center;
   }
+`
+
+export const subText = styled.p`
+  align-self: center;
+  color: #fff;
+  margin-bottom: 3rem;
 `
 
 export const Content = styled.div`
