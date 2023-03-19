@@ -30,8 +30,9 @@ export const cHeader = styled.div`
   flex-direction: column;
   align-items: flex-start;
 
-  h1 {
+  h2 {
     font-weight: 600;
+    color: ${color.green[30]};
     /* font-size: calc(2vw + 2vh); */
   }
 
@@ -56,9 +57,17 @@ export const ContentImage = styled.div`
   }
 `
 
+export const subTitle = styled.p`
+  margin-top: 1rem;
+`
+
 export const ContentText = styled.div`
   background-color: #fff;
   padding: 0 4vw;
+
+  p {
+    font-size: calc(0.5vw + 0.9rem);
+  }
 
   @media (max-width: 820px) {
     width: 100vw;
@@ -102,7 +111,7 @@ export const BoxText = styled.div`
 
   h3 {
     font-weight: 600;
-    font-size: calc(1vw + 0.2rem);
+    font-size: calc(1vw + 0.4rem);
   }
 
   p {

@@ -62,7 +62,12 @@ export const Image = styled.img<PropsShow>`
 export const Texts = styled.p`
   font-weight: 300;
   margin-top: 10px;
-  /* font-size: max(, 1.1vw); */
+  font-size: calc(14px + 0.5vw);
+`
+
+export const selo = styled.img`
+  width: 100px;
+  height: 100px;
 `
 
 export const BoxTexts = styled.div<PropsShow>`

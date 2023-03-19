@@ -2,6 +2,7 @@ import React from 'react'
 import flor from '../../assets/mundo_mao.jpg'
 import { Button } from '../Button'
 import * as S from './styles'
+import selo from '../../assets/selo.png'
 
 export function About2() {
   const [showRead, setShowRead] = React.useState(false)
@@ -30,6 +31,12 @@ export function About2() {
           <S.Texts>
             Juntos, podemos dar esse passo em direção a um futuro melhor, somos
             a Treepy.
+          </S.Texts>
+
+          <S.Texts>
+            {' '}
+            A Treepy foi uma das Startups aceleradas pelo programa “InoVativa
+            Brasil”
           </S.Texts>
 
           {showRead && (
@@ -118,14 +125,13 @@ export function About2() {
                 variant="AC"
               />
             </div>
+
+            <S.selo src={selo} />
           </div>
         </S.BoxTexts>
       </S.Content>
 
-      <h3 style={{ alignSelf: 'center', marginTop: 20 }}>
-        A Treepy foi uma das Startups aceleradas pelo programa “InoVativa
-        Brasil”
-      </h3>
+      <h3 style={{ alignSelf: 'center', marginTop: 20 }}></h3>
     </S.Container>
   )
 }

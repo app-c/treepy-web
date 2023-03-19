@@ -1,0 +1,33 @@
+[user]
+
+name = app-c
+
+email = william@app-com.digital
+
+[credential "https://github.com"]
+
+helper =
+
+helper = !/usr/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+
+helper =
+
+helper = !/usr/bin/gh auth git-credential
+
+[alias]
+
+cb  = checkout -b
+
+ci  =   commit -m
+
+cm  = checkout master
+
+br  =   branch
+
+mg = merge
+
+[init]
+
+defaultBranch = master

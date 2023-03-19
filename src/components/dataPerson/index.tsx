@@ -526,9 +526,9 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
                 {/* <CardType infoCard={dataCard} /> */}
                 <h3>Resumo da compra</h3>
                 <span>Treepycash</span>
-                <p>R$ {amount.toFixed(2)}</p>
+                <p>R$ {brlNumber(amount.toFixed(2))}</p>
 
-                <p>arvores {tree.toFixed(2)}</p>
+                <p>arvores {tree.toFixed(0)}</p>
                 <div className="item"></div>
               </S.BoxItem>
             </S.grid>

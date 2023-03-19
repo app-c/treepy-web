@@ -40,7 +40,7 @@ export function OurProject() {
                 <h3>Clientes</h3>
                 <p>
                   Contribuem na fidelização dos seus consumidores e vantagem
-                  competitiva)
+                  competitiva
                 </p>
               </S.BoxText>
             </S.Box>
@@ -68,6 +68,11 @@ export function OurProject() {
                 <p>Reduzem os efeitos maléficos da emissão de CO₂</p>
               </S.BoxText>
             </S.Box>
+
+            <S.subTitle>
+              Dessa forma vuscamos promover a sustentabilidade na natureza e o
+              futuro das próximas gerações
+            </S.subTitle>
           </div>
 
           <S.Contact>

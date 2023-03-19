@@ -65,7 +65,7 @@ export function SignIn() {
       <S.Content>
         <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
           <S.BoxForm>
-            <h1>Entre com sua conta</h1>
+            <h1>Acesse sua conta</h1>
             <div className="inputs">
               <Input sizeH="2.4rem" placeholder="E-mail" name="email" />
               <Input sizeH="2.4rem" placeholder="Senha" name="password" />
@@ -76,7 +76,7 @@ export function SignIn() {
             </div>
             <S.CreateAccont>
               <S.Li to={'/signUp'} style={{ color: color.green[30] }}>
-                não tenho conta
+                Não tem conta?
               </S.Li>
             </S.CreateAccont>
           </S.BoxForm>

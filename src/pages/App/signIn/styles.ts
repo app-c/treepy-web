@@ -78,7 +78,7 @@ export const BoxForm = styled.div`
     width: calc(10rem + 30vw);
   }
   .end {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
   }
 
   h1 {
@@ -88,7 +88,7 @@ export const BoxForm = styled.div`
 `
 
 export const Li = styled(Link)`
-  color: ${color.green[10]};
+  color: ${color.orange[20]};
   align-self: flex-start;
   text-decoration: none;
   font-size: calc(60% + 1vh);

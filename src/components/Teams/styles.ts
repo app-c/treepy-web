@@ -10,6 +10,10 @@ export const BoxC = styled.div`
     margin-bottom: 10px;
   }
 
+  h3 {
+    color: ${color.green[30]};
+  }
+
   .line {
     width: 100%;
     height: 2px;
@@ -70,6 +74,10 @@ export const Content = styled.div`
 
   p {
     font-weight: 300;
+  }
+
+  h3 {
+    color: ${color.green[30]};
   }
 `
 
