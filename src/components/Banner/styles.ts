@@ -48,6 +48,13 @@ const ani = keyframes`
   }
 `
 
+export const slider = styled.div`
+  color: #000;
+  height: 100vh;
+
+  align-items: center;
+`
+
 export const Container = styled.div<PropsSlide>`
   width: 100vw;
   overflow: hidden;
