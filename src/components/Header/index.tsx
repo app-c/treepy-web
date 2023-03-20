@@ -1,15 +1,8 @@
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Logo } from '../Logo'
-import {
-  BoxContato,
-  BoxLink,
-  BoxLog,
-  Container,
-  Li,
-  Menu,
-  Nave,
-} from './styles'
+import * as S from './styles'
+import { color as cl } from '../../styles/colors'
 
 interface Props {
   color?: string
@@ -20,40 +13,47 @@ export function Header({ color = 'rgba(34, 71, 26, 0.5)' }: Props) {
 
   return (
     <>
-      <Container color={color}>
-        <BoxLink show={show}>
-          <BoxLog href="#top" show={show} className="logo">
+      <S.Container color={color}>
+        <S.BoxLink show={show}>
+          <S.BoxLog href="#top" show={show} className="logo">
             <Logo colorL="#fff" colorF="#fff" />
-          </BoxLog>
-          <Menu show={show} onClick={() => setShow(!show)}>
+          </S.BoxLog>
+          <S.Menu show={show} onClick={() => setShow(!show)}>
             <div className="one"></div>
             <div className="two"></div>
             <div className="tree"></div>
-          </Menu>
+          </S.Menu>
 
-          <Nave show={show}>
-            <Li show={show} href="#how">
+          <S.Nave show={show}>
+            <S.Li show={show} href="#how">
               COMO FUNCIONA
-            </Li>
-            <Li show={show} href="#us">
+            </S.Li>
+            <S.Li show={show} href="#us">
               SOBRE NÓS
-            </Li>
+            </S.Li>
 
             <Link to="/calc">CALCULADORA</Link>
-            <Li show={show} href="#contact">
-              CONTATO
-            </Li>
 
-            <div className="buton">
-              <div>
-                <Link className="link" to="/signIn">
-                  Faça login
-                </Link>
-              </div>
-            </div>
-          </Nave>
-        </BoxLink>
-      </Container>
+            <S.Li show={show} href="#contact">
+              CONTATO
+            </S.Li>
+
+            <S.bt>
+              <Link
+                style={{
+                  color: cl.orange[10],
+                  width: '100%',
+                  height: '100%',
+                  textDecoration: 'none',
+                }}
+                to="/signIn"
+              >
+                Já tem uma conta?
+              </Link>
+            </S.bt>
+          </S.Nave>
+        </S.BoxLink>
+      </S.Container>
     </>
   )
 }

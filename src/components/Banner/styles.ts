@@ -53,18 +53,79 @@ export const slider = styled.div`
   height: 100vh;
 
   align-items: center;
+
+  .dot:focus {
+    outline: none;
+  }
+
+  .dot.active {
+    background: #000;
+  }
 `
 
-export const Container = styled.div<PropsSlide>`
-  width: 100vw;
-  overflow: hidden;
+export const arrow = styled.div`
+  position: absolute;
+  z-index: 200;
 
+  top: 50%;
+  left: 2vw;
+
+  width: calc(3rem + 1vw);
+  height: calc(3rem + 1vw);
+
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 880px) {
+  }
+  @media (max-width: 880px) {
+  }
+`
+
+export const dot = styled.div`
+  border: none;
+  width: 10px;
+  height: 10px;
+  background: #c5c5c5;
+  border-radius: 50%;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 200;
+
+  top: 90%;
+  left: 50%;
+
+  .dot:focus {
+    outline: none;
+  }
+
+  .dot.active {
+    background: #000;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.active {
+    background: #000;
+  }
+`
+
+export const Container = styled.div`
+  width: 100vw;
   display: flex;
 
-  input {
+  /* input {
     display: none;
     position: fixed;
-  }
+  } */
 
   .ico1 {
     position: absolute;
@@ -102,7 +163,6 @@ export const Container = styled.div<PropsSlide>`
     animation: ${ani} 20s;
     animation-timing-function: cubic-bezier(1, 0.25, 0.54, 1.28);
     animation-iteration-count: infinite;
-    margin-left: ${(h) => h.pag};
   }
 
   /* #slide2:checked ~ .s1 {
@@ -231,6 +291,7 @@ export const button = styled.button<PropsButton>`
   padding: 10px 20px;
   width: 150px;
   height: 60px;
+  text-decoration: none;
 
   align-items: center;
   justify-content: center;

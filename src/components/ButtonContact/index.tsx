@@ -1,29 +1,31 @@
-import { BoxContact, BoxDescription, BoxMidia, Container } from './styles'
+import * as S from './styles'
 import { AiFillInstagram, AiFillLinkedin, AiFillYoutube } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { color } from '../../styles/colors'
 
 export function ButtonContact() {
   return (
-    <Container>
-      <BoxDescription>
-        <h1>Treepy</h1>
-        <p>
+    <S.Container>
+      <S.content>
+        <S.title>Treepy</S.title>
+        <S.subTitle>
           Nascemos da ideia onde todos podem gerar valor para o meio ambiente a
           partir de uma plataforma inovadora
-        </p>
-      </BoxDescription>
+        </S.subTitle>
+      </S.content>
 
-      <BoxContact>
-        <h3 style={{ marginBottom: 10 }}>Nossos contatos</h3>
-        <p>
+      <S.content>
+        <S.title>Nossos contatos</S.title>
+        <S.subTitle>
           Av. Paulissta, 1.842 - Torre Norte - Conjunto 178 - 17° Andar - Bela{' '}
-        </p>
-        <p>CEP 01310-945</p>
-        <p style={{ color: color.orange[10] }}>contato@treepy.com.br</p>
-      </BoxContact>
+        </S.subTitle>
+        <S.subTitle>CEP 01310-945</S.subTitle>
+        <S.subTitle style={{ color: color.orange[10] }}>
+          contato@treepy.com.br
+        </S.subTitle>
+      </S.content>
 
-      <BoxMidia>
+      <S.BoxMidia>
         <a href="https://www.instagram.com/treepy.reflorestamento/">
           {' '}
           <AiFillInstagram size={50} color={color.orange[20]} />
@@ -41,7 +43,7 @@ export function ButtonContact() {
           <AiFillYoutube size={50} color={color.orange[20]} />
           YouTube
         </a>
-      </BoxMidia>
-    </Container>
+      </S.BoxMidia>
+    </S.Container>
   )
 }

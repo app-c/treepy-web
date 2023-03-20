@@ -23,14 +23,6 @@ export function About() {
   return (
     <Container>
       <Content readMor={showRead}>
-        {/* <div className="image">
-            {showRead ? (
-              <Image readMor={showRead} src={flor} alt="mundo" />
-            ) : (
-              <Image readMor={showRead} src={flor1} alt="mundo" />
-            )}
-          </div> */}
-
         <BoxTexts readMor={showRead}>
           <h3>Agir Agora é preciso: Nós precisamos de você!</h3>
           <div>

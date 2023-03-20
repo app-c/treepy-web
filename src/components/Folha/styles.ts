@@ -35,7 +35,7 @@ export const ContentTextFolha = styled.div`
 
   div {
     display: flex;
-    margin-top: 3rem;
+    margin-top: 2rem;
 
     align-items: center;
 

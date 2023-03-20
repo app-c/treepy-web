@@ -37,8 +37,11 @@ export const ContentText = styled.div`
 
   div {
     width: calc(20rem + 16vw);
-  }
 
+    h2 {
+      color: #fff;
+    }
+  }
   p {
     font-size: calc(2vw + 10%);
     font-weight: 300;

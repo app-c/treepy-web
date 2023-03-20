@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import mao from '../../assets/mao.jpg'
 import { color } from '../../styles/colors'
@@ -141,8 +142,15 @@ export const Contact = styled.div`
   }
 `
 
-export const buton = styled.button`
+export const button = styled.button`
+  align-self: center;
+  align-items: center;
+
   background-color: ${color.green[10]};
-  padding: 10px 15px;
-  border-radius: 30px 0 30px 0;
+  padding: 5px 10px;
+  width: 10rem;
+`
+
+export const link = styled(Link)`
+  text-decoration: none;
 `

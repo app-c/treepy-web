@@ -76,13 +76,12 @@ export function OurProject() {
           </div>
 
           <S.Contact>
-            <h4>
-              Quer ser um parceiro?{' '}
-              <Link to="/parc" style={{ color: color.green[40] }}>
+            <S.button>
+              <S.link to="/parc" style={{ color: color.green[40] }}>
                 {' '}
                 Fale conosco
-              </Link>{' '}
-            </h4>
+              </S.link>{' '}
+            </S.button>
           </S.Contact>
         </S.ContentText>
       </S.Container>

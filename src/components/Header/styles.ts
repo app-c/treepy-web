@@ -110,13 +110,13 @@ export const Nave = styled.div<ProsLinks>`
       align-items: center;
       justify-content: center;
     }
-
+    /* 
     .link {
       text-decoration: none;
       text-align: center;
       color: ${color.orange[20]};
       font-size: calc(12px + 0.2vw);
-    }
+    } */
 
     @media (max-width: 780px) {
       ${(h) =>
@@ -246,4 +246,29 @@ export const Li = styled.a<ProsLinks>`
         margin: 10px 0;
       `}
   }
+`
+
+export const bt = styled.div`
+  position: absolute;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffffc7;
+  top: 6rem;
+  right: 30px;
+  cursor: pointer;
+
+  padding: 8px 30px;
+  border-radius: 18px;
+`
+
+export const lk = styled(Link)`
+  color: ${color.green[10]};
+  /* width: 100%;
+  height: 100%; */
+  margin-top: 20px;
+
+  cursor: pointer;
+  text-decoration: none;
 `

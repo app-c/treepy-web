@@ -33,6 +33,7 @@ export const Container = styled.div`
     h1 {
       font-size: clamp(2rem, 6vw, 10vw);
       font-weight: 600;
+      color: #fff;
     }
 
     p {

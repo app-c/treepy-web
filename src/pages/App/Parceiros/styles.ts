@@ -54,6 +54,8 @@ export const boxForm = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(250px, 0.7fr));
 
   grid-gap: 2rem;
+  background-color: ${color.dark[20]};
+  border-radius: 5px;
 `
 
 export const area = styled.textarea`
@@ -80,4 +82,6 @@ export const bt = styled.button`
   background-color: ${color.green[10]};
   padding: 5px 10px;
   width: 10rem;
+
+  margin-top: 1rem;
 `

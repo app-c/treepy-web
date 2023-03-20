@@ -62,4 +62,8 @@ export const box = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  h1 {
+    color: #fff;
+  }
 `

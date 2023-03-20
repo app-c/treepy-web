@@ -25,7 +25,7 @@ export const BoxC = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  overflow: scroll;
+  /* overflow: scroll;
 
   ::-webkit-scrollbar {
     width: 5px;
@@ -43,7 +43,7 @@ export const Container = styled.div`
   /* Define o hover da thumb */
   ::-webkit-scrollbar-thumb:hover {
     background-color: #282525;
-  }
+  } */
 `
 export const Box = styled.div`
   display: flex;
@@ -51,6 +51,8 @@ export const Box = styled.div`
   /* border: 3px solid #cbcbcb; */
   padding: 1rem;
   border-radius: 5px;
+  /* width: 200px;
+  height: 200px; */
 
   span {
     color: ${color.dark[10]};

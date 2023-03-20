@@ -17,7 +17,7 @@ export function Folha() {
       <BoxFolha>
         <ContentTextFolha>
           <div>
-            <p className="title">Mindset</p>
+            <h1>Mindset</h1>
           </div>
           <line className="line" />
         </ContentTextFolha>

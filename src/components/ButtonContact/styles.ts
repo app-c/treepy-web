@@ -13,17 +13,12 @@ export const Container = styled.div`
   }
 `
 
-export const BoxDescription = styled.div`
+export const content = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
   padding: 6rem;
-
-  p {
-    margin-top: 30px;
-    font-size: 1.2rem;
-  }
 
   @media (max-width: 780px) {
     padding: 1rem;
@@ -31,24 +26,29 @@ export const BoxDescription = styled.div`
   }
 `
 
-export const BoxContact = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10rem;
-
-  p {
-    margin-bottom: 10px;
-  }
-
-  @media (max-width: 1500px) {
-    padding: 1rem;
-  }
-
-  @media (max-width: 750px) {
-    margin-top: 4rem;
-  }
+export const subTitle = styled.p`
+  margin-top: 30px;
+  font-size: 1.2rem;
 `
+
+export const title = styled.h1`
+  color: #fff;
+`
+
+// export const BoxContact = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   padding: 10rem;
+
+//   @media (max-width: 1500px) {
+//     padding: 1rem;
+//   }
+
+//   @media (max-width: 750px) {
+//     margin-top: 4rem;
+//   }
+// `
 
 export const BoxMidia = styled.div`
   display: flex;
