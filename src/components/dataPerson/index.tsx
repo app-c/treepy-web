@@ -202,7 +202,7 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
               holder_name: data.holder_name,
             }
 
-            await api.post('/pay-pag/order-pag', pag).then((h) => {
+            await api.post('/pay-pag/card', pag).then((h) => {
               setLoad(false)
               const rs = h.data
 

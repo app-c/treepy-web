@@ -27,74 +27,124 @@ export interface IVeiculoProps {
   co2: number
 }
 
+type Veiculo =
+  | 'Carro'
+  | 'Moto'
+  | 'Bicicleta'
+  | 'Bicicleta elétrica'
+  | 'Patinete elétrico'
+  | '0'
+
 interface Props {
   setItem: (h: IVeiculoProps) => void
 }
 
 export function ModalVeiculosPessoal({ setItem }: Props) {
-  const [car, setCar] = useState('0')
+  const [car, setCar] = useState<Veiculo>('0')
   const [combus, setCombus] = useState('0')
   const [combusH, setCombusH] = useState('0')
   const [km, setKm] = useState('')
   const [power, setPower] = React.useState('0')
 
-  const [vei, setVei] = React.useState<IVeiculoProps>()
+  const [modelo, setModelo] = React.useState('0')
+
+  console.log(car, combus, combusH, power)
 
   const handleAddItem = React.useCallback(() => {
     let rs = {} as IVeiculoProps
 
-    veiculosP.forEach((h) => {
-      if (h.Meio_de_transporte === car && combus === h.Combustível_Tipo) {
-        if (h.Potência_do_motor === power) {
-          rs = {
-            ...h,
-            Quilometragem: Number(km),
-            co2: (Number(km) * h.co2) / 1000,
+    veiculosP.forEach((item) => {
+      switch (car) {
+        case 'Carro':
+          if (
+            item.Combustível_Tipo === combus &&
+            item.Combustível === combusH &&
+            item.Potência_do_motor === power
+          ) {
+            console.log(item)
+            rs = {
+              ...item,
+              Quilometragem: Number(km),
+              co2: (Number(km) * item.co2) / 1000,
+            }
           }
-        }
-      }
-      if (h.Modelo === power) {
-        rs = {
-          ...h,
-          Quilometragem: Number(km),
-          co2: (Number(km) * h.co2) / 1000,
-        }
-      }
+          break
 
-      if (combus === h.Combustível_Tipo && h.Combustível === combusH) {
-        rs = {
-          ...h,
-          Quilometragem: Number(km),
-          co2: (Number(km) * h.co2) / 1000,
-        }
-      }
+        case 'Moto':
+          {
+          }
+          break
 
-      if (car === 'Bicicleta' && car === h.Meio_de_transporte) {
-        rs = {
-          ...h,
-          Quilometragem: Number(km),
-          co2: (Number(km) * h.co2) / 1000,
-        }
-      }
+        case '':
+          break
 
-      if (car === 'Bicicleta elétrica' && car === h.Meio_de_transporte) {
-        rs = {
-          ...h,
-          Quilometragem: Number(km),
-          co2: (Number(km) * h.co2) / 1000,
-        }
-      }
+        case '':
+          break
 
-      if (car === 'Patinete elétrico' && car === h.Meio_de_transporte) {
-        rs = {
-          ...h,
-          Quilometragem: Number(km),
-          co2: (Number(km) * h.co2) / 1000,
-        }
+        case '':
+          break
+
+        case '':
+          break
+
+        default:
+          break
       }
     })
 
-    console.log(rs)
+    // veiculosP.forEach((h) => {
+    //   if (h.Meio_de_transporte === car && combus === h.Combustível_Tipo) {
+    //     if (h.Potência_do_motor === power) {
+    //       console.log(h.Potência_do_motor, power)
+    //       rs = {
+    //         ...h,
+    //         Quilometragem: Number(km),
+    //         co2: (Number(km) * h.co2) / 1000,
+    //       }
+    //     }
+    //   }
+
+    //   if (h.Modelo === power) {
+    //     rs = {
+    //       ...h,
+    //       Quilometragem: Number(km),
+    //       co2: (Number(km) * h.co2) / 1000,
+    //     }
+    //   }
+
+    //   if (combus === h.Combustível_Tipo && h.Combustível === combusH) {
+    //     rs = {
+    //       ...h,
+    //       Quilometragem: Number(km),
+    //       co2: (Number(km) * h.co2) / 1000,
+    //     }
+    //   }
+
+    //   if (car === 'Bicicleta' && car === h.Meio_de_transporte) {
+    //     rs = {
+    //       ...h,
+    //       Quilometragem: Number(km),
+    //       co2: (Number(km) * h.co2) / 1000,
+    //     }
+    //   }
+
+    //   if (car === 'Bicicleta elétrica' && car === h.Meio_de_transporte) {
+    //     rs = {
+    //       ...h,
+    //       Quilometragem: Number(km),
+    //       co2: (Number(km) * h.co2) / 1000,
+    //     }
+    //   }
+
+    //   if (car === 'Patinete elétrico' && car === h.Meio_de_transporte) {
+    //     rs = {
+    //       ...h,
+    //       Quilometragem: Number(km),
+    //       co2: (Number(km) * h.co2) / 1000,
+    //     }
+    //   }
+    // })
+
     setItem(rs)
 
     setCar('0')
@@ -102,6 +152,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
     setCombusH('0')
     setKm('')
     setPower('0')
+    setModelo('0')
   }, [car, combus, combusH, km, power, setItem])
 
   // Ata@1986
@@ -139,6 +190,13 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                   <div>
                     <h3>Combustível/hibrido: </h3>
                     <p>{combusH}</p>
+                  </div>
+                )}
+
+                {power !== '0' && (
+                  <div>
+                    <h3>Potência do motor: </h3>
+                    <p>{power}</p>
                   </div>
                 )}
 
@@ -218,11 +276,11 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     </BoxSelect>
                   )}
 
-                {combus === 'Elétrico' && power === '0' && (
+                {combus === 'Elétrico' && modelo === '0' && (
                   <BoxSelect
-                    onChange={(h) => setPower(h.currentTarget.value)}
-                    name="power"
-                    value={power}
+                    onChange={(h) => setModelo(h.currentTarget.value)}
+                    name="model"
+                    value={modelo}
                   >
                     <option value="0">Selecione o modelo do veículo</option>
 

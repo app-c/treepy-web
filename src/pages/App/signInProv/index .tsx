@@ -66,7 +66,7 @@ export function SignInProv() {
       <S.Content>
         <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
           <S.BoxForm>
-            <h3>Entre com sua conta para continuar com a calculadora</h3>
+            <h4>Entre com sua conta para continuar com a calculadora</h4>
             <div className="inputs">
               <Input sizeH="2.4rem" placeholder="E-mail" name="email" />
               <Input sizeH="2.4rem" placeholder="Senha" name="password" />

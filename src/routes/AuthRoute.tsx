@@ -4,5 +4,5 @@ import { useAuth } from '../context/authcontext'
 export function AuthRoute() {
   const { user } = useAuth()
 
-  return user ? <Outlet /> : <Navigate to="/signIn" />
+  return user ? <Outlet /> : <Navigate to="/home" />
 }

@@ -70,6 +70,7 @@ export const BoxForm = styled.div`
   justify-content: center;
   background-color: #cdcdcd79;
   border-radius: 10px;
+  width: 50vh;
 
   top: 20%;
 
@@ -81,7 +82,7 @@ export const BoxForm = styled.div`
     margin-top: 1rem;
   }
 
-  h3 {
+  h4 {
     color: #fff;
     margin-bottom: 2rem;
 

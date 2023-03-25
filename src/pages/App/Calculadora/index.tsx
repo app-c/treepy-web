@@ -120,8 +120,6 @@ export function Calculadora() {
         arry.splice(index, 1)
       }
 
-      console.log(index)
-
       setItemC(arry)
     },
     [itemC],
@@ -438,10 +436,10 @@ export function Calculadora() {
                 </SubTitle>
                 <Card>
                   <p>
-                    Insira seu consumo <span>{gas.item}</span> ou o valor pago
-                    de gás. As informações constam na sua conta de gás. Mas se
-                    preferir pode inserir a quantidade de botijões de gás que
-                    consome em sua casa.
+                    Insira seu consumo MENSAL ou o valor pago de gás. As
+                    informações constam na sua conta de gás. Mas se preferir
+                    pode inserir a quantidade de botijões de gás que consome em
+                    sua casa.
                   </p>
 
                   <BoxSelect
@@ -507,7 +505,7 @@ export function Calculadora() {
                     <tr>
                       <th>Transporte</th>
                       <th>Quilometragem</th>
-                      <th>Emissão (Kg CO₂e)</th>
+                      <th>Emissão (kg CO₂e)</th>
                       <th>Excluir</th>
                     </tr>
 
@@ -516,8 +514,8 @@ export function Calculadora() {
                         <td>
                           {h.Meio_de_transporte}/{h.Combustível_Tipo}
                         </td>
-                        <td>{h.Quilometragem}</td>
-                        <td>{h.co2}</td>
+                        <td>{brlNumber(h.Quilometragem)}</td>
+                        <td>{brlNumber(h.co2)}</td>
                         <td>
                           <Buton onClick={() => removeItem(h.id)}>X</Buton>
                         </td>
@@ -528,7 +526,7 @@ export function Calculadora() {
 
                   <div>
                     <p>Emissão mensal: {totalCo2.transInd.mes} (kg CO₂e)</p>
-                    <p>emissão anual: {totalCo2.transInd.anual} (kg CO₂e)</p>
+                    <p>Emissão anual: {totalCo2.transInd.anual} (kg CO₂e)</p>
                   </div>
                 </Card>
               </>
@@ -563,7 +561,7 @@ export function Calculadora() {
                     {itemC.map((h) => (
                       <tr key={String(h.id)}>
                         <td>{h.veiculo}</td>
-                        <td>{h.Quilometragem}</td>
+                        <td>{brlNumber(h.Quilometragem)}</td>
                         <td>{brlNumber(h.co2.toFixed(2))}</td>
                         <td>
                           <Buton onClick={() => removeItemC(h.id)}>X</Buton>
@@ -572,8 +570,8 @@ export function Calculadora() {
                     ))}
                   </Table>
                   <div>
-                    <p>Emissões mensal: {totalCo2.transCol.mes} (kg CO₂e)</p>
-                    <p>emissões anual: {totalCo2.transCol.anual} (kg CO₂e)</p>
+                    <p>Emissão mensal: {totalCo2.transCol.mes} (kg CO₂e)</p>
+                    <p>Emissão anual: {totalCo2.transCol.anual} (kg CO₂e)</p>
                   </div>
                 </Card>
               </>
@@ -608,7 +606,7 @@ export function Calculadora() {
                   </BoxSelect>
                   <div>
                     <p>Emissão mensal: {totalCo2.food.mes} (kg CO₂e)</p>
-                    <p>emissão anuais: {totalCo2.food.anual} (kg CO₂e)</p>
+                    <p>Emissão anuais: {totalCo2.food.anual} (kg CO₂e)</p>
                   </div>
                 </Card>
               </>

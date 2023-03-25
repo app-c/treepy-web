@@ -1,4 +1,4 @@
-export function brlNumber(n: string) {
+export function brlNumber(n: any) {
   let value = String(n)
 
   value = value.replace(/\D/g, '')

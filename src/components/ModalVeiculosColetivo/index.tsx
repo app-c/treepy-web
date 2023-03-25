@@ -1,6 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { Form } from '@unform/web'
 import React, { useState } from 'react'
+import { _number } from '../../utils/formatNumber'
 import { veiculosC } from '../../utils/veiculosCol'
 import { Button } from '../Button'
 import { Input } from '../Input'
@@ -35,11 +36,12 @@ export function ModalVeiculosColetivo({ setItemC }: Props) {
     let rs = {} as IVeiculoCProps
 
     veiculosC.forEach((h) => {
+      const kmf = _number(km)
       if (car === h.veiculo) {
         rs = {
           ...h,
           veiculo: car,
-          Quilometragem: Number(km),
+          Quilometragem: Number(kmf),
           co2: (Number(km) * h.co2) / 1000,
         }
       }
@@ -97,7 +99,7 @@ export function ModalVeiculosColetivo({ setItemC }: Props) {
                     <h3>km</h3>
                     <Form onSubmit={() => {}}>
                       <Input
-                        mask="number"
+                        mask="price"
                         name="km"
                         onChange={(h) => setKm(h.currentTarget.value)}
                         placeholder="Digite o km do veículo"
