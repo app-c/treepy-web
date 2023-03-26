@@ -38,19 +38,17 @@ export function Header({ color = 'rgba(34, 71, 26, 0.5)' }: Props) {
               CONTATO
             </S.Li>
 
-            <S.bt>
-              <Link
-                style={{
-                  color: cl.orange[10],
-                  width: '100%',
-                  height: '100%',
-                  textDecoration: 'none',
-                }}
-                to="/signIn"
-              >
-                Já tem uma conta?
-              </Link>
-            </S.bt>
+            <S.lk
+              style={{
+                color: cl.orange[10],
+                textDecoration: 'none',
+                fontWeight: 600,
+                fontSize: 'calc(16px + .5vw)',
+              }}
+              to="/signIn"
+            >
+              <S.bt>Já tem uma conta?</S.bt>
+            </S.lk>
           </S.Nave>
         </S.BoxLink>
       </S.Container>

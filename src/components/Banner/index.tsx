@@ -74,6 +74,7 @@ export default function Banner() {
           }
         />
       </S.arrow>
+
       <S.slider ref={sliderRef} className="keen-slider">
         <div className="keen-slider__slide">
           <S.Content
@@ -85,10 +86,10 @@ export default function Banner() {
           >
             <S.BoxElement>
               <S.BoxText className="texts">
-                <p className="one">
+                <S.title>
                   Temos uma oportunidade de reflorestamento para você ou para a
                   sua empresa
-                </p>
+                </S.title>
 
                 <S.ContainerButton>
                   <S.button variant="orange">
@@ -124,12 +125,12 @@ export default function Banner() {
           >
             <S.BoxElement>
               <S.BoxText className="texts">
-                <p className="one">
+                <S.title>
                   Somos uma inovação para o reflorestamento no Brasil
-                </p>
+                </S.title>
 
                 <S.ContainerButton>
-                  <S.link to="/inovation">Saiba mais</S.link>
+                  <S.link to="/inovation">SAIBA MAIS</S.link>
                 </S.ContainerButton>
               </S.BoxText>
             </S.BoxElement>
@@ -146,13 +147,13 @@ export default function Banner() {
           >
             <S.BoxElement>
               <S.BoxText className="texts">
-                <p className="one">
+                <S.title>
                   As questões climáticas são uma preocupação global Saiba como
                   você pode ajudar
-                </p>
+                </S.title>
 
                 <S.ContainerButton>
-                  <S.link to="/provider">Saiba mais</S.link>
+                  <S.link to="/provider">SAIBA MAIS</S.link>
                 </S.ContainerButton>
               </S.BoxText>
             </S.BoxElement>

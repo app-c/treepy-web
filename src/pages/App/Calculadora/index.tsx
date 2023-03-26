@@ -324,7 +324,7 @@ export function Calculadora() {
               </table>
 
               <p className="botton">
-                Para compensar suas emeissões de CO₂ é necessário plantar{' '}
+                Para compensar suas emissões de CO₂ é necessário plantar{' '}
                 <span>{tree.toFixed(0)} árvores/ano.</span>
               </p>
             </div>
@@ -515,7 +515,7 @@ export function Calculadora() {
                           {h.Meio_de_transporte}/{h.Combustível_Tipo}
                         </td>
                         <td>{brlNumber(h.Quilometragem)}</td>
-                        <td>{brlNumber(h.co2)}</td>
+                        <td>{brlNumber(h.co2.toFixed(2))}</td>
                         <td>
                           <Buton onClick={() => removeItem(h.id)}>X</Buton>
                         </td>
@@ -606,7 +606,7 @@ export function Calculadora() {
                   </BoxSelect>
                   <div>
                     <p>Emissão mensal: {totalCo2.food.mes} (kg CO₂e)</p>
-                    <p>Emissão anuais: {totalCo2.food.anual} (kg CO₂e)</p>
+                    <p>Emissão anual: {totalCo2.food.anual} (kg CO₂e)</p>
                   </div>
                 </Card>
               </>

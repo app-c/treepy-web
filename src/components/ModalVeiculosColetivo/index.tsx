@@ -36,13 +36,15 @@ export function ModalVeiculosColetivo({ setItemC }: Props) {
     let rs = {} as IVeiculoCProps
 
     veiculosC.forEach((h) => {
-      const kmf = _number(km)
       if (car === h.veiculo) {
+        const k = Number(_number(km)) / 100
+        const co2 = (k * h.co2) / 1000
+        const kmf = Number(_number(km))
         rs = {
           ...h,
           veiculo: car,
-          Quilometragem: Number(kmf),
-          co2: (Number(km) * h.co2) / 1000,
+          Quilometragem: kmf,
+          co2,
         }
       }
     })

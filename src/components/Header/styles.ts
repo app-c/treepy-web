@@ -254,19 +254,23 @@ export const bt = styled.div`
 
   align-items: center;
   justify-content: center;
-  background-color: #ffffffc7;
+  background-color: rgba(255, 255, 255, 1);
   top: 6rem;
   right: 30px;
   cursor: pointer;
 
-  padding: 8px 30px;
+  padding: 10px 30px;
   border-radius: 18px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `
 
 export const lk = styled(Link)`
-  color: ${color.green[10]};
-  /* width: 100%;
-  height: 100%; */
+  color: #000;
+  width: 100%;
+  height: 100%;
   margin-top: 20px;
 
   cursor: pointer;

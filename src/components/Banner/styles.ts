@@ -260,6 +260,22 @@ export const BoxText = styled.div`
   }
 `
 
+export const title = styled.p`
+  font-size: calc(12px + 2vw);
+  margin-left: 7vw;
+  width: 36rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0.04em 0 #343434;
+
+  @media (max-width: 780px) {
+    margin-left: 0;
+    width: 80%;
+    text-align: start;
+    font-size: calc(12px + 2vw);
+  }
+`
+
 export const BoxIco = styled.button`
   display: flex;
   background-color: transparent;

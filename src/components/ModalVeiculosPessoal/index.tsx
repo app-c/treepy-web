@@ -1,6 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { Form } from '@unform/web'
 import React, { useState } from 'react'
+import { brlNumber, _number } from '../../utils/formatNumber'
 import { veiculosP } from '../../utils/veiculosPessoal'
 import { Button } from '../Button'
 import { Input } from '../Input'
@@ -48,8 +49,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
 
   const [modelo, setModelo] = React.useState('0')
 
-  console.log(car, combus, combusH, power)
-
+  console.log(car, combus, power)
   const handleAddItem = React.useCallback(() => {
     let rs = {} as IVeiculoProps
 
@@ -59,35 +59,83 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
           if (
             item.Combustível_Tipo === combus &&
             item.Combustível === combusH &&
-            item.Potência_do_motor === power
+            item.Potência_do_motor === power &&
+            item.Modelo === modelo
           ) {
-            console.log(item)
+            console.log(item.co2)
+            const k = Number(_number(km)) / 100
+            const co2 = (k * item.co2) / 1000
+            const kmf = Number(_number(km))
             rs = {
               ...item,
-              Quilometragem: Number(km),
-              co2: (Number(km) * item.co2) / 1000,
+              Quilometragem: kmf,
+              co2,
             }
           }
           break
 
         case 'Moto':
-          {
+          if (
+            item.Combustível_Tipo === combus &&
+            item.Potência_do_motor === power
+          ) {
+            console.log(item.co2)
+            const k = Number(_number(km)) / 100
+            const co2 = (k * item.co2) / 1000
+            const kmf = Number(_number(km))
+            rs = {
+              ...item,
+              Quilometragem: kmf,
+              co2,
+            }
           }
           break
 
-        case '':
+        case 'Bicicleta':
+          if (item.Meio_de_transporte === car) {
+            console.log(item.co2)
+            const k = Number(_number(km)) / 100
+            const co2 = (k * item.co2) / 1000
+            const kmf = Number(_number(km))
+            rs = {
+              ...item,
+              Quilometragem: kmf,
+              co2,
+            }
+          }
           break
 
-        case '':
+        case 'Bicicleta elétrica':
+          if (item.Meio_de_transporte === car) {
+            console.log(item.co2)
+            const k = Number(_number(km)) / 100
+            const co2 = (k * item.co2) / 1000
+            const kmf = Number(_number(km))
+            rs = {
+              ...item,
+              Quilometragem: kmf,
+              co2,
+            }
+          }
           break
 
-        case '':
-          break
-
-        case '':
+        case 'Patinete elétrico':
+          if (item.Meio_de_transporte === car) {
+            console.log(item.co2)
+            const k = Number(_number(km)) / 100
+            const co2 = (k * item.co2) / 1000
+            const kmf = Number(_number(km))
+            rs = {
+              ...item,
+              Quilometragem: kmf,
+              co2,
+            }
+          }
           break
 
         default:
+          console.log(rs)
+
           break
       }
     })
@@ -146,6 +194,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
     // })
 
     setItem(rs)
+    console.log(rs)
 
     setCar('0')
     setCombus('0')
@@ -153,7 +202,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
     setKm('')
     setPower('0')
     setModelo('0')
-  }, [car, combus, combusH, km, power, setItem])
+  }, [car, combus, combusH, km, modelo, power, setItem])
 
   // Ata@1986
 
@@ -200,10 +249,10 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                   </div>
                 )}
 
-                {power !== '0' && (
+                {modelo !== '0' && (
                   <div>
-                    <h3>Potência do motor: </h3>
-                    <p>{power}</p>
+                    <h3>Modelo: </h3>
+                    <p>{modelo}</p>
                   </div>
                 )}
 
@@ -329,7 +378,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     <h3>km</h3>
                     <Form onSubmit={() => {}}>
                       <Input
-                        mask="number"
+                        mask="price"
                         name="km"
                         onChange={(h) => setKm(h.currentTarget.value)}
                         placeholder="Digite o km do veículo"
@@ -343,7 +392,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     <h3>km</h3>
                     <Form onSubmit={() => {}}>
                       <Input
-                        mask="number"
+                        mask="price"
                         name="km"
                         onChange={(h) => setKm(h.currentTarget.value)}
                         placeholder="digite o km do veículo"
@@ -357,7 +406,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     <h3>km</h3>
                     <Form onSubmit={() => {}}>
                       <Input
-                        mask="number"
+                        mask="price"
                         name="km"
                         onChange={(h) => setKm(h.currentTarget.value)}
                         placeholder="digite o km do veículo"
@@ -371,7 +420,7 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     <h3>km</h3>
                     <Form onSubmit={() => {}}>
                       <Input
-                        mask="number"
+                        mask="price"
                         name="km"
                         onChange={(h) => setKm(h.currentTarget.value)}
                         placeholder="digite o km do veículo"
@@ -385,7 +434,21 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
                     <h3>km</h3>
                     <Form onSubmit={() => {}}>
                       <Input
-                        mask="number"
+                        mask="price"
+                        name="km"
+                        onChange={(h) => setKm(h.currentTarget.value)}
+                        placeholder="digite o km do veículo"
+                      />
+                    </Form>
+                  </div>
+                )}
+
+                {modelo !== '0' && (
+                  <div className="input">
+                    <h3>km</h3>
+                    <Form onSubmit={() => {}}>
+                      <Input
+                        mask="price"
                         name="km"
                         onChange={(h) => setKm(h.currentTarget.value)}
                         placeholder="digite o km do veículo"
@@ -397,33 +460,9 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
 
               <Closed>
                 <ContentButton>
-                  {combus !== '0' && car !== '0' && km !== '' && power !== '0' && (
+                  {km !== '' && (
                     <div className="button">
                       <Button title="Salvar" variant="A" pres={handleAddItem} />
-                    </div>
-                  )}
-
-                  {combus === 'Híbrido' && car !== '0' && km !== '' && (
-                    <div className="button">
-                      <Button title="Salvar" variant="A" pres={handleAddItem} />
-                    </div>
-                  )}
-
-                  {car === 'Bicicleta' && (
-                    <div className="button">
-                      <Button title="Salvar" variant="A" pres={handleAddItem} />
-                    </div>
-                  )}
-
-                  {car === 'Bicicleta elétrica' && (
-                    <div className="button">
-                      <Button title="salvar" variant="A" pres={handleAddItem} />
-                    </div>
-                  )}
-
-                  {car === 'Patinete elétrico' && (
-                    <div className="button">
-                      <Button title="salvar" variant="A" pres={handleAddItem} />
                     </div>
                   )}
                 </ContentButton>
