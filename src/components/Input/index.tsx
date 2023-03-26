@@ -93,7 +93,9 @@ export function Input({
 
   return (
     <S.Box>
-      <S.label>{label}</S.label>
+      <S.label isFilled={isFilled} isFocus={isFocused}>
+        {label}
+      </S.label>
       <S.Container
         sizeW={sizeW}
         sizeH={sizeH}

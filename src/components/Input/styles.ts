@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components'
 import { color } from '../../styles/colors'
 
 type PropsInput = {
-  isFocus?: boolean
-  isFilled?: boolean
+  isFocus: boolean
+  isFilled: boolean
   isErro?: boolean
   sizeW?: string
   sizeH?: string
@@ -18,6 +18,7 @@ export const label = styled.p<PropsInput>`
   margin-bottom: -10px;
   font-size: 0.8rem;
   /* align-self: flex-start; */
+  color: #fff;
 
   ${(h) =>
     h.isFilled &&

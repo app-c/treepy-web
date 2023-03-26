@@ -40,7 +40,7 @@ export function Header({ color = 'rgba(34, 71, 26, 0.5)' }: Props) {
 
             <S.lk
               style={{
-                color: cl.orange[10],
+                color: '#fff',
                 textDecoration: 'none',
                 fontWeight: 600,
                 fontSize: 'calc(16px + .5vw)',

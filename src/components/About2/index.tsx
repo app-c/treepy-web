@@ -19,7 +19,7 @@ export function About2() {
           <h1>A Treepy</h1>
           <S.Texts>
             Nascemos da convicção que juntos podemos contribuir na restauração
-            das florestas e na mitigação das emissões de CO2 na atmosfera.
+            das florestas e na mitigação das emissões de CO₂ na atmosfera.
           </S.Texts>
 
           <S.Texts>
@@ -35,7 +35,7 @@ export function About2() {
 
           <S.Texts>
             {' '}
-            A Treepy foi uma das Startups aceleradas pelo programa “InoVativa
+            A Treepy foi uma das Startups aceleradas pelo programa “InovAtiva
             Brasil”
           </S.Texts>
 
@@ -44,12 +44,12 @@ export function About2() {
               <S.Texts>
                 O reflorestamento é crucial não apenas no Brasil, mas em todo o
                 mundo. As florestas são os pulmões da Terra, fornecendo oxigênio
-                e absorvendo o CO2 da atmosfera.
+                e absorvendo o CO₂ da atmosfera.
               </S.Texts>
 
               <S.Texts>
                 Ao plantar árvores, podemos ajudar a compensar as emissões de
-                CO2 e, assim, reduzir o impacto das mudanças climáticas.
+                CO₂ e, assim, reduzir o impacto das mudanças climáticas.
                 Investindo em um futuro sustentável, juntamos forças para a
                 preservação do meio ambiente e a criação de um mundo melhor para
                 as gerações futuras.
@@ -57,12 +57,11 @@ export function About2() {
 
               <S.Texts>
                 Em resumo, o reflorestamento é crucial para a saúde do nosso
-                planeta e para a luta contra a mudança climática. Além disso, o
-                Treepy Cash é uma maneira eficaz de incentivar o
-                reflorestamento, fornecendo uma alternativa econômica para a
-                preservação das florestas. É hora de agir agora, para garantir
-                um futuro mais verde e saudável para nós e para as gerações
-                futuras.
+                planeta e para a luta contra a mudanças climática. Além disso, o
+                TreepyCash é uma maneira eficaz de incentivar o reflorestamento,
+                fornecendo uma alternativa econômica para a preservação das
+                florestas. É hora de agir agora, para garantir um futuro mais
+                verde e saudável para nós e para as gerações futuras.
               </S.Texts>
 
               <S.Mission>
@@ -104,13 +103,13 @@ export function About2() {
                     paddingLeft: '4vw',
                   }}
                 >
-                  <h3 style={{ alignSelf: 'flex-start' }}>Nossos Valores:</h3>
+                  <h3 style={{ alignSelf: 'flex-start' }}>Nossos valores:</h3>
                   <S.ul>
                     <S.li>Inovação</S.li>
-                    <S.li>Ética e Transparência</S.li>
+                    <S.li>Ética e transparência</S.li>
                     <S.li>Excelência no que faz</S.li>
-                    <S.li>Realizaão no trabalho</S.li>
-                    <S.li>Compromisso Ambiental</S.li>
+                    <S.li>Realização no trabalho</S.li>
+                    <S.li>Compromisso ambiental</S.li>
                   </S.ul>
                 </div>
               </S.Mission>

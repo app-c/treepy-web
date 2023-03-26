@@ -127,7 +127,7 @@ export function Teams() {
 
           <S.Content>
             <h3>Luciana Escames</h3>
-            <span>Hesd de Sustentabilidade e Meio Ambiente</span>
+            <span>Head de Sustentabilidade e Meio Ambiente</span>
           </S.Content>
 
           <S.Links>

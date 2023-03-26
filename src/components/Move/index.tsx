@@ -17,7 +17,7 @@ export function Move() {
     <S.Container>
       <S.box className="box">
         <h1>A única maneira de fazer isso acontecer é agir!</h1>
-        <p>Comece agora a mudar o planeta em que vivemos</p>
+        <p>Comece agora a mudar o planeta em que vivemos.</p>
 
         <S.bt>
           <Button

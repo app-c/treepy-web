@@ -24,7 +24,7 @@ export function Folha() {
 
         <BoxGridFolha>
           <FolhaAnimeted
-            title="Promação de um futuro melhor às próximas gerações"
+            title="Promoção de um futuro melhor às próximas gerações"
             text="Pensar no planeta é zelar por um futuro melhor"
             cor={color.green[20]}
           />

@@ -30,7 +30,7 @@ export function Contact() {
                 placeholder="Digite seu email"
                 name="email"
               />
-              <Input placeholder="assunto" label="Assunto" name="assunt" />
+              <Input placeholder="Assunto" label="Assunto" name="assunt" />
             </div>
             <div className="area2">
               <textarea placeholder="Mensagem" name="textare"></textarea>

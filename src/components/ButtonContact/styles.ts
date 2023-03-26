@@ -27,7 +27,6 @@ export const content = styled.div`
 `
 
 export const subTitle = styled.p`
-  margin-top: 30px;
   font-size: 1.2rem;
 `
 

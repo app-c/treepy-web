@@ -254,7 +254,7 @@ export const bt = styled.div`
 
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: ${color.orange[10]};
   top: 6rem;
   right: 30px;
   cursor: pointer;

@@ -60,15 +60,12 @@ export const ContentImage = styled.div`
 
 export const subTitle = styled.p`
   margin-top: 1rem;
+  font-size: calc(10px + 0.7vw);
 `
 
 export const ContentText = styled.div`
   background-color: #fff;
   padding: 0 4vw;
-
-  p {
-    font-size: calc(0.5vw + 0.9rem);
-  }
 
   @media (max-width: 820px) {
     width: 100vw;
@@ -79,10 +76,6 @@ export const ContentText = styled.div`
       h1 {
         margin-top: 1rem;
         font-size: calc(1vw + 1.5rem);
-      }
-
-      p {
-        font-size: calc(0.5vw + 0.8rem);
       }
     }
   }

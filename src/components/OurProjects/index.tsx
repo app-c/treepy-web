@@ -12,10 +12,10 @@ export function OurProject() {
 
         <S.ContentText>
           <S.cHeader>
-            <h2>Nossos Projetos</h2>
-            <p>
-              Oferecemos a oportunidade de todos compensarem seus impactos .
-            </p>
+            <S.Title>Nossos projetos</S.Title>
+            <S.subTitle>
+              Oferecemos a oportunidade de todos compensarem seus impactos
+            </S.subTitle>
             <line />
           </S.cHeader>
 
@@ -52,9 +52,7 @@ export function OurProject() {
 
               <S.BoxText>
                 <h3>Parceiros (reflorestadores)</h3>
-                <p>
-                  Viabilizam de projetos de reflorestamentos com menor custo
-                </p>
+                <p>Viabilizam projetos de reflorestamentos com menor custo</p>
               </S.BoxText>
             </S.Box>
 
@@ -70,7 +68,7 @@ export function OurProject() {
             </S.Box>
 
             <S.subTitle>
-              Dessa forma vuscamos promover a sustentabilidade na natureza e o
+              Dessa forma buscamos promover a sustentabilidade na natureza e o
               futuro das próximas gerações
             </S.subTitle>
           </div>
@@ -79,7 +77,7 @@ export function OurProject() {
             <S.button>
               <S.link to="/parc" style={{ color: color.green[40] }}>
                 {' '}
-                Fale conosco
+                FALE CONOSCO
               </S.link>{' '}
             </S.button>
           </S.Contact>
