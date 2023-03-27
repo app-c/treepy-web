@@ -10,7 +10,7 @@ export function ButtonContact() {
         <S.title>Treepy</S.title>
         <S.subTitle>
           Nascemos da ideia onde todos podem gerar valor para o meio ambiente a
-          partir de uma plataforma inovadora
+          partir de uma plataforma inovadora.
         </S.subTitle>
       </S.content>
 

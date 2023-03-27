@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import * as Dialog from '@radix-ui/react-dialog'
 import { Form } from '@unform/web'
 import React, { useState } from 'react'
@@ -41,7 +42,7 @@ interface Props {
 }
 
 export function ModalVeiculosPessoal({ setItem }: Props) {
-  const [car, setCar] = useState<Veiculo>('0')
+  const [car, setCar] = useState('0')
   const [combus, setCombus] = useState('0')
   const [combusH, setCombusH] = useState('0')
   const [km, setKm] = useState('')
@@ -49,7 +50,6 @@ export function ModalVeiculosPessoal({ setItem }: Props) {
 
   const [modelo, setModelo] = React.useState('0')
 
-  console.log(car, combus, power)
   const handleAddItem = React.useCallback(() => {
     let rs = {} as IVeiculoProps
 

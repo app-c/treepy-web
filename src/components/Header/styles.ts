@@ -62,7 +62,6 @@ export const BoxLink = styled.div<ProsLinks>`
 export const Nave = styled.div<ProsLinks>`
   display: flex;
   flex-direction: row;
-  height: 100%;
   height: calc(3rem + 2vw);
 
   align-items: center;
