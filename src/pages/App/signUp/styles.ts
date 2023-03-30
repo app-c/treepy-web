@@ -2,6 +2,7 @@ import { Form } from '@unform/web'
 import styled, { keyframes } from 'styled-components'
 
 import img1 from '../../../assets/arvore.png'
+import { color } from '../../../styles/colors'
 
 export const Container = styled.div`
   flex: 1;
@@ -19,6 +20,10 @@ export const Container = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  h1 {
+    color: ${color.dark[40]};
+  }
 `
 
 export const Content = styled.div`

@@ -7,7 +7,7 @@ import { FormHandles } from '@unform/core'
 import { useAuth } from '../../../context/authcontext'
 import { getValidationErrors } from '../../../utils/getValidationErrors'
 import { color } from '../../../styles/colors'
-import { Outlet, redirect, useNavigate } from 'react-router-dom'
+import { Outlet, redirect, useNavigate, useParams } from 'react-router-dom'
 import { useToast } from '../../../context/ToastContext'
 import { HeaderC } from '../../../components/HeaderC'
 
@@ -57,8 +57,10 @@ export function SignInProv() {
       }
     },
 
-    [addToast, signInP],
+    [addToast, nv, signInP],
   )
+
+  const type = '1'
 
   return (
     <S.Container>
@@ -76,7 +78,7 @@ export function SignInProv() {
               <Button sizeH="3rem" variant="AC" title="ENTRAR" />
             </div>
             <S.CreateAccont>
-              <S.Li to={'/signUp'} style={{ color: color.green[30] }}>
+              <S.Li to={`/signUp/${type}`} style={{ color: color.green[30] }}>
                 não tenho conta
               </S.Li>
             </S.CreateAccont>

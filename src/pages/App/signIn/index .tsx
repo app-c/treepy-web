@@ -10,6 +10,7 @@ import { color } from '../../../styles/colors'
 import { Outlet, redirect } from 'react-router-dom'
 import { useToast } from '../../../context/ToastContext'
 import { HeaderC } from '../../../components/HeaderC'
+import { InputV } from '../../../components/InputV'
 
 interface PropsSingUp {
   email: string
@@ -62,26 +63,23 @@ export function SignIn() {
   return (
     <S.Container>
       <HeaderC type="2" />
-      <S.Content>
-        <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
-          <S.BoxForm>
-            <h1>Acesse sua conta</h1>
-            <div className="inputs">
-              <Input sizeH="2.4rem" placeholder="E-mail" name="email" />
-              <Input sizeH="2.4rem" placeholder="Senha" name="password" />
-            </div>
-            <S.Li to={'/forgot'}>Esqueceu sua senha?</S.Li>
-            <div className="buton">
-              <Button sizeH="3rem" variant="AC" title="ENTRAR" />
-            </div>
-            <S.CreateAccont>
-              <S.Li to={'/signUp'} style={{ color: color.green[30] }}>
-                Não tem conta?
-              </S.Li>
-            </S.CreateAccont>
-          </S.BoxForm>
-        </S.ContentForm>
-      </S.Content>
+      <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
+        <S.Content>
+          <h2>Acesse sua conta</h2>
+          <InputV sizeH="3.4rem" placeholder="E-mail" name="email" />
+          <InputV sizeH="3.4rem" placeholder="Senha" name="password" />
+          <S.Li to={'/forgot'}>Esqueceu sua senha?</S.Li>
+
+          <S.button className="buton">
+            <Button sizeH="3rem" variant="AC" title="ENTRAR" />
+          </S.button>
+          <S.CreateAccont>
+            <S.Li to={'/signUp'} style={{ color: color.green[30] }}>
+              Não tem conta?
+            </S.Li>
+          </S.CreateAccont>
+        </S.Content>
+      </S.ContentForm>
 
       <Outlet />
     </S.Container>

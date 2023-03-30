@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import { api } from '../../../services/api'
@@ -9,7 +9,9 @@ import { getValidationErrors } from '../../../utils/getValidationErrors'
 import { FormHandles } from '@unform/core'
 import { useToast } from '../../../context/ToastContext'
 import { Loading } from '../../../components/Loading'
-import { useNavigate } from 'react-router-dom'
+import { redirect, useNavigate, useParams } from 'react-router-dom'
+import { useAuth } from '../../../context/authcontext'
+import { Alert } from '../../../components/Alert'
 
 interface PropsSingUp {
   name: string
@@ -31,7 +33,12 @@ interface Step1 {
   password: string
 }
 
+interface Props {
+  type?: 'provisório' | 'signIn dash'
+}
+
 export function SignUp() {
+  const { type } = useParams()
   const [step, setStepe] = useState(1)
   const [dadosStep1, setDadosStep1] = useState<Step1>({
     name: '',
@@ -39,9 +46,12 @@ export function SignUp() {
     email: '',
     password: '',
   })
+
   const formRef = useRef<FormHandles>(null)
+  const { signIn, signInP } = useAuth()
   const { addToast } = useToast()
   const nv = useNavigate()
+  const [modal, setModal] = React.useState(false)
 
   const [load, setLoad] = useState(false)
 
@@ -112,9 +122,22 @@ export function SignUp() {
 
           await api.post('/user/create-user', dt).then((h) => {
             if (h.status === 200) {
-              alert('Sucesso')
-              setLoad(false)
-              nv('/signIn')
+              setModal(true)
+              if (type === 'o') {
+                signIn({
+                  email: dt.email,
+                  password: dt.password,
+                }).then(() => {
+                  setLoad(false)
+                })
+              } else {
+                signInP({
+                  email: dt.email,
+                  password: dt.password,
+                }).then(() => {
+                  setLoad(false)
+                })
+              }
             }
           })
         }
@@ -141,20 +164,37 @@ export function SignUp() {
       dadosStep1.name,
       dadosStep1.password,
       nv,
+      signIn,
+      signInP,
       step,
+      type,
     ],
   )
 
-  console.log(step)
+  const closeModal = React.useCallback(async () => {
+    if (type === '0') {
+      setModal(false)
+      redirect('/dash')
+    } else {
+      setModal(false)
+      nv('/calc')
+    }
+  }, [nv, type])
 
   return (
     <S.Container>
       <HeaderC type="1" />
-
-      <h1>Crie sua conta Treepy</h1>
+      <Alert
+        showModal={modal}
+        type="sucess"
+        closed={closeModal}
+        title="Sucesso!"
+        texto="Sua conta foi cadastrada com sucesso"
+      />
       <S.Content>
         {step === 1 && (
           <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
+            <h1>Crie sua conta Treepy</h1>
             <S.Box1>
               <div className="content">
                 <Input label="Nome" placeholder="Nome" name="name" />
@@ -182,6 +222,7 @@ export function SignUp() {
 
         {step === 2 && (
           <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
+            <h1>Crie sua conta Treepy</h1>
             <S.Box1>
               <div className="end">
                 <Input placeholder="Rua" name="street" />

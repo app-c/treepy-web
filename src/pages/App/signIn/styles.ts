@@ -5,13 +5,13 @@ import { color } from '../../../styles/colors'
 import img2 from '../../../assets/img2.jpeg'
 
 export const Container = styled.div`
-  flex: 1;
   display: flex;
 
   height: 100vh;
   /* background-color: red; */
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   background-image: url(${img2});
   background-repeat: no-repeat;
@@ -23,70 +23,53 @@ export const Container = styled.div`
 const appearFromLeft = keyframes`
   from {
     opacity: 0;
-    transform: translateX(-30%)
+    transform: translateX(-55%)
   }
 
   to {
     opacity: 1;
-    transform: translateX(-45%)
+    transform: translateX(-50%)
   }
 `
 
 export const Content = styled.div`
+  animation: ${appearFromLeft} 1s;
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  align-self: center;
+
+  h2 {
+    color: #fff;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+
+  top: 20%;
+
+  transform: translate(-50%);
+
+  padding: 0 3rem;
+
+  width: calc(6rem + 20vw);
+
+  background-color: #cdcdcd88;
+`
+
+export const button = styled.div`
+  margin-top: 3rem;
+  align-self: center;
+  width: 100%;
 `
 
 export const ContentForm = styled(Form)`
   height: 100%;
 
   .buton {
-    margin-top: 3rem;
-    align-self: center;
-    width: 100%;
-  }
-
-  .inputs {
-    align-items: center;
-    justify-content: center;
-    width: 100%;
   }
 `
-
-export const BoxForm = styled.div`
-  animation: ${appearFromLeft} 2s;
-  position: absolute;
-  width: calc(10rem + 40vw);
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #cdcdcd79;
-  border-radius: 10px;
-
-  top: 20%;
-
-  transform: translate(-45%);
-
-  padding: 0 3rem;
-
-  @media (min-width: 750px) {
-    transform: translate(-45%);
-    width: calc(10rem + 30vw);
-  }
-  .end {
-    /* margin-top: 1rem; */
-  }
-
-  h1 {
-    color: #fff;
-    margin-bottom: 2rem;
-  }
-`
-
 export const Li = styled(Link)`
   color: ${color.orange[20]};
   align-self: flex-start;
@@ -96,14 +79,15 @@ export const Li = styled(Link)`
 
 export const CreateAccont = styled.div`
   background-color: #fff;
-  position: fixed;
   align-self: center;
   top: 90%;
-  width: 100%;
+  width: calc(6rem + 20vw);
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  margin-top: 2rem;
 
   padding: 20px;
 

@@ -42,7 +42,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h2 {
-      font-size: calc(12px + 2vw);
+      font-size: clamp(20px, 2vw, 3vw);
       color: ${color.green[30]};
       font-weight: 800;
     }

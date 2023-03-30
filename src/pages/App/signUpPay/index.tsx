@@ -116,11 +116,13 @@ export function SignUpPay() {
             if (h.status === 200) {
               alert('Sucesso')
               setLoad(false)
+
+              nv('/signInProv')
             }
           })
 
-          setDados(dt)
-          setStepe(3)
+          // setDados(dt)
+          // setStepe(3)
         }
       } catch (err: any) {
         setLoad(false)
