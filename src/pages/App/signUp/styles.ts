@@ -25,72 +25,40 @@ export const Container = styled.div`
     color: ${color.dark[40]};
   }
 `
+export const content = styled.div`
+  width: calc(20vw + 400px);
+  background-color: rgba(255, 255, 255, 0.371);
 
-export const Content = styled.div`
-  flex: 1;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 8px 4px 3px rgba(93, 93, 93, 0.469);
+
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+
+  align-items: center;
   justify-content: center;
 `
 
-export const ContentForm = styled(Form)`
-  width: 100vw;
+export const boxRow = styled.div`
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`
+
+export const boxComponents = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  padding-bottom: 2rem;
-`
 
-export const button = styled.div`
-  display: flex;
   align-items: center;
-  justify-content: center;
-  margin-top: 2rem;
-  align-self: center;
-  width: 20rem;
 `
 
-const appearFromLeft = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateX(-50px) scale(0.85) rotate(2deg); 
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0px) scale(1);
-
-  }
+export const boxInput = styled.div`
+  display: flex;
 `
 
-export const BoxForm = styled.div`
-  display: grid;
-  width: 90vw;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  grid-gap: 1rem 3rem;
-
-  padding: 1rem 3rem;
-
-  @media (max-width: 780px) {
-    width: 80vw;
-    padding: 0;
-    align-items: center;
-  }
-  .end {
-  }
+export const box = styled.div`
+  margin-left: 10px;
 `
-export const Box1 = styled.div`
-  animation: ${appearFromLeft} 1.5s;
-
-  background-color: rgb(174, 174, 174, 0.6);
-  padding: 4rem;
-  border-radius: 5px;
-
-  @media (max-width: 780px) {
-    padding: 20px;
-    width: 80vw;
-  }
-`
-
-export const Box2 = styled.div``

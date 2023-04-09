@@ -17,28 +17,29 @@ const propsVariat = {
 
 export const Box = styled.div`
   display: flex;
-  width: 1px;
   background-color: red;
 `
 
 export const Container = styled.div<Props>`
   display: flex;
-  width: ${(h) => h.sizeW} !important;
-  height: ${(h) => h.sizeH};
+  width: calc(100px + 10vw);
 
   align-items: center;
   justify-content: center;
   background-color: ${({ variant: h }) => propsVariat[h]};
-  padding: 5px 1rem;
+  padding: 14px 0.5rem;
   border-radius: 8px;
   /* min-width: calc(4vw + 10%); */
+
+  transition: 0.7s;
 
   ${(h) =>
     h.load &&
     css`
-      width: 40px;
-      height: 40px;
-      border-radius: 20px;
+      width: calc(15px + 3vw);
+
+      height: calc(15px + 3vw);
+      border-radius: 90px;
     `}
 
   &:hover {
@@ -59,7 +60,7 @@ export const Button = styled.button`
   height: 100%;
 
   font-weight: 400;
-  font-size: calc(0.5rem + 1vw);
+  font-size: calc(0.5rem + 0.7vw);
   background-color: transparent;
   align-items: center;
   justify-content: center;

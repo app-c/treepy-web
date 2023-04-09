@@ -1,5 +1,7 @@
 import { ButtonHTMLAttributes } from 'react'
 import { Box, Button as Bot, Container } from './styles'
+import { Loading } from '../Loading'
+
 interface PropsButon extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'A' | 'AB' | 'AC' | 'B' | 'C'
   title: string
@@ -19,9 +21,13 @@ export function Button({
 }: PropsButon) {
   return (
     <Container load={load} sizeH={sizeH} sizeW={sizeW} variant={variant}>
-      <Bot {...res} onClick={pres}>
-        {title}
-      </Bot>
+      {load ? (
+        <Loading />
+      ) : (
+        <Bot {...res} onClick={pres}>
+          {title}
+        </Bot>
+      )}
     </Container>
   )
 }

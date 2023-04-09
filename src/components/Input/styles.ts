@@ -18,7 +18,7 @@ export const label = styled.p<PropsInput>`
   margin-bottom: -10px;
   font-size: 0.8rem;
   /* align-self: flex-start; */
-  color: #fff;
+  color: #d2d2d2;
 
   ${(h) =>
     h.isFilled &&
@@ -26,10 +26,16 @@ export const label = styled.p<PropsInput>`
       color: ${color.green[10]};
       font-weight: 500;
     `}
+
+  ${(h) =>
+    h.isFocus &&
+    css`
+      color: ${color.green[10]};
+      font-weight: 500;
+    `}
 `
 
 export const Container = styled.div<PropsInput>`
-  width: ${({ sizeW: h }) => h};
   height: 30px;
   padding: 2px 1rem;
 
@@ -61,7 +67,7 @@ export const Container = styled.div<PropsInput>`
 
 
   input {
-    width: 100%;
+    width: calc(50px + 10vw);
     height: 100%;
     background: #00000000;
   }

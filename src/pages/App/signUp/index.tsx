@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { ReactNode, useCallback, useRef, useState } from 'react'
 import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import { api } from '../../../services/api'
@@ -12,12 +12,18 @@ import { Loading } from '../../../components/Loading'
 import { redirect, useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../../../context/authcontext'
 import { Alert } from '../../../components/Alert'
+import { CadastroStepOne } from '../../../components/cadastroSteps/stepOne'
+import { CadastroStepTwo } from '../../../components/cadastroSteps/stepTwo'
+import { useForm } from '../../../hooks/steps/useForm'
+import { Form } from '@unform/web'
 
 interface PropsSingUp {
-  name: string
+  full_name: string
   email: string
+  cpf: string
+  phone_area: string
+  phone_number: string
   password: string
-  midle_name: string
   street: string
   bairro: string
   number_home: string
@@ -27,22 +33,26 @@ interface PropsSingUp {
 }
 
 interface Step1 {
-  name: string
-  midle_name: string
+  full_name: string
   email: string
+  cpf: string
+  phone_area: string
+  phone_number: string
   password: string
 }
 
-interface Props {
-  type?: 'provisório' | 'signIn dash'
-}
-
 export function SignUp() {
+  const refOne = useRef<FormHandles>(null)
+  const [load, setLoad] = React.useState(false)
+
   const { type } = useParams()
   const [step, setStepe] = useState(1)
+
   const [dadosStep1, setDadosStep1] = useState<Step1>({
-    name: '',
-    midle_name: '',
+    full_name: '',
+    cpf: '',
+    phone_area: '',
+    phone_number: '',
     email: '',
     password: '',
   })
@@ -53,12 +63,12 @@ export function SignUp() {
   const nv = useNavigate()
   const [modal, setModal] = React.useState(false)
 
-  const [load, setLoad] = useState(false)
-
   const handleSubmit = useCallback(
     async (data: PropsSingUp) => {
       formRef.current?.setErrors({})
       setLoad(true)
+
+      console.log(data)
 
       try {
         const passwordSchema = Yup.string().required('Password is required')
@@ -68,9 +78,9 @@ export function SignUp() {
           .required('Confirmation password is required')
 
         const schema = Yup.object().shape({
-          name: Yup.string().required(),
-          midle_name: Yup.string().required(),
+          full_name: Yup.string().required(),
           email: Yup.string().email().required('nome obrigatorio'),
+          cpf: Yup.string().required('Infore se cpf'),
           password: passwordSchema,
           confimationPassword: confirmationPasswordSchema,
         })
@@ -87,7 +97,7 @@ export function SignUp() {
         })
 
         const dt = {
-          name: dadosStep1.name,
+          full_name: dadosStep1.name,
           midle_name: dadosStep1.midle_name,
           email: dadosStep1.email,
           password: dadosStep1.password,
@@ -104,13 +114,16 @@ export function SignUp() {
             abortEarly: false,
           })
 
-          setStepe(2)
           setDadosStep1({
-            name: data.name,
-            midle_name: data.midle_name,
+            full_name: data.full_name,
+            cpf: data.cpf,
+            phone_area: data.phone_area,
+            phone_number: data.phone_number,
             email: data.email,
             password: data.password,
           })
+          setStepe(2)
+
           setLoad(false)
         }
 
@@ -157,18 +170,7 @@ export function SignUp() {
         formRef.current?.setErrors(errors)
       }
     },
-    [
-      addToast,
-      dadosStep1.email,
-      dadosStep1.midle_name,
-      dadosStep1.name,
-      dadosStep1.password,
-      nv,
-      signIn,
-      signInP,
-      step,
-      type,
-    ],
+    [addToast, dadosStep1, signIn, signInP, step, type],
   )
 
   const closeModal = React.useCallback(async () => {
@@ -191,68 +193,36 @@ export function SignUp() {
         title="Sucesso!"
         texto="Sua conta foi cadastrada com sucesso"
       />
-      <S.Content>
-        {step === 1 && (
-          <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
-            <h1>Crie sua conta Treepy</h1>
-            <S.Box1>
-              <div className="content">
-                <Input label="Nome" placeholder="Nome" name="name" />
+
+      <S.content>
+        <Form style={{ width: '100%' }} ref={refOne} onSubmit={handleSubmit}>
+          {step === 1 && (
+            <div>
+              <Input placeholder="Nome completo" name="name" />
+              <Input placeholder="Email" name="name" />
+
+              <S.boxInput>
                 <Input
-                  label="Sobrenome"
-                  placeholder="Sobrenome"
-                  name="midle_name"
+                  placeholder="(99)"
+                  mask="number"
+                  name="name"
+                  style={{ width: 50 }}
                 />
-              </div>
-              <Input label="Email" placeholder="E-mail" name="email" />
-              <Input label="Senha" placeholder="Senha" name="password" />
-              <Input
-                label="Confirmaçao de senha"
-                placeholder="Confirme sua senha"
-                name="confimationPassword"
-              />
-            </S.Box1>
-            <S.button>
-              {load ? <Loading /> : <Button variant="AC" title="PRÓXIMO" />}
-            </S.button>
-
-            {/* </AnimetedForm> */}
-          </S.ContentForm>
-        )}
-
-        {step === 2 && (
-          <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
-            <h1>Crie sua conta Treepy</h1>
-            <S.Box1>
-              <div className="end">
-                <Input placeholder="Rua" name="street" />
-                <Input placeholder="Bairro" name="bairro" />
-
-                <div className="content">
-                  <Input
-                    mask="number"
-                    placeholder="Numero"
-                    name="number_home"
-                  />
-                  <Input
-                    maxLength={9}
-                    mask="cep"
-                    placeholder="CEP"
-                    name="cep"
-                  />
-                </div>
-                <Input placeholder="Cidade" name="city" />
-                <Input maxLength={2} placeholder="Estado" name="state" />
-              </div>
-            </S.Box1>
-
-            {/* </AnimetedForm> */}
-            <S.button>
-              {load ? <Loading /> : <Button variant="AC" title="CRIAR CONTA" />}
-            </S.button>
-          </S.ContentForm>
-        )}
-      </S.Content>
+                <S.box>
+                  <Input mask="number" placeholder="Celular" name="name" />
+                </S.box>
+              </S.boxInput>
+              <Input placeholder="CPF" name="cpf" />
+              <Input placeholder="Senha" name="password" />
+              <Input placeholder="Confirmar senha" name="confirmPass" />
+            </div>
+          )}
+        </Form>
+        <S.boxRow>
+          <Button pres={() => setStepe(step - 1)} title="VOLTAR" />
+          <Button load={load} title="PRÓXIMO" pres={() => setStepe(step + 1)} />
+        </S.boxRow>
+      </S.content>
     </S.Container>
   )
 }
