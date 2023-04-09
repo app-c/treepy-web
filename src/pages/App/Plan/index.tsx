@@ -38,8 +38,8 @@ export function Plan() {
       <HeaderC type="2" />
 
       {step === 1 && (
-        <div>
-          <S.title>Escolha uma forma de pagamento</S.title>
+        <S.content>
+          <S.title>Conheça nossos planos</S.title>
 
           <S.BoxSelect>
             <PlanType
@@ -58,7 +58,7 @@ export function Plan() {
               title="Pagamento recorrente"
             />
           </S.BoxSelect>
-        </div>
+        </S.content>
       )}
 
       {step === 2 && (

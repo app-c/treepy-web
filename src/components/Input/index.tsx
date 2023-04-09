@@ -6,13 +6,13 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { card, cep, currency, expire, number } from '../../utils/mask'
+import { card, cep, currency, expire, float, number } from '../../utils/mask'
 import * as S from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   label?: string
-  mask?: 'cep' | 'price' | 'text' | 'number' | 'expire' | 'card'
+  mask?: 'cep' | 'price' | 'text' | 'number' | 'expire' | 'card' | 'float'
   sizeW?: string
   sizeH?: string
 }
@@ -64,6 +64,9 @@ export function Input({
 
         case 'expire':
           return expire(e)
+
+        case 'float':
+          return float(e)
 
         default:
           break

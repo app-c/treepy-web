@@ -19,7 +19,7 @@ export const Container = styled.div`
   display: grid;
 
   grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-  grid-template-rows: 40vw;
+  /* grid-template-rows: 40vw; */
 
   /* @media (max-width: 920px) {
     grid-template-columns: repeat(auto-fit, minmax(410px, 1fr));
@@ -59,7 +59,7 @@ export const ContentImage = styled.div`
 `
 
 export const subTitle = styled.p`
-  margin-top: 1rem;
+  /* margin-top: 2rem; */
   font-size: calc(10px + 0.7vw);
 `
 
@@ -82,7 +82,7 @@ export const ContentText = styled.div`
 
   .content {
     padding: 10px;
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
 `
 
@@ -140,8 +140,9 @@ export const button = styled.button`
   align-items: center;
 
   background-color: ${color.green[10]};
-  padding: 5px 10px;
+  padding: 10px;
   width: 10rem;
+  margin-top: 4rem;
 `
 
 export const link = styled(Link)`

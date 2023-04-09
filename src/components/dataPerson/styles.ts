@@ -131,6 +131,11 @@ export const qrCode = styled.img`
   height: 300px;
 `
 
+export const boletoImg = styled.img`
+  width: 40vw;
+  height: 60vw;
+`
+
 export const BoxCard = styled.div`
   display: flex;
   flex-direction: column;

@@ -21,7 +21,6 @@ export const Container = styled.div`
 
   padding: calc(5rem + 2vw);
   align-items: center;
-  justify-content: center;
   color: #fff;
 
   h1 {
@@ -45,7 +44,7 @@ export const BoxCard = styled.div`
   display: grid;
   width: 80vw;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  grid-template-rows: 55vh;
+  grid-template-rows: 45vh;
 
   grid-gap: 1rem;
 
@@ -62,27 +61,30 @@ export const box = styled.div`
   flex-direction: column;
 
   align-items: center;
-  padding: calc(5rem + 2vw) 10px;
+  padding: calc(2rem + 1vw) 10px;
 
   color: #fff;
+`
+export const boxTitle = styled.div`
+  height: 6rem;
+`
 
-  line {
-    display: flex;
-    width: 40%;
-    background-color: ${color.green[10]};
-    height: 3px;
-    margin-top: 5px;
-    margin-bottom: 30px;
-  }
+export const line = styled.div`
+  display: flex;
+  width: 40%;
+  background-color: ${color.green[10]};
+  height: 3px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+`
 
-  .title {
-    font-size: clamp(18px, 2vw, 2.2rem);
-    font-weight: 600;
-    text-align: center;
-  }
+export const title = styled.h2`
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+`
 
-  p {
-    text-align: center;
-    font-size: clamp(16px, 2vw, 1.5rem);
-  }
+export const text = styled.p`
+  text-align: center;
+  font-size: clamp(16px, 2vw, 1.5rem);
 `

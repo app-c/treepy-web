@@ -28,6 +28,12 @@ export const Box = styled.div`
   padding: 3rem;
 
   border: 1px solid ${color.green[10]};
+
+  transition: 0.7s;
+
+  &:hover {
+    background-color: rgba(72, 168, 34, 0.1);
+  }
 `
 
 export const Title = styled.h1`

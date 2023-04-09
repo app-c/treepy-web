@@ -8,7 +8,7 @@ export function Providers() {
       <HeaderC type="3" />
 
       <S.content>
-        <h1>O planeta precisa de ajuda de todos...</h1>
+        <h1>O planeta precisa da ajuda de todos...</h1>
 
         <S.text>
           A devastação do meio ambiente tem causado desequilíbrios climáticos,
@@ -24,15 +24,15 @@ export function Providers() {
 
         <S.text>
           Você sabia que cada árvore plantada pode retirar da atmosfera até 22kg
-          de CO2 por ano, reduzindo emissões de gases de efeito estufa e, ainda
-          gerar crédito de carbono que futuramente poderão ser comercializados.
+          de CO₂ por ano, reduzindo emissões de gases de efeito estufa e, ainda
+          gerar créditos de carbono que futuramente poderão ser comercializados.
         </S.text>
 
         <S.boxRow>
-          <S.subTitle>Agir Agora é preciso: Nós precisamos de você!</S.subTitle>
+          <S.subTitle>Agir agora é preciso: Nós precisamos de você!</S.subTitle>
 
           <S.button to="/calc">
-            <S.titleBt>Calcule agora a sua pegada de carbono</S.titleBt>
+            <S.titleBt>Calcule agora sua pegada de carbono</S.titleBt>
           </S.button>
         </S.boxRow>
       </S.content>

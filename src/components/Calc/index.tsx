@@ -10,9 +10,9 @@ export function Calc() {
       <S.Container>
         <S.ContentText>
           <div>
-            <h2>Calculadora de CO2</h2>
+            <h2>Calculadora de CO₂</h2>
             <p>
-              Calcule quantas árvores você presisará plantar por ano para
+              Calcule quantas árvores você precisará plantar por ano para
               compensar a emissão de CO₂
             </p>
           </div>
@@ -29,7 +29,7 @@ export function Calc() {
 
           <div className="buttom">
             <Link className="linboton" to={'/calc'}>
-              Calcule agora
+              CALCULE AGORA
             </Link>
           </div>
         </S.ContentButton>

@@ -47,5 +47,5 @@ export const button = styled(Link)`
 export const titleBt = styled.p`
   color: ${color.green[10]};
   text-align: center;
-  font-size: calc(16px, 2vw);
+  font-size: calc(8px + 1vw);
 `

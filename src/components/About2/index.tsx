@@ -34,9 +34,8 @@ export function About2() {
           </S.Texts>
 
           <S.Texts>
-            {' '}
             A Treepy foi uma das Startups aceleradas pelo programa “InovAtiva
-            Brasil”
+            Brasil”.
           </S.Texts>
 
           {showRead && (
@@ -57,11 +56,12 @@ export function About2() {
 
               <S.Texts>
                 Em resumo, o reflorestamento é crucial para a saúde do nosso
-                planeta e para a luta contra a mudanças climática. Além disso, o
-                TreepyCash é uma maneira eficaz de incentivar o reflorestamento,
-                fornecendo uma alternativa econômica para a preservação das
-                florestas. É hora de agir agora, para garantir um futuro mais
-                verde e saudável para nós e para as gerações futuras.
+                planeta e para a luta contra as mudanças climáticas. Além disso,
+                o TreepyCash é uma maneira eficaz de incentivar o
+                reflorestamento, fornecendo uma alternativa econômica para a
+                preservação das florestas. É hora de agir agora, para garantir
+                um futuro mais verde e saudável para nós e para as gerações
+                futuras.
               </S.Texts>
 
               <S.Mission>

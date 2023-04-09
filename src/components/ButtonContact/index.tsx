@@ -17,8 +17,12 @@ export function ButtonContact() {
       <S.content>
         <S.title>Nossos contatos</S.title>
         <S.subTitle>
-          Av. Paulissta, 1.842 - Torre Norte - Conjunto 178 - 17° Andar - Bela{' '}
+          Av. Paulista, 1.842 - Torre Norte Bela Vista - São Paulo -SP
         </S.subTitle>
+
+        <S.subTitle>Conjunto 178 - 17° Andar - </S.subTitle>
+
+        <S.subTitle>Vista - São Paulo - SP</S.subTitle>
         <S.subTitle>CEP 01310-945</S.subTitle>
         <S.subTitle style={{ color: color.orange[10] }}>
           contato@treepy.com.br

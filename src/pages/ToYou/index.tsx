@@ -20,19 +20,21 @@ export function ToYou() {
         </S.subTitle>
 
         <S.subTitle>
-          1) Calcule a quantidade de árvores plantadas é necessário para sua
+          1) Calcule a quantidade de árvores plantadas necessárias para sua
           compensação
         </S.subTitle>
 
         <S.subTitle>2) Crie sua conta para começar a compensar</S.subTitle>
 
         <S.subTitle>
-          3) Consuma produtos / serviços dos nossos parceiros para receber
-          Treepycash ou compre diretamente
+          3) Consuma produtos e serviços dos nossos parceiros para receber
+          TreepyCash ou compre diretamente pela nossa plataforma
         </S.subTitle>
 
         <S.button to="/calc">
-          <S.titleBt>Calcule agora a sua pegada de carbono</S.titleBt>
+          <S.titleBt>
+            Calcule agora sua <br /> pegada de carbono
+          </S.titleBt>
         </S.button>
       </S.contetn>
     </S.Container>

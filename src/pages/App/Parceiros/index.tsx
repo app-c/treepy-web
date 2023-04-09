@@ -13,12 +13,12 @@ export function Parceiros() {
 
         <S.text>
           Se sua empresa está buscando criar valor sustentável para o seu
-          produto ou serviço analisaremos o melhor modelo de negócios para a
+          produto ou serviço, analisaremos o melhor modelo de negócios para a
           nossa parceria.
         </S.text>
 
         <S.text>
-          Ou se sua <span>empresa for de reflorestamento, </span> tenha acesso
+          Ou se sua <span>empresa for de reflorestamento</span>, tenha acesso
           aos benefícios da nossa parceria. Entre em contato que retornaremos
           com uma proposta.
         </S.text>
@@ -26,15 +26,15 @@ export function Parceiros() {
         <S.form onSubmit={() => {}}>
           <S.boxForm>
             <S.box1>
-              <Input label="Nome" placeholder="informe seu nome" name="name" />
+              <Input label="Nome" placeholder="Informe seu nome" name="name" />
               <Input
                 label="E-mail"
-                placeholder="informe seu email"
+                placeholder="Informe seu email"
                 name="name"
               />
               <Input
-                label="assunto"
-                placeholder="informe o assunto"
+                label="Assunto"
+                placeholder="Informe o assunto"
                 name="name"
               />
             </S.box1>
@@ -43,7 +43,7 @@ export function Parceiros() {
               <S.area placeholder="Digite sua proposta aqui" />
             </S.box2>
           </S.boxForm>
-          <S.bt>Enviar</S.bt>
+          <S.bt>ENVIAR</S.bt>
         </S.form>
       </S.content>
     </S.Container>

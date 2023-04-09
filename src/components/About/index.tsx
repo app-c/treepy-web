@@ -64,7 +64,7 @@ export function About() {
                         TreepyCash tornar o futuro sustentável, onde a
                         tecnologia e a inovação trabalham em harmonia com o meio
                         ambiente para proteger o planeta e garantir uma vida
-                        saudável para as gerações futuras
+                        saudável para as gerações futuras.
                       </p>
                     </BoxContent>
 
@@ -82,52 +82,6 @@ export function About() {
                     </BoxContent>
                   </Mission>
                 </Box>
-                {/* 
-                  <h3>
-                    Para onde vai o TreepyCash gerado através das minhas
-                    compras?
-                  </h3>
-
-                  <p>
-                    A Equipe Treepy selecionará os melhores projetos que visam
-                    reduzir a emissão dos gases de efeito estufa (GEE) e atuam
-                    ativamente contra as mudanças climáticas e o aquecimento
-                    global.
-                  </p>
-
-                  <h3>Preservação de florestas nativas</h3>
-                  <p>
-                    {'\n'} São projetos que reduzem as emissões de Gases de
-                    Efeito Estufa (GEE) a partir da proteção da floresta, que na
-                    ausência do projeto seria desmatada de forma não planejada.
-                  </p>
-
-                  <h3>Reflorestamento e regeneração natural</h3>
-                  <p>
-                    São projetos que sequestram Gases de Efeito Estufa (GEE) da
-                    atmosfera a partir do reflorestamento com espécies nativas
-                    em áreas já desmatadas. Além disso, tais projetos também
-                    ajudam na reconstituição da biodiversidade local, aumentando
-                    as áreas verdes e criando corredores ecológicos, bem como
-                    colaboram para a manutenção dos recursos hídricos, e geram
-                    empregos à comunidade local em atividades de monitoramento,
-                    patrulhamento e manejo sustentável de recursos não
-                    madeireiros.
-                  </p>
-
-                  <h3>Agricultura regenerativa</h3>
-                  <p>
-                    Agricultura regenerativa São projetos que sequestram Gases
-                    de Efeito Estufa (GEE) da atmosfera para o solo a partir da
-                    recuperação de pastagens degradadas, e da transição de
-                    sistemas de produção tradicionais para sistemas
-                    agroecológicos e agroflorestais. Além de aumentarem a
-                    matéria orgânica no solo, tais projetos também ajudam na
-                    recomposição da biodiversidade, e na manutenção dos recursos
-                    hídricos. Tudo isso você poderá acompanhar em tempo real em
-                    nossa plataforma. Basta efetuar seu login e acompanhar o
-                    nosso trabalho.
-                  </p> */}
               </div>
             )}
           </div>

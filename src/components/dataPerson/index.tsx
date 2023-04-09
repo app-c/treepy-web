@@ -17,6 +17,7 @@ import { Loading } from '../Loading'
 import { brlNumber, _number } from '../../utils/formatNumber'
 import Modal from 'react-modal'
 import { Alert } from '../Alert'
+import { addDays, addHours, format } from 'date-fns'
 
 interface DataProps {
   name: string
@@ -37,6 +38,7 @@ interface DataProps {
   number_card: string
   expire: string
   security_code: string
+  region: string
 }
 
 interface Props {
@@ -89,6 +91,7 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
   const [parc, setParc] = React.useState<IPropsParcelamento>()
   const [load, setLoad] = React.useState(false)
   const [qrCodePix, setQrCodePix] = React.useState('')
+  const [boletoImage, setBoletoImage] = React.useState('')
 
   const [select, setSelect] = React.useState<SelectProps>({ type: 'cartao' })
 
@@ -255,6 +258,8 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
               abortEarly: false,
             })
 
+            const expiration_date = addHours(new Date(), 1)
+
             const dt = {
               name: data.name,
               email: data.email,
@@ -262,12 +267,90 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
               phone_number: data.phone_number,
               item_name: 'Treepycache',
               amount: total_amount,
-              expiration_date: '2023-03-11T02:35:29.154Z',
+              expiration_date,
+
+              street: data.street,
+              home_number: data.home_number,
+              complement: data.complement,
+              locality: data.locality,
+              city: data.city,
+              region_code,
+              postal_code,
+              holder_name: data.name,
             }
 
-            await api.post('/pay-pag/order-pix', dt).then((h) => {
+            await api.post('/pay-pag/pix', dt).then((h) => {
               const rs = h.data
               setQrCodePix(rs.qr_codes[0].links[0].href)
+              setLoad(false)
+            })
+          } catch (error: any) {
+            setLoad(false)
+            console.log(error)
+            addToast({
+              type: 'error',
+              title: 'Erro',
+              description:
+                'Ocorreu um erro, verifique os campos e tente novamente',
+            })
+
+            const err = getValidationErrors(error)
+            console.log(err)
+            forRef.current?.setErrors(err)
+          }
+
+          break
+
+        case 'boleto':
+          try {
+            setLoad(true)
+
+            const schema = Yup.object().shape({
+              name: Yup.string().required('nome obrigatório'),
+              email: Yup.string()
+                .required('email obrigatório')
+                .email('digite um email válido'),
+              area: Yup.string().required(),
+              phone_number: Yup.string().required('número obrigatório'),
+              locality: Yup.string().required('bairro obrigatório'),
+              street: Yup.string().required('rua obrigatório'),
+              complement: Yup.string().required(),
+              city: Yup.string().required('cidade obrigatório'),
+              region_code: Yup.string().required('estado obrigatório'),
+              postal_code: Yup.string().required(),
+            })
+
+            await schema.validate(data, {
+              abortEarly: false,
+            })
+
+            const today = new Date()
+            const currency_day = format(addDays(today, 30), 'yyyy-MM-dd')
+
+            const dt = {
+              name: data.name,
+              email: data.email,
+              area: data.area,
+              phone_number: data.phone_number,
+              item_name: 'Treepycache',
+              amount: total_amount,
+
+              street: data.street,
+              home_number: data.home_number,
+              complement: data.complement,
+              locality: data.locality,
+              city: data.city,
+              region_code,
+              postal_code,
+              holder_name: data.name,
+              due_date: currency_day,
+              region: data.region,
+            }
+
+            await api.post('/pay-pag/boleto', dt).then((h) => {
+              const rs = h.data
+              console.log(rs)
+              setBoletoImage(rs.charges[0].links[1].href)
               setLoad(false)
             })
           } catch (error: any) {
@@ -392,8 +475,8 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
         <S.Content>
           <div className="person">
             <h3>Dados do comprador</h3>
-            <Input label="Nome" name="name" placeholder="digite seu nome" />
-            <Input name="email" label="E-mail" placeholder="digite seu email" />
+            <Input label="Nome" name="name" placeholder="Digite seu nome" />
+            <Input name="email" label="E-mail" placeholder="Digite seu email" />
 
             <S.gridInpu>
               <Input
@@ -409,16 +492,16 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
                 label="Celular"
                 mask="number"
                 name="phone_number"
-                placeholder="telefone"
+                placeholder="Telefone celular"
               />
             </S.gridInpu>
           </div>
 
           <div className="localy">
-            <h3>Endereço do titular</h3>
+            <h3>Endereço do comprador</h3>
 
             <S.Box>
-              <Input label="Rua" name="street" placeholder="rua" />
+              <Input label="Rua" name="street" placeholder="Rua" />
 
               <Input
                 label="N°"
@@ -429,23 +512,25 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
             </S.Box>
 
             <S.Box>
-              <Input label="Bairro" name="locality" placeholder="bairro" />
+              <Input label="Bairro" name="locality" placeholder="Bairro" />
 
               <Input
                 label="Complemento"
                 name="complement"
-                placeholder="complemento"
+                placeholder="Complemento"
               />
             </S.Box>
 
-            <Input name="city" placeholder="cidade" />
+            <Input name="city" label="Cidade" placeholder="Cidade" />
+
+            <Input name="region" label="Estado" placeholder="Estado" />
 
             <S.Box>
               <Input
                 maxLength={2}
                 name="region_code"
-                placeholder="estado"
-                label="Estado"
+                placeholder="UF"
+                label="UF"
               />
 
               <Input
@@ -485,7 +570,7 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
                           onChange={(h) => setExpMonth(h.currentTarget.value)}
                           name="expire"
                           label="Validade"
-                          placeholder="mês/ano"
+                          placeholder="Mês/ano"
                           mask="expire"
                           sizeW="6rem"
                         />
@@ -495,7 +580,7 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
                             setSecurityCode(h.currentTarget.value)
                           }
                           name="security_code"
-                          placeholder="cvv"
+                          placeholder="CVV"
                           label="CVV do cartão"
                           mask="number"
                           maxLength={3}
@@ -525,10 +610,10 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
               <S.BoxItem>
                 {/* <CardType infoCard={dataCard} /> */}
                 <h3>Resumo da compra</h3>
-                <span>Treepycash</span>
-                <p>R$ {brlNumber(amount.toFixed(2))}</p>
+                <span>TreepyCash</span>
+                <p>R${brlNumber(amount.toFixed(2))}</p>
 
-                <p>arvores {tree.toFixed(0)}</p>
+                <p>Árvores {tree.toFixed(0)}</p>
                 <div className="item"></div>
               </S.BoxItem>
             </S.grid>
@@ -541,10 +626,10 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
               <S.BoxItem>
                 {/* <CardType infoCard={dataCard} /> */}
                 <h3>Resumo da compra</h3>
-                <span>Treepycash</span>
+                <span>TreepyCash</span>
                 <p>R${brlNumber(amount.toFixed(2))}</p>
 
-                <p>Árvores {tree.toFixed(0)}</p>
+                <p>Árvores {tree.toFixed(2)}</p>
                 <div className="item"></div>
               </S.BoxItem>
             </S.grid>
@@ -552,15 +637,15 @@ export function DataPerson({ setStep, amount, tree, Component }: Props) {
 
           {select.type === 'boleto' && (
             <S.grid>
-              <S.qrCode alt="qr_code" src={qrCodePix} />
+              <S.boletoImg alt="qr_code" src={boletoImage} />
 
               <S.BoxItem>
                 {/* <CardType infoCard={dataCard} /> */}
                 <h3>Resumo da compra</h3>
-                <span>Treepycash</span>
-                <p>R$ {amount.toFixed(2)}</p>
+                <span>TreepyCash</span>
+                <p>R${brlNumber(amount.toFixed(2))}</p>
 
-                <p>arvores {tree.toFixed(2)}</p>
+                <p>Árvores {tree.toFixed(2)}</p>
                 <div className="item"></div>
               </S.BoxItem>
             </S.grid>

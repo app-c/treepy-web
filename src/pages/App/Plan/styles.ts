@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { color } from '../../../styles/colors'
 
 export const Container = styled.div`
   display: flex;
@@ -10,9 +11,16 @@ export const Container = styled.div`
   }
 `
 
+export const content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
 export const title = styled.h1`
-  margin-top: 8rem;
+  /* margin-top: 8rem; */
   margin-bottom: 2rem;
+  align-self: center;
 `
 export const BoxSelect = styled.div`
   display: grid;

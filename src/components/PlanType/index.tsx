@@ -17,7 +17,7 @@ export function PlanType({ title, text, pres }: Props) {
     <S.Container>
       <S.Box>
         <S.Title>{title}</S.Title>
-        <span>R$ {text}</span>
+        <span>R${text}</span>
 
         <S.Content>
           <p>

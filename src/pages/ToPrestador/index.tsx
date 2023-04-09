@@ -13,12 +13,12 @@ export function ToPrestador() {
 
         <S.subTitle>
           Seja um parceiro Treepy e ofereça produtos ou serviços com valor
-          sustentável, criando um diferencial para os seus concorrentes.
+          sustentável, criando um diferencial em relação aos seus concorrentes.
         </S.subTitle>
 
         <S.subTitle>
           Atrelar a marca de produtos ou serviços a ações de ESG* tem influência
-          direta nas escolhas de consumo da pessoas.
+          direta nas escolhas de consumo das pessoas.
         </S.subTitle>
 
         <S.subTitle>
@@ -29,7 +29,7 @@ export function ToPrestador() {
         <S.subTitle>Ficou interessado?</S.subTitle>
 
         <S.button to="/parc">
-          <S.titleBt>Fale conosco</S.titleBt>
+          <S.titleBt>FALE CONOSCO</S.titleBt>
         </S.button>
       </S.contetn>
     </S.Container>

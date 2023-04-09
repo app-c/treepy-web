@@ -78,14 +78,10 @@ export function Calculadora() {
   } as PropsItens)
 
   const handleNext = useCallback(async () => {
-    if (userP) {
-      if (step <= 6) {
-        setStep(step + 1)
-      }
-    } else {
-      nv(`/signInProv`)
+    if (step <= 6) {
+      setStep(step + 1)
     }
-  }, [nv, step, userP])
+  }, [step])
 
   const handlePreview = useCallback(async () => {
     if (step > 1) {
@@ -458,7 +454,7 @@ export function Calculadora() {
                   </BoxSelect>
                   <Form onSubmit={() => {}} className="form">
                     <Input
-                      mask={gas.item === 'R$/mês' ? 'price' : 'number'}
+                      mask="price"
                       name="gas"
                       sizeH="2rem"
                       type="text"
@@ -466,9 +462,11 @@ export function Calculadora() {
                       onChange={(h) => {
                         let vl = h.currentTarget.value
                         vl = vl.replace(/\D/g, '')
+                        const t = vl.length > 2 ? Number(vl) / 100 : vl
+                        console.log(t)
                         setGas({
                           item: gas.item,
-                          co2: Number(vl),
+                          co2: Number(t),
                         })
                       }}
                     />
@@ -554,7 +552,7 @@ export function Calculadora() {
                     <tr>
                       <th>Transporte</th>
                       <th>Quilometragem</th>
-                      <th>Emissão (Kg CO₂e)</th>
+                      <th>Emissão (kg CO₂e)</th>
                       <th>Excluir</th>
                     </tr>
 

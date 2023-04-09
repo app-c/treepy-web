@@ -14,32 +14,43 @@ export function HowToDo() {
       <h1>COMO FUNCIONA</h1>
       <S.BoxCard className="textos">
         <S.box>
-          <p className="title">Suas compras valem árvores</p>
-          <line className="line" />
-          <p>
-            Compras nos parceiros Treepy são convertidos em plantio de árvores.
-          </p>
+          <S.boxTitle>
+            <S.title>Suas compras valem árvores</S.title>
+          </S.boxTitle>
+
+          <S.line />
+          <S.text>
+            Compras nos parceiros Treepy são convertidas em plantio de árvores
+          </S.text>
         </S.box>
 
         <S.box>
-          <p className="title">Preencha o seu perfil de emissão</p>
-          <line className="line" />
-          <p>
+          <S.boxTitle>
+            <S.title className="title">
+              Preencha o seu perfil de emissão
+            </S.title>
+          </S.boxTitle>
+          <S.line />
+          <S.text>
             Calcule quantas árvores são necessárias para a sua compensação de
             CO₂
-          </p>
+          </S.text>
         </S.box>
         <S.box>
-          <p className="title">Crie seu cadastro</p>
-          <line className="line" />
-          <p>Crie seu cadastro e comece a reflorestar conosco.</p>
+          <S.boxTitle>
+            <S.title className="title">Crie seu cadastro</S.title>
+          </S.boxTitle>
+          <S.line />
+          <S.text>Crie seu cadastro e comece a reflorestar conosco</S.text>
         </S.box>
         <S.box>
-          <p className="title">Reflorestamento em campo</p>
-          <line className="line" />
-          <p>
-            Acompanhe nas plataforma Web ou App a evolução do reflorestamento.
-          </p>
+          <S.boxTitle>
+            <S.title className="title">Reflorestamento em campo</S.title>
+          </S.boxTitle>
+          <S.line />
+          <S.text>
+            Acompanhe a evolução do reflorestamento nas plataformas Web e App
+          </S.text>
         </S.box>
       </S.BoxCard>
     </S.Container>

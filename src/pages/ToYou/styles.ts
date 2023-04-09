@@ -32,20 +32,24 @@ export const subTitle = styled.p`
 export const button = styled(Link)`
   display: flex;
   background-color: ${color.orange[10]};
-  width: calc(8rem + 12vw);
+  width: calc(6rem + 12vw);
   text-decoration: none;
   border-radius: 20px;
   align-items: center;
   justify-content: center;
 
-  padding: 15px;
+  padding: 14px;
 
   margin-top: 2rem;
   color: ${color.dark[30]};
+
+  &:hover {
+    opacity: 0.94;
+  }
 `
 
 export const titleBt = styled.p`
   color: ${color.green[10]};
   text-align: center;
-  font-size: calc(16px, 2vw);
+  font-size: calc(8px + 1vw);
 `

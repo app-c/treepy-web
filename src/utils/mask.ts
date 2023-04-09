@@ -57,3 +57,23 @@ export function card(e: React.FormEvent<HTMLInputElement>) {
   e.currentTarget.value = value
   return e
 }
+
+export function float(e: React.FormEvent<HTMLInputElement>) {
+  let value = e.currentTarget.value
+
+  value = value.replace(/\D/g, '')
+  value = value.replace(/(\d{2})(\d{1,2})?/, function (match, p1, p2, p3, p4) {
+    if (p2 === undefined) {
+      return `00,${p1}`
+    }
+    if (p3 === undefined) {
+      return `${p1},${p2}`
+    }
+
+    return `${p1},${p2}`
+  })
+
+  const vl = value
+
+  return vl
+}

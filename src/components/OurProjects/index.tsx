@@ -27,7 +27,7 @@ export function OurProject() {
 
               <S.BoxText>
                 <h3>Usuários</h3>
-                <p>Qualquer pessoa pode mitigar as suas emissões de CO₂</p>
+                <p>Qualquer pessoa pode mitigar suas emissões de CO₂</p>
               </S.BoxText>
             </S.Box>
 
@@ -67,7 +67,7 @@ export function OurProject() {
               </S.BoxText>
             </S.Box>
 
-            <S.subTitle>
+            <S.subTitle style={{ marginTop: '3rem' }}>
               Dessa forma buscamos promover a sustentabilidade na natureza e o
               futuro das próximas gerações
             </S.subTitle>

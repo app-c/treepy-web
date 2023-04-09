@@ -36,7 +36,7 @@ export const text = styled.p`
 export const titleBt = styled.p`
   color: ${color.green[10]};
   text-align: center;
-  font-size: clamp(16px, 2vw, 1.5vw);
+  font-size: calc(14px + 1vw);
 `
 
 export const content = styled.div`

@@ -33,7 +33,7 @@ export function Router() {
         <Route path="/calc" element={<Calculadora />} />
         <Route path="/test" element={<Test />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/signUp/:type" element={<SignUp />} />
+        <Route path="/signUp/" element={<SignUp />} />
         <Route path="/signUpCalc/" element={<SignUpPay />} />
         <Route path="/plan/:value" element={<Plan />} />
         <Route path="/inovation" element={<Inovation />} />
