@@ -31,10 +31,11 @@ export function ToYou() {
           TreepyCash ou compre diretamente pela nossa plataforma
         </S.subTitle>
 
+        <h2 style={{ marginTop: '2rem' }}>
+          Calcule agora sua <br /> pegada de carbono
+        </h2>
         <S.button to="/calc">
-          <S.titleBt>
-            Calcule agora sua <br /> pegada de carbono
-          </S.titleBt>
+          <S.titleBt>CLICK AQUI</S.titleBt>
         </S.button>
       </S.contetn>
     </S.Container>

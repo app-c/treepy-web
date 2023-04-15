@@ -25,8 +25,11 @@ export function Inovation() {
           reflorestamento.
         </S.text>
 
+        <h2 style={{ marginTop: '2rem' }}>
+          Calcule agora sua <br /> pegada de carbono
+        </h2>
         <S.button to="/calc">
-          <S.titleBt>Calcule agora sua pegada de carbono</S.titleBt>
+          <S.titleBt>CLICK AQUI</S.titleBt>
         </S.button>
       </S.content>
     </S.Container>

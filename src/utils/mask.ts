@@ -38,7 +38,20 @@ export function expire(e: React.FormEvent<HTMLInputElement>) {
 
   value = value.replace(/\D/g, '')
 
-  value = value.replace(/(\d)(\d{2})$/, '$1/$2')
+  // value = value.replace(/(\d)(\d{4})$/, '$1/$2')
+
+  // e.currentTarget.value = value
+
+  value = value.replace(/(\d{1,2})(\d{1,4})?/, function (match, p1, p2) {
+    if (p2 === undefined) {
+      return `${p1}`
+    }
+    // if (p3 === undefined) {
+    //   return `${p1}/${p2}`
+    // }
+
+    return `${p1}/${p2}`
+  })
 
   e.currentTarget.value = value
 

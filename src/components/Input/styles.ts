@@ -11,6 +11,7 @@ type PropsInput = {
 
 export const Box = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
 `
 
@@ -18,7 +19,7 @@ export const label = styled.p<PropsInput>`
   margin-bottom: -10px;
   font-size: 0.8rem;
   /* align-self: flex-start; */
-  color: #d2d2d2;
+  color: #ffffff;
 
   ${(h) =>
     h.isFilled &&
@@ -36,20 +37,23 @@ export const label = styled.p<PropsInput>`
 `
 
 export const Container = styled.div<PropsInput>`
-  height: 30px;
-  padding: 2px 1rem;
+  height: 40px;
+  /* width: calc(100px + 20vw); */
+  width: 100%;
 
   display: flex;
+  padding: 2px 1rem;
   align-items: center;
-  border-radius: 7px;
 
-  background-color: #f0f0f0;
+  background-color: #f9f9f9;
+  box-shadow: 1px 1px 4px rgba(81, 81, 81, 0.842);
+  border-radius: 7px;
   margin: 1rem 0;
 
   ${(h) =>
     h.isFocus &&
     css`
-      border: 2px solid ${color.green[10]};
+      border: 2px solid ${color.green[30]};
     `}
 
   ${(h) =>
@@ -67,8 +71,14 @@ export const Container = styled.div<PropsInput>`
 
 
   input {
-    width: calc(50px + 10vw);
+    background-color: transparent;
+    width: 100%;
     height: 100%;
-    background: #00000000;
   }
+`
+
+export const error = styled.p`
+  position: relative;
+  color: ${color.red[10]};
+  top: -10px;
 `

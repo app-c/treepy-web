@@ -99,6 +99,7 @@ export function Input({
       <S.label isFilled={isFilled} isFocus={isFocused}>
         {label}
       </S.label>
+
       <S.Container
         sizeW={sizeW}
         sizeH={sizeH}
@@ -115,6 +116,7 @@ export function Input({
           {...rest}
         />
       </S.Container>
+      <S.error>{error}</S.error>
     </S.Box>
   )
 }

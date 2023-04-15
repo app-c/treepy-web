@@ -85,6 +85,7 @@ export const BoxForm = styled.div`
   h4 {
     color: #fff;
     margin-bottom: 2rem;
+    text-align: center;
 
     /* font-size: calc(1vw + 2.5vh); */
   }

@@ -28,13 +28,16 @@ export function Providers() {
           gerar créditos de carbono que futuramente poderão ser comercializados.
         </S.text>
 
-        <S.boxRow>
+        <S.boxC>
           <S.subTitle>Agir agora é preciso: Nós precisamos de você!</S.subTitle>
 
+          <h1 style={{ marginTop: '2rem' }}>
+            Calcule agora sua <br /> pegada de carbono
+          </h1>
           <S.button to="/calc">
-            <S.titleBt>Calcule agora sua pegada de carbono</S.titleBt>
+            <S.titleBt>CLICK AQUI</S.titleBt>
           </S.button>
-        </S.boxRow>
+        </S.boxC>
       </S.content>
     </S.Container>
   )

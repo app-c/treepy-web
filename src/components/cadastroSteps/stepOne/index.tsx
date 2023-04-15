@@ -28,37 +28,35 @@ export function CadastroStepOne({ loading, submit, ref }: props) {
   return (
     <S.container>
       <S.title>ONE</S.title>
-      <Form ref={ref}>
-        <Input
-          onChange={(h) => setName(h.target.value)}
-          placeholder="Nome completo"
-          name="name"
-        />
-        <Input
-          onChange={(h) => setMail(h.target.value)}
-          placeholder="Email"
-          name="name"
-        />
+      <Input
+        onChange={(h) => setName(h.target.value)}
+        placeholder="Nome completo"
+        name="name"
+      />
+      <Input
+        onChange={(h) => setMail(h.target.value)}
+        placeholder="Email"
+        name="email"
+      />
 
-        <S.boxInput>
-          <Input
-            placeholder="(99)"
-            mask="number"
-            name="name"
-            style={{ width: 50 }}
-          />
-          <S.box>
-            <Input mask="number" placeholder="Celular" name="name" />
-          </S.box>
-        </S.boxInput>
+      <S.boxInput>
         <Input
-          onChange={(h) => setCpf(h.target.value)}
-          placeholder="CPF"
-          name="cpf"
+          placeholder="(99)"
+          mask="number"
+          name="area"
+          style={{ width: 50 }}
         />
-        <Input placeholder="Senha" name="password" />
-        <Input placeholder="Confirmar senha" name="confirmPass" />
-      </Form>
+        <S.box>
+          <Input mask="number" placeholder="Celular" name="phoneNumber" />
+        </S.box>
+      </S.boxInput>
+      <Input
+        onChange={(h) => setCpf(h.target.value)}
+        placeholder="CPF"
+        name="cpf"
+      />
+      <Input placeholder="Senha" name="password" />
+      <Input placeholder="Confirmar senha" name="confirmPass" />
     </S.container>
   )
 }

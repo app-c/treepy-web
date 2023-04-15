@@ -22,7 +22,7 @@ export const Box = styled.div`
 
 export const Container = styled.div<Props>`
   display: flex;
-  width: calc(100px + 10vw);
+  width: calc(60px + 10vw);
 
   align-items: center;
   justify-content: center;

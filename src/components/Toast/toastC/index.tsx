@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
 import { BsFillXCircleFill } from 'react-icons/bs'
+import { GoAlert } from 'react-icons/go'
 import { PropsMessage, useToast } from '../../../context/ToastContext'
 import * as S from './styles'
+import { color } from '../../../styles/colors'
 
 interface Props {
   mess: PropsMessage
@@ -28,7 +30,7 @@ export function ToastC({ mess, style }: Props) {
       type={mess.type}
       style={style}
     >
-      <BsFillXCircleFill size={20} />
+      <GoAlert size={20} color={color.orange[10]} />
       <div>
         <strong>{mess.title}</strong>
         {mess.description && <p>{mess.description}</p>}

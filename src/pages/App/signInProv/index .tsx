@@ -29,7 +29,7 @@ export function SignInProv() {
 
         const schema = Yup.object().shape({
           email: Yup.string().required().email('E-mail obrigatório'),
-          password: Yup.string().min(6, 'senha no mínimo 6 digitos'),
+          password: Yup.string().required('Informe sua senha'),
         })
 
         await schema.validate(data, {
@@ -60,15 +60,13 @@ export function SignInProv() {
     [addToast, nv, signInP],
   )
 
-  const type = '1'
-
   return (
     <S.Container>
       <HeaderC type="2" />
       <S.Content>
         <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
           <S.BoxForm>
-            <h4>Entre com sua conta para continuar com a calculadora</h4>
+            <h4>Para continuar, entre com sua conta</h4>
             <div className="inputs">
               <Input sizeH="2.4rem" placeholder="E-mail" name="email" />
               <Input sizeH="2.4rem" placeholder="Senha" name="password" />
@@ -78,8 +76,8 @@ export function SignInProv() {
               <Button sizeH="3rem" variant="AC" title="ENTRAR" />
             </div>
             <S.CreateAccont>
-              <S.Li to={`/signUp/${type}`} style={{ color: color.green[30] }}>
-                não tenho conta
+              <S.Li to={'/signUp/1'} style={{ color: color.green[30] }}>
+                Não tenho conta
               </S.Li>
             </S.CreateAccont>
           </S.BoxForm>

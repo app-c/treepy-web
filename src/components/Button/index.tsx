@@ -4,7 +4,7 @@ import { Loading } from '../Loading'
 
 interface PropsButon extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'A' | 'AB' | 'AC' | 'B' | 'C'
-  title: string
+  title?: string
   sizeW?: string
   sizeH?: string
   pres?: () => void

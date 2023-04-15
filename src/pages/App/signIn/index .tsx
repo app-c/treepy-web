@@ -74,7 +74,7 @@ export function SignIn() {
             <Button sizeH="3rem" variant="AC" title="ENTRAR" />
           </S.button>
           <S.CreateAccont>
-            <S.Li to={'/signUp'} style={{ color: color.green[30] }}>
+            <S.Li to={'/signUp/0'} style={{ color: color.green[30] }}>
               Não tem conta?
             </S.Li>
           </S.CreateAccont>

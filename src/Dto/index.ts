@@ -85,38 +85,100 @@ export interface PropsUser {
 }
 
 export interface PropsParcCard {
-  quantity: number
-  installmentAmount: number
-  totalAmount: number
-  interestFree: boolean
+  installments: number
+  installment_value: number
+  interest_free: boolean
+  amount: {
+    value: number
+    currency: 'BRL'
+    fees: {
+      buyer: {
+        interest: {
+          total: number
+          installments: number
+        }
+      }
+    }
+  }
 }
 
 export interface IPropsParcelamento {
-  installments: {
-    discover: PropsParcCard[]
-    diners: PropsParcCard[]
-    valecard: PropsParcCard[]
-    banesecard: PropsParcCard[]
-    fortbrasil: PropsParcCard[]
-    jcb: PropsParcCard[]
-    elo: PropsParcCard[]
-    mastercard: PropsParcCard[]
-    sorocred: PropsParcCard[]
-    personalcard: PropsParcCard[]
-    mais: PropsParcCard[]
-    aura: PropsParcCard[]
-    cabal: PropsParcCard[]
-    amex: PropsParcCard[]
-    upbrasil: PropsParcCard[]
-    grandcard: PropsParcCard[]
-    visa: PropsParcCard[]
-    brasilcard: PropsParcCard[]
-    avista: PropsParcCard[]
-    cardban: PropsParcCard[]
-    hipercard: PropsParcCard[]
-    plenocard: PropsParcCard[]
+  payment_methods: {
+    credit_card: {
+      discover: {
+        installment_plans: PropsParcCard[]
+      }
+      diners: {
+        installment_plans: PropsParcCard[]
+      }
+      valecard: {
+        installment_plans: PropsParcCard[]
+      }
+      banesecard: {
+        installment_plans: PropsParcCard[]
+      }
+      fortbrasil: {
+        installment_plans: PropsParcCard[]
+      }
+      jcb: {
+        installment_plans: PropsParcCard[]
+      }
+      elo: {
+        installment_plans: PropsParcCard[]
+      }
+      mastercard: {
+        installment_plans: PropsParcCard[]
+      }
+      sorocred: {
+        installment_plans: PropsParcCard[]
+      }
+      personalcard: {
+        installment_plans: PropsParcCard[]
+      }
+      mais: {
+        installment_plans: PropsParcCard[]
+      }
+      aura: {
+        installment_plans: PropsParcCard[]
+      }
+      cabal: {
+        installment_plans: PropsParcCard[]
+      }
+      amex: {
+        installment_plans: PropsParcCard[]
+      }
+      upbrasil: {
+        installment_plans: PropsParcCard[]
+      }
+      grandcard: {
+        installment_plans: PropsParcCard[]
+      }
+      visa: {
+        installment_plans: PropsParcCard[]
+      }
+      brasilcard: {
+        installment_plans: PropsParcCard[]
+      }
+      avista: {
+        installment_plans: PropsParcCard[]
+      }
+      cardban: {
+        installment_plans: PropsParcCard[]
+      }
+      hipercard: {
+        installment_plans: PropsParcCard[]
+      }
+      plenocard: {
+        installment_plans: PropsParcCard[]
+      }
+    }
   }
-  error: false
+
+  error_messages: {
+    error: string
+    description: string
+    parameter_name: string
+  }[]
 }
 
 export interface IPropsBrand {

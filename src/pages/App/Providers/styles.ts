@@ -21,7 +21,6 @@ export const button = styled(Link)`
   border-radius: 20px;
   align-items: center;
   justify-content: center;
-  margin-left: 4rem;
 
   padding: 15px;
 
@@ -41,10 +40,6 @@ export const content = styled.div`
 
   height: 100vh;
   padding: 10px calc(20px + 10vw);
-
-  h1 {
-    color: ${color.green[10]};
-  }
 `
 
 export const titleBt = styled.p`
@@ -60,8 +55,8 @@ export const subTitle = styled.p`
   margin-top: 20px;
 `
 
-export const boxRow = styled.div`
+export const boxC = styled.div`
   display: flex;
-
-  align-items: center;
+  flex-direction: column;
+  width: 100%;
 `

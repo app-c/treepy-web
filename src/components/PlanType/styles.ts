@@ -22,10 +22,11 @@ const anim = keyframes`
 `
 
 export const Box = styled.div`
-  animation: ${anim} 2s;
+  animation: ${anim} 1s;
   display: flex;
   flex-direction: column;
   padding: 3rem;
+  height: calc(100px + 15vw);
 
   border: 1px solid ${color.green[10]};
 

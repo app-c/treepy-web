@@ -7,7 +7,6 @@
     "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "comp": "yarn plop --plopfile ./generators/plopfile.cjs",
     "cc": "yarn plop --plopfile ./generators/plop.cjs",
     "fire": "firebase deploy --only hosting"
   },

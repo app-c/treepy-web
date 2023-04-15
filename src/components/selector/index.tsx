@@ -2,8 +2,8 @@ import { Box, Circle, Container } from './styles'
 
 interface Props {
   selected: boolean
-  title: string
-  pres: () => void
+  title?: string
+  pres?: () => void
 }
 
 export function Selector({ selected, pres, title }: Props) {

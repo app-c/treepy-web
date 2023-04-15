@@ -5,7 +5,7 @@ interface props {
   error?: any
 }
 
-export function useForm({ step, error }: props) {
+export function useFormStep({ step, error }: props) {
   const [currentStep, setCurrentStep] = useState(0)
 
   const changeStep = React.useCallback(

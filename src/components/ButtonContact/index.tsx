@@ -16,11 +16,9 @@ export function ButtonContact() {
 
       <S.content>
         <S.title>Nossos contatos</S.title>
-        <S.subTitle>
-          Av. Paulista, 1.842 - Torre Norte Bela Vista - São Paulo -SP
-        </S.subTitle>
+        <S.subTitle>Av. Paulista, 1.842 - Torre Norte -</S.subTitle>
 
-        <S.subTitle>Conjunto 178 - 17° Andar - </S.subTitle>
+        <S.subTitle>Conjunto 178 - 17° Andar -</S.subTitle>
 
         <S.subTitle>Vista - São Paulo - SP</S.subTitle>
         <S.subTitle>CEP 01310-945</S.subTitle>

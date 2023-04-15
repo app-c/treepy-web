@@ -25,11 +25,12 @@ interface PropsSingUp {
   phone_number: string
   password: string
   street: string
-  bairro: string
-  number_home: string
+  locality: string
+  home_number: string
   city: string
   state: string
-  cep: string
+  region_code: string
+  postal_code: string
 }
 
 interface Step1 {
@@ -68,45 +69,51 @@ export function SignUp() {
       formRef.current?.setErrors({})
       setLoad(true)
 
-      console.log(data)
-
       try {
-        const passwordSchema = Yup.string().required('Password is required')
+        const passwordSchema = Yup.string()
+          .required('Senha é obrigatória')
+          .min(6, 'Mínimo de 6 digitos')
 
         const confirmationPasswordSchema = Yup.string()
-          .oneOf([Yup.ref('password'), null], 'Passwords must match')
+          .oneOf([Yup.ref('password'), null], 'A senha não confere')
           .required('Confirmation password is required')
 
         const schema = Yup.object().shape({
-          full_name: Yup.string().required(),
-          email: Yup.string().email().required('nome obrigatorio'),
-          cpf: Yup.string().required('Infore se cpf'),
+          full_name: Yup.string().required('Informe seu nome completo'),
+          email: Yup.string()
+            .email('Informe um email válido')
+            .required('E-mail é obrigatório'),
+          cpf: Yup.string().required('CPF é obrigatório'),
           password: passwordSchema,
           confimationPassword: confirmationPasswordSchema,
         })
 
         const schema1 = Yup.object().shape({
-          street: Yup.string().required(),
-          number_home: Yup.number().required(),
-          city: Yup.string().required(),
-          bairro: Yup.string().required(),
+          street: Yup.string().required('*'),
+          home_number: Yup.number().required('*'),
+          city: Yup.string().required('*'),
+          locality: Yup.string().required('*'),
+          postal_code: Yup.string().required('*'),
+          region_code: Yup.string().required('*'),
           state: Yup.string()
-            .uppercase()
-            .required('Estado deve ser com letras mausculas'),
-          cep: Yup.string().required().min(9),
+            .uppercase('Estado deve ser com letras mausculas')
+            .required('*'),
         })
 
         const dt = {
-          full_name: dadosStep1.name,
-          midle_name: dadosStep1.midle_name,
+          full_name: dadosStep1.full_name,
+          cpf: dadosStep1.cpf,
+          phone_area: dadosStep1.phone_area,
+          phone_number: dadosStep1.phone_number,
           email: dadosStep1.email,
           password: dadosStep1.password,
           street: data.street,
-          bairro: data.bairro,
-          number_home: data.number_home,
+          locality: data.locality,
+          home_number: data.home_number,
           city: data.city,
           state: data.state,
-          cep: data.cep,
+          region_code: data.region_code,
+          postal_code: data.postal_code,
         }
 
         if (step === 1) {
@@ -114,17 +121,21 @@ export function SignUp() {
             abortEarly: false,
           })
 
-          setDadosStep1({
-            full_name: data.full_name,
-            cpf: data.cpf,
-            phone_area: data.phone_area,
-            phone_number: data.phone_number,
-            email: data.email,
-            password: data.password,
-          })
-          setStepe(2)
+          await api
+            .get(`/user/check-mail/${data.email}/${data.cpf}`)
+            .then((h) => {
+              setDadosStep1({
+                full_name: data.full_name,
+                cpf: data.cpf,
+                phone_area: data.phone_area,
+                phone_number: data.phone_number,
+                email: data.email,
+                password: data.password,
+              })
+              setStepe(2)
 
-          setLoad(false)
+              setLoad(false)
+            })
         }
 
         if (step === 2) {
@@ -176,12 +187,21 @@ export function SignUp() {
   const closeModal = React.useCallback(async () => {
     if (type === '0') {
       setModal(false)
-      redirect('/dash')
+      nv('/')
     } else {
+      const data = localStorage.getItem('local')
       setModal(false)
-      nv('/calc')
+      nv(`/plan/${data}`)
     }
   }, [nv, type])
+
+  const preview = React.useCallback(async () => {
+    if (step > 1) {
+      setStepe(step - 1)
+    }
+  }, [step])
+
+  console.log(type)
 
   return (
     <S.Container>
@@ -195,33 +215,119 @@ export function SignUp() {
       />
 
       <S.content>
-        <Form style={{ width: '100%' }} ref={refOne} onSubmit={handleSubmit}>
+        <Form ref={formRef} style={{ width: '100%' }} onSubmit={handleSubmit}>
           {step === 1 && (
             <div>
-              <Input placeholder="Nome completo" name="name" />
-              <Input placeholder="Email" name="name" />
+              <Input
+                label="Nome completo"
+                placeholder="Nome completo"
+                name="full_name"
+              />
+              <Input label="E-mail" placeholder="Email" name="email" />
 
               <S.boxInput>
-                <Input
-                  placeholder="(99)"
-                  mask="number"
-                  name="name"
-                  style={{ width: 50 }}
-                />
-                <S.box>
-                  <Input mask="number" placeholder="Celular" name="name" />
+                <S.box style={{ width: 65 }}>
+                  <Input
+                    placeholder="(99)"
+                    mask="number"
+                    name="phone_area"
+                    label="Área"
+                  />
+                </S.box>
+
+                <S.box style={{ marginLeft: 10 }}>
+                  <Input
+                    label="Celular"
+                    mask="number"
+                    placeholder="Celular"
+                    name="phone_number"
+                  />
                 </S.box>
               </S.boxInput>
-              <Input placeholder="CPF" name="cpf" />
-              <Input placeholder="Senha" name="password" />
-              <Input placeholder="Confirmar senha" name="confirmPass" />
+
+              <S.box style={{ width: '60%' }}>
+                <Input label="CPF" placeholder="CPF" name="cpf" />
+              </S.box>
+              <Input label="Senha" placeholder="Senha" name="password" />
+              <Input
+                label="Corfimação de senha"
+                placeholder="Confirmar senha"
+                name="confimationPassword"
+              />
+            </div>
+          )}
+
+          {step === 2 && (
+            <div>
+              <Input label="Rua" placeholder="Nome da rua" name="street" />
+
+              <S.boxInput>
+                <S.box>
+                  <Input
+                    placeholder="Nº"
+                    mask="number"
+                    name="home_number"
+                    label="Número"
+                  />
+                </S.box>
+                <S.box style={{ marginLeft: 10, width: '100%' }}>
+                  <Input
+                    label="Bairro"
+                    placeholder="Nome do seu bairro"
+                    name="locality"
+                  />
+                </S.box>
+              </S.boxInput>
+
+              <S.boxInput>
+                <S.box>
+                  <Input label="Cidade" placeholder="Cidade" name="city" />
+                </S.box>
+
+                <S.box style={{ marginLeft: 10 }}>
+                  <Input label="Estado" placeholder="Estado" name="state" />
+                </S.box>
+
+                <S.box style={{ width: 65, marginLeft: 10 }}>
+                  <Input
+                    placeholder="UF"
+                    mask="text"
+                    maxLength={2}
+                    name="region_code"
+                    label="UF"
+                  />
+                </S.box>
+              </S.boxInput>
+
+              <Input
+                label="CEP"
+                placeholder="Informe o seu CEP"
+                name="postal_code"
+                mask="cep"
+              />
+            </div>
+          )}
+          {step > 1 ? (
+            <S.boxRow>
+              <Button
+                type="button"
+                pres={preview}
+                variant="AC"
+                title="VOLTAR"
+              />
+              <Button variant="AB" load={load} title="PRÓXIMO" />
+            </S.boxRow>
+          ) : (
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+              }}
+            >
+              <Button variant="AB" load={load} title="PRÓXIMO" />
             </div>
           )}
         </Form>
-        <S.boxRow>
-          <Button pres={() => setStepe(step - 1)} title="VOLTAR" />
-          <Button load={load} title="PRÓXIMO" pres={() => setStepe(step + 1)} />
-        </S.boxRow>
       </S.content>
     </S.Container>
   )
