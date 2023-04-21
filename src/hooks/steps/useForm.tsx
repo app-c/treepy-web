@@ -14,12 +14,13 @@ export function useFormStep({ step, error }: props) {
 
       setCurrentStep(i)
     },
-    [error, step.length],
+    [step.length],
   )
 
   return {
     currentStep,
     currentComponent: step[currentStep],
     changeStep,
+    lastStep: currentStep + 1 === step.length,
   }
 }

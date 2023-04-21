@@ -1,4 +1,11 @@
-import React, { ReactNode, useCallback, useRef, useState } from 'react'
+import React, {
+  ErrorInfo,
+  ReactNode,
+  useCallback,
+  useId,
+  useRef,
+  useState,
+} from 'react'
 import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import { api } from '../../../services/api'
@@ -8,14 +15,17 @@ import { HeaderC } from '../../../components/HeaderC'
 import { getValidationErrors } from '../../../utils/getValidationErrors'
 import { FormHandles } from '@unform/core'
 import { useToast } from '../../../context/ToastContext'
-import { Loading } from '../../../components/Loading'
-import { redirect, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../../../context/authcontext'
 import { Alert } from '../../../components/Alert'
 import { CadastroStepOne } from '../../../components/cadastroSteps/stepOne'
 import { CadastroStepTwo } from '../../../components/cadastroSteps/stepTwo'
-import { useForm } from '../../../hooks/steps/useForm'
+import { useFormStep } from '../../../hooks/steps/useForm'
 import { Form } from '@unform/web'
+import { _validadeName } from '../../../utils/_validadeName'
+import { StepsIcons } from '../../../components/cadastroSteps/stepsIcons'
+import { FinshiSignUp } from '../../../components/cadastroSteps/finish'
+import { _validarCPF } from '../../../utils/validateCpf'
 
 interface PropsSingUp {
   full_name: string
@@ -24,6 +34,16 @@ interface PropsSingUp {
   phone_area: string
   phone_number: string
   password: string
+  street: string
+  locality: string
+  home_number: string
+  city: string
+  state: string
+  region_code: string
+  postal_code: string
+}
+
+interface Step2 {
   street: string
   locality: string
   home_number: string
@@ -43,11 +63,19 @@ interface Step1 {
 }
 
 export function SignUp() {
-  const refOne = useRef<FormHandles>(null)
   const [load, setLoad] = React.useState(false)
 
   const { type } = useParams()
-  const [step, setStepe] = useState(1)
+
+  const [dataStep2, setDataStep2] = useState<Step2>({
+    street: '',
+    locality: '',
+    home_number: '',
+    city: '',
+    state: '',
+    region_code: '',
+    postal_code: '',
+  })
 
   const [dadosStep1, setDadosStep1] = useState<Step1>({
     full_name: '',
@@ -56,6 +84,17 @@ export function SignUp() {
     phone_number: '',
     email: '',
     password: '',
+  })
+
+  const key = useId()
+  const components = [
+    <CadastroStepOne key={key} />,
+    <CadastroStepTwo key={key} />,
+    <FinshiSignUp key={key} />,
+  ]
+
+  const { changeStep, currentComponent, lastStep, currentStep } = useFormStep({
+    step: components,
   })
 
   const formRef = useRef<FormHandles>(null)
@@ -67,7 +106,6 @@ export function SignUp() {
   const handleSubmit = useCallback(
     async (data: PropsSingUp) => {
       formRef.current?.setErrors({})
-      setLoad(true)
 
       try {
         const passwordSchema = Yup.string()
@@ -90,7 +128,7 @@ export function SignUp() {
 
         const schema1 = Yup.object().shape({
           street: Yup.string().required('*'),
-          home_number: Yup.number().required('*'),
+          home_number: Yup.string().required('*'),
           city: Yup.string().required('*'),
           locality: Yup.string().required('*'),
           postal_code: Yup.string().required('*'),
@@ -107,19 +145,27 @@ export function SignUp() {
           phone_number: dadosStep1.phone_number,
           email: dadosStep1.email,
           password: dadosStep1.password,
-          street: data.street,
-          locality: data.locality,
-          home_number: data.home_number,
-          city: data.city,
-          state: data.state,
-          region_code: data.region_code,
-          postal_code: data.postal_code,
+          street: dataStep2.street,
+          locality: dataStep2.locality,
+          home_number: dataStep2.home_number,
+          city: dataStep2.city,
+          state: dataStep2.state,
+          region_code: dataStep2.region_code.toUpperCase(),
+          postal_code: dataStep2.postal_code,
         }
 
-        if (step === 1) {
+        if (currentStep === 0) {
           await schema.validate(data, {
             abortEarly: false,
           })
+
+          if (!_validadeName(data.full_name)) {
+            throw new Error('Insira seu nome conpleto')
+          }
+
+          if (!_validarCPF(data.cpf)) {
+            throw new Error('Insira um cpf válido')
+          }
 
           await api
             .get(`/user/check-mail/${data.email}/${data.cpf}`)
@@ -132,27 +178,42 @@ export function SignUp() {
                 email: data.email,
                 password: data.password,
               })
-              setStepe(2)
+
+              changeStep(currentStep + 1)
 
               setLoad(false)
             })
         }
 
-        if (step === 2) {
-          setLoad(true)
+        if (currentStep === 1) {
           await schema1.validate(data, {
             abortEarly: false,
           })
 
+          setDataStep2({
+            street: data.street,
+            locality: data.locality,
+            home_number: data.home_number,
+            city: data.city,
+            state: data.state,
+            region_code: data.region_code,
+            postal_code: data.postal_code,
+          })
+
+          changeStep(currentStep + 1)
+        }
+
+        if (currentStep === 2) {
+          setLoad(true)
           await api.post('/user/create-user', dt).then((h) => {
             if (h.status === 200) {
-              setModal(true)
               if (type === 'o') {
                 signIn({
                   email: dt.email,
                   password: dt.password,
                 }).then(() => {
                   setLoad(false)
+                  nv('/')
                 })
               } else {
                 signInP({
@@ -160,6 +221,8 @@ export function SignUp() {
                   password: dt.password,
                 }).then(() => {
                   setLoad(false)
+                  const data = localStorage.getItem('local')
+                  nv(`/plan/${data}`)
                 })
               }
             }
@@ -167,9 +230,15 @@ export function SignUp() {
         }
       } catch (err: any) {
         setLoad(false)
+
+        console.log(err.message!)
+
         const msn = err.response?.data
           ? err.response.data.message
+          : err.message
+          ? err.message
           : 'Ocorreu um erro ao realizar seu cadastro, verifique suas credenciais ou sua conexão com a rede'
+
         addToast({
           type: 'error',
           title: 'Erro ao realizar o cadastro',
@@ -181,7 +250,17 @@ export function SignUp() {
         formRef.current?.setErrors(errors)
       }
     },
-    [addToast, dadosStep1, signIn, signInP, step, type],
+    [
+      addToast,
+      changeStep,
+      currentStep,
+      dadosStep1,
+      nv,
+      dataStep2,
+      signIn,
+      signInP,
+      type,
+    ],
   )
 
   const closeModal = React.useCallback(async () => {
@@ -196,12 +275,9 @@ export function SignUp() {
   }, [nv, type])
 
   const preview = React.useCallback(async () => {
-    if (step > 1) {
-      setStepe(step - 1)
-    }
-  }, [step])
-
-  console.log(type)
+    changeStep(currentStep - 1)
+    setLoad(false)
+  }, [changeStep, currentStep])
 
   return (
     <S.Container>
@@ -215,99 +291,30 @@ export function SignUp() {
       />
 
       <S.content>
-        <Form ref={formRef} style={{ width: '100%' }} onSubmit={handleSubmit}>
-          {step === 1 && (
-            <div>
-              <Input
-                label="Nome completo"
-                placeholder="Nome completo"
-                name="full_name"
-              />
-              <Input label="E-mail" placeholder="Email" name="email" />
+        <StepsIcons currentStep={currentStep} />
 
-              <S.boxInput>
-                <S.box style={{ width: 65 }}>
-                  <Input
-                    placeholder="(99)"
-                    mask="number"
-                    name="phone_area"
-                    label="Área"
-                  />
-                </S.box>
-
-                <S.box style={{ marginLeft: 10 }}>
-                  <Input
-                    label="Celular"
-                    mask="number"
-                    placeholder="Celular"
-                    name="phone_number"
-                  />
-                </S.box>
-              </S.boxInput>
-
-              <S.box style={{ width: '60%' }}>
-                <Input label="CPF" placeholder="CPF" name="cpf" />
-              </S.box>
-              <Input label="Senha" placeholder="Senha" name="password" />
-              <Input
-                label="Corfimação de senha"
-                placeholder="Confirmar senha"
-                name="confimationPassword"
-              />
-            </div>
-          )}
-
-          {step === 2 && (
-            <div>
-              <Input label="Rua" placeholder="Nome da rua" name="street" />
-
-              <S.boxInput>
-                <S.box>
-                  <Input
-                    placeholder="Nº"
-                    mask="number"
-                    name="home_number"
-                    label="Número"
-                  />
-                </S.box>
-                <S.box style={{ marginLeft: 10, width: '100%' }}>
-                  <Input
-                    label="Bairro"
-                    placeholder="Nome do seu bairro"
-                    name="locality"
-                  />
-                </S.box>
-              </S.boxInput>
-
-              <S.boxInput>
-                <S.box>
-                  <Input label="Cidade" placeholder="Cidade" name="city" />
-                </S.box>
-
-                <S.box style={{ marginLeft: 10 }}>
-                  <Input label="Estado" placeholder="Estado" name="state" />
-                </S.box>
-
-                <S.box style={{ width: 65, marginLeft: 10 }}>
-                  <Input
-                    placeholder="UF"
-                    mask="text"
-                    maxLength={2}
-                    name="region_code"
-                    label="UF"
-                  />
-                </S.box>
-              </S.boxInput>
-
-              <Input
-                label="CEP"
-                placeholder="Informe o seu CEP"
-                name="postal_code"
-                mask="cep"
-              />
-            </div>
-          )}
-          {step > 1 ? (
+        <Form
+          initialData={{
+            full_name: dadosStep1.full_name,
+            email: dadosStep1.email,
+            phone_area: dadosStep1.phone_area,
+            phone_number: dadosStep1.phone_number,
+            password: dadosStep1.password,
+            cpf: dadosStep1.cpf,
+            street: dataStep2.street,
+            home_number: dataStep2.home_number,
+            locality: dataStep2.locality,
+            city: dataStep2.city,
+            state: dataStep2.state,
+            region_code: dataStep2.region_code.toUpperCase(),
+            postal_code: dataStep2.postal_code,
+          }}
+          ref={formRef}
+          style={{ width: '100%' }}
+          onSubmit={handleSubmit}
+        >
+          {currentComponent}
+          {currentStep > 0 ? (
             <S.boxRow>
               <Button
                 type="button"
@@ -315,7 +322,11 @@ export function SignUp() {
                 variant="AC"
                 title="VOLTAR"
               />
-              <Button variant="AB" load={load} title="PRÓXIMO" />
+              <Button
+                variant="AB"
+                load={load}
+                title={lastStep ? 'SALVAR' : 'PRÓXIMO'}
+              />
             </S.boxRow>
           ) : (
             <div

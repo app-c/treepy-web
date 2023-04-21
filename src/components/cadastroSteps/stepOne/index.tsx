@@ -20,43 +20,56 @@ interface props {
   ref: any
 }
 
-export function CadastroStepOne({ loading, submit, ref }: props) {
-  const [email, setMail] = useState('')
-  const [name, setName] = React.useState('')
-  const [cpf, setCpf] = React.useState('')
-
+export function CadastroStepOne() {
   return (
     <S.container>
-      <S.title>ONE</S.title>
       <Input
-        onChange={(h) => setName(h.target.value)}
+        label="Nome completo"
         placeholder="Nome completo"
-        name="name"
+        name="full_name"
       />
-      <Input
-        onChange={(h) => setMail(h.target.value)}
-        placeholder="Email"
-        name="email"
-      />
+      <Input label="E-mail" placeholder="Email" name="email" />
 
       <S.boxInput>
-        <Input
-          placeholder="(99)"
-          mask="number"
-          name="area"
-          style={{ width: 50 }}
-        />
-        <S.box>
-          <Input mask="number" placeholder="Celular" name="phoneNumber" />
+        <S.box style={{ width: 65 }}>
+          <Input
+            placeholder="(99)"
+            mask="number"
+            name="phone_area"
+            label="Área"
+          />
         </S.box>
+
+        <Input
+          label="Celular"
+          mask="number"
+          placeholder="Celular"
+          name="phone_number"
+          maxLength={9}
+        />
       </S.boxInput>
+
+      <S.box style={{ width: '60%' }}>
+        <Input
+          maxLength={16}
+          mask="cpf"
+          label="CPF"
+          placeholder="CPF"
+          name="cpf"
+        />
+      </S.box>
       <Input
-        onChange={(h) => setCpf(h.target.value)}
-        placeholder="CPF"
-        name="cpf"
+        type="password"
+        label="Senha"
+        placeholder="Senha"
+        name="password"
       />
-      <Input placeholder="Senha" name="password" />
-      <Input placeholder="Confirmar senha" name="confirmPass" />
+      <Input
+        type="password"
+        label="Corfime sua senha"
+        placeholder="Confirmar senha"
+        name="confimationPassword"
+      />
     </S.container>
   )
 }

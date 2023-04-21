@@ -26,10 +26,10 @@ export const Container = styled.div`
   }
 `
 export const content = styled.div`
-  width: calc(20vw + 400px);
+  width: calc(20vw + 20rem);
   background-color: rgba(102, 102, 102, 0.811);
 
-  padding: 20px;
+  padding: 20px 1rem;
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.785);
 
@@ -38,6 +38,10 @@ export const content = styled.div`
 
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 680px) {
+    width: calc(20vw + 18rem);
+  }
 `
 
 export const boxRow = styled.div`
@@ -46,17 +50,3 @@ export const boxRow = styled.div`
   justify-content: space-between;
   width: 100%;
 `
-
-export const boxComponents = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-`
-
-export const boxInput = styled.div`
-  display: flex;
-`
-
-export const box = styled.div``

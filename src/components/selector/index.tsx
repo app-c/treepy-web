@@ -8,7 +8,7 @@ interface Props {
 
 export function Selector({ selected, pres, title }: Props) {
   return (
-    <Box onClick={pres}>
+    <Box type="button" onClick={pres}>
       <label htmlFor="">
         <Container>
           <Circle selected={selected} />

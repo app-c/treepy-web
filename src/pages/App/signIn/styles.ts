@@ -51,17 +51,24 @@ export const Content = styled.div`
 
   transform: translate(-50%);
 
-  padding: 0 3rem;
+  width: calc(6rem + 40vw);
 
-  width: calc(6rem + 20vw);
+  background-color: rgba(102, 102, 102, 0.811);
+  border-radius: 8px;
 
-  background-color: #cdcdcd88;
+  box-shadow: 31px 24px 20px #b1b1b12a;
+
+  @media (max-width: 780px) {
+    width: calc(15rem + 30vw);
+  }
 `
 
 export const button = styled.div`
   margin-top: 3rem;
   align-self: center;
   width: 100%;
+  display: flex;
+  justify-content: center;
 `
 
 export const ContentForm = styled(Form)`
@@ -71,17 +78,18 @@ export const ContentForm = styled(Form)`
   }
 `
 export const Li = styled(Link)`
-  color: ${color.orange[20]};
+  color: ${color.green[10]};
   align-self: flex-start;
   text-decoration: none;
   font-size: calc(60% + 1vh);
 `
 
 export const CreateAccont = styled.div`
-  background-color: #fff;
+  background-color: #e9e9e9;
   align-self: center;
   top: 90%;
-  width: calc(6rem + 20vw);
+
+  width: 100%;
 
   display: flex;
   align-items: center;
@@ -89,6 +97,7 @@ export const CreateAccont = styled.div`
 
   margin-top: 2rem;
 
+  border-radius: 0 0 8px 8px;
   padding: 20px;
 
   font-size: calc(12px + 1vw);

@@ -33,15 +33,6 @@ export const Container = styled.div<Props>`
 
   transition: 0.7s;
 
-  ${(h) =>
-    h.load &&
-    css`
-      width: calc(15px + 3vw);
-
-      height: calc(15px + 3vw);
-      border-radius: 90px;
-    `}
-
   &:hover {
     opacity: 0.9;
   }

@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 `
 
 const anim = keyframes`
@@ -26,7 +26,6 @@ export const Box = styled.div`
   display: flex;
   flex-direction: column;
   padding: 3rem;
-  height: calc(100px + 15vw);
 
   border: 1px solid ${color.green[10]};
 
@@ -35,6 +34,12 @@ export const Box = styled.div`
   &:hover {
     background-color: rgba(72, 168, 34, 0.1);
   }
+`
+
+export const grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 2rem;
 `
 
 export const Title = styled.h1`

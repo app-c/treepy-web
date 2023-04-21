@@ -1,18 +1,17 @@
 import React from 'react'
 import * as S from './styles'
 
-export function PixComp() {
+interface props {
+  image: string
+}
+
+export function PixComp({ image }: props) {
   return (
     <S.Container>
       <S.grid>
         <S.boxImag>
-          <h3>pix</h3>
+          <img src={image} alt="QRCode Image" />
         </S.boxImag>
-
-        <S.preview>
-          <h2>Resumo da compra</h2>
-          <p></p>
-        </S.preview>
       </S.grid>
     </S.Container>
   )

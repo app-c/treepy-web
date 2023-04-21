@@ -42,7 +42,6 @@ const ani = keyframes`
 
   }
 
-
   100% {
     margin-left: 0;
   }
@@ -50,7 +49,7 @@ const ani = keyframes`
 
 export const slider = styled.div`
   color: #000;
-  height: 100vh;
+  height: 100%;
 
   align-items: center;
 
@@ -70,8 +69,8 @@ export const arrow = styled.div`
   top: 50%;
   left: 2vw;
 
-  width: calc(3rem + 1vw);
-  height: calc(3rem + 1vw);
+  width: calc(2.5rem + 1vw);
+  height: calc(2.5rem + 1vw);
 
   opacity: 0.5;
 
@@ -80,8 +79,11 @@ export const arrow = styled.div`
   }
 
   @media (max-width: 880px) {
+    top: calc(10vw + 2rem);
   }
-  @media (max-width: 880px) {
+
+  @media (max-width: 500px) {
+    top: 20%;
   }
 `
 

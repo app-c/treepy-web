@@ -6,7 +6,6 @@ import { Home } from '../pages/App/home'
 import { Plan } from '../pages/App/Plan'
 import { SignIn } from '../pages/App/signIn/index '
 import { SignUp } from '../pages/App/signUp'
-import { SignUpPay } from '../pages/App/signUpPay'
 import { Test } from '../pages/App/test'
 import { Us } from '../pages/App/Us'
 import { AuthRoute } from './AuthRoute'
@@ -36,7 +35,6 @@ export function Router() {
         <Route path="/test" element={<Test />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/signUp/:type" element={<SignUp />} />
-        <Route path="/signUpCalc/" element={<SignUpPay />} />
         <Route path="/plan/:value" element={<Plan />} />
         <Route path="/inovation" element={<Inovation />} />
         <Route path="/provider" element={<Providers />} />

@@ -17,13 +17,15 @@ export function ToPrestador() {
         </S.subTitle>
 
         <S.subTitle>
-          Atrelar a marca de produtos ou serviços a ações de ESG* tem influência
-          direta nas escolhas de consumo das pessoas.
+          Atrelar a marca de produtos ou serviços a ações de ESG (Environmental,
+          Social and Governance) tem influência direta nas escolhas de consumo
+          das pessoas.
         </S.subTitle>
 
         <S.subTitle>
           Pesquisas apontam uma tendência crescente pela preocupação com o meio
-          ambiente e as consequências na vida do planeta.{' '}
+          ambiente e as consequências dos impactos ambientais na vida do
+          planeta.
         </S.subTitle>
 
         <S.subTitle>Ficou interessado?</S.subTitle>

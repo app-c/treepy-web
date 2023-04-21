@@ -8,8 +8,11 @@ export const title = styled.h1``
 
 export const boxInput = styled.div`
   display: flex;
+  flex-direction: row;
 `
 
 export const box = styled.div`
-  margin-left: 10px;
+  width: 60px;
+
+  margin-right: 10px;
 `

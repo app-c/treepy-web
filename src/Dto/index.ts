@@ -59,14 +59,15 @@ export interface PropsCard {
 }
 
 export interface IEnd {
-  bairro: string
-  cep: string
+  locality: string
+  postal_code: string
   city: string
   fk_user_id: string
   id: string
   number_home: string
   state: string
   street: string
+  region_code: string
 }
 
 export interface IProfile {
@@ -78,8 +79,10 @@ export interface IProfile {
 export interface PropsUser {
   email: string
   id: string
-  midle_name: string
-  name: string
+  phone_area: string
+  phone_number: string
+  cpf: string
+  full_name: string
   end: IEnd
   profile: IProfile
 }
@@ -202,4 +205,19 @@ export interface IPropsBrand {
     statusMessage: string
     reasonMessage?: string
   }
+}
+
+export interface IResponsePix {
+  qrcode_image: string
+  expiration_date: string
+  text: string
+}
+
+export interface IResponseBoleto {
+  links: {
+    rel: string
+    href: string
+    media: string
+    type: string
+  }[]
 }

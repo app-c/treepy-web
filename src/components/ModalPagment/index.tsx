@@ -1,7 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { useState } from 'react'
 import { Card } from '../card'
-import { DataPerson } from '../dataPerson'
 import { Botao, BoxContent, Button, Closed, Content, Overlay } from './styles'
 
 interface Props {
@@ -23,10 +22,6 @@ export function ModalPayment({ amount, tree }: Props) {
 
         <Content>
           <BoxContent>
-            {steep === 1 && (
-              <DataPerson tree={10} amount={10} setStep={(h) => setSteep(h)} />
-            )}
-
             {steep === 2 && <Card tree={tree} amount={amount} />}
 
             <Closed>

@@ -1,3 +1,14 @@
+type props =
+  | 'visa'
+  | 'mastercard'
+  | 'diners'
+  | 'amex'
+  | 'discover'
+  | 'hipercard'
+  | 'elo'
+  | 'jcb'
+  | 'aura'
+
 export const _brand = {
   /**
    * getCardFlag
@@ -8,7 +19,7 @@ export const _brand = {
   getCardFlag: function (cardnumber: string) {
     const card = cardnumber.replace(/[^0-9]+/g, '')
 
-    const cards = {
+    const cards: any = {
       visa: /^4[0-9]{12}(?:[0-9]{3})/,
       mastercard: /^5[1-5][0-9]{14}/,
       diners: /^3(?:0[0-5]|[68][0-9])[0-9]{11}/,

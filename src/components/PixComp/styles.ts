@@ -11,15 +11,22 @@ export const Container = styled.div`
 
 export const boxImag = styled.div`
   width: calc(10rem + 5vw);
-  height: calc(10rem + 5vw);
+  height: calc(10rem + 2vw);
 
-  background-color: red;
+  background-color: #f3f3f3;
+  border-radius: 5px;
+
+  img {
+    width: calc(10rem + 5vw);
+    height: auto;
+    size: conten;
+  }
 `
 
 export const grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 export const preview = styled.div``

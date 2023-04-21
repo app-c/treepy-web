@@ -6,13 +6,29 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { card, cep, currency, expire, float, number } from '../../utils/mask'
+import {
+  card,
+  cep,
+  cpf,
+  currency,
+  expire,
+  float,
+  number,
+} from '../../utils/mask'
 import * as S from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   label?: string
-  mask?: 'cep' | 'price' | 'text' | 'number' | 'expire' | 'card' | 'float'
+  mask?:
+    | 'cep'
+    | 'price'
+    | 'text'
+    | 'number'
+    | 'expire'
+    | 'card'
+    | 'float'
+    | 'cpf'
   sizeW?: string
   sizeH?: string
 }
@@ -50,6 +66,9 @@ export function Input({
       switch (mask) {
         case 'cep':
           return cep(e)
+
+        case 'cpf':
+          return cpf(e)
 
         case 'number':
           return number(e)

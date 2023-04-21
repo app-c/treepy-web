@@ -66,13 +66,25 @@ export function SignIn() {
       <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
         <S.Content>
           <h2>Acesse sua conta</h2>
-          <InputV sizeH="3.4rem" placeholder="E-mail" name="email" />
-          <InputV sizeH="3.4rem" placeholder="Senha" name="password" />
-          <S.Li to={'/forgot'}>Esqueceu sua senha?</S.Li>
 
-          <S.button className="buton">
+          <div
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              padding: '0 2rem',
+              width: '100%',
+            }}
+          >
+            <InputV sizeH="3.4rem" placeholder="E-mail" name="email" />
+            <InputV sizeH="3.4rem" placeholder="Senha" name="password" />
+            <S.Li style={{ marginBottom: '2rem' }} to={'/forgot'}>
+              Esqueceu sua senha?
+            </S.Li>
+
             <Button sizeH="3rem" variant="AC" title="ENTRAR" />
-          </S.button>
+          </div>
           <S.CreateAccont>
             <S.Li to={'/signUp/0'} style={{ color: color.green[30] }}>
               Não tem conta?

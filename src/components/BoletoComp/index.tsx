@@ -1,10 +1,14 @@
 import React from 'react'
 import * as S from './styles'
 
-export function BoletoComp() {
+interface props {
+  image: string
+}
+
+export function BoletoComp({ image }: props) {
   return (
     <S.Container>
-      <h1>BoletoComp</h1>
+      <S.box img={image}></S.box>
     </S.Container>
   )
 }

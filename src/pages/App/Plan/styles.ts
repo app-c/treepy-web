@@ -23,6 +23,10 @@ export const title = styled.h1`
   margin-bottom: 2rem;
   align-self: center;
 `
+export const subtitle = styled.h4`
+  /* margin-top: 8rem; */
+  margin-bottom: 1rem;
+`
 export const BoxSelect = styled.div`
   display: grid;
 
@@ -38,25 +42,25 @@ export const box = styled.div`
 
 export const grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 2rem calc(2rem + 5vw);
 `
 
-export const metodo = styled.div`
+export const gridMethod = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 2rem calc(1rem + 2vw);
+
+  margin-bottom: 2rem;
+`
+
+export const boxData = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-`
+  border: 1px solid ${color.green[10]};
 
-export const preview = styled.div`
-  width: calc(20rem + 20vw);
-  align-self: center;
-`
-
-export const BoxCard = styled.div`
-  width: calc(20rem + 20vw);
-  align-self: center;
-  margin-top: 2rem;
+  border-radius: 6rem;
+  padding: 2rem calc(10px + 2vw);
 `
 
 export const BoxBoleto = styled.div``
@@ -65,46 +69,31 @@ export const BoxPix = styled.div``
 
 export const BoxAss = styled.div``
 
-export const boxSelect = styled.div`
+export const gridInput = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
 `
 
 export const BoxInput = styled.div``
 
-export const gridInput = styled.div`
+export const boxSelect = styled.div`
   display: flex;
-  width: 100%;
+  align-items: center;
+  margin: 1rem 0;
 `
 
-export const installments = styled.div`
+export const boxMethod = styled.div`
   display: flex;
   flex-direction: column;
-
-  span {
-    margin-bottom: 3px;
-  }
-`
-
-export const boxSelection = styled.select`
-  width: 100%;
-  height: 2.4rem;
-  /* padding: 1rem 2rem; */
-  display: flex;
-  font-size: calc(0.4rem + 0.5vw);
-  color: ${color.dark[20]};
-
-  /* background-color: #fff; */
-  border: 0.8px solid ${color.dark[40]};
-  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
 `
 
 export const typePay = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0 auto;
+  margin: 1rem auto;
 `
 
 export const boxSignIn = styled.div`
@@ -128,11 +117,17 @@ export const titleSignIn = styled.h2`
   color: #fff;
 `
 
-export const link = styled(Link)`
-  align-self: flex-start;
+export const boxBottom = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  margin-bottom: 2rem;
-  color: ${color.green[10]};
+  margin-top: 2rem;
+`
 
-  text-decoration: none;
+export const conten = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `

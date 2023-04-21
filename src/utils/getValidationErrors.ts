@@ -7,7 +7,7 @@ interface Errors {
 export function getValidationErrors(err: yup.ValidationError): Errors {
   const validationError: Errors = {}
 
-  err.inner.forEach((error) => {
+  err.inner?.forEach((error) => {
     validationError[error.path!] = error.message
   })
 
