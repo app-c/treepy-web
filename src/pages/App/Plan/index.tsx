@@ -19,27 +19,19 @@ import { PixComp } from '../../../components/PixComp'
 import { BoletoComp } from '../../../components/BoletoComp'
 import { ModalComp } from '../../../components/ModalComp'
 import { useToast } from '../../../context/ToastContext'
-import { _brand } from '../../../utils/_brand'
-import {
-  IPropsParcelamento,
-  IResponseBoleto,
-  IResponsePix,
-  PropsParcCard,
-  PropsUser,
-} from '../../../Dto'
+import { IResponseBoleto, IResponsePix, PropsUser } from '../../../Dto'
 import { useQuery } from 'react-query'
 import { _brl } from '../../../utils/_brl'
 import { Alert } from '../../../components/Alert'
 import { addDays, format } from 'date-fns'
 import { DataPayment } from '../../../components/DataPayment'
 import { DataCardPayment } from '../../../components/DataCardPayment'
-import { Link } from 'react-router-dom'
 
 interface SelectProps {
   type: 'cartao' | 'pix' | 'boleto'
 }
 
-type TPlanSelect = 'total' | 'partial' | 'recorrency'
+type TPlanSelect = 'total' | 'partial' | 'parcelado'
 
 interface PropsParans {
   tree: number
@@ -88,10 +80,10 @@ interface PropsMosal {
 export function Plan() {
   const ref = useRef<FormHandles>(null)
   const nav = useNavigate()
+  const { userP, signInP, logOut } = useAuth()
 
   const [load, setLoad] = React.useState(false)
 
-  const { userP, signInP } = useAuth()
   const { addToast } = useToast()
   const { value } = useParams()
   const { brl, tree }: PropsParans = value ? JSON.parse(value) : {}
@@ -182,7 +174,7 @@ export function Plan() {
       const postal_code = Number(_number(data.postal_code))
       const tax_id = Number(_number(data.cpf))
       const region_code = data.region_code.toUpperCase()
-      const number_card = Number(_number(data.number_card))
+      const number_card = String(_number(data.number_card))
 
       switch (select.type) {
         case 'cartao':
@@ -241,6 +233,8 @@ export function Plan() {
               exp_year: year,
               security_code: data.security_code,
             }
+
+            console.log(pag)
 
             await api.post('/charges/card', pag).then((h) => {
               setLoad(false)
@@ -482,10 +476,10 @@ export function Plan() {
                     name="password"
                   />
 
-                  <S.gridInput style={{ justifyContent: 'space-between' }}>
+                  <S.bxForgot style={{ justifyContent: 'space-between' }}>
                     <S.link to="">Esqueci minha senha</S.link>
                     <S.link to="/signUp/1">Não tenho conta</S.link>
-                  </S.gridInput>
+                  </S.bxForgot>
 
                   <Button variant="AB" title="ENTRAR" />
                 </S.boxSignIn>
@@ -555,9 +549,9 @@ export function Plan() {
                         title="Parcial"
                       />
                       <Selector
-                        pres={() => setSelectPlan('recorrency')}
-                        selected={selectPlan === 'recorrency'}
-                        title="Recorrente"
+                        pres={() => setSelectPlan('parcelado')}
+                        selected={selectPlan === 'parcelado'}
+                        title="Parcelado"
                       />
                     </S.boxSelect>
 
@@ -580,7 +574,12 @@ export function Plan() {
                   </S.boxMethod>
 
                   <S.boxMethod>
-                    <h2>Total: R${brlNumber(currency)}</h2>
+                    <h2>
+                      Total: R$
+                      {brlNumber(currency) === '0'
+                        ? '0,00'
+                        : brlNumber(currency)}
+                    </h2>
                   </S.boxMethod>
                 </S.gridMethod>
 
@@ -608,7 +607,8 @@ export function Plan() {
 
                 {select.type === 'cartao' && (
                   <DataCardPayment
-                    setInstallments={(h) => console.log('insta', h)}
+                    type={selectPlan}
+                    setInstallments={(h) => setInstallments(h)}
                     currency={currency}
                   />
                 )}

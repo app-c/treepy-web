@@ -131,3 +131,14 @@ export const conten = styled.div`
   flex-direction: column;
   width: 100%;
 `
+
+export const bxForgot = styled.div`
+  display: flex;
+  width: 100%;
+  margin-bottom: 2rem;
+`
+
+export const link = styled(Link)`
+  text-decoration: none;
+  color: #fff;
+`

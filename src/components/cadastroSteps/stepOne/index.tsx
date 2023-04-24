@@ -31,7 +31,7 @@ export function CadastroStepOne() {
       <Input label="E-mail" placeholder="Email" name="email" />
 
       <S.boxInput>
-        <S.box style={{ width: 65 }}>
+        <S.box style={{ width: 75 }}>
           <Input
             placeholder="(99)"
             mask="number"
@@ -43,7 +43,7 @@ export function CadastroStepOne() {
         <Input
           label="Celular"
           mask="number"
-          placeholder="Celular"
+          placeholder="999999999"
           name="phone_number"
           maxLength={9}
         />

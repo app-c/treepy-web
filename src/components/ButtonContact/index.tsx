@@ -20,7 +20,7 @@ export function ButtonContact() {
 
         <S.subTitle>Conjunto 178 - 17° Andar -</S.subTitle>
 
-        <S.subTitle>Vista - São Paulo - SP</S.subTitle>
+        <S.subTitle>Bela Vista - São Paulo - SP</S.subTitle>
         <S.subTitle>CEP 01310-945</S.subTitle>
         <S.subTitle style={{ color: color.orange[10] }}>
           contato@treepy.com.br

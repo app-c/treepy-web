@@ -9,6 +9,7 @@ import { IPropsParcelamento, PropsParcCard } from '../../Dto'
 interface props {
   setInstallments: (item: string) => void
   currency: number
+  type: string
 }
 
 type IBrand =
@@ -22,7 +23,11 @@ type IBrand =
   | 'jcb'
   | 'aura'
 
-export function DataCardPayment({ setInstallments, currency = 0 }: props) {
+export function DataCardPayment({
+  setInstallments,
+  currency = 0,
+  type,
+}: props) {
   const [cardNumber, setCardNumber] = React.useState('')
   const [parcelas, setParcelas] = React.useState<PropsParcCard[]>([])
   const [installment, setInstallment] = React.useState('')
@@ -97,29 +102,31 @@ export function DataCardPayment({ setInstallments, currency = 0 }: props) {
           </S.box>
         </S.gridInput>
 
-        <S.installments>
-          <span className="prc">Parcelas</span>
-          <S.boxSelection
-            onChange={(h) => {
-              setInstallment(h.currentTarget.value)
-              setInstallments(h.currentTarget.value)
-            }}
-            name="installments"
-            value={installment}
-          >
-            {parcelas.map((h, i) => (
-              <option
-                key={i}
-                value={h.amount?.fees?.buyer?.interest?.installments || 1}
-              >
-                {i + 1} x R$
-                {i === 0
-                  ? h.amount.value
-                  : h.amount.fees?.buyer?.interest?.total}
-              </option>
-            ))}
-          </S.boxSelection>
-        </S.installments>
+        {type !== 'total' && (
+          <S.installments>
+            <span className="prc">Parcelas</span>
+            <S.boxSelection
+              onChange={(h) => {
+                setInstallment(h.currentTarget.value)
+                setInstallments(h.currentTarget.value)
+              }}
+              name="installments"
+              value={installment}
+            >
+              {parcelas.map((h, i) => (
+                <option
+                  key={i}
+                  value={h.amount?.fees?.buyer?.interest?.installments || 1}
+                >
+                  {i + 1} x R$
+                  {i === 0
+                    ? h.amount.value
+                    : h.amount.fees?.buyer?.interest?.total}
+                </option>
+              ))}
+            </S.boxSelection>
+          </S.installments>
+        )}
       </S.preview>
     </S.Container>
   )

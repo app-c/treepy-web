@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { Button } from '../../../components/Button'
 import { ArrowL } from '../../../components/Icones/arrowL'
 import { ArrowR } from '../../../components/Icones/arrowR'
@@ -38,6 +38,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import { HeaderC } from '../../../components/HeaderC'
 import { brlNumber } from '../../../utils/formatNumber'
 import { useAuth } from '../../../context/authcontext'
+import { useQuery } from 'react-query'
+import { api } from '../../../services/api'
+import { Loading } from '../../../components/Loading'
 
 interface PropsItens {
   item: 'Kw/mês' | 'R$/mês' | 'm³/mês' | 'Botijões/mês' | string
@@ -50,7 +53,7 @@ interface PropsFood {
 }
 
 export function Calculadora() {
-  const { userP } = useAuth()
+  const { userP, logOut } = useAuth()
   const nv = useNavigate()
 
   const [step, setStep] = useState(1)
@@ -280,6 +283,26 @@ export function Calculadora() {
 
   const dt = JSON.stringify(data)
 
+  const dataUser = useQuery('user', async () => {
+    const user = await api.get('/user/find-user')
+
+    return user.data
+  })
+
+  const handlePlan = React.useCallback(async () => {
+    console.log('err', dataUser.isError)
+    if (!dataUser.isError) {
+      nv(`/plan/${dt}`)
+    } else {
+      nv(`/plan/${dt}`)
+      logOut()
+    }
+  }, [dataUser, dt, logOut, nv])
+
+  // if (dataUser.isError) {
+  //   logOut()
+  // }
+
   return (
     <Box step={step}>
       <HeaderC title={userP?.name} type="3" />
@@ -346,9 +369,13 @@ export function Calculadora() {
                   sizeW="10rem"
                   title="Refazer"
                 />
-                <Link to={`/plan/${dt}`} style={{ textDecoration: 'none' }}>
-                  <Button title="Veja os planos" sizeW="10rem" variant="AB" />
-                </Link>
+
+                <Button
+                  pres={handlePlan}
+                  title="Veja os planos"
+                  sizeW="10rem"
+                  variant="AB"
+                />
               </div>
             </div>
           </ContainerResult>

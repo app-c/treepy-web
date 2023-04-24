@@ -13,7 +13,7 @@ export const modal = styled(Modal)`
 `
 
 export const Container = styled.div`
-  width: 60%;
+  width: 50vw;
   height: 60%;
 
   @media (max-width: 450px) {
@@ -24,7 +24,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color: ${color.green[40]};
+  background-color: #bdbdbd;
   border-radius: 10px;
   padding: 2rem;
 `

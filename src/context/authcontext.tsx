@@ -109,6 +109,8 @@ export function AuthProvider({ children }: any) {
   const logOut = useCallback(async () => {
     localStorage.removeItem(keyToken)
     localStorage.removeItem(keyUser)
+    localStorage.removeItem(keyTokenP)
+    localStorage.removeItem(keyUserP)
 
     setData({} as AuthState)
   }, [])

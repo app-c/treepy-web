@@ -20,7 +20,7 @@ export function PlanType({ amount }: Props) {
             <p>
               Nesse plano, o total de TreepyCash comprado será suficiente para
               zerar suas emissões de carbono! <br /> <br /> Além de capturar
-              CO2, você contribuirá para proteger a biodiversidade e reduzir as
+              CO₂, você contribuirá para proteger a biodiversidade e reduzir as
               mudanças climáticas. <br /> <br /> Parabéns por sua postura
               sustentável e responsável. Parabéns por zerar suas emissões!
             </p>
@@ -34,7 +34,7 @@ export function PlanType({ amount }: Props) {
           <S.Content>
             <p>
               Nesse plano, você compensa apenas parte de suas emissões de
-              carbono! Você decide com quantos TreepyCash quer comprar. <br />{' '}
+              carbono! Você decide quantos TreepyCashes quer comprar. <br />{' '}
               <br /> Essa opção também é importante, demonstra seu compromisso
               com a sustentabilidade e a sua preocupação com o planeta. <br />{' '}
               <br /> Parabéns e continue reflorestando!
@@ -43,7 +43,7 @@ export function PlanType({ amount }: Props) {
         </S.Box>
 
         <S.Box>
-          <S.Title>Pagamento recorrente</S.Title>
+          <S.Title>Pagamento parcelado</S.Title>
           <span>R${amount}</span>
 
           <S.Content>
