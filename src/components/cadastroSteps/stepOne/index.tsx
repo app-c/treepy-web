@@ -1,9 +1,10 @@
 import { Form } from '@unform/web'
 import { Input } from '../../Input'
 import * as S from './styles'
-import { useQuery } from 'react-query'
+import { useQueries, useQuery } from 'react-query'
 import { api } from '../../../services/api'
 import React, { useCallback, useState } from 'react'
+import axios from 'axios'
 
 interface PropsSubmit {
   name: string
@@ -37,6 +38,7 @@ export function CadastroStepOne() {
             mask="number"
             name="phone_area"
             label="Área"
+            maxLength={2}
           />
         </S.box>
 

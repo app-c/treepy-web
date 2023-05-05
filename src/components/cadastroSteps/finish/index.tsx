@@ -1,13 +1,42 @@
-import { color } from '../../../styles/colors'
-import { Logo } from '../../Logo'
+import React from 'react'
+import { Selector } from '../../selector'
 import * as S from './styles'
+import { Link } from 'react-router-dom'
+import term from '../../../../public/termos_treepy.pdf'
 
-import { GiPlantRoots } from 'react-icons/all'
+interface Iprops {
+  termos: (item: boolean) => void
+  notifications: (item: boolean) => void
+}
 
-export function FinshiSignUp() {
+export function FinshiSignUp({ termos, notifications }: Iprops) {
+  const [termo, setTermo] = React.useState(false)
+  const [notification, setNotification] = React.useState(false)
+
   return (
     <S.container>
-      <h3>Clique em salvar para finalizar seu cadastro</h3>
+      <S.boxTermo to={term} target="_blank">
+        Clique para ler os Termos e Condições
+      </S.boxTermo>
+      <S.content>
+        <Selector
+          selected={termo}
+          pres={() => {
+            setTermo(!termo)
+            termos(true)
+          }}
+          title="Li e aceito os Termos e Condições"
+        />
+        <Selector
+          selected={notification}
+          pres={() => {
+            setNotification(!notification)
+            notifications(true)
+          }}
+          title="Desejo receber e-mails informativos (SMS, E-mail e Push Notification)"
+        />
+      </S.content>
+      <S.title>Clique em salvar para finalizar seu cadastro</S.title>
     </S.container>
   )
 }

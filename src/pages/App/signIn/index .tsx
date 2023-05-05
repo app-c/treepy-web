@@ -78,7 +78,12 @@ export function SignIn() {
             }}
           >
             <InputV sizeH="3.4rem" placeholder="E-mail" name="email" />
-            <InputV sizeH="3.4rem" placeholder="Senha" name="password" />
+            <InputV
+              type="password"
+              sizeH="3.4rem"
+              placeholder="Senha"
+              name="password"
+            />
             <S.Li style={{ marginBottom: '2rem' }} to={'/forgot'}>
               Esqueceu sua senha?
             </S.Li>

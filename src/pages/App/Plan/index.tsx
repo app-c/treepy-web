@@ -474,6 +474,7 @@ export function Plan() {
                     label="Senha"
                     placeholder="Digite sua senha"
                     name="password"
+                    type="password"
                   />
 
                   <S.bxForgot style={{ justifyContent: 'space-between' }}>
@@ -522,6 +523,7 @@ export function Plan() {
               <S.boxData>
                 <h2 style={{ alignSelf: 'center' }}>Dados para pagamento</h2>
                 <Selector
+                  colorText="dark"
                   selected={selectInicialData}
                   pres={() => setSelectInicialData(!selectInicialData)}
                   title="Usar dados da conta"
@@ -539,16 +541,19 @@ export function Plan() {
                   <S.boxMethod>
                     <S.boxSelect>
                       <Selector
+                        colorText="dark"
                         pres={() => setSelectPlan('total')}
                         selected={selectPlan === 'total'}
                         title="Total"
                       />
                       <Selector
+                        colorText="dark"
                         pres={() => setSelectPlan('partial')}
                         selected={selectPlan === 'partial'}
                         title="Parcial"
                       />
                       <Selector
+                        colorText="dark"
                         pres={() => setSelectPlan('parcelado')}
                         selected={selectPlan === 'parcelado'}
                         title="Parcelado"

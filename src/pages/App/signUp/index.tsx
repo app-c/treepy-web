@@ -19,13 +19,18 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../../../context/authcontext'
 import { Alert } from '../../../components/Alert'
 import { CadastroStepOne } from '../../../components/cadastroSteps/stepOne'
-import { CadastroStepTwo } from '../../../components/cadastroSteps/stepTwo'
+import {
+  CadastroStepTwo,
+  IPropsState,
+} from '../../../components/cadastroSteps/stepTwo'
 import { useFormStep } from '../../../hooks/steps/useForm'
 import { Form } from '@unform/web'
 import { _validadeName } from '../../../utils/_validadeName'
 import { StepsIcons } from '../../../components/cadastroSteps/stepsIcons'
 import { FinshiSignUp } from '../../../components/cadastroSteps/finish'
 import { _validarCPF } from '../../../utils/validateCpf'
+import { useQuery } from 'react-query'
+import axios from 'axios'
 
 interface PropsSingUp {
   full_name: string
@@ -67,6 +72,21 @@ export function SignUp() {
 
   const { type } = useParams()
 
+  const [igbe, setIgbe] = React.useState('')
+  const [termos, setTermos] = React.useState(false)
+  const [notifications, setNotifications] = React.useState(false)
+
+  const key = useId()
+  const components = [
+    <CadastroStepOne key={key} />,
+    <CadastroStepTwo setCep={(h) => setIgbe(h)} key={key} />,
+    <FinshiSignUp
+      notifications={(h) => setNotifications(h)}
+      termos={(h) => setTermos(h)}
+      key={key}
+    />,
+  ]
+
   const [dataStep2, setDataStep2] = useState<Step2>({
     street: '',
     locality: '',
@@ -77,6 +97,25 @@ export function SignUp() {
     postal_code: '',
   })
 
+  React.useEffect(() => {
+    if (igbe.length === 9) {
+      axios.get(`https://viacep.com.br/ws/${igbe}/json/`).then((h) => {
+        const r = h.data as IPropsState
+        console.log(r)
+
+        setDataStep2({
+          ...dataStep2,
+          street: r.logradouro,
+          city: r.localidade,
+          region_code: r.uf,
+          locality: r.bairro,
+        })
+      })
+    }
+  }, [igbe])
+
+  console.log(igbe, 'tste')
+
   const [dadosStep1, setDadosStep1] = useState<Step1>({
     full_name: '',
     cpf: '',
@@ -85,13 +124,6 @@ export function SignUp() {
     email: '',
     password: '',
   })
-
-  const key = useId()
-  const components = [
-    <CadastroStepOne key={key} />,
-    <CadastroStepTwo key={key} />,
-    <FinshiSignUp key={key} />,
-  ]
 
   const { changeStep, currentComponent, lastStep, currentStep } = useFormStep({
     step: components,
@@ -205,6 +237,11 @@ export function SignUp() {
 
         if (currentStep === 2) {
           setLoad(true)
+
+          if (!termos) {
+            setLoad(false)
+            return alert('Aceite os termos para continuar')
+          }
           await api.post('/user/create-user', dt).then((h) => {
             if (h.status === 200) {
               if (type === 'o') {
@@ -260,6 +297,7 @@ export function SignUp() {
       signIn,
       signInP,
       type,
+      termos,
     ],
   )
 

@@ -5,10 +5,19 @@ interface PropsSelect {
   selected: boolean
 }
 
+export type TTextColor = 'gray' | 'dark'
+
+interface IPropsColorText {
+  colorText: TTextColor
+}
+
 export const Box = styled.button`
   display: flex;
-  margin-right: 1rem;
   background-color: transparent;
+
+  & + button {
+    margin-left: 1rem;
+  }
 
   &:hover {
     cursor: pointer;
@@ -20,9 +29,13 @@ export const Box = styled.button`
     display: flex;
 
     p {
-      margin-left: 10px;
     }
   }
+`
+
+export const text = styled.p<IPropsColorText>`
+  margin-left: 10px;
+  color: ${(h) => (h.colorText === 'gray' ? color.dark[50] : color.dark[10])};
 `
 
 export const Container = styled.div`

@@ -1,20 +1,21 @@
-import { Box, Circle, Container } from './styles'
+import * as S from './styles'
 
 interface Props {
   selected: boolean
   title?: string
   pres?: () => void
+  colorText?: S.TTextColor
 }
 
-export function Selector({ selected, pres, title }: Props) {
+export function Selector({ selected, pres, title, colorText = 'gray' }: Props) {
   return (
-    <Box type="button" onClick={pres}>
+    <S.Box type="button" onClick={pres}>
       <label htmlFor="">
-        <Container>
-          <Circle selected={selected} />
-        </Container>
-        <p>{title}</p>
+        <S.Container>
+          <S.Circle selected={selected} />
+        </S.Container>
+        <S.text colorText={colorText}>{title}</S.text>
       </label>
-    </Box>
+    </S.Box>
   )
 }
