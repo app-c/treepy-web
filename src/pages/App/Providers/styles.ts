@@ -13,21 +13,6 @@ export const Container = styled.div`
   }
 `
 
-export const button = styled(Link)`
-  display: flex;
-  background-color: ${color.orange[10]};
-  width: calc(70px + 15vw);
-  text-decoration: none;
-  border-radius: 20px;
-  align-items: center;
-  justify-content: center;
-
-  padding: 15px;
-
-  margin-top: 2rem;
-  color: ${color.dark[30]};
-`
-
 export const text = styled.p`
   font-size: clamp(16px, 2vw, 1.5vw);
   margin-top: 1rem;
@@ -42,12 +27,6 @@ export const content = styled.div`
   padding: 10px calc(20px + 10vw);
 `
 
-export const titleBt = styled.p`
-  color: ${color.green[10]};
-  text-align: center;
-  font-size: calc(14px + 1vw);
-`
-
 export const subTitle = styled.p`
   font-size: clamp(18px, 2vw, 1.9vw);
   font-weight: 600;
@@ -59,4 +38,29 @@ export const boxC = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+`
+
+export const button = styled(Link)`
+  display: flex;
+  background-color: ${color.orange[10]};
+  width: calc(6rem + 12vw);
+  text-decoration: none;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px;
+
+  margin-top: 2rem;
+  color: ${color.dark[30]};
+
+  &:hover {
+    opacity: 0.94;
+  }
+`
+
+export const titleBt = styled.p`
+  color: ${color.green[10]};
+  text-align: center;
+  font-size: calc(8px + 1vw);
 `

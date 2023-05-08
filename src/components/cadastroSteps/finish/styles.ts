@@ -21,9 +21,9 @@ export const title = styled.h3`
 `
 
 export const boxTermo = styled(Link)`
-  text-decoration: none;
-  color: ${color.orange[10]};
+  color: ${color.green[10]};
   font-weight: 700;
+  font-size: calc(16px + 0.5vw);
 
   margin-bottom: 2rem;
 `

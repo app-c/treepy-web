@@ -17,6 +17,7 @@ import { Parceiros } from '../pages/App/Parceiros'
 import { ToYou } from '../pages/ToYou'
 import { ToPrestador } from '../pages/ToPrestador'
 import { Teste } from '../pages/Teste'
+import { ResetPass } from '../pages/ResetPass'
 
 // interface Props {
 //   dataSignUp?: object
@@ -41,6 +42,7 @@ export function Router() {
         <Route path="/parc" element={<Parceiros />} />
         <Route path="/toyou" element={<ToYou />} />
         <Route path="/toprestador" element={<ToPrestador />} />
+        <Route path="/resetpass/:token/reset" element={<ResetPass />} />
       </Route>
 
       <Route path="/" element={<AuthRoute />}>

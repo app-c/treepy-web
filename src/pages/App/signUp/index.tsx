@@ -31,6 +31,7 @@ import { FinshiSignUp } from '../../../components/cadastroSteps/finish'
 import { _validarCPF } from '../../../utils/validateCpf'
 import { useQuery } from 'react-query'
 import axios from 'axios'
+import { Selector } from '../../../components/selector'
 
 interface PropsSingUp {
   full_name: string
@@ -81,8 +82,26 @@ export function SignUp() {
     <CadastroStepOne key={key} />,
     <CadastroStepTwo setCep={(h) => setIgbe(h)} key={key} />,
     <FinshiSignUp
-      notifications={(h) => setNotifications(h)}
-      termos={(h) => setTermos(h)}
+      selectComp={
+        <div>
+          <S.content style={{ alignItems: 'flex-start' }}>
+            <Selector
+              selected={termos}
+              pres={() => {
+                setTermos(!termos)
+              }}
+              title="Li e aceito os Termos e Condições"
+            />
+            <Selector
+              selected={notifications}
+              pres={() => {
+                setNotifications(!notifications)
+              }}
+              title="Desejo receber e-mails informativos (SMS, E-mail e Push Notification)"
+            />
+          </S.content>
+        </div>
+      }
       key={key}
     />,
   ]
@@ -242,28 +261,30 @@ export function SignUp() {
             setLoad(false)
             return alert('Aceite os termos para continuar')
           }
-          await api.post('/user/create-user', dt).then((h) => {
-            if (h.status === 200) {
-              if (type === 'o') {
-                signIn({
-                  email: dt.email,
-                  password: dt.password,
-                }).then(() => {
-                  setLoad(false)
-                  nv('/')
-                })
-              } else {
-                signInP({
-                  email: dt.email,
-                  password: dt.password,
-                }).then(() => {
-                  setLoad(false)
-                  const data = localStorage.getItem('local')
-                  nv(`/plan/${data}`)
-                })
-              }
-            }
-          })
+          alert(`${termos}`)
+          setLoad(false)
+          // await api.post('/user/create-user', dt).then((h) => {
+          //   if (h.status === 200) {
+          //     if (type === 'o') {
+          //       signIn({
+          //         email: dt.email,
+          //         password: dt.password,
+          //       }).then(() => {
+          //         setLoad(false)
+          //         nv('/')
+          //       })
+          //     } else {
+          //       signInP({
+          //         email: dt.email,
+          //         password: dt.password,
+          //       }).then(() => {
+          //         setLoad(false)
+          //         const data = localStorage.getItem('local')
+          //         nv(`/plan/${data}`)
+          //       })
+          //     }
+          //   }
+          // })
         }
       } catch (err: any) {
         setLoad(false)

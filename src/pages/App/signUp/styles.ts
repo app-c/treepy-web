@@ -27,7 +27,7 @@ export const Container = styled.div`
 `
 export const content = styled.div`
   width: calc(20vw + 20rem);
-  background-color: rgba(102, 102, 102, 0.811);
+  background-color: rgba(131, 131, 131, 0.811);
 
   padding: 20px 1rem;
   border-radius: 10px;

@@ -572,7 +572,7 @@ export function Plan() {
                             />
                           </S.BoxInput>
 
-                          <h4 style={{ marginLeft: 20 }}>TreepyCache</h4>
+                          <h4 style={{ marginLeft: 20 }}>TreepyCach</h4>
                         </S.gridInput>
                       )}
                     </S.typePay>

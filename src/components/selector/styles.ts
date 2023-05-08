@@ -14,10 +14,7 @@ interface IPropsColorText {
 export const Box = styled.button`
   display: flex;
   background-color: transparent;
-
-  & + button {
-    margin-left: 1rem;
-  }
+  margin: 1rem;
 
   &:hover {
     cursor: pointer;
