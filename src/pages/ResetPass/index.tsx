@@ -7,6 +7,7 @@ import * as Yup from 'yup'
 import { FormHandles } from '@unform/core'
 import { getValidationErrors } from '../../utils/getValidationErrors'
 import { useToast } from '../../context/ToastContext'
+import { ModalComp } from '../../components/ModalComp'
 
 interface Iprops {
   password: string
@@ -19,7 +20,8 @@ export function ResetPass() {
 
   const handleSubmit = React.useCallback(
     async (data: Iprops) => {
-      ref.current?.getErrors({})
+      ref.current?.setErrors({})
+
       const passwordSchema = Yup.string()
         .required('Senha é obrigatória')
         .min(6, 'Mínimo de 6 digitos')

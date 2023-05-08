@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react'
+import React, { useCallback, useRef } from 'react'
 import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import * as S from './styles'
@@ -11,6 +11,9 @@ import { Outlet, redirect } from 'react-router-dom'
 import { useToast } from '../../../context/ToastContext'
 import { HeaderC } from '../../../components/HeaderC'
 import { InputV } from '../../../components/InputV'
+import { ModalComp } from '../../../components/ModalComp'
+import { Form } from '@unform/web'
+import { api } from '../../../services/api'
 
 interface PropsSingUp {
   email: string
@@ -21,6 +24,9 @@ export function SignIn() {
   const formRef = useRef<FormHandles>(null)
   const { signIn } = useAuth()
   const { addToast } = useToast()
+
+  const [email, setEmail] = React.useState('')
+  const [showModal, setShowModal] = React.useState(false)
 
   const handleSubmit = useCallback(
     async (data: PropsSingUp) => {
@@ -60,9 +66,47 @@ export function SignIn() {
     [addToast, signIn],
   )
 
+  const handleSendForgotEmail = React.useCallback(async () => {
+    await api
+      .post('/user/send-forgot-password', email)
+      .then((h) => {
+        console.log(h)
+        // setShowModal(false)
+        addToast({
+          title: 'Sucesso!',
+          type: 'success',
+          description:
+            'Verefique sua caixa de entrada para recuperar sua senha',
+        })
+      })
+      .catch((h) => {
+        alert(h.response.data.message)
+      })
+  }, [addToast, email])
+
   return (
     <S.Container>
       <HeaderC type="2" />
+      <ModalComp
+        modal={(h) => setShowModal(h)}
+        show={showModal}
+        component={
+          <Form onSubmit={() => {}}>
+            <S.boxModal>
+              <h2>Entre com seu email para recuperar sua senha</h2>
+              <Input name="email" />
+
+              <div>
+                <Button
+                  pres={handleSendForgotEmail}
+                  title="ENVIAR"
+                  variant="B"
+                />
+              </div>
+            </S.boxModal>
+          </Form>
+        }
+      />
       <S.ContentForm ref={formRef} onSubmit={handleSubmit}>
         <S.Content>
           <h2>Acesse sua conta</h2>
@@ -84,9 +128,14 @@ export function SignIn() {
               placeholder="Senha"
               name="password"
             />
-            <S.Li style={{ marginBottom: '2rem' }} to={'/forgot'}>
-              Esqueceu sua senha?
-            </S.Li>
+            <div style={{ alignSelf: 'flex-start' }}>
+              <Button
+                type="button"
+                pres={() => setShowModal(true)}
+                title="Esqueceu sua senha?"
+                variant="D"
+              />
+            </div>
 
             <Button sizeH="3rem" variant="AC" title="ENTRAR" />
           </div>

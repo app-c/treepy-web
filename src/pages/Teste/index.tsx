@@ -10,10 +10,7 @@ import { FormHandles } from '@unform/core'
 export function Teste() {
   const key = useId()
   const ref = useRef<FormHandles>(null)
-  const components = [
-    <CadastroStepOne key={key} />,
-    <CadastroStepTwo key={key} />,
-  ]
+  const components = [<CadastroStepOne key={key} />]
 
   const { changeStep, currentComponent, currentStep } = useFormStep({
     step: components,

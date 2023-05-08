@@ -13,7 +13,7 @@ export function ModalComp({ show, component, modal }: props) {
     <S.modal isOpen={show}>
       <S.Container>
         <S.closed onClick={() => modal(false)}>X</S.closed>
-        {component}
+        <div>{component}</div>
       </S.Container>
     </S.modal>
   )

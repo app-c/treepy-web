@@ -14,7 +14,12 @@ export const modal = styled(Modal)`
 
 export const Container = styled.div`
   width: 50vw;
-  height: 60%;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
   @media (max-width: 450px) {
     width: 90vw;

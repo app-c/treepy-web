@@ -102,3 +102,14 @@ export const CreateAccont = styled.div`
 
   font-size: calc(12px + 1vw);
 `
+
+export const boxModal = styled.div`
+  width: 100%;
+  height: 100%;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+`
