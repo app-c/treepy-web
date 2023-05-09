@@ -33,7 +33,6 @@ export function Router() {
         <Route path="/signInProv" element={<SignInProv />} />
         <Route path="/us" element={<Us />} />
         <Route path="/calc" element={<Calculadora />} />
-        <Route path="/test" element={<Test />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/signUp/:type" element={<SignUp />} />
         <Route path="/plan/:value" element={<Plan />} />

@@ -26,6 +26,7 @@ import { Alert } from '../../../components/Alert'
 import { addDays, format } from 'date-fns'
 import { DataPayment } from '../../../components/DataPayment'
 import { DataCardPayment } from '../../../components/DataCardPayment'
+import { EncriptCard, IEncrypt, useEncrypt } from '../../../hooks/encriptyCard'
 
 interface SelectProps {
   type: 'cartao' | 'pix' | 'boleto'
@@ -80,7 +81,7 @@ interface PropsMosal {
 export function Plan() {
   const ref = useRef<FormHandles>(null)
   const nav = useNavigate()
-  const { userP, signInP, logOut } = useAuth()
+  const { userP, signInP, logOut, encryted, colectData } = useAuth()
 
   const [load, setLoad] = React.useState(false)
 
@@ -115,6 +116,13 @@ export function Plan() {
   })
 
   const initialUser = selectInicialData ? dataUser.data : userData
+
+  // React.useEffect(() => {
+  //   const error = dataUser.error as any
+  //   if (error.response.data.message === 'falta o token') {
+  //     logOut()
+  //   }
+  // }, [])
 
   const handleNext = React.useCallback(() => {
     if (userP) {
@@ -174,7 +182,6 @@ export function Plan() {
       const postal_code = Number(_number(data.postal_code))
       const tax_id = Number(_number(data.cpf))
       const region_code = data.region_code.toUpperCase()
-      const number_card = String(_number(data.number_card))
 
       switch (select.type) {
         case 'cartao':
@@ -204,7 +211,7 @@ export function Plan() {
               abortEarly: false,
             })
 
-            const [month, year] = data.expire.split('/').map(String)
+            console.log(encryted, 'foi')
 
             const pag = {
               description: `Produto adiquirido: ${tree} árvores, no valor total de R$ ${_brl(
@@ -226,15 +233,11 @@ export function Plan() {
               postal_code,
               region: data.state,
 
-              holder_name: data.holder_name,
               installments: Number(installments),
-              number_card,
-              exp_month: month,
-              exp_year: year,
+
+              encrypted: encryted?.encryptedCard,
               security_code: data.security_code,
             }
-
-            console.log(pag)
 
             await api.post('/charges/card', pag).then((h) => {
               setLoad(false)
@@ -410,8 +413,10 @@ export function Plan() {
           break
       }
     },
-    [addToast, currency, installments, select.type, tree],
+    [addToast, currency, encryted, installments, select, tree],
   )
+
+  console.log(boletoImg)
 
   const closeModal = React.useCallback(async () => {
     setModal({
@@ -641,7 +646,14 @@ export function Plan() {
                       {boletoImg.png === '' ? (
                         <Button load={load} title="GERAR BOLETO" variant="AB" />
                       ) : (
-                        <a href={boletoImg.pdf}> BAIXAR BOLETO</a>
+                        <a
+                          target="_blank"
+                          href={boletoImg.pdf}
+                          rel="noreferrer"
+                        >
+                          {' '}
+                          BAIXAR BOLETO
+                        </a>
                       )}
                     </>
                   )}

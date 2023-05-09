@@ -1,3 +1,4 @@
+import { EncryptProvider } from '../hooks/encriptyCard'
 import { AuthProvider } from './authcontext'
 import { ToastProvider } from './ToastContext'
 

@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useContext, useState } from 'react'
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { api } from '../services/api'
 
 interface IUser {
@@ -11,12 +17,30 @@ interface AuthState {
   user: object
 }
 
+interface Iprops {
+  publicKey: string
+  holder: string
+  number: string
+  expMonth: string
+  expYear: string
+  securityCode: string
+}
+
+export interface IEncrypt {
+  encryptedCard: string
+  errors: []
+  hasErrors: boolean
+}
+
 interface AuthContextData {
   user: object
   userP: any
   signIn(credentials: IUser): Promise<void>
   signInP(credentials: IUser): Promise<void>
   logOut: () => void
+
+  encryted: IEncrypt | undefined
+  colectData: (data: Iprops) => void
 }
 
 const keyUser = '@treepy:user'
@@ -115,9 +139,42 @@ export function AuthProvider({ children }: any) {
     setData({} as AuthState)
   }, [])
 
+  const [encryted, setEncript] = useState<IEncrypt>()
+  const [colection, setColection] = React.useState<Iprops>()
+
+  const colectData = React.useCallback(async (item: Iprops) => {
+    setColection(item)
+  }, [])
+
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src =
+      'https://assets.pagseguro.com.br/checkout-sdk-js/rc/dist/browser/pagseguro.min.js'
+    script.onload = async () => {
+      // faça outras chamadas à biblioteca do PagSeguro aqui
+      const ra = window.PagSeguro.encryptCard(colection)
+      setEncript(ra)
+      console.log(ra, 'hook')
+    }
+
+    document.body.appendChild(script)
+
+    return () => {
+      document.body.removeChild(script)
+    }
+  }, [colection])
+
   return (
     <AuthContext.Provider
-      value={{ signIn, signInP, user: data.user, userP: dataP.user, logOut }}
+      value={{
+        signIn,
+        signInP,
+        user: data.user,
+        userP: dataP.user,
+        logOut,
+        colectData,
+        encryted,
+      }}
     >
       {children}
     </AuthContext.Provider>

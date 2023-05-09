@@ -5,11 +5,18 @@ import { api } from '../../services/api'
 import { _number, brlNumber } from '../../utils/formatNumber'
 import { _brand } from '../../utils/_brand'
 import { IPropsParcelamento, PropsParcCard } from '../../Dto'
+import { useAuth } from '../../context/authcontext'
 
 interface props {
   setInstallments: (item: string) => void
   currency: number
   type: string
+}
+
+interface IEncrypt {
+  encryptedCard: string
+  errors: []
+  hasErrors: boolean
 }
 
 type IBrand =
@@ -23,14 +30,49 @@ type IBrand =
   | 'jcb'
   | 'aura'
 
+const key =
+  'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr+ZqgD892U9/HXsa7XqBZUayPquAfh9xx4iwUbTSUAvTlmiXFQNTp0Bvt/5vK2FhMj39qSv1zi2OuBjvW38q1E374nzx6NNBL5JosV0+SDINTlCG0cmigHuBOyWzYmjgca+mtQu4WczCaApNaSuVqgb8u7Bd9GCOL4YJotvV5+81frlSwQXralhwRzGhj/A57CGPgGKiuPT+AOGmykIGEZsSD9RKkyoKIoc0OS8CPIzdBOtTQCIwrLn2FxI83Clcg55W8gkFSOS6rWNbG5qFZWMll6yl02HtunalHmUlRUL66YeGXdMDC2PuRcmZbGO5a/2tbVppW6mfSWG3NPRpgwIDAQAB'
+
 export function DataCardPayment({
   setInstallments,
   currency = 0,
   type,
 }: props) {
+  const { colectData } = useAuth()
   const [cardNumber, setCardNumber] = React.useState('')
   const [parcelas, setParcelas] = React.useState<PropsParcCard[]>([])
   const [installment, setInstallment] = React.useState('')
+
+  const [holder, setHolder] = React.useState('')
+  const [number, setNumber] = React.useState('')
+  const [securityCode, setSecurityCode] = React.useState('')
+  const [expired, setExpired] = React.useState('')
+  const [expMonth, expYear] = expired.split('/').map(String)
+
+  const dataEncriptCard = {
+    publicKey: key,
+    holder,
+    number: _number(cardNumber),
+    expMonth,
+    expYear,
+    securityCode,
+  }
+
+  // const { encript } = EncriptCard(dataEncriptCard)
+
+  // console.log(encript)
+
+  React.useEffect(() => {
+    const dataEncriptCard = {
+      publicKey: key,
+      holder,
+      number: _number(cardNumber),
+      expMonth,
+      expYear,
+      securityCode,
+    }
+    colectData(dataEncriptCard)
+  }, [cardNumber, colectData, expMonth, expYear, holder, securityCode])
 
   React.useEffect(() => {
     if (cardNumber.length > 18 && currency > 0) {
@@ -69,6 +111,7 @@ export function DataCardPayment({
       } catch (err) {}
     }
   }, [cardNumber, currency])
+
   return (
     <S.Container>
       <S.preview>
@@ -76,6 +119,7 @@ export function DataCardPayment({
           name="holder_name"
           placeholder="Nome do titular"
           label="Nome do titular"
+          onChange={(h) => setHolder(h.currentTarget.value)}
         />
         <Input
           maxLength={19}
@@ -94,11 +138,17 @@ export function DataCardPayment({
               name="expire"
               label="Validade"
               placeholder="Validade Mês/ano"
+              onChange={(h) => setExpired(h.currentTarget.value)}
             />
           </S.box>
 
           <S.box style={{ marginLeft: 10, width: 75 }}>
-            <Input name="security_code" label="CVV" placeholder="CVV" />
+            <Input
+              onChange={(h) => setSecurityCode(h.currentTarget.value)}
+              name="security_code"
+              label="CVV"
+              placeholder="CVV"
+            />
           </S.box>
         </S.gridInput>
 

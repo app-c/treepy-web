@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { color } from '../../styles/colors'
 type Props = {
-  variant: 'A' | 'AB' | 'AC' | 'B' | 'C'
+  variant: 'A' | 'AB' | 'AC' | 'B' | 'C' | 'D'
   sizeW?: string
   sizeH?: string
   load?: boolean
@@ -13,6 +13,7 @@ const propsVariat = {
   AC: color.green[40],
   B: color.orange[10],
   C: color.red[10],
+  D: 'transparent',
 }
 
 export const Box = styled.div`

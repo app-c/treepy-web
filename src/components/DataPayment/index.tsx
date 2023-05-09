@@ -10,23 +10,38 @@ export function DataPayment() {
 
         <S.gridInput>
           <S.box>
-            <Input placeholder="CPF" label="CPF" name="cpf" />
+            <Input
+              maxLength={16}
+              mask="cpf"
+              placeholder="CPF"
+              label="CPF"
+              name="cpf"
+            />
           </S.box>
 
           <S.box style={{ width: 70, marginLeft: 10 }}>
-            <Input label="Área" placeholder="(99)" name="phone_area" />
+            <Input
+              mask="number"
+              maxLength={2}
+              label="Área"
+              placeholder="(99)"
+              name="phone_area"
+            />
           </S.box>
 
           <S.box style={{ width: '50%', marginLeft: 10 }}>
             <Input
+              mask="number"
               label="99999 9999"
               placeholder="Informe seu celular"
               name="phone_number"
+              maxLength={9}
             />
           </S.box>
         </S.gridInput>
 
         <Input placeholder="E-mail" label="E-mail" name="email" />
+        <Input mask="cep" name="postal_code" placeholder="CEP" label="CEP" />
 
         <S.gridInput>
           <S.box style={{ width: '70%' }}>
@@ -34,7 +49,12 @@ export function DataPayment() {
           </S.box>
 
           <S.box style={{ width: 100, marginLeft: 10 }}>
-            <Input label="Nº" placeholder="Número" name="home_number" />
+            <Input
+              mask="number"
+              label="Nº"
+              placeholder="Número"
+              name="home_number"
+            />
           </S.box>
         </S.gridInput>
 
@@ -64,8 +84,6 @@ export function DataPayment() {
             <Input label="UF" placeholder="UF" name="region_code" />
           </S.box>
         </S.gridInput>
-
-        <Input name="postal_code" placeholder="CEP" label="CEP" />
       </S.preview>
     </S.Container>
   )
