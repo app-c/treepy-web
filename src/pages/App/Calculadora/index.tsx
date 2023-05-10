@@ -34,13 +34,14 @@ import {
 } from '../../../components/ModalVeiculosPessoal'
 import { Form } from '@unform/web'
 import { Input } from '../../../components/Input'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useNavigation } from 'react-router-dom'
 import { HeaderC } from '../../../components/HeaderC'
 import { brlNumber } from '../../../utils/formatNumber'
 import { useAuth } from '../../../context/authcontext'
 import { useQuery } from 'react-query'
 import { api } from '../../../services/api'
 import { Loading } from '../../../components/Loading'
+import { Alert } from '../../../components/Alert'
 
 interface PropsItens {
   item: 'Kw/mês' | 'R$/mês' | 'm³/mês' | 'Botijões/mês' | string
@@ -283,21 +284,28 @@ export function Calculadora() {
 
   const dt = JSON.stringify(data)
 
-  const dataUser = useQuery('user', async () => {
-    const user = await api.get('/user/find-user')
+  // const dataUser = useQuery('user', async () => {
+  //   const user = await api.get('/user/find-user')
 
-    return user.data
-  })
+  //   return user.data
+  // })
 
   const handlePlan = React.useCallback(async () => {
-    console.log('err', dataUser.isError)
-    if (!dataUser.isError) {
-      nv(`/plan/${dt}`)
-    } else {
-      nv(`/plan/${dt}`)
-      logOut()
-    }
-  }, [dataUser, dt, logOut, nv])
+    await api
+      .get('user/find-user')
+      .then((h) => console.log(h))
+      .catch((h) => {
+        const err = h.response.data.message
+        console.log(err)
+        if (err === 'token invalido') {
+          console.log(err)
+          logOut()
+          nv(`/plan/${dt}`)
+        } else {
+          alert('Erro no servidor')
+        }
+      })
+  }, [dt, logOut, nv])
 
   // if (dataUser.isError) {
   //   logOut()

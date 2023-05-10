@@ -137,6 +137,7 @@ export function AuthProvider({ children }: any) {
     localStorage.removeItem(keyUserP)
 
     setData({} as AuthState)
+    setDataP({} as AuthState)
   }, [])
 
   const [encryted, setEncript] = useState<IEncrypt>()

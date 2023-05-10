@@ -416,14 +416,12 @@ export function Plan() {
     [addToast, currency, encryted, installments, select, tree],
   )
 
-  console.log(boletoImg)
-
   const closeModal = React.useCallback(async () => {
     setModal({
       show: false,
       status: null,
     })
-    nav('/')
+    nav('/calc')
   }, [nav])
 
   return (
