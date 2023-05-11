@@ -143,31 +143,29 @@ export function DataCardPayment({
           </S.box>
         </S.gridInput>
 
-        {type !== 'total' && (
-          <S.installments>
-            <span className="prc">Parcelas</span>
-            <S.boxSelection
-              onChange={(h) => {
-                setInstallment(h.currentTarget.value)
-                setInstallments(h.currentTarget.value)
-              }}
-              name="installments"
-              value={installment}
-            >
-              {parcelas.map((h, i) => (
-                <option
-                  key={i}
-                  value={h.amount?.fees?.buyer?.interest?.installments || 1}
-                >
-                  {i + 1} x R$
-                  {i === 0
-                    ? h.amount.value
-                    : h.amount.fees?.buyer?.interest?.total}
-                </option>
-              ))}
-            </S.boxSelection>
-          </S.installments>
-        )}
+        <S.installments>
+          <span className="prc">Parcelas</span>
+          <S.boxSelection
+            onChange={(h) => {
+              setInstallment(h.currentTarget.value)
+              setInstallments(h.currentTarget.value)
+            }}
+            name="installments"
+            value={installment}
+          >
+            {parcelas.map((h, i) => (
+              <option
+                key={i}
+                value={h.amount?.fees?.buyer?.interest?.installments || 1}
+              >
+                {i + 1} x R$
+                {i === 0
+                  ? h.amount.value
+                  : h.amount.fees?.buyer?.interest?.total}
+              </option>
+            ))}
+          </S.boxSelection>
+        </S.installments>
       </S.preview>
     </S.Container>
   )
