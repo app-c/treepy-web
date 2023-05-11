@@ -179,7 +179,7 @@ export function Plan() {
     async (data: DataPropsCard) => {
       ref.current?.setErrors({})
 
-      const postal_code = Number(_number(data.postal_code))
+      const postal_code = _number(data.postal_code)
       const tax_id = Number(_number(data.cpf))
       const region_code = data.region_code.toUpperCase()
 
@@ -211,8 +211,6 @@ export function Plan() {
               abortEarly: false,
             })
 
-            console.log(encryted, 'foi')
-
             const pag = {
               description: `Produto adiquirido: ${tree} árvores, no valor total de R$ ${_brl(
                 currency,
@@ -238,6 +236,7 @@ export function Plan() {
               encrypted: encryted?.encryptedCard,
               security_code: data.security_code,
             }
+            console.log(postal_code)
 
             await api.post('/charges/card', pag).then((h) => {
               setLoad(false)
@@ -255,19 +254,26 @@ export function Plan() {
             setLoad(false)
             console.log(error)
 
-            if (error.response?.data?.message === 'Pagamento recusado') {
+            if (
+              error.response?.data?.message ===
+              'Erro ao processar o pagamento, verefique os campos ou contate o seu banco'
+            ) {
               setModal({ show: true, status: 'DECLINED' })
+              addToast({
+                type: 'error',
+                title: 'Erro',
+                description: error.response?.data?.message,
+              })
+            } else {
+              addToast({
+                type: 'error',
+                title: 'Erro',
+                description: 'Verefique os campos e tente novamente',
+              })
+
+              const err = getValidationErrors(error)
+              ref.current?.setErrors(err)
             }
-
-            addToast({
-              type: 'error',
-              title: 'Erro',
-              description:
-                'Ocorreu um erro, verifique os campos e tente novamente',
-            })
-
-            const err = getValidationErrors(error)
-            ref.current?.setErrors(err)
           }
 
           break
@@ -421,7 +427,6 @@ export function Plan() {
       show: false,
       status: null,
     })
-    nav('/calc')
   }, [nav])
 
   return (

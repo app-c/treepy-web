@@ -19,7 +19,7 @@ export function DataPayment() {
             />
           </S.box>
 
-          <S.box style={{ width: 70, marginLeft: 10 }}>
+          <S.box style={{ width: 77, marginLeft: 10 }}>
             <Input
               mask="number"
               maxLength={2}

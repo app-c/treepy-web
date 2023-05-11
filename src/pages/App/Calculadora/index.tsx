@@ -293,16 +293,14 @@ export function Calculadora() {
   const handlePlan = React.useCallback(async () => {
     await api
       .get('user/find-user')
-      .then((h) => console.log(h))
+      .then((h) => nv(`/plan/${dt}`))
       .catch((h) => {
         const err = h.response.data.message
         console.log(err)
-        if (err === 'token invalido') {
+        if (err) {
           console.log(err)
           logOut()
           nv(`/plan/${dt}`)
-        } else {
-          alert('Erro no servidor')
         }
       })
   }, [dt, logOut, nv])
@@ -367,7 +365,8 @@ export function Calculadora() {
                 <span>TreepyCashes.</span>{' '}
               </p>
               <p>
-                Comece agora a compensação com apenas um <span>TreepCash.</span>
+                Comece agora a compensação com apenas um{' '}
+                <span>TreepyCash.</span>
               </p>
 
               <div className="modalbox">

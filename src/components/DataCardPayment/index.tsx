@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import * as S from './styles'
 import { Input } from '../Input'
@@ -30,8 +31,11 @@ type IBrand =
   | 'jcb'
   | 'aura'
 
-const key =
+const SAND_BOX_PUBLICKEY =
   'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr+ZqgD892U9/HXsa7XqBZUayPquAfh9xx4iwUbTSUAvTlmiXFQNTp0Bvt/5vK2FhMj39qSv1zi2OuBjvW38q1E374nzx6NNBL5JosV0+SDINTlCG0cmigHuBOyWzYmjgca+mtQu4WczCaApNaSuVqgb8u7Bd9GCOL4YJotvV5+81frlSwQXralhwRzGhj/A57CGPgGKiuPT+AOGmykIGEZsSD9RKkyoKIoc0OS8CPIzdBOtTQCIwrLn2FxI83Clcg55W8gkFSOS6rWNbG5qFZWMll6yl02HtunalHmUlRUL66YeGXdMDC2PuRcmZbGO5a/2tbVppW6mfSWG3NPRpgwIDAQAB'
+
+const PUBLICKEY =
+  'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArrqvfhnF7yudiLnoth7zSTGys0NxpD7IMBcKDk2NryLYvX1iBenOXjrenitjz6DL1U3OaPtNYYp7oHNhRmK+yx/wsq8GH7UoLWyVEhJD5kYtZNgujJmaqL0LZ2yn3TxJUEqLC+ty2jTmNJkw/PTwbTFg2Eb2FdaMviKZYW+/V4EURfJYZWEhgosB10oPFcPwQCHaCeW7ats22DyqFNFtllpFvdRwi4V/JmdC8FQKsdqrwUS6yMweY49Xo70itHsoUz2VN2zP0CMw3/yMU/pqwAQQrp5zozSntnAdiv1B9HDuAcfCKKs2QoduQVuaST2BTijjIaqlB9vqiUUhvGwOrQIDAQAB'
 
 export function DataCardPayment({
   setInstallments,
@@ -49,22 +53,9 @@ export function DataCardPayment({
   const [expired, setExpired] = React.useState('')
   const [expMonth, expYear] = expired.split('/').map(String)
 
-  const dataEncriptCard = {
-    publicKey: key,
-    holder,
-    number: _number(cardNumber),
-    expMonth,
-    expYear,
-    securityCode,
-  }
-
-  // const { encript } = EncriptCard(dataEncriptCard)
-
-  // console.log(encript)
-
   React.useEffect(() => {
     const dataEncriptCard = {
-      publicKey: key,
+      publicKey: PUBLICKEY,
       holder,
       number: _number(cardNumber),
       expMonth,

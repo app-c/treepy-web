@@ -155,7 +155,7 @@ export function AuthProvider({ children }: any) {
       // faça outras chamadas à biblioteca do PagSeguro aqui
       const ra = window.PagSeguro.encryptCard(colection)
       setEncript(ra)
-      console.log(ra, 'hook')
+      console.log(ra.encryptedCard)
     }
 
     document.body.appendChild(script)
