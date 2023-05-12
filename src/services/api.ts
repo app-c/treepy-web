@@ -9,5 +9,5 @@ export const pag = axios.create({
 })
 
 export const api = axios.create({
-  baseURL: local,
+  baseURL: server,
 })
