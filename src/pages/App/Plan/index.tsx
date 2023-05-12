@@ -117,13 +117,6 @@ export function Plan() {
 
   const initialUser = selectInicialData ? dataUser.data : userData
 
-  // React.useEffect(() => {
-  //   const error = dataUser.error as any
-  //   if (error.response.data.message === 'falta o token') {
-  //     logOut()
-  //   }
-  // }, [])
-
   const handleNext = React.useCallback(() => {
     if (userP) {
       setStep(2)
@@ -236,13 +229,10 @@ export function Plan() {
               encrypted: encryted?.encryptedCard,
               security_code: data.security_code,
             }
-            console.log(postal_code)
 
             await api.post('/charges/card', pag).then((h) => {
               setLoad(false)
               const rs = h.data
-
-              console.log(rs)
 
               const status = rs.status
 
@@ -252,7 +242,6 @@ export function Plan() {
             })
           } catch (error: any) {
             setLoad(false)
-            console.log(error)
 
             if (
               error.response?.data?.message ===
@@ -328,7 +317,6 @@ export function Plan() {
             })
           } catch (error: any) {
             setLoad(false)
-            console.log(error)
             addToast({
               type: 'error',
               title: 'Erro',
@@ -337,7 +325,6 @@ export function Plan() {
             })
 
             const err = getValidationErrors(error)
-            console.log(err)
             ref.current?.setErrors(err)
           }
 
@@ -393,7 +380,6 @@ export function Plan() {
 
             await api.post('/charges/boleto', dt).then((h) => {
               const rs = h.data as IResponseBoleto
-              console.log(rs)
               setBoletoImg({
                 png: rs.links[1].href,
                 pdf: rs.links[0].href,
@@ -402,7 +388,6 @@ export function Plan() {
             })
           } catch (error: any) {
             setLoad(false)
-            console.log(error)
             addToast({
               type: 'error',
               title: 'Erro',
@@ -465,8 +450,6 @@ export function Plan() {
                 style={{
                   width: '100%',
                   display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
                 }}
               >
                 <S.boxSignIn>
@@ -485,7 +468,7 @@ export function Plan() {
                     type="password"
                   />
 
-                  <S.bxForgot style={{ justifyContent: 'space-between' }}>
+                  <S.bxForgot>
                     <S.link to="">Esqueci minha senha</S.link>
                     <S.link to="/signUp/1">Não tenho conta</S.link>
                   </S.bxForgot>

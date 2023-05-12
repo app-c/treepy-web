@@ -97,7 +97,7 @@ export const typePay = styled.div`
 `
 
 export const boxSignIn = styled.div`
-  width: 50%;
+  width: 100%;
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -136,6 +136,7 @@ export const bxForgot = styled.div`
   display: flex;
   width: 100%;
   margin-bottom: 2rem;
+  justify-content: space-between;
 `
 
 export const link = styled(Link)`

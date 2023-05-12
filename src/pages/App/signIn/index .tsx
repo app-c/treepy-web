@@ -49,8 +49,6 @@ export function SignIn() {
 
         redirect('/dash')
       } catch (err: any) {
-        console.log(err.response?.data.message, 'erro')
-
         addToast({
           type: 'error',
           title: 'Erro na autenticação',
@@ -70,7 +68,6 @@ export function SignIn() {
     await api
       .post('/user/send-forgot-password', email)
       .then((h) => {
-        console.log(h)
         // setShowModal(false)
         addToast({
           title: 'Sucesso!',

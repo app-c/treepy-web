@@ -77,7 +77,6 @@ export function AuthProvider({ children }: any) {
 
   React.useEffect(() => {
     const token = localStorage.getItem(keyTokenP)
-    console.log(token)
 
     if (token) {
       api.defaults.headers.common.Authorization = `Bearer ${token}`
@@ -155,7 +154,6 @@ export function AuthProvider({ children }: any) {
       // faça outras chamadas à biblioteca do PagSeguro aqui
       const ra = window.PagSeguro.encryptCard(colection)
       setEncript(ra)
-      console.log(ra.encryptedCard)
     }
 
     document.body.appendChild(script)

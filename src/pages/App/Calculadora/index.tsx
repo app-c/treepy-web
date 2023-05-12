@@ -103,8 +103,6 @@ export function Calculadora() {
         arry.splice(index, 1)
       }
 
-      console.log(index)
-
       setItem(arry)
     },
     [item],
@@ -296,9 +294,7 @@ export function Calculadora() {
       .then((h) => nv(`/plan/${dt}`))
       .catch((h) => {
         const err = h.response.data.message
-        console.log(err)
         if (err) {
-          console.log(err)
           logOut()
           nv(`/plan/${dt}`)
         }
@@ -497,7 +493,6 @@ export function Calculadora() {
                         let vl = h.currentTarget.value
                         vl = vl.replace(/\D/g, '')
                         const t = vl.length > 2 ? Number(vl) / 100 : vl
-                        console.log(t)
                         setGas({
                           item: gas.item,
                           co2: Number(t),

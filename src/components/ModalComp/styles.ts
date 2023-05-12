@@ -15,15 +15,10 @@ export const modal = styled(Modal)`
 export const Container = styled.div`
   width: 50vw;
   div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 
   @media (max-width: 450px) {
     width: 90vw;
-    height: 50vh;
   }
 
   display: flex;
@@ -34,11 +29,18 @@ export const Container = styled.div`
   padding: 2rem;
 `
 
+export const box = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
 export const closed = styled.button`
   width: 40px;
   height: 40px;
 
-  border-radius: 30px;
+  border-radius: 90px;
   background-color: ${color.red[10]};
   align-self: flex-end;
 `

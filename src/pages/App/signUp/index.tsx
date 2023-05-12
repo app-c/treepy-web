@@ -120,7 +120,6 @@ export function SignUp() {
     if (igbe.length === 9) {
       axios.get(`https://viacep.com.br/ws/${igbe}/json/`).then((h) => {
         const r = h.data as IPropsState
-        console.log(r)
 
         setDataStep2({
           ...dataStep2,
@@ -132,8 +131,6 @@ export function SignUp() {
       })
     }
   }, [igbe])
-
-  console.log(igbe, 'tste')
 
   const [dadosStep1, setDadosStep1] = useState<Step1>({
     full_name: '',
@@ -203,6 +200,8 @@ export function SignUp() {
           state: dataStep2.state,
           region_code: dataStep2.region_code.toUpperCase(),
           postal_code: dataStep2.postal_code,
+          notifications,
+          termos,
         }
 
         if (currentStep === 0) {
@@ -261,35 +260,32 @@ export function SignUp() {
             setLoad(false)
             return alert('Aceite os termos para continuar')
           }
-          alert(`${termos}`)
           setLoad(false)
-          // await api.post('/user/create-user', dt).then((h) => {
-          //   if (h.status === 200) {
-          //     if (type === 'o') {
-          //       signIn({
-          //         email: dt.email,
-          //         password: dt.password,
-          //       }).then(() => {
-          //         setLoad(false)
-          //         nv('/')
-          //       })
-          //     } else {
-          //       signInP({
-          //         email: dt.email,
-          //         password: dt.password,
-          //       }).then(() => {
-          //         setLoad(false)
-          //         const data = localStorage.getItem('local')
-          //         nv(`/plan/${data}`)
-          //       })
-          //     }
-          //   }
-          // })
+          await api.post('/user/create-user', dt).then((h) => {
+            if (h.status === 200) {
+              if (type === 'o') {
+                signIn({
+                  email: dt.email,
+                  password: dt.password,
+                }).then(() => {
+                  setLoad(false)
+                  nv('/')
+                })
+              } else {
+                signInP({
+                  email: dt.email,
+                  password: dt.password,
+                }).then(() => {
+                  setLoad(false)
+                  const data = localStorage.getItem('local')
+                  nv(`/plan/${data}`)
+                })
+              }
+            }
+          })
         }
       } catch (err: any) {
         setLoad(false)
-
-        console.log(err.message!)
 
         const msn = err.response?.data
           ? err.response.data.message
@@ -304,7 +300,6 @@ export function SignUp() {
         })
 
         const errors = getValidationErrors(err)
-        console.log(errors)
         formRef.current?.setErrors(errors)
       }
     },

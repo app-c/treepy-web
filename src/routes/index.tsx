@@ -41,7 +41,7 @@ export function Router() {
         <Route path="/parc" element={<Parceiros />} />
         <Route path="/toyou" element={<ToYou />} />
         <Route path="/toprestador" element={<ToPrestador />} />
-        <Route path="/resetpass/:token/reset" element={<ResetPass />} />
+        <Route path="/resetpass/:token" element={<ResetPass />} />
       </Route>
 
       <Route path="/" element={<AuthRoute />}>

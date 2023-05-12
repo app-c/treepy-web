@@ -8,19 +8,32 @@ import { FormHandles } from '@unform/core'
 import { getValidationErrors } from '../../utils/getValidationErrors'
 import { useToast } from '../../context/ToastContext'
 import { ModalComp } from '../../components/ModalComp'
+import { api } from '../../services/api'
+import { _navigation } from '../../utils/navigation'
+import { useNavigate, useParams } from 'react-router-dom'
 
 interface Iprops {
   password: string
   confimationPassword: string
 }
 
+interface PropsParans {
+  token: string
+}
+
 export function ResetPass() {
   const ref = useRef<FormHandles>(null)
   const { addToast } = useToast()
+  const [load, setLoad] = React.useState(false)
+  const nv = useNavigate()
+
+  const { token } = useParams()
+  // const { token }: PropsParans = value ? JSON.parse(value) : ''
 
   const handleSubmit = React.useCallback(
     async (data: Iprops) => {
       ref.current?.setErrors({})
+      // setLoad(true)
 
       const passwordSchema = Yup.string()
         .required('Senha é obrigatória')
@@ -35,14 +48,22 @@ export function ResetPass() {
         confimationPassword: confirmationPasswordSchema,
       })
 
-      console.log(data)
-
       try {
         await schema.validate(data, {
           abortEarly: false,
         })
+        await api
+          .put('/user/reset-password', {
+            token,
+            password: data.password,
+          })
+          .then(() => {
+            setLoad(false)
+            nv('/')
+          })
       } catch (err: any) {
-        console.log(err.message!)
+        setLoad(false)
+        console.log(err)
 
         const msn = err.response?.data
           ? err.response.data.message
@@ -82,7 +103,7 @@ export function ResetPass() {
             label="Confirme sua nova senha"
           />
 
-          <Button title="SALVAR" variant="AB" />
+          <Button load={load} title="SALVAR" variant="AB" />
         </S.content>
       </Form>
     </S.Container>
