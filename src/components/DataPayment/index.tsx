@@ -48,7 +48,7 @@ export function DataPayment() {
             <Input label="Rua" placeholder="Rua" name="street" />
           </S.box>
 
-          <S.box style={{ width: 100, marginLeft: 10 }}>
+          <S.box style={{ flex: 1, marginLeft: 10 }}>
             <Input
               mask="number"
               label="Nº"

@@ -64,7 +64,7 @@ export interface IEnd {
   city: string
   fk_user_id: string
   id: string
-  number_home: string
+  home_number: string
   state: string
   street: string
   region_code: string

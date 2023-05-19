@@ -165,8 +165,25 @@ export function Plan() {
     [addToast, signInP],
   )
 
-  const amount = _amount(value_tree === 0 ? tree : value_tree).toFixed(2)
+  const amount = React.useMemo(() => {
+    let value = 0
+
+    if (selectPlan === 'total') {
+      value = tree
+    }
+
+    if (selectPlan !== 'total') {
+      value = value_tree
+    }
+
+    const vl = _amount(value).toFixed(2)
+
+    return vl
+  }, [selectPlan, tree, value_tree])
+
+  // const amount = _amount(value_tree === 0 ? tree : value_tree).toFixed(2)
   const currency = Number(_number(amount))
+  console.log()
 
   const handleSubmit = useCallback(
     async (data: DataPropsCard) => {
@@ -189,6 +206,7 @@ export function Plan() {
               phone_number: Yup.string().required('*'),
               complement: Yup.string().required('*'),
               city: Yup.string().required('*'),
+              home_number: Yup.string().required('*'),
               state: Yup.string().required('*'),
               region_code: Yup.string().required('*'),
               postal_code: Yup.string().required('*'),
@@ -277,6 +295,7 @@ export function Plan() {
                 .required('email obrigatório')
                 .email('digite um email válido'),
               locality: Yup.string().required('bairro obrigatório'),
+              home_number: Yup.string().required('número obrigatório'),
               street: Yup.string().required('rua obrigatório'),
               phone_number: Yup.string().required('número obrigatório'),
               complement: Yup.string().required(),
@@ -317,6 +336,15 @@ export function Plan() {
             })
           } catch (error: any) {
             setLoad(false)
+            console.log(error.response.data)
+            if (error.response.data.error_messages) {
+              addToast({
+                type: 'error',
+                title: 'Erro',
+                description:
+                  'Campos incorretos para gerar o QRCODE, verefique seus dados e tente novamente',
+              })
+            }
             addToast({
               type: 'error',
               title: 'Erro',
@@ -344,6 +372,7 @@ export function Plan() {
               locality: Yup.string().required('bairro obrigatório'),
               street: Yup.string().required('rua obrigatório'),
               complement: Yup.string().required(),
+              home_number: Yup.string().required(),
               city: Yup.string().required('cidade obrigatório'),
               region_code: Yup.string().required('estado obrigatório'),
               postal_code: Yup.string().required(),
@@ -499,7 +528,7 @@ export function Plan() {
               phone_number: initialUser?.phone_number,
               cpf: initialUser?.cpf,
               street: initialUser?.end?.street,
-              home_number: initialUser?.end?.number_home,
+              home_number: initialUser?.end?.home_number,
               locality: initialUser?.end?.locality,
               city: initialUser?.end?.city,
               state: initialUser?.end?.state,

@@ -7,7 +7,7 @@ import { FormHandles } from '@unform/core'
 import { useAuth } from '../../../context/authcontext'
 import { getValidationErrors } from '../../../utils/getValidationErrors'
 import { color } from '../../../styles/colors'
-import { Outlet, redirect } from 'react-router-dom'
+import { Outlet, redirect, Navigate, useNavigate } from 'react-router-dom'
 import { useToast } from '../../../context/ToastContext'
 import { HeaderC } from '../../../components/HeaderC'
 import { InputV } from '../../../components/InputV'
@@ -22,11 +22,12 @@ interface PropsSingUp {
 
 export function SignIn() {
   const formRef = useRef<FormHandles>(null)
-  const { signIn } = useAuth()
+  const { signInP } = useAuth()
   const { addToast } = useToast()
 
   const [email, setEmail] = React.useState('')
   const [showModal, setShowModal] = React.useState(false)
+  const nv = useNavigate()
 
   const handleSubmit = useCallback(
     async (data: PropsSingUp) => {
@@ -42,12 +43,13 @@ export function SignIn() {
           abortEarly: false,
         })
 
-        await signIn({
+        await signInP({
           email: data.email,
           password: data.password,
         })
 
-        redirect('/dash')
+        // redirect('/dash')
+        nv('/')
       } catch (err: any) {
         addToast({
           type: 'error',
@@ -61,7 +63,7 @@ export function SignIn() {
       }
     },
 
-    [addToast, signIn],
+    [addToast, nv, signInP],
   )
 
   const handleSendForgotEmail = React.useCallback(async () => {
