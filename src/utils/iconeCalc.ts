@@ -11,5 +11,5 @@ export const icones = [
   { id: '3', ico: car },
   { id: '4', ico: bus },
   { id: '5', ico: garfo },
-  { id: '6', ico: trash },
+  // { id: '6', ico: trash },
 ]

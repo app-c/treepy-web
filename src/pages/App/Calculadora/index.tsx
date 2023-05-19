@@ -82,7 +82,7 @@ export function Calculadora() {
   } as PropsItens)
 
   const handleNext = useCallback(async () => {
-    if (step <= 6) {
+    if (step <= 5) {
       setStep(step + 1)
     }
   }, [step])
@@ -309,7 +309,7 @@ export function Calculadora() {
     <Box step={step}>
       <HeaderC title={userP?.name} type="3" />
 
-      {step === 7 ? (
+      {step === 6 ? (
         <BoxResultado>
           <BoxIcones>
             {icones.map((h) => (
@@ -639,7 +639,7 @@ export function Calculadora() {
               </>
             )}
 
-            {step === 6 && (
+            {step === 8 && (
               <>
                 <SubTitle>
                   Resíduos <span className="ele">sólidos</span>{' '}

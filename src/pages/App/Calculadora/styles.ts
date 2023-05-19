@@ -67,7 +67,7 @@ export const Box = styled.div<PropsProgres>`
     `}
 
     ${(props) =>
-    props.step === 6 &&
+    props.step === 8 &&
     css`
       background-image: url(${trash});
       background-repeat: no-repeat;
@@ -77,7 +77,7 @@ export const Box = styled.div<PropsProgres>`
     `}
 
     ${(props) =>
-    props.step === 7 &&
+    props.step === 6 &&
     css`
       background-image: url(${money});
       background-repeat: no-repeat;
