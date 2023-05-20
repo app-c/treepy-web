@@ -49,7 +49,7 @@ export function SignIn() {
         })
 
         // redirect('/dash')
-        nv('/')
+        nv('/tologin')
       } catch (err: any) {
         addToast({
           type: 'error',

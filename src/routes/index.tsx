@@ -18,6 +18,7 @@ import { ToYou } from '../pages/ToYou'
 import { ToPrestador } from '../pages/ToPrestador'
 import { Teste } from '../pages/Teste'
 import { ResetPass } from '../pages/ResetPass'
+import { ToLogin } from '../pages/ToLogin'
 
 // interface Props {
 //   dataSignUp?: object
@@ -40,6 +41,7 @@ export function Router() {
         <Route path="/provider" element={<Providers />} />
         <Route path="/parc" element={<Parceiros />} />
         <Route path="/toyou" element={<ToYou />} />
+        <Route path="/tologin" element={<ToLogin />} />
         <Route path="/toprestador" element={<ToPrestador />} />
         <Route path="/resetpass/:token" element={<ResetPass />} />
       </Route>
