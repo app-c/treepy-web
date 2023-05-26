@@ -29,7 +29,6 @@ import { _validadeName } from '../../../utils/_validadeName'
 import { StepsIcons } from '../../../components/cadastroSteps/stepsIcons'
 import { FinshiSignUp } from '../../../components/cadastroSteps/finish'
 import { _validarCPF } from '../../../utils/validateCpf'
-import { useQuery } from 'react-query'
 import axios from 'axios'
 import { Selector } from '../../../components/selector'
 
@@ -263,7 +262,7 @@ export function SignUp() {
           setLoad(false)
           await api.post('/user/create-user', dt).then((h) => {
             if (h.status === 200) {
-              if (type === 'o') {
+              if (type === '0') {
                 signIn({
                   email: dt.email,
                   password: dt.password,
@@ -304,16 +303,17 @@ export function SignUp() {
       }
     },
     [
-      addToast,
-      changeStep,
-      currentStep,
       dadosStep1,
-      nv,
       dataStep2,
-      signIn,
-      signInP,
-      type,
+      notifications,
       termos,
+      currentStep,
+      changeStep,
+      type,
+      signIn,
+      nv,
+      signInP,
+      addToast,
     ],
   )
 
